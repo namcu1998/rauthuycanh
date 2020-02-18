@@ -1,0 +1,20 @@
+body {
+    background-image: url("nam.png");
+    background-color: #cccccc;
+   }
+#text{
+    color: aliceblue;
+    text-align: center;
+   }
+#title{
+    margin-top: 100%;
+    text-align: center;
+   }
+#a{
+    color: antiquewhite;
+    text-align: center;
+    }
+#mess{
+    color: antiquewhite;
+    margin-left: 20%;
+    }
