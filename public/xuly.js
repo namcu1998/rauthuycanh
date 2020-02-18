@@ -4,10 +4,10 @@ $(document).ready(function(){
     socket.emit("mess", $("#onhap").val());
   })
   socket.on("messe",function(data){
-    $("#messe").append("<div class ="ms">" + data + "</div>");
+    $("#messe").append(data);
     console.log(data);
   })
-   socket.on("user",function(data){
+   socket.on("user",function(data1){
      console.log(data + "da ket noi");
    })
 
