@@ -11,7 +11,7 @@ io.on("connection", function(socket){
    console.log(socket.id + "co nguoi ket noi");
    socket.on("mess", function(data){
      console.log(data);
-     socket.emit("messe",data);
+     io.sockets.emit("messe",data);
    })
    })
 app.get("/", function(req , res){

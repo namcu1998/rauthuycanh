@@ -7,7 +7,7 @@ body {
     text-align: center;
    }
 #title{
-    margin-top: 100%;
+    margin-top: 30%;
     text-align: center;
    }
 #a{
@@ -17,4 +17,6 @@ body {
 #mess{
     color: antiquewhite;
     margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
     }
