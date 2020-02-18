@@ -6,7 +6,7 @@ app.set("views","./views");
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
-server.listen(3000); //process.env.PORT ||
+server.listen(process.env.PORT || 3000); //process.env.PORT ||
 io.on("connection", function(socket){
   socket.on("name", function(data){
     if(data = '1'){
