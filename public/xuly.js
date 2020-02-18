@@ -7,4 +7,8 @@ $(document).ready(function(){
     $("#messe").append("<div class ="ms">" + data + "</div>");
     console.log(data);
   })
+   socket.on("user",function(data){
+     console.log(data + "da ket noi");
+   })
+
   })

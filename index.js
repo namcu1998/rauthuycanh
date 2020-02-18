@@ -13,6 +13,7 @@ io.on("connection", function(socket){
      console.log(data);
      io.sockets.emit("messe",data);
    })
+   io.sockets.emit("user",socket.id);
    })
 app.get("/", function(req , res){
   res.render("trangtru");
