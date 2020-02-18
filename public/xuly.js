@@ -4,7 +4,7 @@ $(document).ready(function(){
     socket.emit("mess", $("#onhap").val());
   })
   socket.on("messe",function(data){
-    $("#messe").append(data);
+    $("#messe").append("<div class ="ms">" data ""</div>"");
     console.log(data);
   })
   })
