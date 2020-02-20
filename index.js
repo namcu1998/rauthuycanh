@@ -9,12 +9,7 @@ var server = http.Server(app)
 var io = socketio(server);
 app.use(express.static("./public"));
 app.set("view engine","ejs");
-app.set("views","./views");
-app.use(express.static("node_modules/mobile-angular-ui")) 			// Có thể truy cập các file trong node_modules/mobile-angular-ui từ xa
-app.use(express.static("node_modules/angular")) 							// Có thể truy cập các file trong node_modules/angular từ xa
-app.use(express.static("node_modules/angular-route")) 				// Có thể truy cập các file trong node_modules/angular-route từ xa
-app.use(express.static("node_modules/socket.io-client")) 				// Có thể truy cập các file trong node_modules/socket.io-client từ xa
-app.use(express.static("node_modules/angular-socket-io"))			// Có thể truy cập các file trong node_modules/angular-socket-io từ xa
+app.set("views","./views");			// Có thể truy cập các file trong node_modules/angular-socket-io từ xa
 app.use(express.static("webapp"))
 server.listen(process.env.PORT || 3000); //process.env.PORT ||
 var webapp_nsp = io.of('/webapp')				//namespace của webapp
