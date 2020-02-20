@@ -12,11 +12,11 @@ var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn 
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
 io.on("connection", function(socket){
-  
+
   socket.on("name", function(data){
-    if(data = '1'){
-      io.sockets.emit("user",socket.id);
-    }
+
+      io.sockets.emit("user",data);
+    
   })
    console.log(socket.id + "co nguoi ket noi");
    socket.on("mess", function(data){
