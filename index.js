@@ -27,7 +27,7 @@ io.on('connection', function(socket) {
 	var interval1 = setInterval(function() {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
      //cho vui.
-     socket.on('JSON',function(data){
+     socket.on('atime',function(data){
        io.sockets.emit("user","hello")
      })
 		for (var i = 0; i < led.length; i++) {
