@@ -11,6 +11,7 @@ $(document).ready(function(){
   })
   socket.on("user",function(data1){
     $("#user").append(data1)
+    $("#user").append("    ")
   })
 
   })
