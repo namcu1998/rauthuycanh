@@ -25,7 +25,11 @@ io.on('connection', function(socket) {
 
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
 	var interval1 = setInterval(function() {
-		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy cho vui.
+		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
+     cho vui.
+     socket.on('JSON',function(data){
+       io.sockets.emit("user","hello")
+     })
 		for (var i = 0; i < led.length; i++) {
 			led[i] = !led[i]
 		}
@@ -42,7 +46,7 @@ io.on('connection', function(socket) {
 	//Khi socket client bị mất kết nối thì chạy hàm sau.
 	socket.on('disconnect', function() {
 		console.log("disconnect") 	//in ra màn hình console cho vui
-		clearInterval(interval1)		//xóa chu kỳ nhiệm vụ đi, chứ không xóa là cái task kia cứ chạy mãi thôi đó!
+		//clearInterval(interval1)		//xóa chu kỳ nhiệm vụ đi, chứ không xóa là cái task kia cứ chạy mãi thôi đó!
 	})
 });
 app.get("/", function(req , res){
