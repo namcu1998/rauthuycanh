@@ -9,9 +9,8 @@ $(document).ready(function(){
     $("#messe").append(data);
     console.log(data);
   })
-  socket.on("user",function(data1){
-    $("#user").append(data1)
-    $("#user").append("    ")
+  socket.on("user",function(jsondata){
+    $("#user").append(jsondata)
   })
 
   })
