@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
 	var interval1 = setInterval(function() {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
-     cho vui.
+     //cho vui.
      socket.on('JSON',function(data){
        io.sockets.emit("user","hello")
      })
