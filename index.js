@@ -11,7 +11,7 @@ app.use(express.static("./public"));
 app.set("view engine","ejs");
 app.set("views","./views");			// Có thể truy cập các file trong node_modules/angular-socket-io từ xa
 app.use(express.static("webapp"))
-server.listen(process.env.PORT || 3484); //process.env.PORT ||
+server.listen(process.env.PORT || 3000); //process.env.PORT ||
 var webapp_nsp = io.of('/webapp')				//namespace của webapp
 var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
