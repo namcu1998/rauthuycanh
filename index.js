@@ -19,10 +19,10 @@ esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì l�
 webapp_nsp.use(middleware);
 io.on("connection", function(socket){
 
-  socket.on("nam", function(data){
-
-      io.sockets.emit("user","nam");
-
+  socket.on("name", function(data){
+   if(data == '1'){
+       io.sockets.emit("user",socket.id);
+   }
   })
    console.log(socket.id + "co nguoi ket noi");
    socket.on("mess", function(data){
