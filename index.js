@@ -12,19 +12,17 @@ app.set("view engine","ejs");
 app.set("views","./views");			// Có thể truy cập các file trong node_modules/angular-socket-io từ xa
 app.use(express.static("webapp"))
 server.listen(process.env.PORT || 3000); //process.env.PORT ||
-var webapp_nsp = io.of('/webapp')				//namespace của webapp
-var esp8266_nsp = io.of('/esp8266')
-var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
-esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
-webapp_nsp.use(middleware);
-io.on("connection", function(socket){
 
+io.on("connection", function(socket){
+console.log(socket.id + "co nguoi ket noi");
   socket.on("name", function(data){
    if(data == '1'){
        io.sockets.emit("user",socket.id);
    }
   })
-   console.log(socket.id + "co nguoi ket noi");
+   socket.on("JSON", function(data){
+      io.sockets.emit("user","da ket noi");
+   })
    socket.on("mess", function(data){
      console.log(data);
      io.sockets.emit("messe",data);

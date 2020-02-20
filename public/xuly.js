@@ -1,5 +1,6 @@
-var socket = io("https://namcu1998.herokuapp.com")   //("https://namcu1998.herokuapp.com");
+var socket = io("http://localhost:3000")   //("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
+  socket.emit("connection", "nam")
    socket.emit("name","1");
   $("#button").click(function(){
     socket.emit("mess", $("#nhap").val());
