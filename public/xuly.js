@@ -1,4 +1,4 @@
-var socket = io("https://localhost:3000")   //("https://namcu1998.herokuapp.com");
+var socket = io("https://namcu1998.herokuapp.com")   //("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
    socket.emit("name","1");
   $("#button").click(function(){
