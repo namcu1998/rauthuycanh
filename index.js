@@ -15,8 +15,8 @@ io.on("connection", function(socket){
 
   socket.on("name", function(data){
 
-      io.sockets.emit("user",data);
-    
+      io.sockets.emit("user","nam");
+
   })
    console.log(socket.id + "co nguoi ket noi");
    socket.on("mess", function(data){
