@@ -28,14 +28,9 @@ io.on('connection', function(socket) {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
      //cho vui.
      socket.on('atime',function(jsondata){
-       function ParseJson(jsondata) {
-    try {
-        return JSON.parse(jsondata);
-    } catch (error) {
-        return null;
-    }
-}
-       io.sockets.emit("user",jsondata)
+      
+
+       socket.broadcast.emit("user",jsondata)
      })
 
 		for (var i = 0; i < led.length; i++) {
