@@ -4,8 +4,8 @@ app.use(express.static("./public"));
 app.set("view engine","ejs");
 app.set("views","./views");
 var server = require("http").Server(app);
-var io = require("socket.io")(server);
-
+var io = require("socket.io")
+server.listen(process.env.PORT || 3000)
 server.listen(process.env.PORT || 3000); //process.env.PORT ||
 io.on("connection", function(socket){
   socket.on("name", function(data){
