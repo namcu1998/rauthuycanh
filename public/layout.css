@@ -3,6 +3,7 @@ body {
     background-color: #1f1616;
    }
  #room1{
+   margin-left: 33%;
    border-width: 3px;
    border-style: solid;
    border-color: aqua;
