@@ -29,6 +29,9 @@ body {
     height: 400px;
     text-align: center;
     }
+    #khungdau{
+      border: 5px;
+    }
     #useronline{
     text-align: center;
     color: antiquewhite
