@@ -29,9 +29,9 @@ io.on('connection', function(socket) {
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
-    var denoff = 1;
+    var denoff = 0;
     var json = {
-      "led":denoff
+      "led": denoff
     }
     socket.broadcast.emit("LED",json)
   })//onden1
