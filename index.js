@@ -29,6 +29,9 @@ io.on('connection', function(socket) {
    socket.on("mess",function (data) {
            socket.broadcast.emit('LED',data);
    })
+   socket.on("den1",function (data) {
+           io.sockets.emit('LED',data);
+   })
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
 	var interval1 = setInterval(function() {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
