@@ -29,7 +29,8 @@ io.on('connection', function(socket) {
    socket.on("mess",function (data) {
            socket.broadcast.emit('LED',data);
    })
-   socket.on("den1",function (data) {
+   socket.on("den1",function () {
+   var data = "den1on"
      var json = {
        "led": data //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
      }
