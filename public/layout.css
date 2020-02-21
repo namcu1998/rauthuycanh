@@ -2,6 +2,11 @@ body {
     background-image: url("nghia.jpg");
     background-color: #1f1616;
    }
+   #nghia{
+     background-image: url("download.png");
+     width: 300px;
+     height: 300px;
+   }
 #text{
     color: aliceblue;
     text-align: center;
