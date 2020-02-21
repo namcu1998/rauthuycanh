@@ -28,8 +28,6 @@ io.on('connection', function(socket) {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
      //cho vui.
      socket.on('atime',function(data){
-
-
        socket.broadcast.emit("user",data["nam"][0]);
        socket.broadcast.emit("user",data["nam"][1]);
        socket.broadcast.emit("user",data["nam"][2]);
