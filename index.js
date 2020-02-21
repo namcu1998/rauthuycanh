@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
   }
   /////////////////////////////////////////////////////////
   var denoff = "0";
-  var json = {
+  var json1 = {
     "led": denoff,
   }
   /////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@ io.on('connection', function(socket) {
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
-    socket.broadcast.emit("LED",json)
+    socket.broadcast.emit("LED",json1)
   })//offden1
   /////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
