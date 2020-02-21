@@ -4,21 +4,19 @@ body {
 #room1{
   color: #ffffff;
   text-align: center;
-  border-style: solid;
 }
 #room2{
   color: #ffffff;
   text-align: center;
-  border-style: solid;
 }
 #onden{
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 100px;
 }
 #offden{
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 100px;
 }
 #text{
-  font-size: 20px;
+  font-size: 100px;
 }
