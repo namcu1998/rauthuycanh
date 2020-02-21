@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
   console.log("webapp rev and send to esp8266 packet: ", packet.data)
   var eventName = packet.data[0]
   var eventJson = packet.data[1] || {}
-  socket.broadcast.emit(eventName, eventJson)
+  socket.broadcast.emit("LED", eventJson)
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
