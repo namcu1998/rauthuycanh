@@ -2,6 +2,9 @@ body {
     background-image: url("nghia.jpg");
     background-color: #1f1616;
    }
+   #khungdau{
+     text-align: center;
+   }
    #nghia{
      text-align: center;
      background-image: url("download.png");
