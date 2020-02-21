@@ -1,8 +1,12 @@
 body {
-  background-image: url(nam.png);
+  background-image: url();
 }
 #room1{
   color: #ffffff;
   text-align: center;
   border-style: solid Tomato;
+}
+#onden{
+  width: 300px;
+  height: 300px;
 }
