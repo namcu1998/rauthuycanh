@@ -17,12 +17,18 @@ var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
+
 io.on('connection', function(socket) {
 	//hàm console.log giống như hàm Serial.println trên Arduino
     console.log("Connected"); //In ra màn hình console là đã có một Socket Client kết nối thành công.
 
 	var led = [true, false] //định nghĩa một mảng 1 chiều có 2 phần tử: true, false. Mảng này sẽ được gửi đi nhằm thay đổi sự sáng tắt của 2 con đèn LED đỏ và xanh. Dựa vào cài đặt ở Arduino mà đèn LEd sẽ bị bật hoặc tắt. Hãy thử tăng hoạt giảm số lượng biến của mảng led này xem. Và bạn sẽ hiểu điều kỳ diệu của JSON!
-
+  var json = {
+    "led": led //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
+  }
+   socket.on("mess",function (data) {
+           socket.broadcast.emit('LED',data);
+   })
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
 	var interval1 = setInterval(function() {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
@@ -38,10 +44,8 @@ io.on('connection', function(socket) {
 		}
 
 		//Cài đặt chuỗi JSON, tên biến JSON này là json
-		var json = {
-			"led": led //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
-		}
-		socket.emit('LED', json) //Gửi lệnh LED với các tham số của của chuỗi JSON//Ghi ra console.log là đã gửi lệnh LED
+
+		//socket.emit('LED', json) //Gửi lệnh LED với các tham số của của chuỗi JSON//Ghi ra console.log là đã gửi lệnh LED
 	}, 2000)//200ms
     socket.on("JSON",function(data){
     console.log("gui");
