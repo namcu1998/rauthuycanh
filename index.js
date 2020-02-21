@@ -17,52 +17,28 @@ var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
-
 io.on('connection', function(socket) {
-	//hàm console.log giống như hàm Serial.println trên Arduino
-    console.log("Connected"); //In ra màn hình console là đã có một Socket Client kết nối thành công.
-
-  //định nghĩa một mảng 1 chiều có 2 phần tử: true, false. Mảng này sẽ được gửi đi nhằm thay đổi sự sáng tắt của 2 con đèn LED đỏ và xanh. Dựa vào cài đặt ở Arduino mà đèn LEd sẽ bị bật hoặc tắt. Hãy thử tăng hoạt giảm số lượng biến của mảng led này xem. Và bạn sẽ hiểu điều kỳ diệu của JSON!
-  var data = "den1on"
-
-		//Cài đặt chuỗi JSON, tên biến JSON này là json
-		var json = {
-			"led": data,
-    //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
-		}
-   socket.on("mess",function (data) {
-           socket.broadcast.emit('LED',json);
-   })
-   socket.on("den1",function () {
-           io.sockets.emit('LED',json);
-   })
-	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
+  console.log("Connected");
+  /////////////////////////////////////////////////////////
+  socket.on('LED', function(packet) {
+  console.log("webapp rev and send to esp8266 packet: ", packet.data)
+  var eventName = packet.data[0]
+  var eventJson = packet.data[1] || {}
+  socket.broadcast.emit(eventName, eventJson)
+});//onLED
+///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
-		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
-     //cho vui.
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
-     })
-
-
-
-		//Cài đặt chuỗi JSON, tên biến JSON này là json
-
-		//socket.emit('LED', json) //Gửi lệnh LED với các tham số của của chuỗi JSON//Ghi ra console.log là đã gửi lệnh LED
+     })//onJSON
 	}, 2000)//200ms
-
-	//Khi socket client bị mất kết nối thì chạy hàm sau.
+  //////////////////////////////////////////////////////////
 	socket.on('disconnect', function() {
-		console.log("disconnect") 	//in ra màn hình console cho vui
-		//clearInterval(interval1)		//xóa chu kỳ nhiệm vụ đi, chứ không xóa là cái task kia cứ chạy mãi thôi đó!
-	})
-  socket.on('LED', function(packet) {
-  console.log("webapp rev and send to esp8266 packet: ", packet.data) //in ra để debug
-  var eventName = packet.data[0]
-  var eventJson = packet.data[1] || {} //nếu gửi thêm json thì lấy json từ lệnh gửi, không thì gửi chuỗi json rỗng, {}
-  socket.broadcast.emit(eventName, eventJson) //gửi toàn bộ lệnh + json đến esp8266
-  });
-});
+		console.log("disconnect")
+	})//disconnect
+}); //connected
+
+
 app.get("/", function(req , res){
   res.render("trangtru");
-})
+}) //home
