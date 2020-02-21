@@ -2,6 +2,27 @@ body {
     background-image: url("");
     background-color: #1f1616;
    }
+ #room1{
+   border-width: 3px;
+   border-style: solid;
+   border-color: aqua;
+   width: 400px;
+   height: 300px;
+ }
+ #room2{
+   border-width: 3px;
+   border-style: solid;
+   border-color: aqua;
+   width: 400px;
+   height: 300px;
+ }
+ #room3{
+   border-width: 3px;
+   border-style: solid;
+   border-color: aqua;
+   width: 400px;
+   height: 300px;
+ }
 #text{
     color: aliceblue;
     text-align: center;
