@@ -12,8 +12,9 @@
     <h1 id="text">trang web đang sửa cấm người lạ vào</h1>
   </div>
    <h1 type = "text"> đèn D0 </h1>
-   <input type="button" id="onden" />
-   <input type="button" id="offden" />
+   <input type="button" id="onden" value = "ON"/>
+   <input type="button" id="offden" value = "OFF" />
+    <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-change="changeLED()" ng-model="leds_status[$index]" />
   <div id="useronline" >
     <p id="user" type ="text"> <br> </p>
   </div>
