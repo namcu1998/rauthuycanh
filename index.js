@@ -60,7 +60,7 @@ io.on('connection', function(socket) {
   console.log("webapp rev and send to esp8266 packet: ", packet.data) //in ra để debug
   var eventName = packet.data[0]
   var eventJson = packet.data[1] || {} //nếu gửi thêm json thì lấy json từ lệnh gửi, không thì gửi chuỗi json rỗng, {}
-  esp8266_nsp.emit(eventName, eventJson) //gửi toàn bộ lệnh + json đến esp8266
+  socket.broadcast.emit(eventName, eventJson) //gửi toàn bộ lệnh + json đến esp8266
   });
 });
 app.get("/", function(req , res){
