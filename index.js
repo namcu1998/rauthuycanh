@@ -23,14 +23,16 @@ io.on('connection', function(socket) {
     console.log("Connected"); //In ra màn hình console là đã có một Socket Client kết nối thành công.
 
   //định nghĩa một mảng 1 chiều có 2 phần tử: true, false. Mảng này sẽ được gửi đi nhằm thay đổi sự sáng tắt của 2 con đèn LED đỏ và xanh. Dựa vào cài đặt ở Arduino mà đèn LEd sẽ bị bật hoặc tắt. Hãy thử tăng hoạt giảm số lượng biến của mảng led này xem. Và bạn sẽ hiểu điều kỳ diệu của JSON!
-  var json = {
-    "led": led //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
-  }
+  var data = "den1on"
+		//Cài đặt chuỗi JSON, tên biến JSON này là json
+		var json = {
+			"led": data,
+    //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
+		}
    socket.on("mess",function (data) {
-           socket.broadcast.emit('LED',data);
+           socket.broadcast.emit('LED',json);
    })
    socket.on("den1",function () {
-     
            io.sockets.emit('LED',json);
    })
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
