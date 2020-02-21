@@ -20,19 +20,21 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
+  var denon = "1";
+  var json = {
+    "led": denon,
+  }
+  /////////////////////////////////////////////////////////
+  var denoff = "0";
+  var json = {
+    "led": denoff,
+  }
+  /////////////////////////////////////////////////////////
   socket.on("den1on",function(){
-    var denon = "denon";
-    var json = {
-      "led": denon,
-    }
     socket.broadcast.emit("LED",json)
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
-    var denoff = "denoff";
-    var json = {
-      "led": denoff,
-    }
     socket.broadcast.emit("LED",json)
   })//offden1
   /////////////////////////////////////////////////////////
