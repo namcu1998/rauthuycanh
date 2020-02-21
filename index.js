@@ -30,10 +30,7 @@ io.on('connection', function(socket) {
            socket.broadcast.emit('LED',data);
    })
    socket.on("den1",function () {
-   var data = "den1on"
-     var json = {
-       "led": data //có một phần tử là "led", phần tử này chứa giá trị của mảng led.
-     }
+     
            io.sockets.emit('LED',json);
    })
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
