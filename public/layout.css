@@ -30,12 +30,12 @@ body {
     text-align: center;
     }
     #useronline{
-  border-width: 3px;
+   border-width: 3px;
    border-style: solid;
    width: 400px;
    height: 300px;
     }
-    #useronline{
-    text-align: center;
-    color: antiquewhite
+    #user{
+      width: 400px;
+      height: 300px;
     }
