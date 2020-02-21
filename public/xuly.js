@@ -10,7 +10,7 @@ $(document).ready(function(){
     console.log(data);
   })
   socket.on("user",function(data){
-    $("#user").write(data)
+    $("#user").append(data)
   })
 
   })
