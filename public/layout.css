@@ -1,3 +1,7 @@
 body {
-  text-align: center,
+  background-image: url(nam.png);
+}
+#room1{
+  text-align: center;
+  border-style: solid;
 }
