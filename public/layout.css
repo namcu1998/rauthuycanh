@@ -1,20 +1,11 @@
 body {
     background-image: url("");
     background-color: #1f1616;
-    text-align: center;
-    width: 100%;
-    height: 300px;
-   }
-   #nghia{
-     text-align: center;
-     width: 200px;
-     height: 200px;
    }
 #text{
     color: aliceblue;
     text-align: center;
-    font-size: 50px;
-    border: 2px
+
    }
 #title{
     text-align: center;
@@ -32,12 +23,6 @@ body {
     text-align: center;
     }
     #useronline{
-   border-width: 3px;
-   border-style: solid;
-   width: 400px;
-   height: 300px;
-    }
-    #text{
-      width: 400px;
-      height: 300px;
+    text-align: center;
+    color: antiquewhite
     }
