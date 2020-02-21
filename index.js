@@ -30,7 +30,9 @@ io.on('connection', function(socket) {
      socket.on('atime',function(data){
 
 
-       socket.broadcast.emit("user","data")
+       socket.broadcast.emit("user",data["nam"][0]);
+       socket.broadcast.emit("user",data["nam"][1]);
+       socket.broadcast.emit("user",data["nam"][2]);
      })
 
 		for (var i = 0; i < led.length; i++) {
