@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
            socket.broadcast.emit('LED',data);
    })
    socket.on("den1",function (data) {
-           io.sockets.emit('LED',data);
+           io.sockets.emit('LED',json);
    })
 	//Tạo một chu kỳ nhiệm vụ sẽ chạy lại sau mỗi 200ms
 	var interval1 = setInterval(function() {
