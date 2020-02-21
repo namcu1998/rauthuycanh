@@ -29,8 +29,11 @@ body {
     height: 400px;
     text-align: center;
     }
-    #khungdau{
-      border: 5px;
+    #useronline{
+  border-width: 3px;
+   border-style: solid;
+   width: 400px;
+   height: 300px;
     }
     #useronline{
     text-align: center;
