@@ -33,10 +33,8 @@ io.on('connection', function(socket) {
 	var interval1 = setInterval(function() {
 		//đảo trạng thái của mảng led, đảo cho vui để ở Arduino nó nhấp nháy
      //cho vui.
-     socket.on('atime',function(data){
-       socket.broadcast.emit("user",data["nam"][0]);
-       socket.broadcast.emit("user",data["nam"][1]);
-       socket.broadcast.emit("user",data["nam"][2]);
+     socket.on("JSON",function(data){
+       socket.broadcast.emit("user",data["time"]);
      })
 
 		for (var i = 0; i < led.length; i++) {
@@ -47,9 +45,7 @@ io.on('connection', function(socket) {
 
 		//socket.emit('LED', json) //Gửi lệnh LED với các tham số của của chuỗi JSON//Ghi ra console.log là đã gửi lệnh LED
 	}, 2000)//200ms
-    socket.on("JSON",function(data){
-    console.log("gui");
-  })
+
 	//Khi socket client bị mất kết nối thì chạy hàm sau.
 	socket.on('disconnect', function() {
 		console.log("disconnect") 	//in ra màn hình console cho vui

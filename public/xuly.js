@@ -6,7 +6,7 @@ $(document).ready(function(){
     socket.emit("mess", $("#nhap").val());
   })
   socket.on("messe",function(data){
-    $("#messe").append(data);
+    $("#messe").html(data);
     console.log(data);
   })
   socket.on("user",function(data){
