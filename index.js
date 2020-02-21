@@ -20,13 +20,22 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  socket.on('LED', function(packet) {
-  console.log("webapp rev and send to esp8266 packet: ", packet.data)
-  var eventName = packet.data[0]
-  var eventJson = packet.data[1] || {}
-  socket.broadcast.emit("LED", eventJson)
-});//onLED
-///////////////////////////////////////////////////////////
+  socket.on("den1on",function(){
+    var denon = 1;
+    var json = {
+      "led":denon
+    }
+    socket.broadcast.emit("LED",json)
+  })//onden1
+  /////////////////////////////////////////////////////////
+  socket.on("den1off",function(){
+    var denoff = 1;
+    var json = {
+      "led":denoff
+    }
+    socket.broadcast.emit("LED",json)
+  })//onden1
+  /////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
