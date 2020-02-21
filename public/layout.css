@@ -2,6 +2,7 @@ body {
   background-image: url(nam.png);
 }
 #room1{
+  color: #ffffff;
   text-align: center;
-  border-style: solid;
+  border-style: solid Tomato;
 }
