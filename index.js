@@ -21,20 +21,20 @@ io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
   socket.on("den1on",function(){
-    var denon = 1;
+    var denon = "denon";
     var json = {
-      "led":denon
+      "led": denon,
     }
     socket.broadcast.emit("LED",json)
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
-    var denoff = 0;
+    var denoff = "denoff";
     var json = {
-      "led": denoff
+      "led": denoff,
     }
     socket.broadcast.emit("LED",json)
-  })//onden1
+  })//offden1
   /////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
      socket.on("JSON",function(data){
