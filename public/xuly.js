@@ -10,7 +10,7 @@ $(document).ready(function(){
     console.log(data);
   })
   socket.on("user",function(data){
-    $("#user").append("<div class ='text'>" + data + "</div>");
+    $("#user").append(  data  );
   })
 
   })
