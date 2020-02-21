@@ -2,6 +2,8 @@ body {
     background-image: url("");
     background-color: #1f1616;
     text-align: center;
+    width: 400px;
+    height: 300px;
    }
    #nghia{
      text-align: center;
