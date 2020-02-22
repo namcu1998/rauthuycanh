@@ -12,10 +12,6 @@ div{
 #mess{
   color: #ffffff;
 }
-#room1{
-  color: #ffffff;
-  border-style: solid;
-}
 #onden{
   width: 100px;
   height: 100px;
@@ -42,10 +38,4 @@ div{
 }
 #text{
   font-size: 60px;
-}
-#room2{
-  color: #ffffff;
-  text-align: center;
-  border-style: solid;
-  margin-top: 10px;
 }
