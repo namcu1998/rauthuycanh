@@ -1,11 +1,14 @@
 var socket = io("https://namcu1998.herokuapp.com");
-var mang = ["Học", "lập", "trình", "tại", "freetuts.net"];
-mang.splice(1, 2, 'PHP', 'căn bản ');
+var mang = [1,1];
+var LED = {
+  "led":mang
+}
 document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       socket.emit("den1on","nam");
+    mang.splice(1,'0')
+       socket.emit("den1on",LED);
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){

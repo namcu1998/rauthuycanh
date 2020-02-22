@@ -22,11 +22,11 @@ io.on('connection', function(socket) {
   /////////////////////////////////////////////////////////
 
   socket.on('den1on', function(data) {
-    
+    socket.emit("LED",data)
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
-     socket.emit("LED","da ket noi")
+
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON
