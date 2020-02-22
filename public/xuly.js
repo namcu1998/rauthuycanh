@@ -1,5 +1,4 @@
 var socket = io("https://namcu1998.herokuapp.com");   //("https://namcu1998.herokuapp.com");
-var led = [data];
 $(document).ready(function(){
   $("#onden").click(function(){
        socket.emit("den1on","nam");
