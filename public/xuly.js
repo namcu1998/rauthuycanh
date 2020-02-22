@@ -1,6 +1,6 @@
 var socket = io("https://namcu1998.herokuapp.com");
-var mang = [1,1,1];
-mang.length = 4;
+var mang = [1,1];
+
 var led = {
   "led":mang
 }
