@@ -17,7 +17,7 @@ io.on('connection', function(socket) {
   console.log(socket.id);
   socket.on("den1on",function(data){
     console.log("nam");
-    socket.broadcast.emit("LED",data)
+    socket.broadcast.emit("LED","nam")
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
