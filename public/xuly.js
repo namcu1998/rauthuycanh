@@ -8,7 +8,7 @@ document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       mang.splice(1 , 1 , '0');
+       mang.splice(0 , 0 , 0);
        socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
