@@ -1,7 +1,7 @@
 var socket = io("https://namcu1998.herokuapp.com");   //("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
   var led =[1];
-  LED = {
+  var LED = {
     led:led;
   }
   $("#onden").click(function(){
