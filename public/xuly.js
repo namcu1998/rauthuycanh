@@ -3,11 +3,12 @@ var mang = [1,1];
 var LED = {
   "led":mang
 }
+  mang.splice(1,'0')
 document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-    mang.splice(1,'0')
+
        socket.emit("den1on",LED);
   }); //end
   /////////////////////////////////////////////
