@@ -22,7 +22,7 @@ io.on('connection', function(socket) {
   /////////////////////////////////////////////////////////
   var led =[1,1]
   var LED = {
-    "led":led;
+    "led":led
   }
   socket.on('den1on', function(data) {
   socket.broadcast.emit("LED", "da lang nghe")

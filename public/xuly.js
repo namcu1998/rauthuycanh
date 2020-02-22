@@ -17,10 +17,8 @@ $(document).ready(function(){
     socket.emit("den2off", 'den1on');
   }); //end
   /////////////////////////////////////////////
-  var interval1 = setInterval(function() {
   socket.on("user", function(data){
     $("#mess").append("<div class='ms'>" + data + "</div>")
-  })
 });
   /////////////////////////////////////////////
 }); //document
