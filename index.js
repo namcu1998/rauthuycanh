@@ -20,12 +20,12 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  var led =[1,1]
+  var led =[data,data1]
   var LED = {
     "led":led
   }
   socket.on('den1on', function(data) {
-  socket.broadcast.emit("LED", "da lang nghe")
+      data = 1;
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
