@@ -10,11 +10,11 @@ $(document).ready(function(){
   $("#onden").click(function(){
        mang.splice(1 , 1 , '0');
        socket.emit("den1on",led);
-       document.write(mang.valueOf());
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
-    socket.emit("den1off","data");
+    mang.splice(1 , 1 , '1');
+    socket.emit("den1on","data");
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
