@@ -2,18 +2,18 @@ var socket = io("https://namcu1998.herokuapp.com");   //("https://namcu1998.hero
 $(document).ready(function(){
   $("#onden").click(function(){
        socket.emit("den1on","nam");
-  }) //end
+  }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
     socket.emit("den1off","data");
-  }) //end
+  }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
     socket.emit("den2on", 'den1on');
-  }) //end
+  }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
     socket.emit("den2off", 'den1on');
-  }) //end
+  }); //end
   /////////////////////////////////////////////
-}) //document
+}); //document
