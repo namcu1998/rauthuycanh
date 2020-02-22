@@ -15,7 +15,8 @@ server.listen(process.env.PORT || 3000); //process.env.PORT ||
 console.log("ok")
 io.on('connection', function(socket) {
   console.log(socket.id);
-  socket.on("den1on",function(data){
+  /////////////////////////////////////////////////////////
+  socket.on("den1on",function(){
     console.log("nam");
     socket.broadcast.emit("LED","nam")
   })//onden1
