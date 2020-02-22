@@ -1,13 +1,11 @@
-var socket = io("https://namcu1998.herokuapp.com")   //("https://namcu1998.herokuapp.com");
+var socket = io("https://namcu1998.herokuapp.com");   //("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
   $("#onden").click(function(){
-       //data = 1;
-       socket.emit("den1on",json);
+       socket.emit("den1on","daha");
   }) //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
-    //data = 0;
-    socket.emit("den1off",json);
+    socket.emit("den1off","data");
   }) //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
