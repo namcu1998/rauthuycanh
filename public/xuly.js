@@ -23,7 +23,8 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
-
+    mang.splice(1 , 10 , '0');
+    socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   socket.on("user", function(data){
