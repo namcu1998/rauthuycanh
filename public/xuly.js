@@ -19,12 +19,12 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
-    mang.splice(1 , 10 , '1');
+    mang.splice(1 , 1 , '1');
     socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
-    mang.splice(1 , 10 , '0');
+    mang.splice(1 , 1 , '0');
     socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
