@@ -1,7 +1,11 @@
 var socket = io("https://namcu1998.herokuapp.com");   //("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
+  var led =[1];
+  LED = {
+    led:led;
+  }
   $("#onden").click(function(){
-       socket.emit("den1on","nam");
+       socket.emit("den1on",LED);
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
