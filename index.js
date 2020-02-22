@@ -22,7 +22,7 @@ io.on('connection', function(socket) {
   /////////////////////////////////////////////////////////
 
   socket.on('den1on', function(data) {
-    led.splice(1,2,'0','0');
+    
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {

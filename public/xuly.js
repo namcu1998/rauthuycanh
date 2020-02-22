@@ -1,5 +1,7 @@
 var socket = io("https://namcu1998.herokuapp.com");
-$("#mess").append(led);
+var mang = ["Học", "lập", "trình", "tại", "freetuts.net"];
+mang.splice(1, 2, 'PHP', 'căn bản ');
+document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
