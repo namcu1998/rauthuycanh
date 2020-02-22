@@ -20,24 +20,13 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////
-  socket.on("den1on",function(data){
-    socket.broadcast.emit("LED","led")
-  })//onden1
-  /////////////////////////////////////////////////////////
-  socket.on("den1off",function(){
-    socket.broadcast.emit("LED",json)
-  })//offden1
-  /////////////////////////////////////////////////////////
-  socket.on("den2on",function(){
-    socket.broadcast.emit("LED",json2)
-  })//onden2
-  /////////////////////////////////////////////////////////
-  socket.on("den2off",function(){
-    socket.broadcast.emit("LED",json3)
-  })//offden2
-  /////////////////////////////////////////////////////////
+  socket.on('den1on', function(packet) {
+  console.log("webapp rev and send to esp8266 packet: ", packet.data)
+  var eventName = packet.data[0]
+  var eventJson = packet.data[1] || {}
+  socket.broadcast.emit("LED", eventJson)
+});//onLED
+///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
