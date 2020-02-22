@@ -21,13 +21,22 @@ io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
   var denon = "1";
+  var denoff = "0";
+  /////////////////////////////////////////////////////////
   var json = {
     "led": denon,
   }
   /////////////////////////////////////////////////////////
-  var denoff = "0";
   var json1 = {
     "led": denoff,
+  }
+  /////////////////////////////////////////////////////////
+  var json2 = {
+    "led1": denon,
+  }
+  /////////////////////////////////////////////////////////
+  var json3 = {
+    "led1": denoff,
   }
   /////////////////////////////////////////////////////////
   socket.on("den1on",function(){
@@ -39,12 +48,12 @@ io.on('connection', function(socket) {
   })//offden1
   /////////////////////////////////////////////////////////
   socket.on("den2on",function(){
-    socket.broadcast.emit("LED1",json)
-  })//onden1
+    socket.broadcast.emit("LED",json2)
+  })//onden2
   /////////////////////////////////////////////////////////
   socket.on("den2off",function(){
-    socket.broadcast.emit("LED1",json1)
-  })//onden1
+    socket.broadcast.emit("LED",json3)
+  })//offden2
   /////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
      socket.on("JSON",function(data){
