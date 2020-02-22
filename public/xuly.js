@@ -6,7 +6,7 @@ $(document).ready(function(){
   }
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       socket.emit("den1on",LED);
+       socket.emit("den1on","nam");
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
