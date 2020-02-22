@@ -8,8 +8,8 @@ $(document).ready(function(){
   } */
   ////////////////////////////////////////////
   $("#onden").click(function(){
-       data = 1;
-       socket.emit("den1on",json);
+       //data = 1;
+       socket.emit("den1on","nam");
   }) //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
