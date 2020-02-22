@@ -3,7 +3,7 @@ var mang = [1,1];
 var LED = {
   "led":mang
 }
-  mang.splice(1,'0')
+  mang.splice(1,1,'0')
 document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
