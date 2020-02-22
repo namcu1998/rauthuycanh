@@ -20,14 +20,10 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  var led = [1,1,1];
   /////////////////////////////////////////////////////////
-  var json = {
-    "led": led,
-  }
   /////////////////////////////////////////////////////////
-  socket.on("den1on",function(){
-    socket.broadcast.emit("LED",json)
+  socket.on("den1on",function(data){
+    socket.broadcast.emit("LED",data)
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
