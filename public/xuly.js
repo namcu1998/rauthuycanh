@@ -1,4 +1,4 @@
-var socket = io("https://namcu1998.herokuapp.com");  //("https://namcu1998.herokuapp.com");
+var socket = io("http://namcu1998.herokuapp.com/");  //("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
   ////////////////////////////////////////////
   var data,data1,dat2;
