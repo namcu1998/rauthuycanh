@@ -18,11 +18,13 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
-    socket.emit("den2on", 'den1on');
+    mang.splice(2 , 1 , '0');
+    socket.emit("den1on","data");
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
-    socket.emit("den2off", 'den1on');
+    mang.splice(2 , 1 , '1');
+    socket.emit("den1on","data");
   }); //end
   /////////////////////////////////////////////
   socket.on("user", function(data){
