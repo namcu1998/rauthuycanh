@@ -14,17 +14,17 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   $("#offden").click(function(){
     mang.splice(1 , 1 , '1');
-    socket.emit("den1on","data");
+    socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
     mang.splice(2 , 1 , '0');
-    socket.emit("den1on","data");
+    socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
     mang.splice(2 , 1 , '1');
-    socket.emit("den1on","data");
+    socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   socket.on("user", function(data){
