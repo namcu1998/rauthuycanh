@@ -8,12 +8,12 @@ document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       mang.splice(0 , 0 , 0);
+       mang.splice(0 , 0 , '0');
        socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
-    mang.splice(0 , 0 , 1);
+    mang.splice(0 , 0 , '1');
     socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
