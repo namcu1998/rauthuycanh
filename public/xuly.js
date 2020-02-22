@@ -18,7 +18,7 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   socket.on("user", function(data){
-    $("#mess").append(data)
+    $("#mess").append("<div class='ms'>" + data + "</div>")
   })
   /////////////////////////////////////////////
 }); //document
