@@ -14,7 +14,7 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
-    mang.splice(0 , 1 , '0');
+    mang.splice(0 , 1 , '1');
     socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
