@@ -20,15 +20,20 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
+  var led =[1,1]
+  var LED = {
+    "led":led;
+  }
   socket.on('den1on', function(data) {
   socket.broadcast.emit("LED", "da lang nghe")
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
+     socket.emit("LED",LED)
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON
-	}, 2000);//200ms
+	}, 200);//200ms
   //////////////////////////////////////////////////////////
 	socket.on('disconnect', function() {
 		console.log("disconnect")
