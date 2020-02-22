@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
-     socket.emit("LED",LED)
+     socket.emit("LED","da ket noi")
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON
