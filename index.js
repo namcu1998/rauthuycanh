@@ -27,7 +27,7 @@ io.on('connection', function(socket) {
   })//onden1
   /////////////////////////////////////////////////////////
   socket.on("den1off",function(){
-    socket.broadcast.emit("LED",json1)
+    socket.broadcast.emit("LED",json)
   })//offden1
   /////////////////////////////////////////////////////////
   socket.on("den2on",function(){

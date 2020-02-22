@@ -13,6 +13,7 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   $("#offden").click(function(){
     data = 0;
+    socket.emit("den1off",json);
   }) //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
