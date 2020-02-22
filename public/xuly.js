@@ -18,7 +18,8 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
-
+    mang.splice(1 , 10 , '1');
+    socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
