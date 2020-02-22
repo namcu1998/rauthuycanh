@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#onden").click(function(){
        data = 1;
   }) //end
-  var led =[data];
+  var led =[1];
   var LED = {
      led:led;
   }
