@@ -29,8 +29,7 @@ io.on('connection', function(socket) {
   /////////////////////////////////////////////////////////
 
   socket.on('den1on', function(data) {
-    var eventjson = data.data[0];
-    io.sockets.emit("LED",data)
+    io.sockets.emit("LED",data);
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
