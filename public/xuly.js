@@ -5,11 +5,11 @@ $(document).ready(function(){
   var lEd = [1,1,1];
   var json = {
     led: lEd;
-  };
+  }
   ////////////////////////////////////////////
   $("#onden").click(function(){
        //data = 1;
-       socket.emit("den1on",json);
+       socket.emit("den1on","nam");
   }) //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
