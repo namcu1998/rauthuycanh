@@ -27,12 +27,12 @@ io.on('connection', function(socket) {
 	var interval1 = setInterval(function() {
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
-     })//onJSON
-	}, 2000)//200ms
+     });//onJSON
+	}, 2000);//200ms
   //////////////////////////////////////////////////////////
 	socket.on('disconnect', function() {
 		console.log("disconnect")
-	})//disconnect
+	});//disconnect
 }); //connected
 
 
