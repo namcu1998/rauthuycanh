@@ -4,6 +4,7 @@ $(document).ready(function(){
   var LED = {
     led:led;
   }
+  /////////////////////////////////////////////
   $("#onden").click(function(){
        socket.emit("den1on",LED);
   }); //end
@@ -19,5 +20,9 @@ $(document).ready(function(){
   $("#offden1").click(function(){
     socket.emit("den2off", 'den1on');
   }); //end
+  /////////////////////////////////////////////
+  socket.on("user", function(data){
+    $("#mess").append(data)
+  })
   /////////////////////////////////////////////
 }); //document

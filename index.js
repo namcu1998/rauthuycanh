@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
   socket.on('den1on', function(data) {
     var eventName = data.data[0]
 		var eventJson = data.data[1] || {}
-  socket.broadcast.emit(eventName, eventJson)
+  socket.broadcast.emit("LED", eventJson)
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
