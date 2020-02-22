@@ -1,5 +1,5 @@
 var socket = io("https://namcu1998.herokuapp.com");
-var mang = [1,1];
+var mang = [1,1,1];
 mang.length = 4;
 var led = {
   "led":mang
@@ -9,12 +9,12 @@ document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       mang.splice(0 , 0 , '0');
+       mang.splice(0 , 1 , '0' );
        socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
-    mang.splice(0 , 0 , '1');
+    mang.splice(0 , 1 , '0');
     socket.emit("den1on",led);
   }); //end
   /////////////////////////////////////////////
