@@ -1,4 +1,10 @@
-var socket = io("https://namcu1998.herokuapp.com");   //("https://namcu1998.herokuapp.com");
+var socket = io("https://namcu1998.herokuapp.com");
+var led = [1,1]
+var LED = {
+  "led":led
+}
+led.splice(1,'0');
+$("#mess").append(led);
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){

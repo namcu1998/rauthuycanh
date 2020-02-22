@@ -20,7 +20,7 @@ webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  var led =[1,1]
+  var led = [1,1]
   var LED = {
     "led":led
   }
