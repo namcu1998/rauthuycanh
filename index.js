@@ -38,6 +38,14 @@ io.on('connection', function(socket) {
     socket.broadcast.emit("LED",json1)
   })//offden1
   /////////////////////////////////////////////////////////
+  socket.on("den2on",function(){
+    socket.broadcast.emit("LED1",json)
+  })//onden1
+  /////////////////////////////////////////////////////////
+  socket.on("den2off",function(){
+    socket.broadcast.emit("LED1",json1)
+  })//onden1
+  /////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);

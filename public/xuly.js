@@ -9,4 +9,12 @@ $(document).ready(function(){
     socket.emit("den1off", "den1off");
   }) //end
   /////////////////////////////////////////////
+  $("#onden1").click(function(){
+    socket.emit("den2on", 'den1on');
+  }) //end
+  /////////////////////////////////////////////
+  $("#offden1").click(function(){
+    socket.emit("den2off", 'den1on');
+  }) //end
+  /////////////////////////////////////////////
 }) //document
