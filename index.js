@@ -25,7 +25,7 @@ io.on('connection', function(socket) {
     "led":led
   }
   socket.on('den1on', function(data) {
-      data = 1;
+      
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
