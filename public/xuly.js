@@ -3,7 +3,7 @@ document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       socket.emit("onden","led");
+       socket.emit("den1on","led");
   }); //end
   //////////////////////////////////s///////////
   $("#offden").click(function(){
