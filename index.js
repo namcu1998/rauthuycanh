@@ -33,9 +33,9 @@ function ParseJson(jsondata) {
     io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  socket.on("onden", function() {
+  socket.on("onden", function(data) {
     mang.splice(0 , 1 , '0');
-    io.sockets.emit("LED",led);
+    io.sockets.emit("LED","nam");
   });//onLED
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
