@@ -31,7 +31,7 @@ function ParseJson(jsondata) {
     }
     mang.splice()
     io.on('connection', function(socket) {
-  console.log("Connected");
+    console.log("Connected");
   /////////////////////////////////////////////////////////
   socket.on("den1on", function(data) {
     mang.splice(0 , 1 , '0');
