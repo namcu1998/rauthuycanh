@@ -1,10 +1,4 @@
 var socket = io("https://namcu1998.herokuapp.com");
-var mang = [1,1];
-
-var led = {
-  "led":mang
-}
-mang.splice()
 document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////

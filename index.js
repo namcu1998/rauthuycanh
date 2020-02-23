@@ -23,16 +23,23 @@ function ParseJson(jsondata) {
     } catch (error) {
         return null;
     }
-}
+    }
+    var mang = [1,1];
+
+    var led = {
+      "led":mang
+    }
+    mang.splice()
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
 
   socket.on('den1on', function(data) {
-    io.sockets.emit("LED",data);
+    mang.splice(0 , 1 , '0');
 });//onLED
 ///////////////////////////////////////////////////////////
 	var interval1 = setInterval(function() {
+    io.sockets.emit("LED",led);
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON
