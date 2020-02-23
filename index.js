@@ -30,18 +30,14 @@ function ParseJson(jsondata) {
       "led":mang
     }
     mang.splice()
-io.on('connection', function(socket) {
+    io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-  socket.on('onden', function(data) {
+  socket.on("onden", function(data) {
     mang.splice(0 , 1 , '0');
     io.sockets.emit("LED",led);
   });//onLED
 ///////////////////////////////////////////////////////////
-socket.on('den1on', function(data) {
-  mang.splice(0 , 1 , '0');
-  io.sockets.emit("LED",led);
-});//onLE
 ///////////////////////////////////////////////////////////
 
 	var interval1 = setInterval(function() {
