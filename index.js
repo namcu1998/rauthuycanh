@@ -33,13 +33,19 @@ function ParseJson(jsondata) {
 io.on('connection', function(socket) {
   console.log("Connected");
   /////////////////////////////////////////////////////////
-
-  socket.on('den1on', function(data) {
+  socket.on('onden', function(data) {
     mang.splice(0 , 1 , '0');
-});//onLED
-///////////////////////////////////////////////////////////
-	var interval1 = setInterval(function() {
     io.sockets.emit("LED",led);
+  });//onLED
+///////////////////////////////////////////////////////////
+socket.on('den1on', function(data) {
+  mang.splice(0 , 1 , '0');
+  io.sockets.emit("LED",led);
+});//onLE
+///////////////////////////////////////////////////////////
+
+	var interval1 = setInterval(function() {
+
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON

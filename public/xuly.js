@@ -3,23 +3,19 @@ document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   $("#onden").click(function(){
-       mang.splice(0 , 1 , '1' );
-       socket.emit("den1on",led);
+       socket.emit("den1on","led");
   }); //end
   /////////////////////////////////////////////
   $("#offden").click(function(){
-    mang.splice(0 , 1 , '0');
-    socket.emit("den1on",led);
+    socket.emit("offden","led");
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
-    mang.splice(1 , 1 , '1');
-    socket.emit("den1on",led);
+    socket.emit("onden1","led");
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
-    mang.splice(1 , 1 , '0');
-    socket.emit("den1on",led);
+    socket.emit("offden1","led");
   }); //end
   /////////////////////////////////////////////
   socket.on("user", function(data){
