@@ -20,10 +20,10 @@ webapp_nsp.use(middleware);
 var led =[1];
 var LED = {
    "led":led
-}
+};
     io.on('connection', function(socket) {
     console.log("Connected");
-    socket.on(den1on, function(data){
+    socket.on("den1on", function(data){
        led.splice(0,1,'0');
        socket.broadcast.emit("LED",LED);
     }
