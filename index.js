@@ -19,22 +19,14 @@ esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì l�
 webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
-   var data = 1;
-   var data1 = 1;
-    var led = [data,data1]
+    var led = [1,1]
     var mang = {
       "led":led,
     }
     socket.on("JSON", function(packet){
      socket.broadcast.emit("user",packet);
-    if(packet["den1"] == '1'){
-      data = 1;
-    }
-    else data = 0;
-    if(packet["den2"] == '1'){
-      data1 = 1;
-    }
-    data1 = 0;
+     led.splice(0,1,'packet[data1]');
+     led.splice(1,1,'packet[data2]');
    });
     socket.on("offden", function(){
       led.splice(0,1,'1');
