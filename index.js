@@ -24,11 +24,10 @@ var mang = {
     io.on('connection', function(socket) {
     console.log("Connected");
     socket.on("den1on", function(data){
-       mang.splice(0,1,'0');
        socket.broadcast.emit("LED",data);
     })
     socket.on("den1off", function(data){
-       mang.splice(0,1,'1');
+
        socket.broadcast.emit("LED",mang);
     })
     socket.on("JSON", function(data){
