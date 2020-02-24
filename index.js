@@ -20,7 +20,7 @@ webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
     socket.on("JSON", function(data){
-     io.sockets.emit("user",data["time"][(Object.keys(data['time']).length)-1]);
+     io.sockets.emit("user",data["time"]);
     })
 	socket.on('disconnect', function() {
 		console.log("disconnect")
