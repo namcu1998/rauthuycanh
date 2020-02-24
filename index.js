@@ -50,7 +50,7 @@ webapp_nsp.use(middleware);
     });
    var interval1 = setInterval(function() {
      io.sockets.emit("LED",mang);
-   });
+   }, 2000);
 
 	socket.on('disconnect', function() {
 		console.log("disconnect")
