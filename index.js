@@ -25,7 +25,7 @@ var mang = {
     console.log("Connected");
     socket.on("den1on", function(data){
        led.splice(0,1,'0');
-       socket.broadcast.emit("LED",mang);
+       socket.broadcast.emit("LED",data);
     })
     socket.on("den1off", function(data){
        led.splice(0,1,'1');
