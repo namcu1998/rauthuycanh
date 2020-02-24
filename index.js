@@ -30,7 +30,7 @@ webapp_nsp.use(middleware);
     });
     /////////////////////////////////////////////////////////
     socket.on("den1on", function(data) {
-      led.splice(0,1,'1');
+      led.splice(0,1,'0');
       socket.broadcast.emit("LED",mang);
     });
     ///////////////////////////////////////////////////////////
