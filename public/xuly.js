@@ -1,7 +1,7 @@
 var socket = io("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
-  socket.on("user", function(data){
+  socket.on("dulieu", function(data){
     document.getElementById("mess").innerHTML = data["time"];
     document.getElementById("mess1").innerHTML = data["den1"];
     document.getElementById("mess2").innerHTML = data["den2"];

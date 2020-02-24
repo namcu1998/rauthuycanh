@@ -40,16 +40,16 @@ webapp_nsp.use(middleware);
     });
     ///////////////////////////////////////////////////////////
     socket.on("onden1", function(data) {
-      led.splice(1,1,'1');
+      led.splice(1,1,'0');
       socket.broadcast.emit("LED",mang);
     });
     socket.on("offden1", function(data) {
-      led.splice(1,1,'0');
+      led.splice(1,1,'1');
       socket.broadcast.emit("LED",mang);
     });
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
-       socket.broadcast.emit("user",data);
+       socket.broadcast.emit("dulieu",data);
      });//onJSON
     //////////////////////////////////////////////////////////
   	socket.on('disconnect', function() {
