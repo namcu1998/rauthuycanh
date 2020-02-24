@@ -27,6 +27,10 @@ var mang = {
        led.splice(0,1,'0');
        socket.broadcast.emit("LED",mang);
     })
+    socket.on("den1off", function(data){
+       led.splice(0,1,'1');
+       socket.broadcast.emit("LED",mang);
+    })
     socket.on("JSON", function(data){
      io.sockets.emit("user",data["time"]);
     })
