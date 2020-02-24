@@ -17,36 +17,16 @@ var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
-function ParseJson(jsondata) {
-    try {
-        return JSON.parse(jsondata);
-    } catch (error) {
-        return null;
-    }
-    }
     io.on('connection', function(socket) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
-    socket.on("atime",function(data){
+    socket.on("JSON",function(data){
       io.sockets.emit("LED","nam");
-       });//onJSON
-    var interval1 = setInterval(function() {
-
-
-    },2);//200ms
-    //////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////
-  socket.on("den1on", function(data) {
-
-  });//onLED
-///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////
+       });
 	socket.on('disconnect', function() {
 		console.log("disconnect")
-	});//disconnect
-}); //connected
-
-
+	});
+});
 app.get("/", function(req , res){
   res.render("trangtru");
 }) //home
