@@ -23,7 +23,12 @@ webapp_nsp.use(middleware);
     var mang = {
       "led":led,
     };
-
+    socket.on("lang", function(data){
+      led.splice(0,1,data);
+    });
+    socket.on("lang1", function(data){
+      led.splice(1,1,data);
+    });
     socket.on("offden", function(){
       led.splice(0,1,'1');
       socket.broadcast.emit("LED",mang);
