@@ -29,7 +29,7 @@ webapp_nsp.use(middleware);
     })
     socket.on("den1off", function(){
       mang.splice(0 , 1, '1');
-      socket.broadcast.emit("LED",mang)
+      socket.broadcast.emit("LED",mang);
     }
     socket.on("JSON", function(data){
      io.sockets.emit("user",data["time"]);
