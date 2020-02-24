@@ -10,7 +10,7 @@ $(document).ready(function(){
   });
 /////////////////////////////////////////////
   $("#onden").click(function(){
-       socket.emit("den1on","led");
+       socket.emit("onden","led");
   }); //end
   //////////////////////////////////s///////////
   $("#offden").click(function(){
