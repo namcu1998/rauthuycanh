@@ -24,7 +24,6 @@ function ParseJson(jsondata) {
         return null;
     }
     }
-  
     io.on('connection', function(socket) {
     console.log("Connected");
   /////////////////////////////////////////////////////////
