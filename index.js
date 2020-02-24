@@ -26,7 +26,7 @@ webapp_nsp.use(middleware);
     }
     socket.on("JSON", function(data){
      socket.broadcast.emit("user",data);
-     led.splice(0 , 2 , "data["den1"]" , "data["den2"]"");
+     led.splice(0 , 2 , data["den1"] , data["den2"]);
    });
     socket.on("offden", function(){
       led.splice(0,1,'1');
