@@ -24,11 +24,11 @@ webapp_nsp.use(middleware);
       "led":led,
     }
     socket.on("den1on", function(){
-
+     led.splice(0,1,'0');
       socket.broadcast.emit("LED",mang);
     })
     socket.on("den1off", function(){
-    
+    led.splice(0,1,'1');
       socket.broadcast.emit("LED",mang);
     })
     socket.on("JSON", function(data){
