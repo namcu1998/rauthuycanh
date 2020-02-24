@@ -25,14 +25,13 @@ var mang = {
     console.log("Connected");
     socket.on("den1on", function(data){
        socket.broadcast.emit("LED",data);
-    })
+    });
     socket.on("den1off", function(data){
-
        socket.broadcast.emit("LED",mang);
-    })
+    });
     socket.on("JSON", function(data){
      sockets.broadcast.emit("user",data["time"]);
-    })
+   });
 	socket.on('disconnect', function() {
 		console.log("disconnect")
 	});
