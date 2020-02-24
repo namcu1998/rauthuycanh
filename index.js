@@ -17,8 +17,16 @@ var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
+var led =[1];
+var LED = {
+   "led":led
+}
     io.on('connection', function(socket) {
     console.log("Connected");
+    socket.on(den1on, function(data){
+       led.splice(0,1,'0');
+       socket.broadcast.emit("LED",LED);
+    }
     socket.on("JSON", function(data){
      io.sockets.emit("user",data["time"]);
     })
