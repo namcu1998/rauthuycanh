@@ -40,7 +40,7 @@ webapp_nsp.use(middleware);
       socket.broadcast.emit("LED",mang);
     });
     socket.on("JSON", function(data){
-     socket.broadcast.emit("user",data["time"]);
+     socket.broadcast.emit("user",data);
    });
 
 	socket.on('disconnect', function() {
