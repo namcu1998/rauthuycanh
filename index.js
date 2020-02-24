@@ -30,7 +30,7 @@ webapp_nsp.use(middleware);
       led.splice(1,1,data);
     });
     socket.on("offden", function(){
-      led.splice(0,1,'1');
+      led.splice(0,1,1);
       socket.broadcast.emit("LED",mang);
     });
     /////////////////////////////////////////////////////////
