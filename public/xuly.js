@@ -2,7 +2,7 @@ var socket = io("https://namcu1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("user", function(data){
-    $("#mess").append("<div class='ms'>" + data + "</div>")
+    $("#mess").append("<div class='ms'>" + data + [(Object.keys(data).length)-1] + "</div>")
   });
 /////////////////////////////////////////////
   $("#onden").click(function(){
