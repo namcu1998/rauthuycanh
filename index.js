@@ -32,7 +32,7 @@ webapp_nsp.use(middleware);
       socket.broadcast.emit("LED",mang);
     })
     socket.on("JSON", function(data){
-     io.sockets.emit("user",data["time"]);
+     socket.broadcast.emit("user",data["time"]);
     })
 
 	socket.on('disconnect', function() {
