@@ -19,41 +19,36 @@ esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì l�
 webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
-    var led = [0,0]
+    var led = [1,1];
     var mang = {
       "led":led,
-    }
-
-
-   var interval1 = setInterval(function() {
-     io.sockets.emit("LED",mang);
-     socket.on("JSON", function(packet){
-      socket.broadcast.emit("user",packet);
+    };
+    
+    socket.on("offden", function(){
+      led.splice(0,1,'1');
+    };
+    /////////////////////////////////////////////////////////
+    socket.on("den1on", function(data) {
+      led.splice(0,1,'1');
     });
-     socket.on("offden", function(){
-       //led.splice(0,1,1);
-       socket.broadcast.emit("LED",mang);
-     });
-     socket.on("den1on", function(){
-      //led.splice(0,1,0);
-       socket.broadcast.emit("LED",mang);
-     });
-     socket.on("onden1", function(){
-      //led.splice(1,1,0);
-       socket.broadcast.emit("LED",mang);
-     });
-     socket.on("offden1", function(){
-     // led.splice(1,1,1);
-       socket.broadcast.emit("LED",mang);
-     });
-
-
-   }, 2000);
-
-	socket.on('disconnect', function() {
+    ///////////////////////////////////////////////////////////
+    socket.on("onden1", function(data) {
+      led.splice(1,1,'1');
+    });
+    socket.on("offden1", function(data) {
+      led.splice(1,1,'0');
+    });
+    ///////////////////////////////////////////////////////////
+     socket.on("JSON",function(data){
+       socket.broadcast.emit("user",data);
+     });//onJSON
+    //////////////////////////////////////////////////////////
+  	socket.on('disconnect', function() {
 		console.log("disconnect")
-	});
-});
-app.get("/", function(req , res){
-  res.render("trangtru");
-}) //home
+  	});//disconnect
+    }); //connected
+
+
+    app.get("/", function(req , res){
+    res.render("trangtru");
+    }) //home
