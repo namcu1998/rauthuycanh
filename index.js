@@ -27,7 +27,7 @@ webapp_nsp.use(middleware);
       led.splice(0,1, data);
     });
     socket.on("lang1", function(data){
-      led.splice(1,1, data1);
+      led.splice(1,1, data);
     });
     socket.on("JSON", function(packet){
      socket.broadcast.emit("user",packet);
