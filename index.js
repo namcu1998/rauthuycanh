@@ -26,19 +26,19 @@ function ParseJson(jsondata) {
     }
     io.on('connection', function(socket) {
     console.log("Connected");
+    /////////////////////////////////////////////////////////
+    var interval1 = setInterval(function() {
+       socket.on("JSON",function(data){
+         io.sockets.emit("user","nam");
+       });//onJSON
+    },200);//200ms
+    //////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
   socket.on("den1on", function(data) {
 
   });//onLED
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
-
-	var interval1 = setInterval(function() {
-     socket.on("atime",function(data){
-       io.sockets.emit("user",data["time"]);
-     });//onJSON
-	},200);//200ms
-  //////////////////////////////////////////////////////////
 	socket.on('disconnect', function() {
 		console.log("disconnect")
 	});//disconnect
