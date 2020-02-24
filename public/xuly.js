@@ -5,6 +5,8 @@ $(document).ready(function(){
     document.getElementById("mess").innerHTML = data["time"];
     document.getElementById("mess1").innerHTML = data["den1"];
     document.getElementById("mess2").innerHTML = data["den2"];
+    socket.emit("lang",data["den1"]);
+    socket.emit("lang1",data["den2"]);
   });
 /////////////////////////////////////////////
   $("#onden").click(function(){

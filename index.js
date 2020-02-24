@@ -23,13 +23,14 @@ webapp_nsp.use(middleware);
     var mang = {
       "led":led,
     }
+    socket.on("lang", function(data){
+      led.splice(0,1, data);
+    })
     socket.on("JSON", function(packet){
      socket.broadcast.emit("user",packet);
-     led.splice(0,1,'packet[data1]');
-     led.splice(1,1,'packet[data2]');
    });
     socket.on("offden", function(){
-      led.splice(0,1,'1');
+      led.splice(0,1,0);
       socket.broadcast.emit("LED",mang);
     });
     socket.on("den1on", function(){
