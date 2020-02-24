@@ -19,8 +19,8 @@ esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì l�
 webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
-    socket.on("JSON", function(){
-     io.sockets.emit("user","nam");
+    socket.on("JSON", function(data){
+     io.sockets.emit("user",data["time"][(Object.keys(data['time']).length)-1]);
     })
 	socket.on('disconnect', function() {
 		console.log("disconnect")
