@@ -1,5 +1,4 @@
 var socket = io("https://namcu1998.herokuapp.com");
-document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("user", function(data){
