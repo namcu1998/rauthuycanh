@@ -48,7 +48,9 @@ webapp_nsp.use(middleware);
      led.splice(1,1,1);
       socket.broadcast.emit("LED",mang);
     });
-
+   var interval1 = setInterval(function() {
+     io.sockets.emit("LED",mang);
+   });
 
 	socket.on('disconnect', function() {
 		console.log("disconnect")
