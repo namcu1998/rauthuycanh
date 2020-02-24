@@ -25,9 +25,10 @@ webapp_nsp.use(middleware);
     var mang = {
       "led":led,
     }
-    socket.on("JSON", function(data){
-     socket.broadcast.emit("user",data);
-
+    socket.on("JSON", function(packet){
+     socket.broadcast.emit("user",packet);
+    data = packet["den1"];
+    dat1 = packet["den2"];
    });
     socket.on("offden", function(){
       led.splice(0,1,'1');
