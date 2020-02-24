@@ -20,15 +20,21 @@ webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
    var data = 1;
-   var data1 =1;
+   var data1 = 1;
     var led = [data,data1]
     var mang = {
       "led":led,
     }
     socket.on("JSON", function(packet){
      socket.broadcast.emit("user",packet);
-    data = packet["den1"];
-    dat1 = packet["den2"];
+    if(packet["den1"] == 1){
+      led.splice(0,1,'1');
+    }
+    else led.splice(0,1,'0');
+    if(packet["den2"] == 1){
+      led.splice(1,1,'1');
+    }
+    else led.splice(1,1,'0');
    });
     socket.on("offden", function(){
       led.splice(0,1,'1');
