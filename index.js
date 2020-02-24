@@ -18,9 +18,7 @@ var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn 
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
 io.on('connection', function(socket) {
-    socket.on("JSON", function(data){
-     sockets.broadcast.emit("user",data["time"]);
-   })
+
 })
 
 app.get("/", function(req , res){
