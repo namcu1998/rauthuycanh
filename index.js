@@ -32,7 +32,7 @@ var mang = {
        socket.broadcast.emit("LED",mang);
     })
     socket.on("JSON", function(data){
-     io.sockets.emit("user",data["time"]);
+     sockets.broadcast.emit("user",data["time"]);
     })
 	socket.on('disconnect', function() {
 		console.log("disconnect")
