@@ -27,10 +27,12 @@ function ParseJson(jsondata) {
     io.on('connection', function(socket) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
-    var interval1 = setInterval(function() {
-       socket.on("JSON",function(data){
-         io.sockets.emit("user","nam");
+    socket.on("JSON",function(data){
+      io.sockets.emit("user","nam");
        });//onJSON
+    var interval1 = setInterval(function() {
+
+
     },2);//200ms
     //////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
