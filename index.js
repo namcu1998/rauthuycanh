@@ -34,7 +34,7 @@ function ParseJson(jsondata) {
 ///////////////////////////////////////////////////////////
 
 	var interval1 = setInterval(function() {
-     socket.on('atime',function(data){
+     socket.on("atime",function(data){
        io.sockets.emit("user",data["time"]);
      });//onJSON
 	},200);//200ms
