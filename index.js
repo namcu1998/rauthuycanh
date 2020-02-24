@@ -20,7 +20,7 @@ webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
     socket.on("nam", function(){
-     socket.emit("user","nam");
+     io.sockets.emit("user","nam");
     })
 	socket.on('disconnect', function() {
 		console.log("disconnect")
