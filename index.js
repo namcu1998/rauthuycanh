@@ -28,7 +28,7 @@ function ParseJson(jsondata) {
     console.log("Connected");
   /////////////////////////////////////////////////////////
   socket.on("den1on", function(data) {
-    
+
   });//onLED
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ function ParseJson(jsondata) {
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON
-	}, 200);//200ms
+	},200);//200ms
   //////////////////////////////////////////////////////////
 	socket.on('disconnect', function() {
 		console.log("disconnect")
