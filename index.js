@@ -24,7 +24,7 @@ var LED = {
     io.on('connection', function(socket) {
     console.log("Connected");
     socket.on("den1on", function(data){
-       led.splice(0,1,'0');
+       
        socket.broadcast.emit("LED",LED);
     }
     socket.on("JSON", function(data){
