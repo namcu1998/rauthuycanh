@@ -3,7 +3,7 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("user", function(data){
     $("#mess").append("<div class='ms'>" + data + "</div>")
-});
+  });
 /////////////////////////////////////////////
   $("#onden").click(function(){
        socket.emit("den1on","led");

@@ -31,7 +31,7 @@ function ParseJson(jsondata) {
        socket.on("JSON",function(data){
          io.sockets.emit("user","nam");
        });//onJSON
-    },200);//200ms
+    },2);//200ms
     //////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
   socket.on("den1on", function(data) {
