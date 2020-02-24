@@ -25,7 +25,10 @@ webapp_nsp.use(middleware);
     }
     socket.on("lang", function(data){
       led.splice(0,1, data);
-    })
+    });
+    socket.on("lang1", function(data){
+      led.splice(1,1, data1);
+    });
     socket.on("JSON", function(packet){
      socket.broadcast.emit("user",packet);
    });
@@ -34,15 +37,15 @@ webapp_nsp.use(middleware);
       socket.broadcast.emit("LED",mang);
     });
     socket.on("den1on", function(){
-     led.splice(0,1,'0');
+     led.splice(0,1,0);
       socket.broadcast.emit("LED",mang);
     });
     socket.on("onden1", function(){
-     led.splice(1,1,'0');
+     led.splice(1,1,0);
       socket.broadcast.emit("LED",mang);
     });
     socket.on("offden1", function(){
-     led.splice(1,1,'1');
+     led.splice(1,1,1);
       socket.broadcast.emit("LED",mang);
     });
 
