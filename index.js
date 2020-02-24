@@ -28,13 +28,12 @@ function ParseJson(jsondata) {
     console.log("Connected");
   /////////////////////////////////////////////////////////
   socket.on("den1on", function(data) {
-    socket.emit("user",data);
+    
   });//onLED
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
 
 	var interval1 = setInterval(function() {
-
      socket.on("JSON",function(data){
        socket.broadcast.emit("user",data["time"]);
      });//onJSON
