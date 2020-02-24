@@ -3,8 +3,8 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("user", function(data){
     document.getElementById("mess").innerHTML = data["time"];
-    document.getElementById("mess1").innerHTML = data["den2"];
-    document.getElementById("mess2").innerHTML = data["den1"];
+    document.getElementById("mess1").innerHTML = data["den1"];
+    document.getElementById("mess2").innerHTML = data["den2"];
   });
 /////////////////////////////////////////////
   $("#onden").click(function(){
