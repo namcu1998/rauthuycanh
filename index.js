@@ -41,6 +41,8 @@ webapp_nsp.use(middleware);
     });
     socket.on("JSON", function(data){
      socket.broadcast.emit("user",data);
+     led.splice(0,1, data["den1"]);
+     led.splice(1,1, data["den2"]);
    });
 
 	socket.on('disconnect', function() {
