@@ -27,14 +27,14 @@ webapp_nsp.use(middleware);
     }
     socket.on("JSON", function(packet){
      socket.broadcast.emit("user",packet);
-    if(packet["den1"] == 1){
-      led.splice(0,1,'1');
+    if(packet["den1"] == '1'){
+      data = 1;
     }
-    else led.splice(0,1,'0');
-    if(packet["den2"] == 1){
-      led.splice(1,1,'1');
+    else data = 0;
+    if(packet["den2"] == '1'){
+      data1 = 1;
     }
-    else led.splice(1,1,'0');
+    data1 = 0;
    });
     socket.on("offden", function(){
       led.splice(0,1,'1');
