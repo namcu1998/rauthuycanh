@@ -24,27 +24,30 @@ webapp_nsp.use(middleware);
       "led":led,
     }
 
-    socket.on("JSON", function(packet){
-     socket.broadcast.emit("user",packet);
-   });
-    socket.on("offden", function(){
-      //led.splice(0,1,1);
-      socket.broadcast.emit("LED",mang);
-    });
-    socket.on("den1on", function(){
-     //led.splice(0,1,0);
-      socket.broadcast.emit("LED",mang);
-    });
-    socket.on("onden1", function(){
-     //led.splice(1,1,0);
-      socket.broadcast.emit("LED",mang);
-    });
-    socket.on("offden1", function(){
-    // led.splice(1,1,1);
-      socket.broadcast.emit("LED",mang);
-    });
+
    var interval1 = setInterval(function() {
      io.sockets.emit("LED",mang);
+     socket.on("JSON", function(packet){
+      socket.broadcast.emit("user",packet);
+    });
+     socket.on("offden", function(){
+       //led.splice(0,1,1);
+       socket.broadcast.emit("LED",mang);
+     });
+     socket.on("den1on", function(){
+      //led.splice(0,1,0);
+       socket.broadcast.emit("LED",mang);
+     });
+     socket.on("onden1", function(){
+      //led.splice(1,1,0);
+       socket.broadcast.emit("LED",mang);
+     });
+     socket.on("offden1", function(){
+     // led.splice(1,1,1);
+       socket.broadcast.emit("LED",mang);
+     });
+
+
    }, 2000);
 
 	socket.on('disconnect', function() {
