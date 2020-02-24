@@ -2,8 +2,12 @@ var socket = io("https://namcu1998.herokuapp.com");
 document.write(mang.valueOf());
 $(document).ready(function(){
   /////////////////////////////////////////////
+  socket.on("user", function(data){
+    $("#mess").append("<div class='ms'>" + data + "</div>")
+});
+/////////////////////////////////////////////
   $("#onden").click(function(){
-       socket.emit("den1on",'led');
+       socket.emit("den1on","led");
   }); //end
   //////////////////////////////////s///////////
   $("#offden").click(function(){
@@ -18,8 +22,5 @@ $(document).ready(function(){
     socket.emit("offden1","led");
   }); //end
   /////////////////////////////////////////////
-  socket.on("user", function(data){
-    $("#mess").append("<div class='ms'>" + data + "</div>")
-});
   /////////////////////////////////////////////
 }); //document
