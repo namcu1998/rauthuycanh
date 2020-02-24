@@ -24,13 +24,7 @@ function ParseJson(jsondata) {
         return null;
     }
     }
-    var mang = [1,1];
-
-    var led = {
-      "led":mang
-    }
-    mang.splice()
-    mang.splice(0 , 1 , '0');
+  
     io.on('connection', function(socket) {
     console.log("Connected");
   /////////////////////////////////////////////////////////
