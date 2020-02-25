@@ -26,7 +26,7 @@ webapp_nsp.use(middleware);
     socket.on("lang", function(data){
       led.splice(0,1,data);
     });
-    socket.on("lang1", function(data){
+    socket.on("lang1", function(data1){
       led.splice(1,1,data1);
     });
     /////////////////////////////////////////////////////////
