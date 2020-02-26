@@ -32,7 +32,7 @@ webapp_nsp.use(middleware);
     /////////////////////////////////////////////////////////
     socket.on("onden", function(data) {
       led.splice(0,1,0);
-      socket.broadcast.emit("LED",mang);
+      socket.broadcast.emit("LED",mang1);
     });
     socket.on("offden", function(){
       led.splice(0,1,1);
