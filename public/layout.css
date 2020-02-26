@@ -40,6 +40,7 @@ div{
   font-size: 60px;
 }
 #room1{
-  text-align: center;
+  border-style: solid;
+  color: #ffffff;
   font-size: 100px;
 }
