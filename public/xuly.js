@@ -3,8 +3,8 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
     document.getElementById("mess").innerHTML = data["time"];
-    document.getElementById("temp").innerHTML = data["den1"];
-    document.getElementById("humi").innerHTML = data["den2"];
+    document.getElementById("mess1").innerHTML = data["den1"];
+    document.getElementById("mess2").innerHTML = data["den2"];
     socket.emit("lang",data["den1"]);
     socket.emit("lang1",data["den2"]);
   });
