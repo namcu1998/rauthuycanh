@@ -26,13 +26,13 @@ webapp_nsp.use(middleware);
     socket.on("lang", function(data){
       led.splice(0,1,data);
     });
-    socket.on("lang1", function(data1){
+    socke.on("lang1", function(data1){
       led.splice(1,1,data1);
     });
     /////////////////////////////////////////////////////////
     socket.on("onden", function(data) {
       led.splice(0,1,0);
-      socket.broadcast.emit("LED",mang1);
+      socket.broadcast.emit("LED",mang);
     });
     socket.on("offden", function(){
       led.splice(0,1,1);
