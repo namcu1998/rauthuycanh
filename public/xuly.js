@@ -1,4 +1,4 @@
-var socket = io("https://namcu1998.herokuapp.com");
+var socket = io("https://tomchiengion1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
