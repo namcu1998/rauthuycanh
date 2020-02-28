@@ -56,7 +56,7 @@ webapp_nsp.use(middleware);
 		console.log("disconnect")
     });//disconnect
     var interval1 = setInterval(function() {
-      io.socket.emit("LED",mang);
+      io.sockets.emit("LED",mang); 
     });
     }); //connected
 
