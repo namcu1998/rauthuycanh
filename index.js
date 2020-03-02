@@ -22,10 +22,11 @@ webapp_nsp.use(middleware);
 
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
-      while(true){
+      var interval1 = setInterval(function() {
         socket.broadcast.emit("LED",data);
-      }
+      },200);
     });
+
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
