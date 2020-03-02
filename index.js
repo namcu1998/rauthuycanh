@@ -19,43 +19,21 @@ esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì l�
 webapp_nsp.use(middleware);
     io.on('connection', function(socket) {
     console.log("Connected");
-    var led = [1,1];
-    var mang = {
-      "led":led,
-    };
-    socket.on("lang", function(data){
-      led.splice(0,1,data);
-    });
-    socket.on("lang1", function(data1){
-      led.splice(1,1,data1);
-    });
+
     /////////////////////////////////////////////////////////
-    socket.on("onden", function(data) {
-      led.splice(0,1,0);
-      socket.broadcast.emit("LED",mang);
-    });
-    socket.on("offden", function(){
-      led.splice(0,1,1);
-      socket.broadcast.emit("LED",mang);
-    });
-    ///////////////////////////////////////////////////////////
-    socket.on("onden1", function(data) {
-      led.splice(1,1,0);
-      socket.broadcast.emit("LED",mang);
-    });
-    socket.on("offden1", function(data) {
-      led.splice(1,1,1);
-      socket.broadcast.emit("LED",mang);
+    socket.on("onden",function(data){
+      socket.broadcast.emit("LED",data);
     });
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
      });//onJSON
+     //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
   	socket.on('disconnect', function() {
 		console.log("disconnect")
     });//disconnect
-    
+
     }); //connected
 
 
