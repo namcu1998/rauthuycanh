@@ -22,7 +22,9 @@ webapp_nsp.use(middleware);
 
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
-      socket.broadcast.emit("LED",data);
+      while(true){
+        socket.broadcast.emit("LED",data);
+      }
     });
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
@@ -31,12 +33,9 @@ webapp_nsp.use(middleware);
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
   	socket.on('disconnect', function() {
-		console.log("disconnect")
+		console.log("disconnect");
     });//disconnect
-
     }); //connected
-
-
     app.get("/", function(req , res){
     res.render("trangtru");
     }) //home
