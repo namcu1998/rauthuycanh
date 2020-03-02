@@ -12,8 +12,7 @@ $(document).ready(function(){
     document.getElementById("humi").innerHTML = data["time"];
     document.getElementById("mess1").innerHTML = data["den1"];
     document.getElementById("mess2").innerHTML = data["den2"];
-    led.splice(0,1,data["den1"]);
-    led.splice(1,1,data["den2"]);
+    
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
