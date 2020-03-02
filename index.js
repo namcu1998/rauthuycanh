@@ -22,9 +22,7 @@ webapp_nsp.use(middleware);
 
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
-      var interval1 = setInterval(function() {
         socket.broadcast.emit("LED",data);
-      },200);
     });
 
     ///////////////////////////////////////////////////////////
