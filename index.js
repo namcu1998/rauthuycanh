@@ -1,7 +1,6 @@
 var http = require('http');
 var express = require('express');							//#include thư viện express - dùng để tạo server http nhanh hơn thư viện http cũ
 var socketio = require('socket.io')				//#include thư viện socketio
-
 var ip = require('ip');
 var app = express();									//#Khởi tạo một chương trình mạng (app)
 var server = http.Server(app)

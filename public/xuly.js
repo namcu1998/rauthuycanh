@@ -9,7 +9,7 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
     document.getElementById("temp").innerHTML = data["time"];
-    document.getElementById("humi").innerHTML = data["time"];
+    document.getElementById("humi").innerHTML = data["time1"];
     document.getElementById("mess1").innerHTML = data["den1"];
     document.getElementById("mess2").innerHTML = data["den2"];
     led.splice(0,1,data["den1"]);
@@ -28,11 +28,13 @@ $(document).ready(function(){
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
-
+    led.splice(1,1,1);
+       socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
-
+    led.splice(1,1,0);
+       socket.emit("onden",mang);
   }); //end
   //gửi dữ liệu về server
   /////////////////////////////////////////////
