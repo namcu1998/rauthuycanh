@@ -56,12 +56,12 @@ $(document).ready(function(){
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
-  $("#onden1").click(function(){
+  $("#onden4").click(function(){
     led.splice(3,1,1);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
-  $("#offden1").click(function(){
+  $("#offden4").click(function(){
     led.splice(3,1,0);
        socket.emit("onden",mang);
   }); //end
