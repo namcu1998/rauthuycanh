@@ -15,14 +15,7 @@ $(document).ready(function(){
     led.splice(0,1,data["den1"]);
     led.splice(1,1,data["den2"]);
   });
-  socket.on("dulieu1", function(data){
-    document.getElementById("temp").innerHTML = data["time"];
-    document.getElementById("humi").innerHTML = data["time1"];
-    document.getElementById("mess1").innerHTML = data["den1"];
-    document.getElementById("mess2").innerHTML = data["den2"];
-    led.splice(0,1,data["den1"]);
-    led.splice(1,1,data["den2"]);
-  });
+  
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
   $("#onden").click(function(){
