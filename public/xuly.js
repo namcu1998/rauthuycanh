@@ -51,17 +51,17 @@ $(document).ready(function(){
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
-  $("#offden3").click(function(){
+  $("#offden2").click(function(){
     led.splice(2,1,0);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
-  $("#onden4").click(function(){
+  $("#onden3").click(function(){
     led.splice(3,1,1);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
-  $("#offden4").click(function(){
+  $("#offden3").click(function(){
     led.splice(3,1,0);
        socket.emit("onden",mang);
   }); //end
