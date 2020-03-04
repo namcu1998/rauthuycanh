@@ -1,7 +1,7 @@
 var socket = io("https://tomchiengion1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
-  var led = [1,1];
+  var led = [1,1,1,1];                                            444444444444444hwg
   var mang = {
     "led":led,
   };
@@ -15,12 +15,20 @@ $(document).ready(function(){
     led.splice(0,1,data["den1"]);
     led.splice(1,1,data["den2"]);
   });
+  socket.on("dulieu1", function(data){
+    document.getElementById("temp").innerHTML = data["time"];
+    document.getElementById("humi").innerHTML = data["time1"];
+    document.getElementById("mess1").innerHTML = data["den1"];
+    document.getElementById("mess2").innerHTML = data["den2"];
+    led.splice(0,1,data["den1"]);
+    led.splice(1,1,data["den2"]);
+  });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
   $("#onden").click(function(){
     led.splice(0,1,1);
        socket.emit("onden",mang);
-  }); //end
+  }); //endm6
   //////////////////////////////////s///////////
   $("#offden").click(function(){
     led.splice(0,1,0);
