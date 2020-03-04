@@ -25,7 +25,7 @@ webapp_nsp.use(middleware);
     });
 
     ///////////////////////////////////////////////////////////
-     socket.on("JSON1",function(data){
+     socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
      });//onJSON
 
