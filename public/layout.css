@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-image: url(nam.png);
 }
 div{
   text-align: center;
@@ -47,4 +47,36 @@ div{
 }
 #phong{
   font-size: 100px;
+}
+#onden2{
+  width: 100px;
+  height: 100px;
+}
+#offden2{
+  width: 100px;
+  height: 100px;
+}
+#onden3{
+  width: 100px;
+  height: 100px;
+}
+#offden3{
+  width: 100px;
+  height: 100px;
+}
+#onden4{
+  width: 100px;
+  height: 100px;
+}
+#offden4{
+  width: 100px;
+  height: 100px;
+}
+#onden5{
+  width: 100px;
+  height: 100px;
+}
+#offden5{
+  width: 100px;
+  height: 100px;
 }
