@@ -28,7 +28,9 @@ webapp_nsp.use(middleware);
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
      });//onJSON
-
+     socket.on("JSON1",function(data){
+       socket.broadcast.emit("dulieu1",data);
+     });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
   	socket.on('disconnect', function() {
