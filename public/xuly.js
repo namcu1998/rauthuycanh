@@ -1,7 +1,7 @@
 var socket = io("https://tomchiengion1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
-  var led = [1,1,1,1];                                            444444444444444hwg
+  var led = [1,1];                                            444444444444444hwg
   var mang = {
     "led":led,
   };
@@ -15,7 +15,7 @@ $(document).ready(function(){
     led.splice(0,1,data["den1"]);
     led.splice(1,1,data["den2"]);
   });
-  
+
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
   $("#onden").click(function(){
