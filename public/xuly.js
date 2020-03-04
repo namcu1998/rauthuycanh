@@ -16,10 +16,10 @@ $(document).ready(function(){
     led.splice(1,1,data["den2"]);
   });
   socket.on("dulieu1", function(data){
-    document.getElementById("temp1").innerHTML = data["time"];
-    document.getElementById("humi1").innerHTML = data["time1"];
-    //document.getElementById("mess3").innerHTML = data["den1"];
-    //document.getElementById("mess4").innerHTML = data["den2"];
+    //document.getElementById("temp1").innerHTML = data["time"];
+    //document.getElementById("humi1").innerHTML = data["time1"];
+    document.getElementById("mess3").innerHTML = data["den1"];
+    document.getElementById("mess4").innerHTML = data["den2"];
     led.splice(2,1,data["den1"]);
     led.splice(3,1,data["den2"]);
   });
