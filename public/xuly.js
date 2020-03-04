@@ -21,7 +21,7 @@ $(document).ready(function(){
     document.getElementById("mess3").innerHTML = data["den1"];
     document.getElementById("mess4").innerHTML = data["den2"];
     led.splice(2,1,data["den1"]);
-    led.splice(2,1,data["den2"]);
+    led.splice(3,1,data["den2"]);
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
@@ -46,5 +46,23 @@ $(document).ready(function(){
   }); //end
   //gửi dữ liệu về server
   /////////////////////////////////////////////
+  $("#onden2").click(function(){
+    led.splice(2,1,1);
+       socket.emit("onden",mang);
+  }); //end
   /////////////////////////////////////////////
+  $("#offden3").click(function(){
+    led.splice(2,1,0);
+       socket.emit("onden",mang);
+  }); //end
+  /////////////////////////////////////////////
+  $("#onden1").click(function(){
+    led.splice(3,1,1);
+       socket.emit("onden",mang);
+  }); //end
+  /////////////////////////////////////////////
+  $("#offden1").click(function(){
+    led.splice(3,1,0);
+       socket.emit("onden",mang);
+  }); //end
 }); //document
