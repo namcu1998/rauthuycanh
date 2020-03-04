@@ -1,7 +1,7 @@
 var socket = io("https://tomchiengion1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
-  var led = [1,1];                                            444444444444444hwg
+  var led = [1,1];                                            
   var mang = {
     "led":led,
   };
