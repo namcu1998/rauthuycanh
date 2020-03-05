@@ -1,6 +1,7 @@
 var socket = io("https://tomchiengion1998.herokuapp.com");
 $(document).ready(function(){
   /////////////////////////////////////////////
+  arlert("đã load xong trang");
   var led = [1,1,1,1];
   var mang = {
     "led":led,
