@@ -17,7 +17,6 @@ $(document).ready(function(){
 
     $("#home").show(2000);
     $("#login").hide(1000);
-    alert("login thanh cong");
   });
   /////////////////////////////////////////////
   $("#btnlogin").click(function(){
