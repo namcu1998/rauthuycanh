@@ -23,7 +23,14 @@ webapp_nsp.use(middleware);
     socket.on("onden",function(data){
         socket.broadcast.emit("LED",data);
     });
-
+    socket.on("login",function(data){
+      console.log(data);
+      if(data["datauser"][0] == 'namcu1998'&& data["datauser"][1] == 'nam2351998')
+      {
+        console.log("user true");
+        socket.emit("logintrue");
+      }
+    });
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);

@@ -1,11 +1,30 @@
 var socket = io("https://tomchiengion1998.herokuapp.com");
+var datauser = [];
+var login = {
+    "datauser":datauser,
+};
 $(document).ready(function(){
+  $("#home").hide();
+  $("#login").show();
   /////////////////////////////////////////////
   var led = [1,1,1,1];
   var mang = {
     "led":led,
   };
   //tạo một mảng led
+  /////////////////////////////////////////////
+  socket.on("logintrue",function(){
+
+    $("#home").show(2000);
+    $("#login").hide(1000);
+    alert("login thanh cong");
+  });
+  /////////////////////////////////////////////
+  $("#btnlogin").click(function(){
+    datauser.push($("#username").val());
+    datauser.push($("#password").val());
+    socket.emit("login",login);
+  });
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
     document.getElementById("temp").innerHTML = data["time"];
