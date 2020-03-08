@@ -30,6 +30,9 @@ webapp_nsp.use(middleware);
         console.log("user true");
         socket.emit("logintrue");
       }
+      else {
+        socket.emit("loginfail");
+      }
     });
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){

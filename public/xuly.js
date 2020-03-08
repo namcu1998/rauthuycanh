@@ -17,6 +17,10 @@ $(document).ready(function(){
     $("#home").show(2000);
     $("#login").hide(1000);
   });
+  socket.on("loginfail",function(){
+    arlert("tài khoản hoặc mật khẩu không đúng");
+    datauser.splice(0,10);
+  });
   /////////////////////////////////////////////
   $("#btnlogin").click(function(){
     datauser.push($("#username").val());
