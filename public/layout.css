@@ -1,3 +1,80 @@
 body {
   background-image: url(nam.png);
 }
+
+#home{
+  font-size: 50px;
+}
+#mess{
+  color: #ffffff;
+}
+#onden{
+  width: 100px;
+  height: 100px;
+}
+#offden{
+  width: 100px;
+  height: 100px;
+}
+#onden1{
+  width: 100px;
+  height: 100px;
+}
+#offden1{
+  width: 100px;
+  height: 100px;
+}
+#onden2{
+  width: 100px;
+  height: 100px;
+}
+#offden2{
+  width: 100px;
+  height: 100px;
+}
+#text{
+  font-size: 60px;
+}
+#room1{
+  border-style: solid;
+  color: #ffffff;
+  font-size: 100px;
+}
+#phong{
+  font-size: 100px;
+}
+#onden2{
+  width: 100px;
+  height: 100px;
+}
+#offden2{
+  width: 100px;
+  height: 100px;
+}
+#onden3{
+  width: 100px;
+  height: 100px;
+}
+#offden3{
+  width: 100px;
+  height: 100px;
+}
+#onden4{
+  width: 100px;
+  height: 100px;
+}
+#offden4{
+  width: 100px;
+  height: 100px;
+}
+#onden5{
+  width: 100px;
+  height: 100px;
+}
+#offden5{
+  width: 100px;
+  height: 100px;
+}
+#esp1,esp2{
+  font-size: 50px;
+}
