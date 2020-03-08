@@ -1,7 +1,15 @@
 body {
   background-image: url(nam.png);
 }
-
+div{
+  text-align: center;
+  font-size: 100px;
+  color: #ffffff;
+}
+ th{
+  color: #ffffff;
+  text-align: center;
+}
 #home{
   font-size: 50px;
 }
