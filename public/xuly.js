@@ -14,7 +14,6 @@ $(document).ready(function(){
   //tạo một mảng led
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
-
     $("#home").show(2000);
     $("#login").hide(1000);
   });
