@@ -4,14 +4,17 @@ body{
   margin: 0 0;
 }
 #login{
-  border: 0px;
-  width: 1350px;
-  height: 1000px;
-  text-align: center;
-  font-size: 100px;
-  color: #ffffff;
+  width: 1400px;
+  height: 900px;
   background-image: url(fate.png);
+  text-align: center;
+  padding-top: 100px;
 }
+#dangnhap{
+   color: #ffffff;
+   font-size: 100px;
+   font-family: arial;
+ }
 #header{
   padding-top: 21px;
   padding-left: 25px;
