@@ -4,8 +4,8 @@ var login = {
     "datauser":datauser,
 };
 $(document).ready(function(){
-  $("#home").show();
-  $("#login").hide();
+  $("#home").hide();
+  $("#login").show();
   $("#Sensor1").hide();
   $("#button1").hide();
   $("#btnbutton2").click(function(){
