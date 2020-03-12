@@ -8,18 +8,7 @@ $(document).ready(function(){
   $("#login").show();
   $("#Sensor1").hide();
   $("#button1").hide();
-  $("#btnbutton2").click(function(){
-    $("#Sensor").hide();
-    $("#button").hide();
-    $("#Sensor1").show(100);
-    $("#button1").show(100);
-  });
-  $("#btnbutton1").click(function(){
-    $("#Sensor").show(100);
-    $("#button").show(100);
-    $("#Sensor1").hide();
-    $("#button1").hide();
-  });
+
   /////////////////////////////////////////////
   var led = [1,1,1,1];
   var mang = {
@@ -34,6 +23,19 @@ $(document).ready(function(){
   socket.on("loginfail",function(){
     alert("tài khoản hoặc mật khẩu không đúng");
     datauser.splice(0,10);
+  });
+  /////////////////////////////////////////////
+  $("#btnbutton2").click(function(){
+    $("#Sensor").hide();
+    $("#button").hide();
+    $("#Sensor1").show(100);
+    $("#button1").show(100);
+  });
+  $("#btnbutton1").click(function(){
+    $("#Sensor").show(100);
+    $("#button").show(100);
+    $("#Sensor1").hide();
+    $("#button1").hide();
   });
   /////////////////////////////////////////////
   $("#btnlogin").click(function(){
