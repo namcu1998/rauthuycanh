@@ -4,8 +4,8 @@ var login = {
     "datauser":datauser,
 };
 $(document).ready(function(){
-  $("#home").hide();
-  $("#login").show();
+  $("#home").show();
+  $("#login").hide();
   /////////////////////////////////////////////
   var led = [1,1,1,1];
   var mang = {
