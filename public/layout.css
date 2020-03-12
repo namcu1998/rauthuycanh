@@ -71,7 +71,7 @@ body{
   text-align: center;
   font-size: 50px;
 }
-.buttonio{
+.buttonio,.button{
   width: 70px;
   height: 70px;
 }
