@@ -1,8 +1,74 @@
-body {
-  background-image: url(nam.png);
+body{
+  width: 1350px;
+  height: 600px;
+  margin: 0 auto;
 }
 #login{
   text-align: center;
   font-size: 100px;
   color: #ffffff;
+}
+#header{
+  padding-top: 21px;
+  padding-left: 25px;
+  height: 150px;
+  background-color: #473c1e;
+  text-align: left;
+  font-family: arial,Times;
+  color: #ffffff;
+  text-align: center;
+}
+#mid-left{
+  float: left;
+  height: 500px;
+  width: 200px;
+  background-color: #332705;
+  color: #ffffff;
+  text-align: center;
+}
+#mid{
+  width: 575px;
+  height: 500px;
+  float: left;
+  background-color: #45110d;
+  color: #ffffff;
+  text-align: center;
+}
+#mid-right{
+  float: left;
+  height: 500px;
+  width: 575px;
+  background-color: #302f2d;
+  color: #ffffff;
+  text-align: center;
+}
+#bot{
+  clear: both;
+  background-color: black;
+  font-family: arial;
+  text-align: left;
+  padding-top: 100px;
+  height: 200px;
+}
+#line{
+  height: 1px;
+  background-color: #ffffff;
+}
+.nhietdo{
+  text-align: center;
+  font-size: 50px;
+}
+.button{
+  width: 200px;
+  background-color: transparent;
+  border: 0px;
+  color: #ffffff;
+}
+.led{
+  text-align: center;
+  font-size: 50px;
+}
+.buttonio{
+  width: 70px;
+  height: 70px;
 }
