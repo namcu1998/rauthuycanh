@@ -4,12 +4,9 @@ body{
   margin: 0 auto;
 }
 #login{
-  width: 1350px;
-  height: 600px;
   text-align: center;
   font-size: 100px;
-  color: #ffffff;
-  background-color: black;
+  color: black;
 }
 #header{
   padding-top: 21px;
