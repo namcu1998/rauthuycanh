@@ -1,12 +1,15 @@
 body{
   width: 1350px;
   height: 600px;
-  margin: 0 auto;
+  margin: 0 0;
 }
 #login{
+  border: 0px;
+  width: 1350px;
   text-align: center;
   font-size: 100px;
-  color: black;
+  color: #ffffff;
+  background-image: url(fate.png);
 }
 #header{
   padding-top: 21px;
@@ -68,7 +71,11 @@ body{
   text-align: center;
   font-size: 50px;
 }
-.buttonio,.button{
+.buttonio,{
   width: 70px;
   height: 70px;
+}
+.button{
+  width: 200px;
+  height: 100px;
 }
