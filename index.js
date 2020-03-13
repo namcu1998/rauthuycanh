@@ -15,6 +15,23 @@ var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL="postgres://lubvqbmqrwqmqb:6c56218c80e692e18f1db98bd80966ed250d10b0ef2d914dd8a681de78a40c34@ec2-18-235-20-228.compute-1.amazonaws.com:5432/d3lhe69m9e0ddd
+",
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
     io.on('connection', function(socket) {
     console.log("Connected");
 
