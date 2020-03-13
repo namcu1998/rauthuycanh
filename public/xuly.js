@@ -1,4 +1,4 @@
-var socket = io("https://tomchiengion1998.herokuapp.com");
+var socket = io("https://namcu.herokuapp.com");
 var datauser = [];
 var login = {
     "datauser":datauser,
@@ -56,7 +56,7 @@ $(document).ready(function(){
     //document.getElementById("humi1").innerHTML = data["time1"];
     //document.getElementById("mess3").innerHTML = data["den1"];
     //document.getElementById("mess4").innerHTML = data["den2"];
-    
+
     //led.splice(2,1,data["den1"]);
     //led.splice(3,1,data["den2"]);
   });
