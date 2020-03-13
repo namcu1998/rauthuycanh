@@ -16,7 +16,7 @@ var esp8266_nsp = io.of('/esp8266')
 var middleware = require('socketio-wildcard')();
 esp8266_nsp.use(middleware);
 webapp_nsp.use(middleware);
-const sequelize = new Sequelize('postgres://auwarxalfvloha:0316d7dc9d9e2057e6197f1911a136d9aba1cc414dd08244681a5a3799a990d2@ec2-184-72-236-57.compute-1.amazonaws.com:5432/d9okk5ignv3p1');
+const sequelize = new Sequelize('postgres://adgpdflvgblfqw:418d40a84f7b4454ba6dadcb7a5f914c7f4e64920ab97c2d70d87b7adb003cb7@ec2-23-22-156-110.compute-1.amazonaws.com:5432/db0l7ifb9r7gc9');
 sequelize
 .authenticate()
 .then(() => {
