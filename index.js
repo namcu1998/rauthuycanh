@@ -18,8 +18,7 @@ webapp_nsp.use(middleware);
 const { Client } = require('pg');
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL="postgres://lubvqbmqrwqmqb:6c56218c80e692e18f1db98bd80966ed250d10b0ef2d914dd8a681de78a40c34@ec2-18-235-20-228.compute-1.amazonaws.com:5432/d3lhe69m9e0ddd
-",
+  connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
 
