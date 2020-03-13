@@ -26,7 +26,7 @@ let connectionString = {
 };
 // checking to know the environment and suitable connection string to use
 if (env === 'development') {
-    connectionString.database = 'secrets.database';
+    connectionString.database = 'postgres://zzjxzmtxmnidvr:f414dc6dab8dfd032c301c978c49e1b3e6afbe52d87eeb51609d8839df73f02f@ec2-54-197-48-79.compute-1.amazonaws.com:5432/d97albjr186u5j';
 } else {
     connectionString = {
     connectionString: process.env.DATABASE_URL,
