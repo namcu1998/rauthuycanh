@@ -15,22 +15,25 @@ var esp8266_nsp = io.of('/esp8266')				//namespace của esp8266
 var middleware = require('socketio-wildcard')();		//Để có thể bắt toàn bộ lệnh!
 esp8266_nsp.use(middleware);									//Khi esp8266 emit bất kỳ lệnh gì lên thì sẽ bị bắt
 webapp_nsp.use(middleware);
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-client.connect();
-
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
+const { Pool } = require('pg');
+const secrets = require('neutrino-middleware-env').default;
+const env = process.env.NODE_ENV || 'development';
+let connectionString = {
+    user: 'zzjxzmtxmnidvr',
+    database: 'd97albjr186u5j',
+    host: 'ec2-54-197-48-79.compute-1.amazonaws.com',
+};
+// checking to know the environment and suitable connection string to use
+if (env === 'development') {
+    connectionString.database = 'secrets.database';
+} else {
+    connectionString = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+    };
+};
+const pool = new Pool(connectionString);
+pool.on('connect', () => console.log('connected to db'));
     io.on('connection', function(socket) {
     console.log("Connected");
 
