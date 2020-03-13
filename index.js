@@ -22,8 +22,7 @@ let connectionString = {
     user: 'zzjxzmtxmnidvr',
     database: 'd97albjr186u5j',
     host: 'ec2-54-197-48-79.compute-1.amazonaws.com',
-    Password: 'f414dc6dab8dfd032c301c978c49e1b3e6afbe52d87eeb51609d8839df73f02f
-'
+    Password: 'f414dc6dab8dfd032c301c978c49e1b3e6afbe52d87eeb51609d8839df73f02f',
 };
 // checking to know the environment and suitable connection string to use
 if (env === 'development') {
