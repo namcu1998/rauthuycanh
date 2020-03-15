@@ -52,7 +52,7 @@ $(document).ready(function(){
     led.splice(1,1,data["den2"]);
   });
   socket.on("dulieu1", function(data){
-    //document.getElementById("temp1").innerHTML = data["time"];
+    document.getElementById("P").innerHTML = data["P"];
     //document.getElementById("humi1").innerHTML = data["time1"];
     document.getElementById("trangthaiden3").innerHTML = data["den1"];
     document.getElementById("trangthaiden4").innerHTML = data["den2"];
