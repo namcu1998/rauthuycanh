@@ -3,8 +3,6 @@ body{
   height: 600px;
   margin: 0 0;
   font-family: arial,Times;
-  background-image: url();
-  background-repeat: no-repeat;
   color: black;
   position: absolute;
 }
@@ -35,7 +33,7 @@ body{
   padding-top: 21px;
   padding-left: 25px;
   height: 150px;
-
+  background-image: url(https://images.alphacoders.com/963/thumb-1920-963232.jpg);
   text-align: left;
   color: #ffffff;
   text-align: center;q
