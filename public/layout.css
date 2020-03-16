@@ -8,11 +8,11 @@ body{
   color: black;
 }
 #login{
-  width: 100px;
-  height: 1463px;
+  width: 2600px;
+  height: 163px;
   background-image: url(fate.png);
   text-align: center;
-  padding-top: 2500px;
+  padding-top: 1300px;
 }
 .class{
   background-color: transparent;
