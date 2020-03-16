@@ -3,6 +3,7 @@ body{
   height: 600px;
   margin: 0 0;
   font-family: arial,Times;
+  background-image: url(https://i.pinimg.com/originals/d0/99/fb/d099fbe1334992232264f479a516983e.jpg);
 }
 #login{
   width: 1400px;
@@ -24,7 +25,7 @@ body{
   padding-top: 21px;
   padding-left: 25px;
   height: 150px;
-  background-color: #473c1e;
+
   text-align: left;
   color: #ffffff;
   text-align: center;q
@@ -33,7 +34,7 @@ body{
   float: left;
   height: 500px;
   width: 200px;
-  background-color: #332705;
+
   color: #ffffff;
   text-align: center;
 }
@@ -41,7 +42,7 @@ body{
   width: 575px;
   height: 500px;
   float: left;
-  background-color: #45110d;
+
   color: #ffffff;
   text-align: center;
 }
@@ -49,13 +50,13 @@ body{
   float: left;
   height: 500px;
   width: 575px;
-  background-color: #302f2d;
+
   color: #ffffff;
   text-align: center;
 }
 #bot{
   clear: both;
-  background-color: black;
+
   font-family: arial;
   text-align: left;
   padding-top: 100px;
