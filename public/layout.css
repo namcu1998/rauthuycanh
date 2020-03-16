@@ -21,6 +21,10 @@ body{
   text-shadow: black 3px 4px;
 
 }
+#home{
+  position: relative;
+  z-index: 1;
+}
 #home img{
   position: absolute;
   z-index: 0;
