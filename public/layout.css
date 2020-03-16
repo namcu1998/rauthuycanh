@@ -10,6 +10,10 @@ body{
   text-align: center;
   padding-top: 100px;
 }
+.class{
+  background-color: transparent;
+  border: 0px;
+}
 #dangnhap{
    color: #ffffff;
    font-size: 100px;
