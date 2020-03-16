@@ -5,6 +5,7 @@ body{
   font-family: arial,Times;
   background-image: url(https://images3.alphacoders.com/999/thumb-1920-999707.png);
   background-repeat: no-repeat;
+  color: black;
 }
 #login{
   width: 1400px;
