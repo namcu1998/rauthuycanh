@@ -23,7 +23,9 @@ body{
 fieldset{
   text-align: center;
 }
-
+marquee{
+  color: white;
+}
 #home{
   position: relative;
   z-index: 1;
