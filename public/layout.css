@@ -2,6 +2,7 @@ body{
   width: 1350px;
   height: 600px;
   margin: 0 0;
+  font-family: arial,Times;
 }
 #login{
   width: 1400px;
@@ -25,9 +26,9 @@ body{
   height: 150px;
   background-color: #473c1e;
   text-align: left;
-  font-family: arial,Times;
   color: #ffffff;
   text-align: center;
+  position: fixed;
 }
 #mid-left{
   float: left;
