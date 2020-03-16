@@ -4,6 +4,7 @@ body{
   margin: 0 0;
   font-family: arial,Times;
   background-image: url(https://i.ytimg.com/vi/RWm-v6b13jI/maxresdefault.jpg);
+  background-repeat: no-repeat;
 }
 #login{
   width: 1400px;
