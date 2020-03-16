@@ -82,6 +82,9 @@ body{
   background-color: transparent;
   border: 0px;
 }
+.buttonio:hover{
+  color: blue;
+}
 .button{
   width: 200px;
   height: 100px;
