@@ -19,8 +19,11 @@ body{
   font-weight: 600;
   font-family: serif;
   text-shadow: black 3px 4px;
-
 }
+fieldset{
+  text-align: center;
+}
+
 #home{
   position: relative;
   z-index: 1;
