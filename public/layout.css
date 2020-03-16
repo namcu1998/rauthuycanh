@@ -21,7 +21,10 @@ body{
   text-shadow: black 3px 4px;
 
 }
-
+#home img{
+  position: absolute;
+  z-index: 0;
+}
 .class{
   background-color: transparent;
   border: 0px;
