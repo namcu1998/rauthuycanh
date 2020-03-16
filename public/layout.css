@@ -19,10 +19,9 @@ body{
   font-weight: 600;
   font-family: serif;
   text-shadow: black 3px 4px;
+
 }
-#home{
-  background-image: url(https://images.alphacoders.com/963/thumb-1920-963232.jpg);
-}
+
 .class{
   background-color: transparent;
   border: 0px;
