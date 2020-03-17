@@ -6,6 +6,27 @@
     <link rel="stylesheet" type="text/css" href="setup.css">
   </head>
   <body>
-    
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCmDspTlLw6ulpjqQhnN1M7typLpFXkwo4",
+    authDomain: "namcu-87298.firebaseapp.com",
+    databaseURL: "https://namcu-87298.firebaseio.com",
+    projectId: "namcu-87298",
+    storageBucket: "namcu-87298.appspot.com",
+    messagingSenderId: "1096211493390",
+    appId: "1:1096211493390:web:4351b71c2340f4f295025f",
+    measurementId: "G-1RZ4M5ESZ0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
   </body>
 </html>
