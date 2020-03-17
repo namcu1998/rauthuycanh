@@ -37,7 +37,7 @@ ref.once("value", function(snapshot) {
 var usersRef = ref.child("users");
 usersRef.set({
   alanisawesome: {
-    date_of_birth: database,
+    date_of_birth: "database",
     full_name: "Alan Turing"
   },
   gracehop: {
