@@ -19,7 +19,7 @@ webapp_nsp.use(middleware);
 var admin = require("firebase-admin");
 
 // Fetch the service account key JSON file contents
-var serviceAccount = require("path/to/serviceAccountKey.json");
+var serviceAccount = require("serviceAccountKey.json");
 
 // Initialize the app with a service account, granting admin privileges
 admin.initializeApp({
