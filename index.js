@@ -16,29 +16,23 @@ var esp8266_nsp = io.of('/esp8266')
 var middleware = require('socketio-wildcard')();
 esp8266_nsp.use(middleware);
 webapp_nsp.use(middleware);
-const sequelize = new Sequelize('postgres://adgpdflvgblfqw:418d40a84f7b4454ba6dadcb7a5f914c7f4e64920ab97c2d70d87b7adb003cb7@ec2-23-22-156-110.compute-1.amazonaws.com:5432/db0l7ifb9r7gc9');
-sequelize
-.authenticate()
-.then(() => {
-console.log('Connection has been established successfully.');
-})
-.catch(err => {
-console.error('Unable to connect to the database:', err);
+var admin = require("firebase-admin");
+
+// Fetch the service account key JSON file contents
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+// Initialize the app with a service account, granting admin privileges
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://namcu-87298.firebaseio.com"
 });
-const User = sequelize.define('user', {
-// attributes
-firstName: {
-type: Sequelize.STRING,
-allowNull: false
-},
-lastName: {
-type: Sequelize.STRING
-// allowNull defaults to true
-}
-}, {
-// options
+
+// As an admin, the app has access to read and write all data, regardless of Security Rules
+var db = admin.database();
+var ref = db.ref("restricted_access/secret_document");
+ref.once("value", function(snapshot) {
+  console.log(snapshot.val());
 });
-User.sync({ force: true });
     io.on('connection', function(socket) {
     console.log("Connected");
 
