@@ -23,8 +23,10 @@ body{
 fieldset{
   text-align: center;
 }
-marquee{
+marquee h3{
   color: white;
+  font-family: arial;
+  text-shadow: black 3px 4px;
 }
 #home{
   position: relative;
