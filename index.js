@@ -33,10 +33,11 @@ var ref = db.ref("restricted_access/secret_document");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
+  var database;
 var usersRef = ref.child("users");
 usersRef.set({
   alanisawesome: {
-    date_of_birth: "June 23, 1912",
+    date_of_birth: database,
     full_name: "Alan Turing"
   },
   gracehop: {
@@ -50,6 +51,7 @@ usersRef.set({
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
         socket.broadcast.emit("LED",data);
+        database = data;
     });
     socket.on("login",function(data){
       console.log(data);
