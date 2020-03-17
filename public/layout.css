@@ -113,9 +113,11 @@ marquee h3{
   border-radius: 30px;
   border: yellow solid 1px;
   color: black;
+  transition: 2s;
 }
 .buttonio:hover{
   color: blue;
+
 }
 .button{
   width: 200px;
