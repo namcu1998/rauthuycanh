@@ -35,7 +35,7 @@ marquee h3{
 #home img{
   position: absolute;
   z-index: -1;
-  filter: blur(10px);
+  filter: blur(0px);
 }
 .class{
   background-color: transparent;
@@ -116,7 +116,6 @@ marquee h3{
 }
 .buttonio:hover{
   color: blue;
-  transition: 2s;
 }
 .button{
   width: 200px;
