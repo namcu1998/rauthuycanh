@@ -20,7 +20,7 @@ $(document).ready(function(){
     $("#login").hide(1000);
   });
   socket.on("loginfail",function(){
-    alert("tài khoản hoặc mật khẩu không đúng");
+    alert("đéo đúng vui lòng đừng đăng nhập");
     datauser.splice(0,10);
   });
   /////////////////////////////////////////////
