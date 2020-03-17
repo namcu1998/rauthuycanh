@@ -8,10 +8,10 @@ body{
 }
 #login{
   width: 1350px;
-  height: 400px;
+  height: 600px;
   background-image: url(https://images2.alphacoders.com/929/thumb-1920-929408.jpg);
   text-align: center;
-  padding-top: 400px;
+  padding-top: 200px;
 }
 #login p{
   color: #fff;
@@ -33,7 +33,7 @@ marquee{
 #home img{
   position: absolute;
   z-index: -1;
-  filter: blur(6px);
+  filter: blur(10px);
 }
 .class{
   background-color: transparent;
