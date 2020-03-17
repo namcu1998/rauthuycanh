@@ -105,6 +105,7 @@ marquee h3{
   background-color: transparent;
   border: 0px;
   color: #ffffff;
+  transition: 2s;
 }
 .led{
   text-align: center;
