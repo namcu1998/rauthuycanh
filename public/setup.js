@@ -2,7 +2,7 @@ var socket = io("https://namcu.herokuapp.com");
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 var ctx = document.getElementById('myChart').getContext('2d');
 $("#testbtn").click(function(){
-  document.getElementById("mychart1").innerHTML = "nam";
+  $("#mychart1").append("nam");
 });
 
 var chart = new Chart(ctx, {
