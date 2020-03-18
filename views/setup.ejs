@@ -15,7 +15,7 @@
     var data1;
     var socket = io("https://namcu.herokuapp.com");
     socket.on("dulieu", function(data){
-      data1 = data;
+      data1 = data["time"];
       document.getElementById("temp").innerHTML = data["time"];
     });
   </script>
@@ -41,7 +41,7 @@
     };
     setInterval(function () {
       var newdata = [{time: time(), y: random()}];
-      document.getElementById("demo").innerHTML = data1;
+      document.getElementById("demo").innerHTML = random();
 
 
        myChart.push(newdata);
