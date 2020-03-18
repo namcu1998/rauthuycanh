@@ -1,4 +1,8 @@
 body{
   margin: 0 0;
-  
+}
+#mychart1{
+  width: 100px;
+  height: 100px;
+  color: black;
 }
