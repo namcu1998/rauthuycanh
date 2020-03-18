@@ -11,6 +11,8 @@ app.set("view engine","ejs");
 app.set("views","./views");
 app.use(express.static("webapp"));
 app.use('/scripts', express.static(__dirname + '/node_modules/d3/'));
+app.use('/scripts1', express.static(__dirname + '/node_modules/epoch-charting/dist/js/'));
+app.use('/scripts2', express.static(__dirname + '/node_modules/epoch-charting/dist/css/'));
 server.listen(process.env.PORT || 3000);
 var admin = require("firebase-admin");
 
