@@ -36,11 +36,11 @@
   };
 
     function random(){
-      var dem = Math.random() * 100;
-      return dem;
+
+      return data1;
     };
     setInterval(function () {
-      var newdata = [{time: time(), y: data}];
+      var newdata = [{time: time(), y: random()}];
       document.getElementById("demo").innerHTML = random();
 
 
