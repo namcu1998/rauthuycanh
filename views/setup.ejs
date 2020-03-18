@@ -40,7 +40,7 @@
       return dem;
     };
     setInterval(function () {
-      var newdata = [{time: data, y: random()}];
+      var newdata = [{time: time(), y: data}];
       document.getElementById("demo").innerHTML = random();
 
 
