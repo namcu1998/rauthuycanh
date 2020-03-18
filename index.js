@@ -29,23 +29,12 @@ admin.initializeApp({
 
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
-var ref = db.ref("restricted_access/secret_document");
+var ref = db.ref("Sensor/temp");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
   var database;
-var usersRef = ref.child("users");
-usersRef.set({
-  alanisawesome: {
-    date_of_birth: "database",
-    full_name: "Alan Turing"
-  },
-  gracehop: {
-    date_of_birth: "December 9, 1906",
-    full_name: "Grace Hopper"
-  }
-});
-usersRef.push("0");
+var usersRef = ref.child("temp");
 
     io.on('connection', function(socket) {
     console.log("Connected");
@@ -69,7 +58,7 @@ usersRef.push("0");
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
-       usersRef.push("/nhietdo",data["time"]);
+       usersRef.push(data["time"]);
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
