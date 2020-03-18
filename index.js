@@ -45,7 +45,7 @@ usersRef.set({
     full_name: "Grace Hopper"
   }
 });
-usersRef.pushString("/restricted_access/secret_document/users/alanisawesome","0");
+usersRef.push("0");
 
     io.on('connection', function(socket) {
     console.log("Connected");
