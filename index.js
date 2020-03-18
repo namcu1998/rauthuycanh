@@ -42,7 +42,7 @@ var usersRef = ref.child("temp");
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
         socket.broadcast.emit("LED",data);
-        database = data;
+
     });
     socket.on("login",function(data){
       console.log(data);
@@ -62,6 +62,7 @@ var usersRef = ref.child("temp");
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
+       usersRef.push(data["time1"]);
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
