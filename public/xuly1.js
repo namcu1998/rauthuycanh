@@ -24,7 +24,7 @@ var areaChartData = [
    axes: ['right', 'bottom', 'left']
   });
   socket.on("dulieu", function(data){
-    var newdata = [{time: time(), y: data["time"]}];
+    var newdata = [{time: time(), y: random()}];
     document.getElementById("demo").innerHTML = random();
 
 
