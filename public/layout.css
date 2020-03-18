@@ -39,7 +39,7 @@ marquee h3{
 #home img{
   position: absolute;
   z-index: -1;
-  filter: blur(0px);
+  filter: blur(6px);
 }
 .class{
   background-color: transparent;
