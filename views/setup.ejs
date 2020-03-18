@@ -20,7 +20,39 @@
   <p id="demo1"></p>
   <p id="oneclick" onclick="changedata()" > click</p>
   <input type="button" id="button"/>
-  <script src="chart.js"></script>
+  <script>
+  function time(){
+      var dt = new Date();
+      var miliSec = dt.getTime();
+      document.getElementById("demo1").innerHTML = miliSec;
+      return dt;
+  };
+
+    function random(){
+      var dem = Math.random() * 100;
+      return dem;
+    };
+    setInterval(function () {
+      var newdata = [{time: time(), y: random()}];
+      document.getElementById("demo").innerHTML = random();
+
+
+       myChart.push(newdata);
+    }, 100);
+
+
+    var areaChartData = [
+      {
+      label: "Layer 1",
+       values: [{time: time(), y: random()}],
+    },
+  ];
+      var myChart = $('#myChart').epoch({
+       type: 'time.line',
+       data: areaChartData,
+       axes: ['right', 'bottom', 'left']
+      });
+</script>
 
 </body>
 </html>
