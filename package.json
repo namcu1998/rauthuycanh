@@ -15,6 +15,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "env": "0.0.2",
+    "epoch-charting": "^0.8.4",
     "express": "^4.17.1",
     "firebase-admin": "^8.10.0",
     "ip": "^1.1.5",
