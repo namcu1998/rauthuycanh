@@ -11,10 +11,50 @@
   <link rel="stylesheet" type = "text/css" href="setup.css"/>
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/scripts2/epoch.min.js">
+    <link rel="stylesheet" type="text/css" href="/scripts2/epoch.min.css">
 </head>
 <body >
   <span id ="temp">...</span>
+  <div id="myChart" class="epoch category10" style="width: 800px; height: 200px; border: 1px"></div>
+  <p id="demo"></p>
+  <p id="demo1"></p>
+  <p id="oneclick" onclick="changedata()" > click</p>
+  <input type="button" id="button"/>
+  <script>
+  function time(){
+    var dt = new Date();
+    var miliSec = dt.getTime();
+    document.getElementById("demo1").innerHTML = dt.getTime();
+    return miliSec;
+};
+
+  function random(){
+    var dem = Math.random() * 100;
+    return dem;
+  };
+  setInterval(function () {
+    var newdata = [{time: time(), y: random()}];
+    document.getElementById("demo").innerHTML = random();
+
+
+     myChart.push(newdata);
+  }, 10000);
+
+
+  var areaChartData = [
+    {
+    label: "Layer 1",
+     values: [{time: time(), y: random()}],
+  },
+];
+    var myChart = $('#myChart').epoch({
+     type: 'time.bar',
+     data: areaChartData,
+     axes: ['right', 'bottom', 'left']
+    });
+
+
+  </script>
 
 </body>
 </html>
