@@ -34,8 +34,8 @@ ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
   var database;
-var usersRef = ref.child("temp");
-
+var nhietdo = ref.child("temp");
+var doam  = ref.child("humi")
     io.on('connection', function(socket) {
     console.log("Connected");
 
@@ -58,11 +58,11 @@ var usersRef = ref.child("temp");
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
-       usersRef.push(data["time"]);
+       nhietdo.push(data["time"]);
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
-       usersRef.push(data["time1"]);
+       doam.push(data["time1"]);
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
