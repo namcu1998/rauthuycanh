@@ -1,4 +1,4 @@
-
+var socket = io("https://namcu.herokuapp.com");
 function time(){
   var dt = new Date();
   var miliSec = dt.getTime();
@@ -23,7 +23,6 @@ var areaChartData = [
    data: areaChartData,
    axes: ['right', 'bottom', 'left']
   });
-  var socket = io("https://namcu.herokuapp.com");
   socket.on("dulieu", function(data){
     var newdata = [{time: time(), y: data["time"]}];
     document.getElementById("demo").innerHTML = random();
