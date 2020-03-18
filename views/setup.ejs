@@ -1,14 +1,138 @@
 <!DOCTYPE html>
-<html lang="vi">
-  <head>
-    <meta charset="utf-8">
-    <title>home</title>
-    <script src="jquery.js"></script>
-    <script src ="https://namcu.herokuapp.com/socket.io/socket.io.js"></script>
-    <script src="xuly1.js"></script>
-    <link rel="stylesheet" type="text/css" href="setup.css">
-  </head>
-  <body>
-    <span id="mychart1">...</span>
-  </body>
+<html>
+<head>
+<title>home</title>
+<script src="jquery.js"></script>
+<script src ="https://namcu.herokuapp.com/socket.io/socket.io.js"></script>
+  <script src = "xuly.js"></script>
+  <link rel="stylesheet" type = "text/css" href="normalize.css"/>
+  <link rel="stylesheet" type = "text/css" href="layout.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="namcu">
+</head>
+<body >
+  <div id ="login">
+
+    <form class="pure-form">
+    <fieldset>
+      <marquee  width="300px" height="100px;" direction="left" scrolldelay="2">
+        <h3>welcome to my world</h3>
+      </marquee>
+      <p>LOGIN</p>
+        <input class="pure-form" type="text" id ="username" placeholder="username">
+        <input class="pure-form" type="password" id ="password" placeholder="Password">
+        <button type="button" id ="btnlogin" class="pure-button pure-button-primary">Sign in</button>
+    </fieldset>
+</form>
+  </div>
+    <div id="home">
+      <img src="https://images8.alphacoders.com/498/thumb-1920-498993.jpg"/>
+    <div id="header">
+      <audio controls>
+        <source src="https://www.youtube.com/embed/AMwr3aeeyUc" type="audio/mp4">
+      </audio>
+       <h1>Home</h1>
+         <p>Cù văn Nam</p>
+      </div>
+      <div id = "mid-left">
+        <h1>room</h1>
+        <div id ="line">
+        </div>
+     <input type="button" id="btnbutton1" class="button" value="Room1"/>
+     <input type="button" id="btnbutton2" class="button" value="Room2"/>
+      </div>
+      <div id="mid">
+        <h1><strong>Sensor</strong></h1>
+        <div id ="line">
+        </div>
+        <div id="Sensor">
+        <div  class="nhietdo">
+        <span>nhiệt độ:</span>
+        <span id ="temp">...</span>
+        <span>*C</span>
+      </div>
+      <div class="nhietdo">
+      <span>độ ẩm:</span>
+      <span id ="humi">...</span>
+      <span>%</span>
+    </div>
+    <div class="running-time">
+      <span>Công Suất:</span>
+      <span id="P">...</span>
+      <span>Wh</span>
+    </div>
+    </div>
+        <div id="Sensor1">
+        <div  class="nhietdo">
+        <span>nhiệt độ:</span>
+        <span id ="">...</span>
+        <span>*C</span>
+      </div>
+      <div class="nhietdo">
+      <span>độ ẩm:</span>
+      <span id ="">...</span>
+      <span>%</span>
+      </div>
+      <div class="running-time">
+        <span>Công Suất:</span>
+        <span id="P1">...</span>
+        <span>Wh</span>
+      </div>
+      </div>
+      </div>
+      <div id = "mid-right">
+        <h1>Button</h1>
+        <div id ="line">
+        </div>
+        <div id="button">
+      <div>
+      <div class="led">
+      <span class="led">Đèn 1:</span>
+      <span class="led" id="trangthaiden1">...</span>
+      </div>
+      <div id="den1" class="led">
+      <input type="button" id="onden" class="buttonio" value="On"/>
+      <input type="button" id="offden" class="buttonio" value="Off"/>
+      </div>
+      </div>
+      <div>
+      <div class="led">
+      <span class="led">Đèn 2:</span>
+      <span class="led" id="trangthaiden2">...</span>
+      </div>
+      <div class="led">
+      <input type="button" id="onden1" class="buttonio" value="On"/>
+      <input type="button" id="offden1" class="buttonio" value="Off"/>
+      </div>
+      </div>
+    </div>
+    <div id="button1">
+  <div>
+  <div class="led">
+  <span class="led">Đèn 1:</span>
+  <span class="led" id="trangthaiden3">...</span>
+  </div>
+  <div id="den1" class="led">
+  <input type="button" id="onden2" class="buttonio" value="On"/>
+  <input type="button" id="offden2" class="buttonio" value="Off"/>
+  </div>
+  </div>
+  <div>
+  <div class="led">
+  <span class="led">Đèn 2:</span>
+  <span class="led" id="trangthaiden4">...</span>
+  </div>
+  <div class="led">
+  <input type="button" id="onden3" class="buttonio" value="On"/>
+  <input type="button" id="offden3" class="buttonio" value="Off"/>
+  </div>
+  </div>
+  </div>
+    </div>
+      <div id="bot">
+
+      </div>
+</div>
+</body>
 </html>

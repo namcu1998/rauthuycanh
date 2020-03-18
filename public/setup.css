@@ -1,8 +1,134 @@
 body{
+  width: 1350px;
+  height: 600px;
   margin: 0 0;
-}
-#mychart1{
-  width: 100px;
-  height: 100px;
+  font-family: arial,Times;
   color: black;
+  position: absolute;
+}
+#login{
+  width: 1350px;
+  height: 600px;
+  background-image: url(https://images2.alphacoders.com/929/thumb-1920-929408.jpg);
+  text-align: center;
+  padding-top: 200px;
+}
+audio{
+  width: 1000px;
+  height: 100px;
+}
+#login p{
+  color: #fff;
+  font-size: 5em;
+  font-weight: 600;
+  font-family: sxerif;
+  text-shadow: black 3px 4px;
+}
+fieldset{
+  text-align: center;
+}
+marquee h3{
+  color: white;
+  font-family: arial;
+  text-shadow: black 3px 4px;
+}
+#home{
+  position: relative;
+  z-index: 1;
+}
+#home img{
+  position: absolute;
+  z-index: -1;
+  filter: blur(6px);
+}
+.class{
+  background-color: transparent;
+  border: 0px;
+}
+#dangnhap{
+   color: #ffffff;
+   font-size: 100px;
+   font-family: arial;
+ }
+#header{
+  padding-top: 21px;
+  padding-left: 25px;
+  height: 150px;
+  background-position: center;
+  background-size: 500px;
+  color: #ffffff;
+  text-align: center;
+}
+
+#mid-left{
+  float: left;
+  height: 500px;
+  width: 200px;
+  background-image: url();
+  color: #ffffff;
+  text-align: center;
+}
+#mid{
+  width: 575px;
+  height: 500px;
+  float: left;
+
+  color: #ffffff;
+  text-align: center;
+}
+#mid-right{
+  float: left;
+  height: 500px;
+  width: 575px;
+
+  color: #ffffff;
+  text-align: center;
+}
+#bot{
+  clear: both;
+
+  font-family: arial;
+  text-align: left;
+  padding-top: 100px;
+  height: 200px;
+}
+#line{
+  height: 1px;
+  background-color: #ffffff;
+}
+.nhietdo{
+  text-align: center;
+  font-size: 50px;
+}
+.button{
+  width: 200px;
+  background-color: transparent;
+  border: 0px;
+  color: #ffffff;
+  transition: 2s;
+}
+.led{
+  text-align: center;
+  font-size: 50px;
+}
+.buttonio{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 30px;
+  border: yellow solid 1px;
+  color: black;
+}
+.buttonio:hover{
+  color: blue;
+}
+.button{
+  width: 200px;
+  height: 100px;
+}
+.button:hover{
+  background-color: blue;
+}
+.running-time{
+  font-size: 50px;
 }
