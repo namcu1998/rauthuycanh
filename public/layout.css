@@ -5,6 +5,7 @@ body{
   font-family: arial,Times;
   color: black;
   position: absolute;
+  font-family: cursive, serif;
 }
 #login{
   width: 1350px;
@@ -59,7 +60,9 @@ marquee h3{
   color: #ffffff;
   text-align: center;
 }
+#header div ul{
 
+}
 #mid-left{
   float: left;
   height: 500px;
