@@ -14,26 +14,26 @@ app.use('/scripts', express.static(__dirname + '/node_modules/d3/'));
 app.use('/scripts1', express.static(__dirname + '/node_modules/epoch-charting/dist/js/'));
 app.use('/scripts2', express.static(__dirname + '/node_modules/epoch-charting/dist/css/'));
 server.listen(process.env.PORT || 3000);
-var admin = require("firebase-admin");
+//var admin = require("firebase-admin");
 
 // Fetch the service account key JSON file contents
-var serviceAccount = require("./serviceAccountKey.json");
+//var serviceAccount = require("./serviceAccountKey.json");
 
 // Initialize the app with a service account, granting admin privileges
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://namcu-87298.firebaseio.com"
-});
+//admin.initializeApp({
+  //credential: admin.credential.cert(serviceAccount),
+  //databaseURL: "https://namcu-87298.firebaseio.com"
+//});
 
 // As an admin, the app has access to read and write all data, regardless of Security Rules
-var db = admin.database();
-var ref = db.ref("Sensor");
-ref.once("value", function(snapshot) {
-  console.log(snapshot.val());
-});
-  var database;
-var nhietdo = ref.child("temp");
-var doam  = ref.child("humi");
+//var db = admin.database();
+//var ref = db.ref("Sensor");
+//ref.once("value", function(snapshot) {
+  //console.log(snapshot.val());
+//});
+  //var database;
+//var nhietdo = ref.child("temp");
+//var doam  = ref.child("humi");
     io.on('connection', function(socket) {
     console.log("Connected");
 
@@ -56,8 +56,8 @@ var doam  = ref.child("humi");
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
-       nhietdo.push(data["time"]);
-       doam.push(data["time1"]);
+       //nhietdo.push(data["time"]);
+       //doam.push(data["time1"]);
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
