@@ -25,7 +25,7 @@ var ref = db.ref("data");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
-let deleteDoc = db.collection('sensor').doc('humi').delete();
+
 //var nhietdo = ref.child("nhietdo");
 //var doam  = ref.child("doam");
     io.on('connection', function(socket) {
