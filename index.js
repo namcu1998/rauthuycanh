@@ -25,9 +25,9 @@ var ref = db.ref("data");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
-var database;
-var nhietdo = ref.child("nhietdo");
-var doam  = ref.child("doam");
+let deleteDoc = db.collection('sensor').doc('humi').delete();
+//var nhietdo = ref.child("nhietdo");
+//var doam  = ref.child("doam");
     io.on('connection', function(socket) {
     console.log("Connected");
 
@@ -50,8 +50,7 @@ var doam  = ref.child("doam");
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
-       nhietdo.push(data["time"]);
-       doam.push(data["time1"]);
+
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
