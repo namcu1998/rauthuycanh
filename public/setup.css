@@ -3,13 +3,13 @@ body{
    margin: 0;
    font-size: 3em;
    color: white;
-   background-image: url(https://images8.alphacoders.com/498/thumb-1920-498993.jpg);: 
+   background-image: url(https://images8.alphacoders.com/498/thumb-1920-498993.jpg);:
 }
 .header{
   text-align: center;
   padding: 0.3em;
 
-  background-color: blue;
+
 }
 .main{
   text-align: center;
@@ -19,11 +19,11 @@ span{
 }
 #Sensor{
   padding: 0.3em;
-  background-color: green;
+
 }
 #button{
   padding: 0.3em;
-  background: yellow;
+  
 }
 .buttonio{
   color: black;
