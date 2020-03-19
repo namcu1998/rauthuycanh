@@ -21,9 +21,7 @@ admin.initializeApp({
   databaseURL: "https://namcu-87298.firebaseio.com"
 });
 var db = admin.database();
-ref.once("value", function(snapshot) {
-  console.log(snapshot.val());
-});
+
 
 //var nhietdo = ref.child("nhietdo");
 //var doam  = ref.child("doam");
