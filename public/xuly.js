@@ -69,43 +69,43 @@ $(document).ready(function(){
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
   $("#onden").click(function(){
-    led.splice(0,1,1);
+    led.splice(0,1,0);
        socket.emit("onden",mang);
   }); //endm6
   //////////////////////////////////s///////////
   $("#offden").click(function(){
-    led.splice(0,1,0);
+    led.splice(0,1,1);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
   $("#onden1").click(function(){
-    led.splice(1,1,1);
+    led.splice(1,1,0);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
   $("#offden1").click(function(){
-    led.splice(1,1,0);
+    led.splice(1,1,1);
        socket.emit("onden",mang);
   }); //end
   //gửi dữ liệu về server
   /////////////////////////////////////////////
   $("#onden2").click(function(){
-    led.splice(2,1,1);
-       socket.emit("onden",mang);
-  }); //end
-  /////////////////////////////////////////////
-  $("#offden2").click(function(){
     led.splice(2,1,0);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
+  $("#offden2").click(function(){
+    led.splice(2,1,1);
+       socket.emit("onden",mang);
+  }); //end
+  /////////////////////////////////////////////
   $("#onden3").click(function(){
-    led.splice(3,1,1);
+    led.splice(3,1,0);
        socket.emit("onden",mang);
   }); //end
   /////////////////////////////////////////////
   $("#offden3").click(function(){
-    led.splice(3,1,0);
+    led.splice(3,1,1);
        socket.emit("onden",mang);
   }); //end
 }); //document
