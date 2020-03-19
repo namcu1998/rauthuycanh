@@ -28,33 +28,7 @@
   <p id="oneclick" onclick="changedata()" > click</p>
   <input type="button" id="button"/>
   <script>
-  /*===============function===============*/
-  function time(){
-      var dt = new Date();
-      var miliSec = dt.getTime();
-      return miliSec;
-  };
-    function random(){
-       var random = data1;
-      return random;
-    };
-    /*===============setInterval===============*/
-    setInterval(function () {
-      var newdata = [{time: time(), y: random()}];
-       myChart.push(newdata);
-    }, 100);
-    /*===============Biến===============*/
-    var areaChartData = [
-      {
-      label: "Layer 1",
-       values: [{time: time(), y: random()}],
-    },
-  ];
-      var myChart = $('#myChart').epoch({
-       type: 'time.bar',
-       data: areaChartData,
-       axes: ['right', 'bottom', 'left']
-      });
+  
 </script>
 </body>
 </html>
