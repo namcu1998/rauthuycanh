@@ -21,7 +21,13 @@ admin.initializeApp({
   databaseURL: "https://namcu-87298.firebaseio.com"
 });
 var db = admin.database();
-var ref = db.ref("null");
+var ref = db.ref("data");
+ref.once("value", function(snapshot) {
+  console.log(snapshot.val());
+});
+var database;
+var nhietdo = ref.child("nhietdo");
+var doam  = ref.child("doam");
     io.on('connection', function(socket) {
     console.log("Connected");
 
@@ -44,8 +50,8 @@ var ref = db.ref("null");
     ///////////////////////////////////////////////////////////
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
-       //nhietdo.push(data["time"]);
-       //doam.push(data["time1"]);
+       nhietdo.push(data["time"]);
+       doam.push(data["time1"]);
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
