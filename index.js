@@ -71,4 +71,7 @@ var doam  = ref.child("humi");
     }); //connected
     app.get("/", function(req , res){
     res.render("trangtru");
-    }) //home
+  }); //home
+  app.get("/chart", function(req , res){
+  res.render("setup");
+}); //home
