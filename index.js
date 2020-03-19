@@ -21,7 +21,6 @@ admin.initializeApp({
   databaseURL: "https://namcu-87298.firebaseio.com"
 });
 var db = admin.database();
-var ref = db.ref("data");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
@@ -64,4 +63,7 @@ ref.once("value", function(snapshot) {
     }); //connected
     app.get("/", function(req , res){
     res.render("trangtru");
-   }) //home
+  }); //home
+   app.get("/charts", function(req , res){
+   res.render("charts");
+ });
