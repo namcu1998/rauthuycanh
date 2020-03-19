@@ -61,8 +61,14 @@ $(document).ready(function(){
   socket.on("dulieu1", function(data){
     document.getElementById("P1").innerHTML = data["P"];
     //document.getElementById("humi1").innerHTML = data["time1"];
-    document.getElementById("trangthaiden3").innerHTML = data["den1"];
-    document.getElementById("trangthaiden4").innerHTML = data["den2"];
+    if(data["den1"] == 0){
+      document.getElementById("trangthaiden2").innerHTML = "Bật";
+    }
+    else document.getElementById("trangthaiden2").innerHTML = "tắt";
+    if(data["den2"] == 0){
+      document.getElementById("trangthaiden3").innerHTML = "Bật";
+    }
+    else document.getElementById("trangthaiden3").innerHTML = "tắt";
     led.splice(2,1,data["den1"]);
     led.splice(3,1,data["den2"]);
   });
