@@ -10,22 +10,9 @@
   <link rel="stylesheet" type = "text/css" href="setup.css"/>
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/scripts2/epoch.min.css">
-    <script>
-    var data1;
-    var socket = io("https://namcu.herokuapp.com");
-    socket.on("dulieu", function(data){
-      data1 = data["time"];
-      document.getElementById("temp").innerHTML = data["time"];
-    });
-  </script>
+  <link rel="stylesheet" type="text/css" href="/scripts2/epoch.min.css">
 </head>
 <body >
-  <span id ="temp">...</span>
-  <div id="myChart" class="epoch category10" style="width: 800px; height: 200px; border: 1px"></div>
-  <p id="demo"></p>
-  <p id="demo1"></p>
-  <p id="oneclick" onclick="changedata()" > click</p>
-  <input type="button" id="button/>
+  <p>....</p>
 </body>
 </html>

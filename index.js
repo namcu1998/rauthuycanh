@@ -72,6 +72,3 @@ var doam  = ref.child("humi");
     app.get("/", function(req , res){
     res.render("trangtru");
     }) //home
-    app.get("/setup", function(req , res){
-    res.render("setup");
-  }) //home1
