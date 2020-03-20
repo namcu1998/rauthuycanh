@@ -43,26 +43,17 @@ $(document).ready(function(){
     socket.emit("login",login);
   });
   /////////////////////////////////////////////
-  function neu(data){
-    var a = 0;
-    if(data == 0) a = "bật";
-    else a = "tắt";
-    return a;
-  };
+
   socket.on("dulieu", function(data){
     document.getElementById("temp").innerHTML = data["time"];
     document.getElementById("humi").innerHTML = data["time1"];
     document.getElementById("P").innerHTML = data["P"];
-    document.getElementById("trangthaiden1").innerHTML = neu(data['den1']);
-    document.getElementById("trangthaiden2").innerHTML = neu(data['den2']);
     led.splice(0,1,data["den1"]);
     led.splice(1,1,data["den2"]);
   });
   socket.on("dulieu1", function(data){
     document.getElementById("P1").innerHTML = data["P"];
     //document.getElementById("humi1").innerHTML = data["time1"];
-    document.getElementById("trangthaiden3").innerHTML = neu(data['den3']);
-    document.getElementById("trangthaiden4").innerHTML = neu(data['den4']);
     else document.getElementById("trangthaiden3").innerHTML = "tắt";
     led.splice(2,1,data["den1"]);
     led.splice(3,1,data["den2"]);
