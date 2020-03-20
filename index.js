@@ -21,11 +21,9 @@ admin.initializeApp({
   databaseURL: "https://namcu-87298.firebaseio.com"
 });
 var db = admin.database();
-var ref = db.ref("Sensor/Humi");
-ref.on("value", function(snapshot) {
- console.log(snapshot.val());
-}, function (errorObject) {
- console.log("The read failed: " + errorObject.code);
+var ref = db.ref("Sensor");
+ref.on("Humi", function(snapshot) {
+  console.log(snapshot.val());
 });
 
 //var nhietdo = ref.child("nhietdo");
