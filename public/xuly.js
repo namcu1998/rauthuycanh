@@ -3,6 +3,12 @@ var datauser = [];
 var login = {
     "datauser":datauser,
 };
+function neu(data){
+  var a;
+  if(data == 0) a = "bật";
+  else a ="tắt";
+  return  a;
+}
 $(document).ready(function(){
   $("#home").hide();
   $("#login").show();
@@ -48,12 +54,15 @@ $(document).ready(function(){
     document.getElementById("temp").innerHTML = data["time"];
     document.getElementById("humi").innerHTML = data["time1"];
     document.getElementById("P").innerHTML = data["P"];
+    document.getElementById("trangthaiden1").innerHTML = neu(data["den1"]);
+    document.getElementById("trangthaiden2").innerHTML = neu(data["den2"]);
     led.splice(0,1,data["den1"]);
     led.splice(1,1,data["den2"]);
   });
   socket.on("dulieu1", function(data){
     document.getElementById("P1").innerHTML = data["P"];
-    //document.getElementById("humi1").innerHTML = data["time1"];
+    document.getElementById("trangthaiden3").innerHTML = neu(data["den1"]);
+    document.getElementById("trangthaiden4").innerHTML = neu(data["den2"]);
     led.splice(2,1,data["den1"]);
     led.splice(3,1,data["den2"]);
   });
