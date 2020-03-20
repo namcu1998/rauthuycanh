@@ -1,5 +1,11 @@
 var socket = io("https://namcu.herokuapp.com");
 var datauser = [];
+function neu(data){
+  var a = 0;
+  if(data == 0) a = "bật";
+  else a = "tắt";
+  return a;
+}
 var login = {
     "datauser":datauser,
 };
@@ -47,14 +53,7 @@ $(document).ready(function(){
     document.getElementById("temp").innerHTML = data["time"];
     document.getElementById("humi").innerHTML = data["time1"];
     document.getElementById("P").innerHTML = data["P"];
-    if(data["den1"] == 0){
-      document.getElementById("trangthaiden1").innerHTML = "Bật";
-    }
-    else document.getElementById("trangthaiden1").innerHTML = "tắt";
-    if(data["den2"] == 0){
-      document.getElementById("trangthaiden2").innerHTML = "Bật";
-    }
-    else document.getElementById("trangthaiden2").innerHTML = "tắt";
+      document.getElementById("trangthaiden1").innerHTML = neu(data['den1']);
     led.splice(0,1,data["den1"]);
     led.splice(1,1,data["den2"]);
   });
