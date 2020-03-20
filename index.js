@@ -21,8 +21,8 @@ admin.initializeApp({
   databaseURL: "https://namcu-87298.firebaseio.com"
 });
 var db = admin.database();
-var ref = db.ref("Sensor");
-ref.orderByChild("Humi").on("child_added", function(snapshot) {
+var ref = db.ref("Sensor/Humi");
+ref.on("child_added", function(snapshot) {
   console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
 });
 
