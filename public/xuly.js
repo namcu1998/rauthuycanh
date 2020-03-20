@@ -54,7 +54,6 @@ $(document).ready(function(){
   socket.on("dulieu1", function(data){
     document.getElementById("P1").innerHTML = data["P"];
     //document.getElementById("humi1").innerHTML = data["time1"];
-    else document.getElementById("trangthaiden3").innerHTML = "tắt";
     led.splice(2,1,data["den1"]);
     led.splice(3,1,data["den2"]);
   });
