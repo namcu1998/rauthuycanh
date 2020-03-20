@@ -5,7 +5,7 @@ function neu(data){
   if(data == 0) a = "bật";
   else a = "tắt";
   return a;
-}
+};
 var login = {
     "datauser":datauser,
 };
