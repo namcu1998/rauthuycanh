@@ -1,11 +1,5 @@
 var socket = io("https://namcu.herokuapp.com");
 var datauser = [];
-function neu(data){
-  var a = 0;
-  if(data == 0) a = "bật";
-  else a = "tắt";
-  return a;
-};
 var login = {
     "datauser":datauser,
 };
@@ -49,6 +43,12 @@ $(document).ready(function(){
     socket.emit("login",login);
   });
   /////////////////////////////////////////////
+  function neu(data){
+    var a = 0;
+    if(data == 0) a = "bật";
+    else a = "tắt";
+    return a;
+  };
   socket.on("dulieu", function(data){
     document.getElementById("temp").innerHTML = data["time"];
     document.getElementById("humi").innerHTML = data["time1"];
