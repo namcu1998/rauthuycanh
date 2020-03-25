@@ -21,7 +21,7 @@ admin.initializeApp({
   databaseURL: "https://namcu-1998.firebaseio.com"
 });
 var db = admin.database();
-//var ref = db.ref("Nam");
+var ref = db.ref("Nam");
 //ref.on("child_added", function(snapshot) {
   //console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
 //});
