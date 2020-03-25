@@ -22,22 +22,19 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-//ref.on("child_added", function(snapshot) {
-  //console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
-//});
-//var nhietdo = ref.child("nhietdo");
- //ref.remove();
-//var doam  = ref.child("doam");
+ref.on('child_added', function(snapshot) {
+  var message=snapshot.val();
+     console.log(message);
+});
     io.on('connection', function(socket) {
     console.log("Connected");
-
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
         socket.broadcast.emit("LED",data);
 
     });
     socket.on("login",function(data){
-      ref.push({name: "nam", age:20});
+      ref.push(data);
       console.log(data);
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {

@@ -9,7 +9,6 @@ function neu(data){
   else a ="tắt";
   return  a;
 }
-
 $(document).ready(function(){
   $("#home").hide();
   $("#login").show();
