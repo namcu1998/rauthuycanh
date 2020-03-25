@@ -21,7 +21,7 @@ admin.initializeApp({
   databaseURL: "https://namcu-87298.firebaseio.com"
 });
 var db = admin.database();
-var ref = db.ref("Sensor/Humi");
+var ref = db.ref("Nam");
 ref.on("child_added", function(snapshot) {
   console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
 });
@@ -37,6 +37,7 @@ ref.on("child_added", function(snapshot) {
 
     });
     socket.on("login",function(data){
+      ref.push({name: "nam", age:20});
       console.log(data);
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
