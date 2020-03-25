@@ -25,8 +25,8 @@ var ref = db.ref("Nam");
 ref.on("child_added", function(snapshot) {
   console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
 });
-
 //var nhietdo = ref.child("nhietdo");
+ ref.remove();
 //var doam  = ref.child("doam");
     io.on('connection', function(socket) {
     console.log("Connected");
