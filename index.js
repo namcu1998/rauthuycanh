@@ -16,11 +16,11 @@ app.use('/scripts2', express.static(__dirname + '/node_modules/epoch-charting/di
 server.listen(process.env.PORT || 3000);
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
-//admin.initializeApp({
-  //credential: admin.credential.cert(serviceAccount),
-  //databaseURL: "https://namcu-87298.firebaseio.com"
-//});
-//var db = admin.database();
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://namcu-1998.firebaseio.com"
+});
+var db = admin.database();
 //var ref = db.ref("Nam");
 //ref.on("child_added", function(snapshot) {
   //console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
