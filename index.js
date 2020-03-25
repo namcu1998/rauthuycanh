@@ -17,9 +17,9 @@ server.listen(process.env.PORT || 3000);
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
 //admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://namcu-87298.firebaseio.com"
-});
+  //credential: admin.credential.cert(serviceAccount),
+  //databaseURL: "https://namcu-87298.firebaseio.com"
+//});
 //var db = admin.database();
 //var ref = db.ref("Nam");
 //ref.on("child_added", function(snapshot) {
