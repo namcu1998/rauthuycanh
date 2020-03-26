@@ -128,9 +128,6 @@ marquee h3{
   width: 200px;
   height: 100px;
 }
-.button:hover{
-  background-color: blue;
-}
 .running-time{
   font-size: 50px;
 }
