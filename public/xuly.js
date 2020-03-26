@@ -51,13 +51,9 @@ $(document).ready(function(){
   /////////////////////////////////////////////
 
   socket.on("dulieu", function(data){
-    document.getElementById("temp").innerHTML = data["time"];
-    document.getElementById("humi").innerHTML = data["time1"];
+    document.getElementById("temp").innerHTML = data["temp"];
+    document.getElementById("humi").innerHTML = data["humi"];
     document.getElementById("P").innerHTML = data["P"];
-    document.getElementById("trangthaiden1").innerHTML = neu(data["den1"]);
-    document.getElementById("trangthaiden2").innerHTML = neu(data["den2"]);
-    led.splice(0,1,data["den1"]);
-    led.splice(1,1,data["den2"]);
   });
   socket.on("dulieu1", function(data){
     document.getElementById("P1").innerHTML = data["P"];
