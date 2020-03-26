@@ -121,9 +121,6 @@ marquee h3{
   border: yellow solid 1px;
   color: black;
 }
-.buttonio:hover{
-  color: blue;
-}
 .button{
   width: 200px;
   height: 100px;
