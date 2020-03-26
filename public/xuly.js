@@ -61,8 +61,10 @@ $(document).ready(function(){
     document.getElementById("trangthaiden2").innerHTML = neu(data["den2"]);
     document.getElementById("trangthaiden3").innerHTML = neu(data["den3"]);
     document.getElementById("trangthaiden4").innerHTML = neu(data["den4"]);
-    led.splice(2,1,data["den1"]);
-    led.splice(3,1,data["den2"]);
+    led.splice(0,1,data["den1"]);
+    led.splice(1,1,data["den2"]);
+    led.splice(2,1,data["den3"]);
+    led.splice(3,1,data["den4"]);
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
