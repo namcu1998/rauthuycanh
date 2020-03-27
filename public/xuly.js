@@ -23,7 +23,7 @@ $(document).ready(function(){
   function xulyArray(x, y){
     mang.splice(x,1,y);
     socket.emit("onden",mang);
-  }
+  };
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
     $("#home").show(2000);
