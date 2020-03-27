@@ -60,7 +60,6 @@ $(document).ready(function(){
     document.getElementById("P").innerHTML = data["P"];
   });
   socket.on("dulieu1", function(data){
-    document.getElementById("P1").innerHTML = data["P"];
     document.getElementById("trangthaiden1").innerHTML = neu(data["den1"]);
     document.getElementById("trangthaiden2").innerHTML = neu(data["den2"]);
     document.getElementById("trangthaiden3").innerHTML = neu(data["den3"]);
@@ -72,7 +71,7 @@ $(document).ready(function(){
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
-  $("#onden").click(xulyArray(0, 0)); //endm6
+  //$("#onden").click(xulyArray(0, 0)); //endm6
   //////////////////////////////////s///////////
   $("#offden").click(function(){
     led.splice(0,1,1);
