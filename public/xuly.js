@@ -22,7 +22,7 @@ $(document).ready(function(){
   //tạo một mảng led
   function xulyArray(x, y){
     mang.splice(x,1,y);
-    socket.emit("onden",mang);
+    return socket.emit("onden",mang);
   };
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
