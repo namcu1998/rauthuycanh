@@ -20,8 +20,8 @@ $(document).ready(function(){
     "led":led,
   };
   //tạo một mảng led
-  function xulyArray(a, b){
-    mang.splice(a,1,b);
+  function xulyArray(x, y){
+    mang.splice(x,1,y);
     socket.emit("onden",mang);
   }
   /////////////////////////////////////////////
