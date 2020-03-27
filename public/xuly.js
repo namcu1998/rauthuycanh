@@ -71,7 +71,7 @@ $(document).ready(function(){
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
-  //$("#onden").click(xulyArray(0, 0)); //endm6
+  $("#onden").click(xulyArray(0, 0)); //endm6
   //////////////////////////////////s///////////
   $("#offden").click(function(){
     led.splice(0,1,1);
