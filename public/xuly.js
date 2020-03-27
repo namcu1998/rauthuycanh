@@ -9,6 +9,10 @@ function neu(data){
   else a ="tắt";
   return  a;
 }
+function xulyArray(a, b){
+  mang.splice(a,1,b);
+  socket.emit("onden",mang);
+}
 $(document).ready(function(){
   $("#home").hide();
   $("#login").show();
@@ -68,10 +72,7 @@ $(document).ready(function(){
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
-  $("#onden").click(function(){
-    led.splice(0,1,0);
-       socket.emit("onden",mang);
-  }); //endm6
+  $("#onden").click(xulyArray(0, 0)); //endm6
   //////////////////////////////////s///////////
   $("#offden").click(function(){
     led.splice(0,1,1);
