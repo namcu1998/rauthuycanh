@@ -9,10 +9,6 @@ function neu(data){
   else a ="tắt";
   return  a;
 }
-function xulyArray(a, b){
-  mang.splice(a,1,b);
-  socket.emit("onden",mang);
-}
 $(document).ready(function(){
   $("#home").hide();
   $("#login").show();
@@ -24,6 +20,10 @@ $(document).ready(function(){
     "led":led,
   };
   //tạo một mảng led
+  function xulyArray(a, b){
+    mang.splice(a,1,b);
+    socket.emit("onden",mang);
+  }
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
     $("#home").show(2000);
