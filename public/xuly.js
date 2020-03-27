@@ -20,10 +20,6 @@ $(document).ready(function(){
     "led":led,
   };
   //tạo một mảng led
-  function xulyArray(x, y){
-    mang.splice(x,1,y);
-    return socket.emit("onden",mang);
-  };
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
     $("#home").show(2000);
@@ -72,7 +68,8 @@ $(document).ready(function(){
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
   $("#onden").click(function(){
-    xulyArray(0, 0);
+    led.splice(0,1,0);
+       socket.emit("onden",mang);
   }); //endm6
   //////////////////////////////////s///////////
   $("#offden").click(function(){
