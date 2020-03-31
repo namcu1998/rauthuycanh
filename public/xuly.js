@@ -56,14 +56,9 @@ $(document).ready(function(){
     document.getElementById("P").innerHTML = data["P"];
   });
   socket.on("dulieu1", function(data){
-    document.getElementById("trangthaiden1").innerHTML = neu(data["den1"]);
-    document.getElementById("trangthaiden2").innerHTML = neu(data["den2"]);
-    document.getElementById("trangthaiden3").innerHTML = neu(data["den3"]);
-    document.getElementById("trangthaiden4").innerHTML = neu(data["den4"]);
-    led.splice(0,1,data["den1"]);
-    led.splice(1,1,data["den2"]);
-    led.splice(2,1,data["den3"]);
-    led.splice(3,1,data["den4"]);
+    document.getElementById("temp").innerHTML = data["temp"];
+    document.getElementById("humi").innerHTML = data["humi"];
+    document.getElementById("P").innerHTML = data["P"];
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
