@@ -56,9 +56,9 @@ $(document).ready(function(){
     document.getElementById("P").innerHTML = data["P"];
   });
   socket.on("dulieu1", function(data){
-    document.getElementById("temp").innerHTML = data["temp"];
-    document.getElementById("humi").innerHTML = data["humi"];
-    document.getElementById("P").innerHTML = data["P"];
+    document.getElementById("temp1").innerHTML = data["temp"];
+    document.getElementById("humi1").innerHTML = data["humi"];
+    document.getElementById("P1").innerHTML = data["P"];
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
