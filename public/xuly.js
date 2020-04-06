@@ -21,8 +21,8 @@ $(document).ready(function(){
   };
   function xulyData(array){
   for (var x of array){
-    document.getElementById("test").innerHTML = '<td>' + x.nhietdo + '</td>' + +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>');
-  }
+    document.getElementById("test").innerHTML = '<td>' + x.nhietdo + '</td>' + +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>';
+  };
   }
   //tạo một mảng led
   /////////////////////////////////////////////
