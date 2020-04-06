@@ -19,6 +19,11 @@ $(document).ready(function(){
   var mang = {
     "led":led,
   };
+  function xulyData(array){
+  for (var x of array){
+    document.getElementById("test").innerHTML = '<td>' + x.nhietdo + '</td>' + +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>');
+  }
+  }
   //tạo một mảng led
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
@@ -49,7 +54,10 @@ $(document).ready(function(){
     socket.emit("login",login);
   });
   /////////////////////////////////////////////
-
+  socket.on('datatable',function(data){
+      xulyData(data);
+  })
+  /////////////////////////////////////////////
   socket.on("dulieu", function(data){
     document.getElementById("temp").innerHTML = data["temp"];
     document.getElementById("humi").innerHTML = data["humi"];
