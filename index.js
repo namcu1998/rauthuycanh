@@ -27,15 +27,17 @@ ref.on('child_added', function(snapshot) {
   var message=snapshot.val();
      console.log(message);
 });
-    function fileSave(nhietdo){
+    function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
-    function Object(nhietdo){
+    function Object(nhietdo, doam, thoigian){
     this.nhietdo = nhietdo;
+    this.doam = doam;
+    this.thoigian = thoigian;
     }
     if (data.length > 5){
     data.splice(5,1)
     }
-    data.push(new Object(nhietdo))
+    data.unshift(new Object(nhietdo, doam, thoigian))
     var data1 = JSON.stringify(data);
     fs.writeFileSync('data.json',data1);
     }
@@ -55,8 +57,6 @@ ref.on('child_added', function(snapshot) {
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
-        fileSave(Date());
-        console.log(readFile());
         socket.emit("logintrue");
       }
       else {
@@ -70,7 +70,8 @@ ref.on('child_added', function(snapshot) {
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
-
+       fileSave(data.temp,data.humi,Date());
+       console.log(readFile());
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
