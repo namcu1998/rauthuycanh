@@ -54,8 +54,9 @@ $(document).ready(function(){
     socket.emit("login",login);
   });
   /////////////////////////////////////////////
-  socket.on('datatable',function(data){
+  socket.on('dataTable',function(data){
       xulyData(data);
+      console.log(data);
   })
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
