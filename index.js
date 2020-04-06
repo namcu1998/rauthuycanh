@@ -2,6 +2,7 @@ var http = require('http');
 var express = require('express');
 var socketio = require('socket.io')
 const Sequelize = require('sequelize')
+var fs  = require('fs')
 var ip = require('ip');
 var app = express();
 var server = http.Server(app);
@@ -26,6 +27,22 @@ ref.on('child_added', function(snapshot) {
   var message=snapshot.val();
      console.log(message);
 });
+    function fileSave(nhietdo){
+    var data = JSON.parse(fs.readFileSync('data.json','utf8'))
+    function Object(nhietdo){
+    this.nhietdo = nhietdo;
+    }
+    if (data.length > 5){
+    data.splice(5,1)
+    }
+    data.push(new Object(nhietdo))
+    var data1 = JSON.stringify(data);
+    fs.writeFileSync('data.json',data1);
+    }
+    function readFile(){
+    let data = JSON.parse(fs.readFileSync('data.json','utf8'))
+    return data;
+    }
     io.on('connection', function(socket) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
@@ -38,6 +55,8 @@ ref.on('child_added', function(snapshot) {
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
+        fileSave(Date());
+        console.log(readFile());
         socket.emit("logintrue");
       }
       else {

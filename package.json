@@ -18,6 +18,7 @@
     "epoch-charting": "^0.8.4",
     "express": "^4.17.1",
     "firebase-admin": "^8.10.0",
+    "fs": "0.0.1-security",
     "ip": "^1.1.5",
     "neutrino-middleware-env": "^7.4.0",
     "pg": "^7.18.2",
