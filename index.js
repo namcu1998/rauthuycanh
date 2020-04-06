@@ -72,7 +72,7 @@ ref.on('child_added', function(snapshot) {
        socket.broadcast.emit("dulieu1",data);
        fileSave(data.temp,data.humi,Date());
        console.log(readFile());
-       socket.emit('dataTable',readFile());
+       socket.emit("dataTable",readFile());
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
