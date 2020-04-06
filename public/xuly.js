@@ -54,7 +54,7 @@ $(document).ready(function(){
     socket.emit("login",login);
   });
   /////////////////////////////////////////////
-  socket.on("dataTable",function(data){
+  socket.on("hmm",function(data){
     console.log(data);
       xulyData(data);
 
