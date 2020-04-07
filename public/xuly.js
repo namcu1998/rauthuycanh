@@ -22,7 +22,7 @@ $(document).ready(function(){
   var table = $("#lichsu");
   function xulyData(getid, array){
    var html = array.map(function(x){
-     return '<tr>' + '<td>'+ 'nhiệt đô: ' + x.nhietdo + '</td>' +'<td>' + 'độ ẩm: ' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
+     return '<tr>' + '<td>'+ 'nhiệt đô: ' + x.nhietdo + '*C' + '</td>' +'<td>' + 'độ ẩm: ' + x.doam + '%' +  '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
    })
   var htmljoin = html.join('');
   getid.html(html);
