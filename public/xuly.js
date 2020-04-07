@@ -55,7 +55,7 @@ $(document).ready(function(){
   });
   /////////////////////////////////////////////
   socket.on("hmm",function(data){
-    document.getElementById("temp").innerHTML = data;
+    xulyData(data);
   })
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
