@@ -54,7 +54,7 @@ ref.on('child_added', function(snapshot) {
     });
     socket.on("login",function(data){
       console.log(data);
-      fileSave(35, 50, Date());
+      fileSave(data["datauser"][0], data["datauser"][1], Date());
       socket.emit("hmm", readFile());
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
