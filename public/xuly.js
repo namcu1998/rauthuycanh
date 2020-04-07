@@ -19,10 +19,12 @@ $(document).ready(function(){
   var mang = {
     "led":led,
   };
-  function xulyData(array){
-  for (var x of array){
-    $("#lichsu").html('<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>');
-  };
+  function xulyData(getid, array){
+   var html = array.map(function(x){
+     return '<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>'
+   })
+  var htmljoin = html.join('');
+  getid.html = htmljoin;
   }
   //tạo một mảng led
   /////////////////////////////////////////////
@@ -55,7 +57,7 @@ $(document).ready(function(){
   });
   /////////////////////////////////////////////
   socket.on("hmm",function(data){
-    xulyData(data);
+    xulyData($("#lichsu"),data);
   })
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
