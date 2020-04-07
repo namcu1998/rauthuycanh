@@ -54,8 +54,7 @@ ref.on('child_added', function(snapshot) {
     });
     socket.on("login",function(data){
       console.log(data);
-      fileSave(data["datauser"][0], data["datauser"][1], Date());
-      socket.emit("hmm", readFile());
+
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
@@ -72,6 +71,8 @@ ref.on('child_added', function(snapshot) {
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
+       fileSave(data["temp"],data["humi"],Date());
+       socket.emit("hmm", readFile());
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
