@@ -59,8 +59,12 @@ marquee h3{
   color: #ffffff;
   text-align: center;
 }
-#header div ul{
-
+#lichsu{
+  color: white;
+  border: 1px solid;
+}
+tbody tr td{
+  border: 1px solid;
 }
 #mid-left{
   float: left;
