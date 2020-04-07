@@ -59,9 +59,13 @@ marquee h3{
   color: #ffffff;
   text-align: center;
 }
+table{
+  background-color: white;
+}
 #lichsu{
-  color: white;
+  color: black;
   border: 1px solid;
+  font-size: 2em;
 }
 tbody tr td{
   border: 1px solid;
