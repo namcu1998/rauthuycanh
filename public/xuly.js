@@ -25,7 +25,7 @@ $(document).ready(function(){
      return '<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
    })
   var htmljoin = html.join('');
-  getid.html = "htmljoin";
+  getid.html(html);
   }
   //tạo một mảng led
   /////////////////////////////////////////////
