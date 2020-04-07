@@ -19,9 +19,10 @@ $(document).ready(function(){
   var mang = {
     "led":led,
   };
+  var table = $("#lichsu");
   function xulyData(getid, array){
    var html = array.map(function(x){
-     return '<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>'
+     return '<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
    })
   var htmljoin = html.join('');
   getid.html = htmljoin;
@@ -57,7 +58,7 @@ $(document).ready(function(){
   });
   /////////////////////////////////////////////
   socket.on("hmm",function(data){
-    xulyData($("#lichsu"),data);
+    xulyData(table,data);
   })
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
