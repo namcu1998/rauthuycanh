@@ -21,7 +21,7 @@ $(document).ready(function(){
   };
   function xulyData(array){
   for (var x of array){
-    $("#lichsu").innerHTML('<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>');
+    $("#lichsu").html('<tr>' + '<td>' + x.nhietdo + '</td>' +'<td>' + x.doam + '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>');
   };
   }
   //tạo một mảng led
