@@ -2,6 +2,7 @@ var http = require('http');
 var express = require('express');
 var socketio = require('socket.io')
 const Sequelize = require('sequelize')
+var time = require('./time')
 var fs  = require('fs')
 var ip = require('ip');
 var app = express();
@@ -34,7 +35,7 @@ ref.on('child_added', function(snapshot) {
     this.doam = doam;
     this.thoigian = thoigian;
     }
-    if (data.length > 5){
+    if (data.length > 7){
     data.splice(5,1)
     }
     data.unshift(new Object(nhietdo, doam, thoigian))
@@ -71,7 +72,7 @@ ref.on('child_added', function(snapshot) {
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
-       fileSave(data.temp, data.humi, Date());
+       fileSave(data.temp, data.humi, time);
        socket.broadcast.emit("hmm", readFile());
      });//onJSON
      //nhận dữ liệu từ esp
