@@ -68,6 +68,7 @@ table{
   color: white;
   border: 1px solid;
   text-align: left;
+  padding: 10px;
 }
 tbody tr td{
   border: 1px solid;
