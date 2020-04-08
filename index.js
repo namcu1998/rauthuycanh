@@ -2,7 +2,6 @@ var http = require('http');
 var express = require('express');
 var socketio = require('socket.io')
 const Sequelize = require('sequelize')
-var time = require('./time')
 var fs  = require('fs')
 var ip = require('ip');
 var app = express();
