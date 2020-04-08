@@ -63,9 +63,10 @@ table{
   text-align: center;
   width: 1350px;
   font-size: 2em;
+  color: white;
 }
 #lichsu{
-  color: white;
+
   border: 1px solid;
   text-align: left;
   padding: 10px;
