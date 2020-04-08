@@ -97,10 +97,8 @@ tbody tr td{
 }
 #bot{
   clear: both;
-
   font-family: arial;
   text-align: left;
-  padding-top: 100px;
   height: 200px;
 }
 #line{
