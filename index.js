@@ -67,7 +67,7 @@ function time(){
     this.doam = doam;
     this.thoigian = thoigian;
     }
-    if (data.length > 10){
+    if (data.length > 6){
     data.splice(5,1)
     }
     data.unshift(new Object(nhietdo, doam, thoigian))
