@@ -60,7 +60,6 @@ marquee h3{
   text-align: center;
 }
 table{
-  background-color: white;
   text-align: center;
 }
 #lichsu{
@@ -73,7 +72,7 @@ tbody tr td{
 }
 #mid-left{
   float: left;
-  height: 500px;
+  height: 300px;
   width: 200px;
   background-image: url();
   color: #ffffff;
@@ -81,7 +80,7 @@ tbody tr td{
 }
 #mid{
   width: 575px;
-  height: 500px;
+  height: 300px;
   float: left;
 
   color: #ffffff;
@@ -89,7 +88,7 @@ tbody tr td{
 }
 #mid-right{
   float: left;
-  height: 500px;
+  height: 300px;
   width: 575px;
 
   color: #ffffff;
