@@ -63,7 +63,7 @@ table{
   text-align: center;
 }
 #lichsu{
-  color: black;
+  color: white;
   border: 1px solid;
   font-size: 2em;
 }
@@ -99,6 +99,7 @@ tbody tr td{
   font-family: arial;
   text-align: left;
   height: 200px;
+  margin-top: 100px;
 }
 #line{
   height: 1px;
