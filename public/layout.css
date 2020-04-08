@@ -60,7 +60,8 @@ marquee h3{
   text-align: center;
 }
 table{
-  text-align: center;
+  text-align: left;
+  width: 1350px;
 }
 #lichsu{
   color: white;
