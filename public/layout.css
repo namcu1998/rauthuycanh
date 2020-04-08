@@ -60,13 +60,14 @@ marquee h3{
   text-align: center;
 }
 table{
-  text-align: left;
+  text-align: center;
   width: 1350px;
+  font-size: 2em;
 }
 #lichsu{
   color: white;
   border: 1px solid;
-  font-size: 2em;
+  text-align: left;
 }
 tbody tr td{
   border: 1px solid;
