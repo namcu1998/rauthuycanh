@@ -28,7 +28,7 @@ ref.on('child_added', function(snapshot) {
   var message=snapshot.val();
      console.log(message);
 });
-var ngay = ngay();
+
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
     function Object(nhietdo, doam, thoigian){
@@ -73,7 +73,7 @@ var ngay = ngay();
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
-       fileSave(data.temp, data.humi, moment().tz("Asia/Ho_Chi_Minh").format('llll'););
+       fileSave(data.temp, data.humi, moment().tz("Asia/Ho_Chi_Minh").format('llll'));
        socket.broadcast.emit("hmm", readFile());
      });//onJSON
      //nhận dữ liệu từ esp
