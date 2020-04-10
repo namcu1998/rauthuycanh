@@ -1,5 +1,5 @@
 body{
-  width: 1350px;
+  width: 1300px;
   height: 600px;
   margin: 0 0;
   font-family: arial,Times;
@@ -14,10 +14,7 @@ body{
   text-align: center;
   padding-top: 200px;
 }
-audio{
-  width: 1000px;
-  height: 100px;
-}
+
 #login p{
   color: #fff;
   font-size: 5em;
@@ -61,7 +58,7 @@ marquee h3{
 }
 table{
   text-align: center;
-  width: 1350px;
+  width: 100%   ;
   font-size: 2em;
   color: white;
 }
@@ -76,13 +73,13 @@ tbody tr td{
 #mid-left{
   float: left;
   height: 300px;
-  width: 200px;
+  width: 33%;
   background-image: url();
   color: #ffffff;
   text-align: center;
 }
 #mid{
-  width: 575px;
+  width: 33%;
   height: 300px;
   float: left;
 
@@ -92,7 +89,7 @@ tbody tr td{
 #mid-right{
   float: left;
   height: 300px;
-  width: 575px;
+  width: 33%;
 
   color: #ffffff;
   text-align: center;
