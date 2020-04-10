@@ -68,7 +68,7 @@ table{
 #lichsu{
   border: 1px solid;
   text-align: left;
-
+  overflow: scroll;
 }
 tbody tr td{
   border: 1px solid;
