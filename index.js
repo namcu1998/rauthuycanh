@@ -2,6 +2,7 @@ var http = require('http');
 var express = require('express');
 var socketio = require('socket.io')
 const Sequelize = require('sequelize')
+var moment = require('moment-timezone')
 var fs  = require('fs')
 var ip = require('ip');
 var app = express();
@@ -28,38 +29,6 @@ ref.on('child_added', function(snapshot) {
      console.log(message);
 });
 var ngay = ngay();
-function ngay(){
-  var date = new Date();
-  var day1 = date.getDay()
-  switch (day1) {
-    case 0:
-      return 'thứ hai';
-    case 1:
-      return 'thứ ba';
-    case 2:
-      return 'thứ tư';
-    case 3:
-      return 'thứ năm';
-    case 4:
-      return 'thứ sáu';
-    case 5:
-      return 'thứ bảy';
-    case 6:
-      return 'chủ nhật';
-  }
-}
-function time(){
-  var date = new Date();
-  var array
-  var day = date.getDate()
-  var month = date.getMonth() + 1
-  var year = date.getFullYear()
-  var hours = date.getHours() + 7
-  var minutes = date.getMinutes()
-  var seconds = date.getSeconds()
-  array = (ngay + ' ' +  day + '-' + month + '-' + year + ' ' + hours + ':' + minutes + ':' + seconds)
-  return array;
-}
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
     function Object(nhietdo, doam, thoigian){
@@ -104,7 +73,7 @@ function time(){
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);
-       fileSave(data.temp, data.humi, time());
+       fileSave(data.temp, data.humi, moment().tz("Asia/Ho_Chi_Minh").format('llll'););
        socket.broadcast.emit("hmm", readFile());
      });//onJSON
      //nhận dữ liệu từ esp
