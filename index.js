@@ -73,7 +73,7 @@ ref.on('child_added', function(snapshot) {
       ngay = 'chủ nhật'
       break;
   }
-  var date = moment().tz("Asia/Ho_Chi_Minh").format('L');
+  var date = moment().tz("Asia/Ho_Chi_Minh").format('DD-MM-YYYY');
   var time = moment().tz("Asia/Ho_Chi_Minh").format('LTS');
   return ngay + ' ' + date + ' ' + time;
 }

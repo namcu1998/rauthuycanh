@@ -101,8 +101,8 @@ tbody tr td{
   clear: both;
   font-family: arial;
   text-align: left;
-  height: 200px;
-  padding-top: 100px;
+  height: 400px;
+  margin-top: 400px;
   overflow-y: auto;
 }
 #line{
@@ -131,6 +131,9 @@ tbody tr td{
   border-radius: 30px;
   border: yellow solid 1px;
   color: black;
+}
+#home img{
+  height: 1350px;
 }
 .button{
   width: 200px;
