@@ -97,9 +97,11 @@ ref.on('child_added', function(snapshot) {
       }
     });
     ///////////////////////////////////////////////////////////
+    socket.on("data",function(){
+      socket.emit("hmm", readFile());
+    }
      socket.on("JSON",function(data){
        socket.broadcast.emit("dulieu",data);
-
      });//onJSON
      socket.on("JSON1",function(data){
        socket.broadcast.emit("dulieu1",data);

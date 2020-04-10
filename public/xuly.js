@@ -14,6 +14,7 @@ $(document).ready(function(){
   $("#login").show();
   $("#Sensor1").hide();
   $("#button1").hide();
+  socket.emit("data");
   /////////////////////////////////////////////
   var led = [1,1,1,1];
   var mang = {
