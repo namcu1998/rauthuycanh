@@ -69,6 +69,7 @@ table{
   border: 1px solid;
   text-align: left;
   overflow: scroll;
+  height: 400px;
 }
 tbody tr td{
   border: 1px solid;
