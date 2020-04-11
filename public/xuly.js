@@ -60,6 +60,7 @@ $(document).ready(function(){
   /////////////////////////////////////////////
   socket.on("hmm",function(data){
     xulyData(table,data);
+    document.getElementById("hitory").innerHTML = data.length;
   })
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
