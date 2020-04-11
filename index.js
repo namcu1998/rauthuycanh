@@ -39,6 +39,7 @@ ref.on('child_added', function(snapshot) {
     if (data.length > 1000){
     data.splice(1000,10)
     }
+    console.log(data.length)
     data.unshift(new Object(nhietdo, doam, thoigian))
     var data1 = JSON.stringify(data);
     fs.writeFileSync('data.json',data1);

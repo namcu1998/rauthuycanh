@@ -149,7 +149,7 @@ tbody tr td{
     height: 100%;
     margin: 0 0;
     font-family: arial,Times;
-    color: black;
+    color: white;
     position: absolute;
     font-family: cursive, serif;
   }
@@ -173,5 +173,12 @@ tbody tr td{
   }
   #header h1{
     margin: 0;
+  }
+  #bot{
+    font-family: arial;
+    text-align: left;
+    height: 400px;
+    margin-top: 400px;
+    overflow-y: auto;
   }
 }
