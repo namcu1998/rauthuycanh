@@ -97,8 +97,10 @@ tbody tr td{
   color: #ffffff;
   text-align: center;
 }
+#kebot{
+      clear: both;
+}
 #bot{
-  clear: both;
   font-family: arial;
   text-align: left;
   height: 400px;
@@ -138,6 +140,9 @@ tbody tr td{
 }
 .running-time{
   font-size: 50px;
+}
+#hitory{
+  color: white;
 }
 }
 @media only screen and (max-width: 600px) {
@@ -196,8 +201,8 @@ tbody tr td{
     color: #ffffff;
     text-align: center;
   }
+
   #bot{
-    clear: both;
     font-family: arial;
     text-align: left;
     height: 400px;
