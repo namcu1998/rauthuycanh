@@ -183,13 +183,13 @@ tbody tr td{
   #mid-left{
     float: left;
     height: 300px;
-    width: 33%;
+    width: 20%;
     background-image: url();
     color: #ffffff;
     text-align: center;
   }
   #mid{
-    width: 33%;
+    width: 30%;
     height: 300px;
     float: left;
     color: #ffffff;
@@ -198,12 +198,12 @@ tbody tr td{
   #mid-right{
     float: left;
     height: 300px;
-    width: 33%;
-
+    width: 50%;
     color: #ffffff;
     text-align: center;
   }
   #bot{
+    clear: both;
     font-family: arial;
     text-align: left;
     height: 400px;
@@ -218,10 +218,14 @@ tbody tr td{
     color: black;
   }
   .button{
-    width: 200px;
+    width: 100%;
     background-color: transparent;
     border: 0px;
     color: #ffffff;
     transition: 2s;
+  }
+  tbody tr td{
+    border: 1px solid;
+    padding: 10px;
   }
 }
