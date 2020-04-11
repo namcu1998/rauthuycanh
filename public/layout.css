@@ -153,10 +153,7 @@ tbody tr td{
     position: absolute;
     font-family: cursive, serif;
   }
-  h1{
-    margin: 0;
-  }
-  p{
+  body h1,p{
     margin: 0;
   }
   #login{
