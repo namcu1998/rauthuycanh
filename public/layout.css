@@ -141,3 +141,8 @@ tbody tr td{
 .running-time{
   font-size: 50px;
 }
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}

@@ -36,8 +36,8 @@ ref.on('child_added', function(snapshot) {
     this.doam = doam;
     this.thoigian = thoigian;
     }
-    if (data.length > 20){
-    data.splice(20,10)
+    if (data.length > 1000){
+    data.splice(1000,10)
     }
     data.unshift(new Object(nhietdo, doam, thoigian))
     var data1 = JSON.stringify(data);
