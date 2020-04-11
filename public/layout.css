@@ -146,7 +146,7 @@ tbody tr td{
 @media only screen and (max-width: 600px) {
   body {
     width: 100%;
-    height: 600px;
+    height: 100%;
     margin: 0 0;
     font-family: arial,Times;
     color: black;
@@ -159,13 +159,6 @@ tbody tr td{
     background-image: url(https://images2.alphacoders.com/929/thumb-1920-929408.jpg);
     text-align: center;
     padding-top: 200px;
-  }
-  #home img{
-    position: absolute;
-    z-index: -1;
-    filter: blur(6px);
-    width: 100%;
-    height: 100%;
   }
   #home{
     position: relative;
