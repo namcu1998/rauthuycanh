@@ -145,6 +145,20 @@ tbody tr td{
 }
 @media only screen and (max-width: 600px) {
   body {
-    background-color: lightblue;
+    width: 100%;
+    height: 600px;
+    margin: 0 0;
+    font-family: arial,Times;
+    color: black;
+    position: absolute;
+    font-family: cursive, serif;
   }
+  #login{
+    width: 100%;
+    height: 100%;
+    background-image: url(https://images2.alphacoders.com/929/thumb-1920-929408.jpg);
+    text-align: center;
+    padding-top: 200px;
+  }
+
 }
