@@ -181,7 +181,7 @@ tbody tr td{
   }
   #mid-left{
     float: left;
-    height: 300px;
+    height: 250px;
     width: 20%;
     background-image: url();
     color: #ffffff;
@@ -189,22 +189,20 @@ tbody tr td{
   }
   #mid{
     width: 30%;
-    height: 300px;
+    height: 250px;
     float: left;
     color: #ffffff;
     text-align: center;
   }
   #mid-right{
     float: left;
-    height: 300px;
+    height: 250px;
     width: 50%;
     color: #ffffff;
     text-align: center;
   }
-
   #kebot{
-        clear: both;
-        margin-top: 400px;
+    clear: both;
   }
   #bot{
     font-family: arial;
