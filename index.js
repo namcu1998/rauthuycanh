@@ -24,7 +24,7 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-function db(){
+function dbase(){
   ref.on('child_added', function(snapshot) {
     var message=snapshot.val();
        console.log(message);
@@ -92,7 +92,7 @@ function db(){
     socket.on("login",function(data){
       console.log(data);
       ref.push(data);
-      console.log(db)
+      console.log(dbase())
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
