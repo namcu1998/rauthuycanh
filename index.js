@@ -27,7 +27,8 @@ var ref = db.ref("Nam");
 function dbase(){
   ref.on('child_added', function(snapshot) {
     var message=snapshot.val();
-       return message;
+    console.log(message)
+
   });
 }
 
@@ -90,7 +91,7 @@ function dbase(){
     });
     socket.on("login",function(data){
       ref.push(data);
-      console.log(dbase())
+      dbase()
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
