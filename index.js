@@ -24,10 +24,14 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-ref.on('child_added', function(snapshot) {
-  var message=snapshot.val();
-     console.log(message);
-});
+function db(){
+  ref.on('child_added', function(snapshot) {
+    var message=snapshot.val();
+       console.log(message);
+       return message;
+  });
+}
+
 
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
@@ -88,7 +92,7 @@ ref.on('child_added', function(snapshot) {
     socket.on("login",function(data){
       console.log(data);
       ref.push(data);
-      console.log(message)
+      console.log(db)
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
