@@ -87,7 +87,7 @@ ref.on('child_added', function(snapshot) {
     });
     socket.on("login",function(data){
       console.log(data);
-
+      ref.push(data);
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
