@@ -107,7 +107,7 @@ var ref = db.ref("Nam");
        socket.broadcast.emit("dulieu",data);
      });//onJSON
      socket.on("JSON1",function(data){
-       ref.push(data);
+       
        socket.broadcast.emit("dulieu1",data);
        fileSave(data.temp, data.humi, time());
        socket.broadcast.emit("hmm", readFile());
