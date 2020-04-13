@@ -32,8 +32,8 @@ var ref = db.ref("Nam");
     this.doam = doam;
     this.thoigian = thoigian;
     }
-    if (data.length > 50){
-    data.splice(50,1)
+    if (data.length > 999){
+    data.splice(999,1)
     };
     console.log(data.length)
     data.unshift(new Object(nhietdo, doam, thoigian))
