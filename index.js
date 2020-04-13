@@ -24,13 +24,11 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-function dbase(){
   ref.on('child_added', function(snapshot) {
     var message=snapshot.val();
     console.log(message)
 
   });
-}
 
 
     function fileSave(nhietdo, doam, thoigian){
@@ -90,8 +88,7 @@ function dbase(){
 
     });
     socket.on("login",function(data){
-      ref.push(data);
-      dbase()
+
       if(data["datauser"][0] == 'bonghoaxinh'&& data["datauser"][1] == 'nam2351998')
       {
         console.log("user true");
@@ -110,6 +107,7 @@ function dbase(){
        socket.broadcast.emit("dulieu",data);
      });//onJSON
      socket.on("JSON1",function(data){
+       ref.push(data);
        socket.broadcast.emit("dulieu1",data);
        fileSave(data.temp, data.humi, time());
        socket.broadcast.emit("hmm", readFile());
