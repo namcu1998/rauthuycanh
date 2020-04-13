@@ -24,12 +24,6 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-  ref.on('child_added', function(snapshot) {
-    var message=snapshot.val();
-    console.log(message)
-
-  });
-
 
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
@@ -80,6 +74,11 @@ var ref = db.ref("Nam");
   var time = moment().tz("Asia/Ho_Chi_Minh").format('LTS');
   return ngay + ' ' + date + ' ' + time;
 }
+ref.on('child_added', function(snapshot) {
+  var message=snapshot.val();
+  console.log(message)
+  fileSave(message.temp,message.humi,message.time)
+});
     io.on('connection', function(socket) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
@@ -107,9 +106,9 @@ var ref = db.ref("Nam");
        socket.broadcast.emit("dulieu",data);
      });//onJSON
      socket.on("JSON1",function(data){
-       
+       data.time = time();
+       ref.push(data);
        socket.broadcast.emit("dulieu1",data);
-       fileSave(data.temp, data.humi, time());
        socket.broadcast.emit("hmm", readFile());
      });//onJSON
      //nhận dữ liệu từ esp
