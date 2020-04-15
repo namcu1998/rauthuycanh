@@ -24,19 +24,22 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-
+var number = 0;
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
-    function Object(nhietdo, doam, thoigian){
+    data = [];
+    function Object(nhietdo, doam, thoigian, id){
+    this.id = id
     this.nhietdo = nhietdo;
     this.doam = doam;
     this.thoigian = thoigian;
     }
+    number = number + 1;
     if (data.length > 999){
     data.splice(999,1)
     };
     console.log(data.length)
-    data.unshift(new Object(nhietdo, doam, thoigian))
+    data.unshift(new Object(nhietdo, doam, thoigian, number))
     var data1 = JSON.stringify(data);
     fs.writeFileSync('data.json',data1);
     }
