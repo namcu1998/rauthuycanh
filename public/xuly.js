@@ -29,6 +29,12 @@ $(document).ready(function(){
   var htmljoin = html.join('');
   getid.html(html);
   }
+  function xulyden(item1, item2){
+    if(item1 == 0){
+      item2.bootstrapToggle('on')
+    }
+    else item2.bootstrapToggle('off')
+  }
   //tạo một mảng led
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
@@ -73,8 +79,10 @@ $(document).ready(function(){
     document.getElementById("temp1").innerHTML = data["temp"];
     document.getElementById("humi1").innerHTML = data["humi"];
     document.getElementById("P1").innerHTML = data["P"];
+    xulyden(data[den1],$('#toggle-event'));
   });
   //nhận dữ liệu từ server
+
 /////////////////////////////////////////////
 $('#toggle-event').change(function() {
   if($(this).prop('checked') == true){
