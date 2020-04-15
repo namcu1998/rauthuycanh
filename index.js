@@ -28,7 +28,7 @@ var number = 0;
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
     function Object(nhietdo, doam, thoigian, id){
-    this.id = id
+    this.id = id;
     this.nhietdo = nhietdo;
     this.doam = doam;
     this.thoigian = thoigian;
