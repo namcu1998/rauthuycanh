@@ -204,6 +204,8 @@ tbody tr td{
   }
   #kebot{
     clear: both;
+    font-size: 2em;
+    text-align: center;
   }
   #bot{
     font-family: arial;

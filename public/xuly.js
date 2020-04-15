@@ -64,7 +64,7 @@ $(document).ready(function(){
   })
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
-    //document.getElementById("temp").innerHTML = data["temp"];
+    document.getElementById("temp").innerHTML = data["temp"];
     document.getElementById("humi").innerHTML = data["humi"];
     document.getElementById("P").innerHTML = data["P"];
   });
