@@ -34,7 +34,9 @@ var number = 0;
     this.thoigian = thoigian;
     }
     number = number + 1;
-
+    if(data.length > 49){
+      splice(49,1);
+    }
     console.log(data.length)
     data.unshift(new Object(nhietdo, doam, thoigian, number))
     var data1 = JSON.stringify(data);
