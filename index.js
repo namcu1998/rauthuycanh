@@ -109,6 +109,7 @@ ref.on('child_added', function(snapshot) {
        data.time = time();
        socket.broadcast.emit("dulieu1",data);
        socket.broadcast.emit("hmm", readFile());
+       console.log(data)
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
