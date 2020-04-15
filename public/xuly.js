@@ -82,7 +82,7 @@ $('#toggle-event').change(function() {
     socket.emit("onden",mang);
   }
   else {
-    led.splice(1,1,1);
+    led.splice(0,1,1);
     socket.emit("onden",mang);
   }
 })
