@@ -13,8 +13,8 @@ app.set("view engine","ejs");
 app.set("views","./views");
 app.use(express.static("webapp"));
 app.use('/scripts', express.static(__dirname + '/node_modules/d3/'));
-app.use('/scripts1', express.static(__dirname + '/node_modules/epoch-charting/dist/js/'));
-app.use('/scripts2', express.static(__dirname + '/node_modules/epoch-charting/dist/css/'));
+app.use('/css', express.static(__dirname + '/css/'));
+app.use('/js', express.static(__dirname + '/js/'));
 server.listen(process.env.PORT || 3000);
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
@@ -34,7 +34,7 @@ var number = 0;
     this.thoigian = thoigian;
     }
     number = number + 1;
-    
+
     console.log(data.length)
     data.unshift(new Object(nhietdo, doam, thoigian, number))
     var data1 = JSON.stringify(data);
