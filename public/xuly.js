@@ -20,6 +20,12 @@ $(document).ready(function(){
   var mang = {
     "led":led,
   };
+  $('#toggle-event').change(function() {
+    if($(this).prop('checked') == true){
+      $('#console-event').html('Toggle: ' + 'đúng')
+    }
+    else $('#console-event').html('Toggle: ' + 'sai')
+  })
   var table = $("#lichsu");
   function xulyData(getid, array){
    var html = array.map(function(x){
