@@ -10,8 +10,19 @@
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="namcu">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+      <link rel="canonical" href="http://www.bootstraptoggle.com">
+    	<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet" >
+    	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    	<link href="css/bootstrap-toggle.css" rel="stylesheet">
+      <script src="js/bootstrap-toggle.js"></script>
 </head>
 <body >
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/bootstrap-toggle.js"></script>
   <div id ="login">
     <form class="pure-form">
     <fieldset>
@@ -89,8 +100,7 @@
       <span class="led" id="trangthaiden1">...</span>
       </div>
       <div id="den1" class="led">
-      <input type="button" id="onden" class="buttonio" value="On"/>
-      <input type="button" id="offden" class="buttonio" value="Off"/>
+      <input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
       </div>
       </div>
       <div>
