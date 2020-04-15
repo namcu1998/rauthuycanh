@@ -10,8 +10,8 @@ function neu(data){
   return  a;
 }
 $(document).ready(function(){
-  $("#home").hide();
-  $("#login").show();
+  $("#home").show();
+  $("#login").hide();
   $("#Sensor1").hide();
   $("#button1").hide();
   socket.emit("data");
