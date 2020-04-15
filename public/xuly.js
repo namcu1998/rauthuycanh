@@ -20,12 +20,7 @@ $(document).ready(function(){
   var mang = {
     "led":led,
   };
-  $('#toggle-event').change(function() {
-    if($(this).prop('checked') == true){
-      $('#console-event').html('Toggle: ' + 'đúng')
-    }
-    else $('#console-event').html('Toggle: ' + 'sai')
-  })
+
   var table = $("#lichsu");
   function xulyData(getid, array){
    var html = array.map(function(x){
@@ -81,15 +76,16 @@ $(document).ready(function(){
   });
   //nhận dữ liệu từ server
 /////////////////////////////////////////////
-  $("#onden").click(function(){
+$('#toggle-event').change(function() {
+  if($(this).prop('checked') == true){
     led.splice(0,1,0);
-       socket.emit("onden",mang);
-  }); //endm6
-  //////////////////////////////////s///////////
-  $("#offden").click(function(){
-    led.splice(0,1,1);
-       socket.emit("onden",mang);
-  }); //end
+    socket.emit("onden",mang);
+  }
+  else {
+    led.splice(1,1,1);
+    socket.emit("onden",mang);
+  }
+})
   /////////////////////////////////////////////
   $("#onden1").click(function(){
     led.splice(1,1,0);
