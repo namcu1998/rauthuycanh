@@ -35,7 +35,7 @@ var number = 0;
     }
     number = number + 1;
     if(data.length > 49){
-      splice(49,1);
+      data.splice(49,1);
     }
     console.log(data.length)
     data.unshift(new Object(nhietdo, doam, thoigian, number))
