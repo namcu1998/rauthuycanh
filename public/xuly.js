@@ -37,6 +37,7 @@ $(document).ready(function(){
   }
   //tạo một mảng led
   xulyden(led[0],$('#toggle-event'))
+  document.getElementById("trangthaiden1").innerHTML = led[0];
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
     $("#home").show(2000);
