@@ -121,6 +121,7 @@ ref.on('child_added', function(snapshot) {
      });//onJSON
      socket.on("JSON1",function(data){
        data.time = time();
+       ref.push(data);
        socket.broadcast.emit("dulieu1",data);
        socket.broadcast.emit("hmm", readFile());
        console.log(data)
