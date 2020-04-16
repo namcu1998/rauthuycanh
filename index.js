@@ -99,7 +99,7 @@ ref.on('child_added', function(snapshot) {
       }
     });
     socket.on("getled", function(){
-      sockets.broadcast.emit.emit("GETLED");
+      sockets.broadcast.emit("GETLED");
     })
     socket.on("REQUESTLED", function(data){
       sockets.broadcast.emit("led", data)
