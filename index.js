@@ -24,7 +24,7 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-ref.remove()
+//ref.remove()
   .then(function() {
     console.log("Remove succeeded.")
   })
