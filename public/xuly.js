@@ -81,7 +81,7 @@ $(document).ready(function(){
     document.getElementById("temp1").innerHTML = data["temp"];
     document.getElementById("humi1").innerHTML = data["humi"];
     document.getElementById("P1").innerHTML = data["P"];
-    led.splice(0,1,data[den1]);
+    led.splice(0,1,data["den1"]);
   });
   //nhận dữ liệu từ server
 
