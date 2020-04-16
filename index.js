@@ -24,8 +24,7 @@ admin.initializeApp({
 });
 var db = admin.database();
 var ref = db.ref("Nam");
-var adaRef = firebase.database().ref('Nam');
-adaRef.remove()
+ref.remove()
   .then(function() {
     console.log("Remove succeeded.")
   })
