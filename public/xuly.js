@@ -104,35 +104,6 @@ $('#toggle-event').change(function() {
     socket.emit("onden",mang);
   }
 })
-  /////////////////////////////////////////////
-  $("#onden1").click(function(){
-    led.splice(1,1,0);
-       socket.emit("onden",mang);
-  }); //end
-  /////////////////////////////////////////////
-  $("#offden1").click(function(){
-    led.splice(1,1,1);
-       socket.emit("onden",mang);
-  }); //end
-  //gửi dữ liệu về server
-  /////////////////////////////////////////////
-  $("#onden2").click(function(){
-    led.splice(2,1,0);
-       socket.emit("onden",mang);
-  }); //end
-  /////////////////////////////////////////////
-  $("#offden2").click(function(){
-    led.splice(2,1,1);
-       socket.emit("onden",mang);
-  }); //end
-  /////////////////////////////////////////////
-  $("#onden3").click(function(){
-    led.splice(3,1,0);
-       socket.emit("onden",mang);
-  }); //end
-  /////////////////////////////////////////////
-  $("#offden3").click(function(){
-    led.splice(3,1,1);
-       socket.emit("onden",mang);
-  }); //end
+
+
 }); //document
