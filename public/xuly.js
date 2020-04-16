@@ -79,12 +79,21 @@ $(document).ready(function(){
     document.getElementById("temp1").innerHTML = data["temp"];
     document.getElementById("humi1").innerHTML = data["humi"];
     document.getElementById("P1").innerHTML = data["P"];
-    xulyden(data[den1],$('#toggle-event'));
+    
   });
   //nhận dữ liệu từ server
 
 /////////////////////////////////////////////
-
+$('#toggle-event').change(function() {
+  if($(this).prop('checked') == true){
+    led.splice(0,1,0);
+    socket.emit("onden",mang);
+  }
+  else {
+    led.splice(0,1,1);
+    socket.emit("onden",mang);
+  }
+})
   /////////////////////////////////////////////
   $("#onden1").click(function(){
     led.splice(1,1,0);
