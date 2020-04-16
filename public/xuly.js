@@ -94,7 +94,16 @@ $(document).ready(function(){
   //nhận dữ liệu từ server
 
 /////////////////////////////////////////////
-
+$('#toggle-event').change(function() {
+  if($(this).prop('checked') == true){
+    led.splice(0,1,0);
+    socket.emit("onden",mang);
+  }
+  else {
+    led.splice(0,1,1);
+    socket.emit("onden",mang);
+  }
+})
   /////////////////////////////////////////////
   $("#onden1").click(function(){
     led.splice(1,1,0);

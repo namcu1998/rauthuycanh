@@ -85,7 +85,7 @@ ref.on('child_added', function(snapshot) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
     socket.on("onden",function(data){
-        socket.broadcast.emit("LED",data);
+        //socket.broadcast.emit("LED",data);
     });
     socket.on("login",function(data){
 
