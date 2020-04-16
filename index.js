@@ -25,12 +25,12 @@ admin.initializeApp({
 var db = admin.database();
 var ref = db.ref("Nam");
 //ref.remove()
-  .then(function() {
-    console.log("Remove succeeded.")
-  })
-  .catch(function(error) {
-    console.log("Remove failed: " + error.message)
-  });
+  //.then(function() {
+  //  console.log("Remove succeeded.")
+  //})
+  //.catch(function(error) {
+  //  console.log("Remove failed: " + error.message)
+//  });
 var number = 0;
     function fileSave(nhietdo, doam, thoigian){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
