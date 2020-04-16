@@ -15,6 +15,7 @@ $(document).ready(function(){
   $("#Sensor1").hide();
   $("#button1").hide();
   socket.emit("data");
+  socket.emit("getled")
   /////////////////////////////////////////////
   var led = [1,1,1,1];
   var mang = {
@@ -36,7 +37,7 @@ $(document).ready(function(){
     else item2.bootstrapToggle('off')
   }
   //tạo một mảng led
-  xulyden(led[0],$('#toggle-event'))
+
 
   /////////////////////////////////////////////
   socket.on("logintrue",function(){
@@ -71,6 +72,14 @@ $(document).ready(function(){
     xulyData(table,data);
     document.getElementById("hitory").innerHTML = data.length;
   })
+  socket.on("led", function(data){
+    led.splice(0,1,data["den1"]);
+    led.splice(1,1,data["den2"]);
+    led.splice(2,1,data["den3"]);
+    led.splice(3,1,data["den4"]);
+      xulyden(led[0],$('#toggle-event'))
+  })
+
   /////////////////////////////////////////////
   socket.on("dulieu", function(data){
     document.getElementById("temp").innerHTML = data["temp"];
@@ -81,9 +90,7 @@ $(document).ready(function(){
     document.getElementById("temp1").innerHTML = data["temp"];
     document.getElementById("humi1").innerHTML = data["humi"];
     document.getElementById("P1").innerHTML = data["P"];
-    led.splice(0,1,data["den1"]);
-    document.getElementById("trangthaiden1").innerHTML = led[0];
-  });
+    });
   //nhận dữ liệu từ server
 
 /////////////////////////////////////////////

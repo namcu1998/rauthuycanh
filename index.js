@@ -98,6 +98,12 @@ ref.on('child_added', function(snapshot) {
         socket.emit("loginfail");
       }
     });
+    socket.on("getled", function(){
+      sockets.broadcast.emit.emit("GETLED");
+    })
+    socket.on("REQUESTLED", function(data){
+      sockets.broadcast.emit("led", data)
+    })
     ///////////////////////////////////////////////////////////
     socket.on("data",function(){
       socket.emit("hmm", readFile());
