@@ -15,7 +15,7 @@ app.use(express.static("webapp"));
 app.use('/scripts', express.static(__dirname + '/node_modules/d3/'));
 app.use('/css', express.static(__dirname + '/css/'));
 app.use('/js', express.static(__dirname + '/js/'));
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
