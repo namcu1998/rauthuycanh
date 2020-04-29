@@ -83,11 +83,11 @@ var number = 0;
   var time = moment().tz("Asia/Ho_Chi_Minh").format('LTS');
   return ngay + ' ' + date + ' ' + time;
 }
-ref.on('child_added', function(snapshot) {
-  var message=snapshot.val();
-  console.log(message)
-  fileSave(message.temp,message.humi,message.time)
-});
+// ref.on('child_added', function(snapshot) {
+//   var message=snapshot.val();
+//   console.log(message)
+//   fileSave(message.temp,message.humi,message.time)
+// });
     io.on('connection', function(socket) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
@@ -120,11 +120,11 @@ ref.on('child_added', function(snapshot) {
        socket.broadcast.emit("dulieu",data);
      });//onJSON
      socket.on("JSON1",function(data){
-       data.time = time();
-       ref.push(data);
+       //data.time = time();
+       //ref.push(data);
        socket.broadcast.emit("dulieu1",data);
-       socket.broadcast.emit("hmm", readFile());
-       console.log(data)
+       //socket.broadcast.emit("hmm", readFile());
+       //console.log(data)
      });//onJSON
      //nhận dữ liệu từ esp
     //////////////////////////////////////////////////////////
