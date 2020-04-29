@@ -22,30 +22,31 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://namcu-1998.firebaseio.com"
 });
+var number = 0;
 var db = admin.database();
 var ref = db.ref("Nam");
-ref.remove()
-  .then(function() {
-   console.log("Remove succeeded.")
-  })
-  .catch(function(error) {
-   console.log("Remove failed: " + error.message)
- });
-var number = 0;
-    function fileSave(nhietdo, doam, thoigian){
+// ref.remove()
+//   .then(function() {
+//    console.log("Remove succeeded.")
+//   })
+//   .catch(function(error) {
+//    console.log("Remove failed: " + error.message)
+//  });
+
+    function fileSave(nhietdo, doam, thoigian, id){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
     function Object(nhietdo, doam, thoigian, id){
     this.id = id;
     this.nhietdo = nhietdo;
     this.doam = doam;
     this.thoigian = thoigian;
-    }
-    number = number + 1;
+    this.id = id;
+    }    
     if(data.length > 49){
       data.splice(49,1);
     }
     console.log(data.length)
-    data.unshift(new Object(nhietdo, doam, thoigian, number))
+    data.unshift(new Object(nhietdo, doam, thoigian, id))
     var data1 = JSON.stringify(data);
     fs.writeFileSync('data.json',data1);
     }
@@ -83,11 +84,12 @@ var number = 0;
   var time = moment().tz("Asia/Ho_Chi_Minh").format('LTS');
   return ngay + ' ' + date + ' ' + time;
 }
-// ref.on('child_added', function(snapshot) {
-//   var message=snapshot.val();
-//   console.log(message)
-//   fileSave(message.temp,message.humi,message.time)
-// });
+ref.on('child_added', function(snapshot) {
+  var message=snapshot.val();
+  number = message.id
+  console.log(message)
+  fileSave(message.temp,message.humi,message.time,message.id)
+});
     io.on('connection', function(socket) {
     console.log("Connected");
     /////////////////////////////////////////////////////////
@@ -120,10 +122,12 @@ var number = 0;
        socket.broadcast.emit("dulieu",data);
      });//onJSON
      socket.on("JSON1",function(data){
-       //data.time = time();
-       //ref.push(data);
-       socket.broadcast.emit("dulieu1",data);
-       //socket.broadcast.emit("hmm", readFile());
+        number++;
+        data.id = number;
+        data.time = time();
+        ref.push(data);
+        socket.broadcast.emit("dulieu1",data);
+        socket.broadcast.emit("hmm", readFile());
        //console.log(data)
      });//onJSON
      //nhận dữ liệu từ esp
