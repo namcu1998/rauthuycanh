@@ -25,13 +25,13 @@ admin.initializeApp({
 var number = 0;
 var db = admin.database();
 var ref = db.ref("Nam");
-ref.remove()
-  .then(function() {
-   console.log("Remove succeeded.")
-  })
-  .catch(function(error) {
-   console.log("Remove failed: " + error.message)
- });
+// ref.remove()
+//   .then(function() {
+//    console.log("Remove succeeded.")
+//   })
+//   .catch(function(error) {
+//    console.log("Remove failed: " + error.message)
+//  });
 
     function fileSave(nhietdo, doam, thoigian, id){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
@@ -41,7 +41,7 @@ ref.remove()
     this.doam = doam;
     this.thoigian = thoigian;
     this.id = id;
-    }    
+    }
     if(data.length > 49){
       data.splice(49,1);
     }
