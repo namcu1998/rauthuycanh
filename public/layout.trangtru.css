@@ -1,0 +1,147 @@
+@media only screen and (min-width: 600px) {
+body{
+  width: 100%;
+  height: 600px;
+  margin: 0 0;
+  font-family: arial,Times;
+  color: black;
+  position: absolute;
+  font-family: cursive, serif;
+}
+#header ul{
+  text-align: center;
+  background-color: #442424;
+}
+#header ul li{
+  width: 200px;
+  height: 40px;
+  display: inline-table;
+  line-height: 40px;
+}
+#header ul li a{
+  color: #ffffff;
+  display: block;
+}
+#home{
+  position: relative;
+  z-index: 1;
+}
+#home img{
+  position: absolute;
+  z-index: -1;
+  filter: blur(6px);
+  width: 100%;
+  height: 100%;
+}
+#header{
+  background-position: center;
+  background-size: 500px;
+  color: #ffffff;
+  text-align: center;
+}
+#home img{
+  height: 1350px;
+}
+.col {
+  text-align: center;
+  color: white;
+  font-size: 2em;
+}
+#controller{
+  text-align: center;
+}
+}
+@media only screen and (max-width: 600px) {
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0 0;
+    font-family: arial,Times;
+    color: white;
+    position: absolute;
+    font-family: cursive, serif;
+  }
+  body h1,p{
+    margin: 0;
+  }
+  #login{
+    width: 100%;
+    height: 100%;
+    background-image: url(https://images2.alphacoders.com/929/thumb-1920-929408.jpg);
+    text-align: center;
+    padding-top: 200px;
+  }
+  #home{
+    position: relative;
+    z-index: 1;
+  }
+  #home img{
+    position: fixed;
+    z-index: -1;
+    filter: blur(6px);
+    width: 100%;
+    height: 100%;
+  }
+  #header{
+    text-align: center;
+    color: white;
+  }
+  #mid-left{
+    float: left;
+    height: 250px;
+    width: 20%;
+    background-image: url();
+    color: #ffffff;
+    text-align: center;
+  }
+  #mid{
+    width: 30%;
+    height: 250px;
+    float: left;
+    color: #ffffff;
+    text-align: center;
+  }
+  #mid-right{
+    float: left;
+    height: 250px;
+    width: 50%;
+    color: #ffffff;
+    text-align: center;
+  }
+  #kebot{
+    color: white;
+    clear: both;
+    font-size: 2em;
+    text-align: center;
+  }
+  #bot{
+    color: white;
+    font-family: arial;
+    text-align: left;
+    height: 400px;
+    overflow-y: auto;
+  }
+  .buttonio{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 30px;
+    border: yellow solid 1px;
+    color: black;
+  }
+  .button{
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: 0px;
+    color: #ffffff;
+    transition: 2s;
+  }
+  tbody tr td{
+    border: 1px solid;
+    padding: 10px;
+  }
+  thead{
+    text-align: center;
+  }
+}

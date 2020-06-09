@@ -1,0 +1,41 @@
+#header{
+    background-position: center;
+    background-size: 500px;
+    color: #ffffff;
+    text-align: center;
+}
+#header ul{
+    margin: 0px;
+    text-align: center;
+    background-color: #442424;
+}
+#header ul li{
+    width: 200px;
+    height: 40px;
+    display: inline-table;
+    line-height: 40px;
+}
+#header ul li a{
+    color: #ffffff;
+    display: block;
+}
+#bot{
+    font-family: arial;
+    text-align: left;
+    height: 400px;
+    overflow-y: auto;
+}
+table{
+    text-align: center;
+    width: 99%;
+    font-size: 2em;
+    color: white;
+}
+#lichsu{
+    border: 1px solid;
+    text-align: left;
+}
+tbody tr td{
+    border: 1px solid;
+    padding: 10px;
+}
