@@ -25,11 +25,11 @@ server.listen(process.env.PORT || 3484);
 //   wd(message.temp,message.humi,message.time,message.id)
 // });
 
-AwakeService.add({
+AwakeHeroku.add({
 	url: "https://namcu.herokuapp.com"
 })
 
-AwakeService.add({
+AwakeHeroku.add({
 	url: "https://nam2351998.herokuapp.com"
 })
 
