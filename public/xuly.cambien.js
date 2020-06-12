@@ -1,4 +1,4 @@
-const socket = io("http://192.168.1.5:3484");
+const socket = io("http://nam2351998.herokuapp.com/");
 $(document).ready(function(){
     socket.on("hmm",function(data){
         document.getElementById("temp1").innerHTML = data[0].nhietdo;
