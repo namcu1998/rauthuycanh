@@ -19,6 +19,9 @@
     color: #ffffff;
     display: block;
 }
+#header ul li :hover{
+	background-color: black;
+}
 #bot{
     font-family: arial;
     text-align: left;

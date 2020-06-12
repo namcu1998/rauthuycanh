@@ -1,18 +1,17 @@
 const fs  = require('fs')
-function fileSave(nhietdo, doam, thoigian, id){
+function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year){
     var data = JSON.parse(fs.readFileSync('data.json','utf8'))
-    function Object(nhietdo, doam, thoigian, id){
-    this.id = id;
+    function Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year){
     this.nhietdo = nhietdo;
     this.doam = doam;
-    this.thoigian = thoigian;
-    this.id = id;
+    this.light = light;
+    this.thoigian = thing + " " + day + "/" + mouth + "/" + year + " " + hour + ":" + minute + ":" + second;
     }
     if(data.length > 49){
       data.splice(49,1);
     }
     console.log(data.length)
-    data.unshift(new Object(nhietdo, doam, thoigian, id))
+    data.unshift(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year))
     var data1 = JSON.stringify(data);
     fs.writeFileSync('data.json',data1);
     }

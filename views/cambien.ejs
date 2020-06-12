@@ -4,7 +4,7 @@
 	<title>Sensor</title>
 	<script src="jquery.js"></script>
 	<script src ="/socket.io/socket.io.js"></script>
-	<script src = "xuly.js"></script>
+	<script src = "xuly.cambien.js"></script>
 	<link rel="stylesheet" type = "text/css" href="normalize.css"/>
 	<link rel="stylesheet" type = "text/css" href="layout.trangtru.css"/>
 	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
@@ -20,8 +20,7 @@
     <script src="/js/bootstrap-toggle.js"></script>
 </head>
 <body >
-    <div id="home">
-      	<img src="https://images8.alphacoders.com/498/thumb-1920-498993.jpg"/>
+    <div style="background-color: darkslategray; height: 1000px;" id="home">
      	<div id="header">
 			<ul>
 				<li><a href="/gioithieu">Giới thiệu</a></li>
@@ -30,19 +29,16 @@
 				<li><a href="/lichsu">Lịch Sử</a></li>
 			</ul>
      	</div>
-      	<div id = "mid-left">
-      	</div>
      	<div id="mid">
-			<h2>Sensor</h2>
-			<div id="Sensor1">
-				<div class="nhietdo">
-					<span>nhiệt độ:</span>
-					<span id ="temp1">...</span>
+			<div class="row">
+				<div style="color: rgb(0, 0, 0); font-size: 5em;" class="col">
+					<span><b>Nhiệt độ: </b></span>
+					<span id="temp1">...</span>
 					<span>*C</span>
 				</div>
-				<div class="nhietdo">
-					<span>độ ẩm:</span>
-					<span id ="humi1">...</span>
+				<div style="color: rgb(0, 0, 0); font-size: 5em;" class="col">
+					<span><b>Độ ẩm: </b></span>
+					<span id="humi1">...</span>
 					<span>%</span>
 				</div>
 			</div>

@@ -48,7 +48,6 @@ io.on('connection', function(socket) {
 	socket.on("REQUESTLED", function(data){
 		socket.broadcast.emit("led", data);
 	})
-
 	socket.on("data",function(){
 		console.log("đã nhận");
 	})
@@ -56,13 +55,9 @@ io.on('connection', function(socket) {
 			socket.broadcast.emit("dulieu",data);
 	});
 	socket.on("JSON1",function(data){
-		// number++;
-		// data.id = number;
-		// data.time = time();
-		// ref.push(data);
 		socket.broadcast.emit("dulieu1",data);
-		// socket.broadcast.emit("hmm", readFile());
-		console.log(data)
+		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year);
+		socket.broadcast.emit("hmm", rd());
 	});
 	socket.on('disconnect', function() {
 		console.log("disconnect");

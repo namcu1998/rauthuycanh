@@ -1,4 +1,4 @@
-const socket = io("https://nam2351998.herokuapp.com");
+const socket = io("http://192.168.1.5:3484");
 const table = $("#lich");
 function neu(data){
 	var a;
@@ -8,7 +8,7 @@ function neu(data){
 }
 function xulyData(getid, array){
 	var html = array.map(function(x){
-		return '<tr>' + '<td>' + x.id + '</td>' + '<td>'+ 'nhiệt đô: ' + x.nhietdo + '*C' + '</td>' +'<td>' + 'độ ẩm: ' + x.doam + '%' +  '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
+		return '<tr>' + '<td>' + x.light + '</td>' + '<td>'+ 'nhiệt đô: ' + x.nhietdo + '*C' + '</td>' +'<td>' + 'độ ẩm: ' + x.doam + '%' +  '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
 	});
 	var htmljoin = html.join('');
 	$("#lich").html(htmljoin);
