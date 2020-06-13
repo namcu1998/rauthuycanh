@@ -18,6 +18,7 @@
 #header ul li a{
     color: #ffffff;
     display: block;
+    text-decoration: none;
 }
 #header ul li :hover{
 	background-color: black;
