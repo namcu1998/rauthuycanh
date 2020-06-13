@@ -10,4 +10,6 @@ router.get("/cambien",controller.cambien);
 
 router.get("/lichsu",controller.lichsu);
 
+router.get("/charts",controller.charts);
+
 module.exports = router

@@ -10,3 +10,6 @@ module.exports.cambien = function(req, res, next){
 module.exports.lichsu = function(req, res, next){
     res.render('lichsu');
 };
+module.exports.charts = function(req, res, next){
+    res.render('charts');
+};

@@ -1,0 +1,22 @@
+body {
+	margin: 0 auto;
+}
+#header ul{
+	text-align: center;
+	background-color: #442424;
+	margin: 0;
+}
+#header ul li{
+	width: 200px;
+	height: 40px;
+	display: inline-table;
+	line-height: 40px;
+}
+#header ul li a{
+	color: #ffffff;
+	display: block;
+	text-decoration: none;
+}
+#header ul li :hover{
+	background-color: black;
+}
