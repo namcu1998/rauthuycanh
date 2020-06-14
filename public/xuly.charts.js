@@ -96,7 +96,7 @@ var myChart = new Chart(ctx, {
             }],
             xAxes: [{
                 ticks: {
-                    fontSize: 13,
+                    fontSize: 12,
                 }
             }],
         }
