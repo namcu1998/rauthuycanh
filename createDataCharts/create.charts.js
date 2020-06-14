@@ -13,7 +13,7 @@ module.exports =  function(){
 
 	let data = JSON.parse(fs.readFileSync('data.json','utf8'));
 	data.map(function(item){
-		dataLight.push(item.nhietdo);
+		dataLight.push(item.light);
 		dataTime.push(item.thoigian);
 	})
 	if(dataLight.length > 12 || dataTime.length > 12){
