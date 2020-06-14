@@ -1,34 +1,21 @@
 const fs  = require('fs')
 module.exports =  function() {
-	let dataLight = [];
-	let dataTemp = [];
-	let dataTime = [];
-	var dataJson = [
-		{
-			dataLight: dataLight,
-		},
-		{
-			dataTime: dataTime,
-		},
-		{
-			dataTemp: dataTemp,
-		}
-	];
+	var dataJson = [];
 
-	let data = JSON.parse(fs.readFileSync('data.json','utf8'));
-	data.map(function(item){
-		dataLight.push(item.light);
-		dataTime.push(item.thoigian);
-		dataTemp.push(item.nhietdo);
+	let data1 = JSON.parse(fs.readFileSync('data.json','utf8'));
+	data1.map(function(item){
+		let data = {
+			dataLight: item.light,
+			dataTime: item.thoigian,
+			dataTemp: item.nhietdo,
+		}
+		dataJson.push(data);
 	})
-	if(dataLight.length > 10 || dataTime.length > 10 || dataTemp.length > 10){
-		dataLight.splice(6, 40);
-		dataTime.splice(6, 40);
-		dataTemp.splice(6 ,40);
+	if(dataJson.length > 10 ){
+		dataJson.splice(10, 40);
 	}
-	let data1 = JSON.stringify(dataJson);
-	console.log(dataTemp)
-	fs.writeFileSync('dataCharts.json',data1);
+	let data2 = JSON.stringify(dataJson);
+	fs.writeFileSync('dataCharts.json',data2);
 	return JSON.parse(fs.readFileSync('dataCharts.json','utf8'));
 }
 
