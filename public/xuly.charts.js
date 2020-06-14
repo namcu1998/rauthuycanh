@@ -1,16 +1,15 @@
-const socket = io("https://nam2351998.herokuapp.com/");
-const nam = 10;
+const socket = io("http://nam2351998.herokuapp.com/");
+const ctx = document.getElementById('myChart').getContext('2d');
 $(document).ready(function(){
     socket.emit("getDataCharts");
     socket.on("onCharts",function(data){
-        var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: data[1].dataTime,
                 datasets: [{
                     label: 'Nhiệt độ',
-                    data: data[0].dataTemp,
+                    data: data[0].dataLight,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
