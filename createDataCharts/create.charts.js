@@ -11,8 +11,8 @@ module.exports =  function() {
 		}
 		dataJson.push(data);
 	})
-	if(dataJson.length > 10 ){
-		dataJson.splice(10, 40);
+	if(dataJson.length > 9 ){
+		dataJson.splice(9, 41);
 	}
 	let data2 = JSON.stringify(dataJson);
 	fs.writeFileSync('dataCharts.json',data2);

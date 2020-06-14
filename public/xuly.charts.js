@@ -91,9 +91,14 @@ var myChart = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    fontSize: 20
                 }
-            }]
+            }],
+            xAxes: [{
+                ticks: {
+                    fontSize: 13,
+                }
+            }],
         }
     }
 });

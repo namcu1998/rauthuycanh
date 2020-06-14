@@ -8,6 +8,7 @@
     <script src="jquery.js"></script>
 	<script src ="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="shortcut icon" type="image/png" href="/bar-chart.png"/>
 </head>
 <body>
     <div id="header">
@@ -18,8 +19,10 @@
             <li><a href="/lichsu">Lịch Sử</a></li>
             <li><a href="/charts">charts</a></li>
 		</ul>
-	</div>
-    <canvas id="myChart"></canvas>
+    </div>
+    <div class="chart-container" style="position: relative;">
+        <canvas id="myChart"></canvas>
+    </div>
     <script src = "xuly.charts.js"></script>
 </body>
 </html>
