@@ -7,9 +7,9 @@ function addData(chart, label, data, data1) {
     chart.update();
 }
 function removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets[0].data.pop();
-    chart.data.datasets[1].data.pop();
+    chart.data.labels.unshift();
+    chart.data.datasets[0].data.unshift();
+    chart.data.datasets[1].data.unshift();
     chart.update();
 }
 $(document).ready(function(){
@@ -21,6 +21,7 @@ $(document).ready(function(){
     });
     socket.on("hmm",function(data){
         addData(myChart, data[0].thoigian, data[0].light, data[0].nhietdo);
+        removeData(myChart);
     });
 }); //document
 var myChart = new Chart(ctx, {
