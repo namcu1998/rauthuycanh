@@ -1,13 +1,13 @@
 const fs  = require('fs')
 module.exports =  function() {
 	var dataJson = [];
-
 	let data1 = JSON.parse(fs.readFileSync('data.json','utf8'));
 	data1.map(function(item){
 		let data = {
 			dataLight: item.light,
 			dataTime: item.thoigian,
 			dataTemp: item.nhietdo,
+			dataHumi: item.doam,
 		}
 		dataJson.push(data);
 	})
