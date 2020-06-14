@@ -21,7 +21,6 @@ $(document).ready(function(){
     });
     socket.on("hmm",function(data){
         addData(myChart, data[0].thoigian, data[0].light, data[0].nhietdo);
-        removeData(myChart);
     });
 }); //document
 var myChart = new Chart(ctx, {
