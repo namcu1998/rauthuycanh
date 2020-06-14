@@ -62,7 +62,6 @@ io.on('connection', function(socket) {
 		socket.broadcast.emit("dulieu1",data);
 		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year);
 		socket.broadcast.emit("hmm", rd());
-		socket.broadcast.emit("onCharts", chartData());
 	});
 	socket.on('disconnect', function() {
 		console.log("disconnect");

@@ -1,5 +1,14 @@
 const socket = io("http://nam2351998.herokuapp.com/");
 const ctx = document.getElementById('myChart').getContext('2d');
+let time
+let temp = [];
+let light = [];
+function addData(chart, label, data, data1) {
+    chart.data.labels.push(label);
+    chart.data.datasets[0].data.push(data);
+    chart.data.datasets[1].data.push(data1);
+    chart.update();
+}
 $(document).ready(function(){
     socket.emit("getDataCharts");
     socket.on("onCharts",function(data){
@@ -9,7 +18,7 @@ $(document).ready(function(){
                 labels: data[1].dataTime,
                 datasets: [
                     {
-                        label: 'lux',
+                        label: 'light',
                         data: data[0].dataLight,
                         backgroundColor: [
                             'rgba(255,0,0,0.2)'
@@ -53,4 +62,9 @@ $(document).ready(function(){
             }
         });
     });
+    socket.on("hmm",function(data){
+        addData(myChart, data[0].thoigian, data[0].light, data[0].nhietdo)
+    });
 }); //document
+
+    
