@@ -7,9 +7,9 @@ function addData(chart, label, data, data1) {
     chart.update();
 }
 function removeData(chart) {
-    chart.data.labels.unshift();
-    chart.data.datasets[0].data.unshift();
-    chart.data.datasets[1].data.unshift();
+    chart.data.labels.shift();
+    chart.data.datasets[0].data.shift();
+    chart.data.datasets[1].data.shift();
     chart.update();
 }
 $(document).ready(function(){
@@ -25,7 +25,7 @@ $(document).ready(function(){
     });
 }); //document
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: [],
         datasets: [
