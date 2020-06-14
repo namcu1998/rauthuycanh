@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/");
+const socket = io("http://nam2351998.herokuapp.com/");
 const ctx = document.getElementById('myChart').getContext('2d');
 $(document).ready(function(){
     socket.emit("getDataCharts");
