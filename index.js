@@ -25,7 +25,15 @@ server.listen(process.env.PORT || 3484);
 //   console.log(message)
 //   wd(message.temp,message.humi,message.time,message.id)
 // });
-
+function xulyData(data){
+	let x = {
+		thoigian: data.second,
+		nhietdo: data.temp,
+		doam: data.humi,
+		light: data.light
+	}
+	return x;
+}
 AwakeHeroku.add({
 	url: "https://namcu.herokuapp.com"
 })
@@ -61,7 +69,7 @@ io.on('connection', function(socket) {
 	socket.on("JSON1",function(data){
 		socket.broadcast.emit("dulieu1",data);
 		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year);
-		socket.broadcast.emit("hmm", rd());
+		socket.broadcast.emit("hmm", xulyData(data));
 	});
 	socket.on('disconnect', function() {
 		console.log("disconnect");
