@@ -31,7 +31,7 @@ $(document).ready(function(){
             addData(myChart, myChart1,myChart2, item.dataTime, item.dataLight, item.dataTemp, item.dataHumi);
         })
     });
-    socket.on("hmm",function(data){
+    socket.on("emitChart",function(data){
         addData(myChart, myChart1, myChart2, data.thoigian, data.light, data.nhietdo, data.doam);
         removeData(myChart, myChart1, myChart2);
     });
