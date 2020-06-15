@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/nam2351998");
+const socket = io("http://nam2351998.herokuapp.com/nam2351998");
 const table = $("#lich");
 function xulyData(getid, array){
 	var html = array.map(function(x){

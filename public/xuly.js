@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/nam2351998", );
+const socket = io("http://nam2351998.herokuapp.com/nam2351998", );
 $(document).ready(function(){
 	socket.emit("getled");
 	var led = [1,1,1,1];
