@@ -1,4 +1,4 @@
-const socket = io("http://nam2351998.herokuapp.com/");
+const socket = io("http://localhost:3484/nam2351998");
 const ctx = document.getElementById('myChart').getContext('2d');
 const ctx1 = document.getElementById('myChart1').getContext('2d');
 const ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -68,7 +68,7 @@ var myChart = new Chart(ctx, {
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "LUX";
-                    }
+                    },
                 }
             }]
         }
@@ -106,7 +106,9 @@ var myChart1 = new Chart(ctx1, {
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "°C";
-                    }
+                    },
+                    suggestedMin: 30,
+                    suggestedMax: 40
                 }
             }]
         }

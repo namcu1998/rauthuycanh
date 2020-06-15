@@ -1,22 +1,6 @@
-const socket = io("http://nam2351998.herokuapp.com/");
-const table = $("#lich");
-function neu(data){
-	var a;
-	if(data == 0) a = "bật";
-	else a ="tắt";
-	return  a;
-}
-function xulyData(getid, array){
-	var html = array.map(function(x){
-		return '<tr>' + '<td>' + x.light + '</td>' + '<td>'+ 'nhiệt đô: ' + x.nhietdo + '*C' + '</td>' +'<td>' + 'độ ẩm: ' + x.doam + '%' +  '</td>' + '<td>' + x.thoigian + '</td>' + '</tr>';
-	});
-	var htmljoin = html.join('');
-	$("#lich").html(htmljoin);
-}
+const socket = io("http://localhost:3484/nam2351998", );
 $(document).ready(function(){
-	socket.emit("data");
 	socket.emit("getled");
-	socket.emit("getData");
 	var led = [1,1,1,1];
 	var mang = {
 		"led":led,
@@ -29,10 +13,6 @@ $(document).ready(function(){
 	else item2.bootstrapToggle('off');
 	}
 
-	socket.on("hmm",function(data){
-		xulyData(table,data);
-	});
-
 	socket.on("led", function(data){
 		led.splice(0,1,data["den1"]);
 		led.splice(1,1,data["den2"]);
@@ -42,16 +22,6 @@ $(document).ready(function(){
 		xulyden(led[1],$('#toggle-event1'))
 		xulyden(led[2],$('#toggle-event2'))
 		xulyden(led[3],$('#toggle-event3'))
-	});
-
-	socket.on("dulieu", function(data){
-		document.getElementById("temp").innerHTML = data["temp"];
-		document.getElementById("humi").innerHTML = data["humi"];
-	});
-
-	socket.on("dulieu1", function(data){
-		document.getElementById("temp1").innerHTML = data["temp"];
-		document.getElementById("humi1").innerHTML = data["humi"];
 	});
 
 	$('#toggle-event').change(function() {

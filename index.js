@@ -10,15 +10,19 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 const { AwakeHeroku } = require('awake-heroku');
+const nsp = io.of('/namcu1998');
+const webapp = io.of('/nam2351998');
+const middleware = require('socketio-wildcard')();
 app.use(express.static("./public"));
 app.set("view engine","ejs");
 app.set("views","./views");
 app.use('/scripts', express.static(__dirname + '/node_modules/d3/'));
 app.use('/css', express.static(__dirname + '/css/'));
 app.use('/js', express.static(__dirname + '/js/'));
-app.use(router)
+app.use(router);
+nsp.use(middleware);
+webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
-
 // database.on('child_added', function(snapshot) {
 //   var message=snapshot.val();
 //   number = message.id
@@ -41,9 +45,27 @@ AwakeHeroku.add({
 AwakeHeroku.add({
 	url: "https://nam2351998.herokuapp.com"
 })
-
-io.on('connection', function(socket) {
-	console.log("Connected");
+nsp.on('connection', function(socket){
+	console.log("esp đã connected");
+	socket.on('disconnect', function(){
+		console.log("esp đã disconnect");
+	})
+	socket.on("JSON1",function(data){
+		webapp.emit("dulieu1",data);
+		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year);
+		webapp.emit("emitChart", xulyData(data));
+		webapp.emit("hmm", rd());
+		console.log(data);
+	});
+	socket.on("REQUESTLED", function(data){
+		webapp.emit("led", data);
+	})
+})
+webapp.on('connection', function(socket){
+	console.log("webapp đã connected");
+	socket.on('disconnect', function(){
+		console.log("webapp đã disconnect");
+	})
 	socket.on("getData", () => {
 		socket.emit("hmm", rd());
 	})
@@ -51,28 +73,11 @@ io.on('connection', function(socket) {
 		socket.emit("onCharts", chartData());
 	})
 	socket.on("onden",function(data){
-		socket.broadcast.emit("LED",data);
+		nsp.emit("LED",data);
 		console.log('ok')
-	});
+	})
 	socket.on("getled", function(){
-		socket.broadcast.emit("GETLED","nam");
+		nsp.emit("GETLED","nam");
+		console.log("nam")
 	})
-	socket.on("REQUESTLED", function(data){
-		socket.broadcast.emit("led", data);
-	})
-	socket.on("data",function(){
-		console.log("đã nhận");
-	})
-	socket.on("JSON",function(data){
-			socket.broadcast.emit("dulieu",data);
-	});
-	socket.on("JSON1",function(data){
-		socket.broadcast.emit("dulieu1",data);
-		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year);
-		socket.broadcast.emit("emitChart", xulyData(data));
-		socket.broadcast.emit("hmm", data);
-	});
-	socket.on('disconnect', function() {
-		console.log("disconnect");
-	});
 });
