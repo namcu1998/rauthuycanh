@@ -32,7 +32,7 @@ $(document).ready(function(){
         })
     });
     socket.on("hmm",function(data){
-        addData(myChart, myChart1, myChart2, data[0].thoigian, data[0].light, data[0].nhietdo, data[0].doam);
+        addData(myChart, myChart1, myChart2, data.thoigian, data.light, data.nhietdo, data.doam);
         removeData(myChart, myChart1, myChart2);
     });
 }); //document
