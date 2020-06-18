@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>Sensor</title>
-	<script src="jquery.js"></script>
+	<script src="/js/jquery.js"></script>
 	<script src ="/socket.io/socket.io.js"></script>
-	<link rel="stylesheet" type = "text/css" href="normalize.css"/>
-	<link rel="stylesheet" type = "text/css" href="layout.trangtru.css"/>
+	<link rel="stylesheet" type = "text/css" href="/css/normalize.css"/>
+	<link rel="stylesheet" type = "text/css" href="/css/layout.cambien.css"/>
 	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="namcu">
@@ -18,9 +18,7 @@
 	<script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
   	<script src="https://unpkg.com/chartjs-gauge@0.2.0/dist/chartjs-gauge.js"></script>
   	<script src="https://unpkg.com/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.js"></script>
-    <link href="/css/bootstrap-toggle.css" rel="stylesheet">
-	<script src="/js/bootstrap-toggle.js"></script>
-	<link rel="shortcut icon" type="image/png" href="/sensor.png"/>
+	<link rel="shortcut icon" type="image/png" href="/image/sensor.png"/>
 </head>
 <body >
     <div style="background-color: rgb(255, 255, 255); height: 1000px;" id="home">
@@ -35,29 +33,39 @@
      	</div>
      	<div id="mid">
 			<div class="row">
-				<div style="color: rgb(0, 0, 0); font-size: 5em;" class="col">
+				<div class="col">
 					<canvas id="chart"></canvas>
 					<div class="row">
-						<div style="color: rgb(0, 0, 0); font-size: 0.5em; text-align: left; margin-left: 70px;" class="col">
+						<div style="text-align: center;" class="col">
 							<span>0°C</span>
 						</div>
-						<div style="color: rgb(0, 0, 0); font-size: 0.5em;" class="col">
+						<div style="text-align: center;" class="col">
 							<span id="temp1">...</span>
 							<span>°C</span>
 						</div>
-						<div style="color: rgb(0, 0, 0); font-size: 0.55em; text-align: right; margin-right: 50px;" class="col">
+						<div style="text-align: center;" class="col">
 							<span>100°C</span>
 						</div>
 					</div>
 				</div>
-				<div style="color: rgb(0, 0, 0); font-size: 5em;" class="col">
-					<span><b>Độ ẩm: </b></span>
-					<span id="humi1">...</span>
-					<span>%</span>
+				<div class="col">
+					<canvas id="chart1"></canvas>
+					<div class="row">
+						<div style="text-align: center;" class="col">
+							<span>0%</span>
+						</div>
+						<div style="text-align: center;" class="col">
+							<span id="humi1">...</span>
+							<span>%</span>
+						</div>
+						<div style="text-align: center;" class="col">
+							<span>100%</span>
+						</div>
+					</div>
 				</div>
 			</div>
       	</div>
 	</div>
-	<script src = "xuly.cambien.js"></script>
+	<script src = "/js/xuly.cambien.js"></script>
 </body>
 </html>
