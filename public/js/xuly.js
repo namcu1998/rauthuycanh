@@ -1,11 +1,33 @@
-const socket = io("http://nam2351998.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
+const socket = io("http://localhost:3484/nam2351998" || "http://nam2351998.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
 $(document).ready(function(){
 	socket.emit("getled");
 	var led = [1,1,1,1];
+	var mode = [1];
 	var mang = {
+		"mode": mode,
 		"led":led,
 	};
 
+	$('#toggle-event-mode').change(function() {
+		if($(this).prop('checked') == true){
+			$("#controll").show();
+			$("#auto").hide();
+		}
+		else {
+			$("#controll").hide();
+			$("#auto").show();
+		}
+	});
+	document.querySelectorAll('input[type=number]')
+	.forEach(e => e.oninput = () => {
+		// Always 2 digits
+		if (e.value.length >= 2) e.value = e.value.slice(0, 2);
+		// 0 on the left (doesn't work on FF)
+		if (e.value.length === 1) e.value = '0' + e.value;
+		// Avoiding letters on FF
+		if (!e.value) e.value = '00';
+	});
+	
 	function xulyden(item1, item2){
 	if(item1 == 0){
 		item2.bootstrapToggle('on');

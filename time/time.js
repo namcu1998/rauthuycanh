@@ -27,6 +27,6 @@ function time(){
     }
     var date = moment().tz("Asia/Ho_Chi_Minh").format('DD-MM-YYYY');
     var time = moment().tz("Asia/Ho_Chi_Minh").format('LTS');
-    return ngay + ' ' + date + ' ' + time;
+    return time;
   };
 module.exports = time

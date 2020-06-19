@@ -45,8 +45,10 @@
 	#header ul li :hover{
 		background-color: black;
 	}
-	.chart{
+	#phone{
 		width: 1000px;
+	}
+	.chart{
 		overflow-x: scroll;
 	}
 }

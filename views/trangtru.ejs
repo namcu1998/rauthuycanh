@@ -33,9 +33,10 @@
 			</ul>
 		</div>
 		<div id="controller">
-			<input id="toggle-event" data-on="AUTO" data-off="CONTROL" type="checkbox" data-toggle="toggle">
+			<input id="toggle-event-mode" data-on="AUTO" data-off="CONTROL" type="checkbox" data-toggle="toggle">
 		</div>
-		<div class="row">
+		<div style="height: 1px; background-color: white; margin: 10px;"></div>
+		<div id="controll" class="row">
 			<div class="col">
 				<div>
 					<div class="led">
@@ -97,9 +98,14 @@
 				</div>
 			</div>
 		</div>
-		<div>
-			
+		<div id="auto">
+			<div class="input-group">
+				<div class="input-group-prepend">
+				  <input type="radio" aria-label="Radio button for following text input">
+				</div>
+			  </div>
+			<input style="float: left; margin-left: 300px;" type="time" >
+			<input style="float: right; margin-right: 300px;" type="time">
 		</div>
-	</div>
 </body>
 </html>

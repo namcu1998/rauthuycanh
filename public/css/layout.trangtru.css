@@ -9,6 +9,7 @@ body{
   font-family: cursive, serif;
 }
 #header ul{
+  padding: 0;
   text-align: center;
   background-color: #442424;
 }
@@ -53,6 +54,17 @@ body{
 }
 #controller{
   text-align: center;
+}
+.form-check-input{
+  width: 1em;
+  height: 1em;
+}
+.size-input{
+  color: black;
+  width: 115px;
+  height: 100px;
+  border-radius: 20px;
+  border: 0px;
 }
 }
 @media only screen and (max-width: 600px) {

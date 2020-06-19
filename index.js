@@ -6,6 +6,7 @@ const database = require('./database/firebase')
 const wd = require('./read.database/write.database')
 const rd = require('./read.database/read.database')
 const chartData = require('./createDataCharts/create.charts')
+const time = require('./time/time')
 const app = express();
 const server = http.Server(app);
 const io = socketio(server);
@@ -48,6 +49,13 @@ AwakeHeroku.add({
 AwakeHeroku.add({
 	url: "https://nam2351998.herokuapp.com"
 })
+function loopSync(){
+	return new Promise((resolve, reject) => {
+		setInterval(() => {
+		}, 1000);
+	})
+}
+loopSync();
 nsp.on('connection', function(socket){
 	console.log("esp đã connected");
 	socket.on('disconnect', function(){
