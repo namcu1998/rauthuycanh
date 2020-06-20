@@ -14,6 +14,6 @@ function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth,
   console.log(data.length)
   data.unshift(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year))
   var data1 = JSON.stringify(data);
-  fs.writeFileSync('data.json',data1);
+  fs.writeFileSync('./JSON/data.json',data1);
   }
  module.exports = fileSave

@@ -1,5 +1,5 @@
 const moment = require('moment-timezone')
-function time(){
+function timeDay(){
     var ngay
     var day = moment().tz("Asia/Ho_Chi_Minh").format('dddd');
     switch(day){
@@ -26,7 +26,12 @@ function time(){
         break;
     }
     var date = moment().tz("Asia/Ho_Chi_Minh").format('DD-MM-YYYY');
-    var time = moment().tz("Asia/Ho_Chi_Minh").format('LTS');
-    return time;
-  };
-module.exports = time
+    return ngay
+  }
+
+function time(){
+  return moment().tz("Asia/Ho_Chi_Minh").format("HH:mm");
+}
+
+module.exports.time = time;
+module.exports.timeDay = timeDay;

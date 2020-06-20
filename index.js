@@ -7,6 +7,7 @@ const wd = require('./read.database/write.database')
 const rd = require('./read.database/read.database')
 const chartData = require('./createDataCharts/create.charts')
 const time = require('./time/time')
+const ma = require("./modeAndDataAuto/create.mode")
 const app = express();
 const server = http.Server(app);
 const io = socketio(server);
@@ -14,6 +15,9 @@ const { AwakeHeroku } = require('awake-heroku');
 const nsp = io.of('/namcu1998');
 const webapp = io.of('/nam2351998');
 const middleware = require('socketio-wildcard')();
+const mang = {
+	led: [1, 1, 1, 1],
+}
 app.use(express.static("./public"));
 app.set("view engine","ejs");
 app.set("views","./views");
@@ -50,9 +54,21 @@ AwakeHeroku.add({
 	url: "https://nam2351998.herokuapp.com"
 })
 function loopSync(){
+	let scope = 0
 	return new Promise((resolve, reject) => {
 		setInterval(() => {
-		}, 1000);
+			if(ma.getMode() == 0){
+				if(ma.getAuto().speakerDay.indexOf(time.timeDay()) >= 0){
+					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop){
+						for(scope ; scope < 1 ; scope ++){
+							nsp.emit("led");
+							console.log("ok")
+						}
+					}
+				}
+				else scope = 0;
+			}
+		}, 1000)
 	})
 }
 loopSync();
@@ -83,12 +99,19 @@ webapp.on('connection', function(socket){
 	socket.on("getDataCharts", () => {
 		socket.emit("onCharts", chartData());
 	})
-	socket.on("onden",function(data){
-		nsp.emit("LED",data);
-		console.log('ok')
+	socket.on("ok", (data) => {
+		ma.saveAuto(data)
 	})
-	socket.on("getled", function(){
-		nsp.emit("GETLED","nam");
-		console.log("nam")
+	socket.on("mode",(data) => {
+		ma.saveMode(data);
+	})
+	socket.on("getMa", () => {
+		webapp.emit("onMa", ma.getAll());
+	})
+	socket.on("onden", (data) => {
+		if(ma.getMode() === 1){
+			socket.emit("LED", data);
+			console.log("ok")
+		}
 	})
 });
