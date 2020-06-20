@@ -1,7 +1,7 @@
 const fs  = require('fs')
 let newId;
 function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year){
-  var data = JSON.parse(fs.readFileSync('data.json','utf8'))
+  var data = JSON.parse(fs.readFileSync('./JSON/data.json','utf8'))
   function Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year){
     this.nhietdo = nhietdo;
     this.doam = doam;
