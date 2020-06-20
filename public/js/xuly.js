@@ -1,24 +1,6 @@
-const socket = io("http://nam2351998.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
-socket.emit("getMa");
-socket.on("onMa", (data) => {
-	if(data[0] == 1){
-		$('#toggle-event-mode').bootstrapToggle('on');
-	}
-	else $('#toggle-event-mode').bootstrapToggle('off');
-	$("#setHumi")[0].value = data[1].setHumi;
-	$("#timeStop")[0].value = data[1].speakerTimeStop;
-	$("#timeStart")[0].value = data[1].speakerTimeStart;
-	data[1].speakerDay.map((item) => {
-		let input = document.querySelectorAll("#auto input");
-		for(let x = 0 ; x < input.length ; x++){
-		if(input[x].value === item){
-			input[x].checked = true;
-		}
-	}
-	})
-})
+const socket = io("nam2351998.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
 $(document).ready(function(){
-	
+	socket.emit("getMa");
 	var led = [1,1,1,1];
 	var mode
 	var mang = {
@@ -47,6 +29,23 @@ $(document).ready(function(){
 	$("#submit").click(() => {
 		run();
 	});
+	socket.on("onMa", (data) => {
+		if(data[0] == 1){
+			$('#toggle-event-mode').bootstrapToggle('on');
+		}
+		else $('#toggle-event-mode').bootstrapToggle('off');
+		$("#setHumi")[0].value = data[1].setHumi;
+		$("#timeStop")[0].value = data[1].speakerTimeStop;
+		$("#timeStart")[0].value = data[1].speakerTimeStart;
+		data[1].speakerDay.map((item) => {
+			let input = document.querySelectorAll("#auto input");
+			for(let x = 0 ; x < input.length ; x++){
+			if(input[x].value === item){
+				input[x].checked = true;
+			}
+		}
+		})
+	})
 	$('#toggle-event-mode').change(function() {
 		if($(this).prop('checked') == true){
 			$("#controll").show();

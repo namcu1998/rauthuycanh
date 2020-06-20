@@ -16,8 +16,9 @@ const nsp = io.of('/namcu1998');
 const webapp = io.of('/nam2351998');
 const middleware = require('socketio-wildcard')();
 const mang = {
-	led: [1, 1, 1, 1],
-}
+	led: [0, 1, 1, 1],
+};
+let scope = 0, scope1 = 0;
 app.use(express.static("./public"));
 app.set("view engine","ejs");
 app.set("views","./views");
@@ -54,19 +55,29 @@ AwakeHeroku.add({
 	url: "https://nam2351998.herokuapp.com"
 })
 function loopSync(){
-	let scope = 0
 	return new Promise((resolve, reject) => {
 		setInterval(() => {
 			if(ma.getMode() == 0){
 				if(ma.getAuto().speakerDay.indexOf(time.timeDay()) >= 0){
 					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop){
 						for(scope ; scope < 1 ; scope ++){
-							nsp.emit("led");
+							mang.led.splice(0, 1, 1)
+							nsp.emit("LED", mang);
 							console.log("ok")
 						}
 					}
+					else {
+						for(scope1 ; scope1 < 1 ; scope1 ++){
+							mang.led.splice(0, 1, 0);
+							nsp.emit("LED", mang);
+							console.log("ok1")
+						}
+					}
 				}
-				else scope = 0;
+				else {
+					scope = 0;
+					scope1 = 0;
+				}
 			}
 		}, 1000)
 	})
@@ -82,7 +93,17 @@ nsp.on('connection', function(socket){
 		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year);
 		webapp.emit("emitChart", xulyData(data));
 		webapp.emit("hmm", rd());
-		console.log(data);
+		if(ma.getMode() === 0){
+			if(data.humi < ma.getAuto().setHumi){
+				mang.led.splice(1, 1, 0)
+				nsp.emit("LED", mang);
+				console.log("ok2")
+			}
+			else {
+				mang.led.splice(1, 1, 1)
+				nsp.emit("LED", mang);
+			}
+		}
 	});
 	socket.on("REQUESTLED", function(data){
 		webapp.emit("led", data);
@@ -100,7 +121,9 @@ webapp.on('connection', function(socket){
 		socket.emit("onCharts", chartData());
 	})
 	socket.on("ok", (data) => {
-		ma.saveAuto(data)
+		ma.saveAuto(data);
+		scope = 0;
+		scope1 = 0;
 	})
 	socket.on("mode",(data) => {
 		ma.saveMode(data);
@@ -110,7 +133,7 @@ webapp.on('connection', function(socket){
 	})
 	socket.on("onden", (data) => {
 		if(ma.getMode() === 1){
-			socket.emit("LED", data);
+			nsp.emit("LED", data);
 			console.log("ok")
 		}
 	})
