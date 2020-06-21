@@ -13,8 +13,8 @@ module.exports =  function() {
 		}
 		dataJson.push(data);
 	})
-	if(dataJson.length > 50 ){
-		dataJson.splice(50, 1);
+	if(dataJson.length > 100 ){
+		dataJson.splice(100, 1);
 	}
 	let data2 = JSON.stringify(dataJson.reverse());
 	fs.writeFileSync('./JSON/dataCharts.json',data2);

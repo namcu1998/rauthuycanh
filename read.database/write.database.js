@@ -8,8 +8,8 @@ function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth,
     this.light = light;
     this.thoigian = thing + " " + day + "/" + mouth + "/" + year + " " + hour + ":" + minute + ":" + second;
   }
-  if(data.length > 49){
-    data.splice(49,1);
+  if(data.length > 100){
+    data.splice(100,1);
   }
   console.log(data.length)
   data.unshift(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year))
