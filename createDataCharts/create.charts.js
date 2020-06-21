@@ -17,7 +17,8 @@ module.exports =  function() {
 		dataJson.splice(50, 1);
 	}
 	let data2 = JSON.stringify(dataJson.reverse());
-	fs.writeFileSync('dataCharts.json',data2);
+	fs.writeFileSync('./JSON/dataCharts.json',data2);
+	console.log(fs.readFileSync('./JSON/dataCharts.json','utf8'))
 	return JSON.parse(fs.readFileSync('./JSON/dataCharts.json','utf8'));
 }
 

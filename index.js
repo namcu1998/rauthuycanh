@@ -38,6 +38,7 @@ server.listen(process.env.PORT || 3484);
 // 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 // Serial.println(Ethernet.localIP());
 //http://arduino.esp8266.com/stable/package_esp8266com_index.json
+chartData();
 function xulyData(data){
 	let x = {
 		thoigian: data.second,
