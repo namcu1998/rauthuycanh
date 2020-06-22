@@ -76,7 +76,6 @@ $(document).ready(function(){
 				socket.emit("onden1");
 			}
 			else {
-				led.splice(1, 1, 0);
 				socket.emit("offden1");
 			}
 		}
