@@ -15,11 +15,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet" >
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/cssToggle/bootstrap-toggle.css" rel="stylesheet">
-	<script src="/jsToggle/bootstrap-toggle.js"></script>
 	<link rel="shortcut icon" type="image/png" href="/browser.png"/>
+	<link href="/cssToggle/bootstrap-toggle.css" rel="stylesheet">
+	<script src="/jsToggle/bootstrap-toggle.js"></script>	
 </head>
-<body >
+<body>
     <div id="home">
       	<img src="https://images8.alphacoders.com/498/thumb-1920-498993.jpg"/>
      	<div id="header">
@@ -34,7 +34,7 @@
 		<div id="controller">
 			<input id="toggle-event-mode" data-on="AUTO" data-off="CONTROL" type="checkbox" data-toggle="toggle">
 		</div>
-		<div style="height: 1px; background-color: white; margin: 10px;"></div>
+		<div id="line" style="height: 1px; background-color: white; margin: 10px;"></div>
 		<div id="controll" class="row">
 			<div class="col">
 				<div>
@@ -42,7 +42,7 @@
 						<span class="led">Loa:</span>
 					</div>
 					<div id="den1" class="led">
-						<input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
+						<input id="button" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
 						<div id="console-event"></div>
 					</div>
 				</div>
@@ -51,47 +51,7 @@
 						<span class="led">Fan:</span>
 					</div>
 					<div id="den1" class="led">
-						<input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
-						<div id="console-event"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div>
-					<div class="led">
-						<span class="led">máy phun sương:</span>
-					</div>
-					<div id="den1" class="led">
-						<input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
-						<div id="console-event"></div>
-					</div>
-				</div>
-				<div>
-					<div class="led">
-						<span class="led">Đèn 1:</span>
-					</div>
-					<div id="den1" class="led">
-						<input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
-						<div id="console-event"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div>
-					<div class="led">
-						<span class="led">Đèn 1:</span>
-					</div>
-					<div id="den1" class="led">
-						<input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
-						<div id="console-event"></div>
-					</div>
-				</div>
-				<div>
-					<div class="led">
-						<span class="led">Đèn 1:</span>
-					</div>
-					<div id="den1" class="led">
-						<input id="toggle-event" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
+						<input id="button1" data-on="LED ON" data-off="LED OFF" type="checkbox" data-toggle="toggle">
 						<div id="console-event"></div>
 					</div>
 				</div>
@@ -133,11 +93,8 @@
 				<input id="setHumi" style="margin: 10px;" type="number" max="100" min="0" placeholder="nhập giá trị" value="0">
 			</div>
 			<input id="submit" class="btn btn-primary" type="button" value="Submit">
-		
-		
-		
-		
-		
 		</div>
+	</div>
+
 </body>
 </html>

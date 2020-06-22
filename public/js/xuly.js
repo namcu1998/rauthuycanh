@@ -1,11 +1,13 @@
-const socket = io("nam2351998.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
+const socket = io("http://nam2351998.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
+let test = 0;
+function xulyden(item1, item2){
+	if(item1 == 1){
+		item2.bootstrapToggle('on');
+	}
+	else item2.bootstrapToggle('off');
+}
 $(document).ready(function(){
 	socket.emit("getMa");
-	var led = [1,1,1,1];
-	var mode
-	var mang = {
-		"led":led,
-	};
 	function run(){
 		let data = {}
 		let array = [];
@@ -28,96 +30,65 @@ $(document).ready(function(){
 	}
 	$("#submit").click(() => {
 		run();
-	});
+	})
 	socket.on("onMa", (data) => {
-		if(data[0] == 1){
-			$('#toggle-event-mode').bootstrapToggle('on');
-		}
-		else $('#toggle-event-mode').bootstrapToggle('off');
+		test = 1;
 		$("#setHumi")[0].value = data[1].setHumi;
 		$("#timeStop")[0].value = data[1].speakerTimeStop;
 		$("#timeStart")[0].value = data[1].speakerTimeStart;
 		data[1].speakerDay.map((item) => {
 			let input = document.querySelectorAll("#auto input");
 			for(let x = 0 ; x < input.length ; x++){
-			if(input[x].value === item){
-				input[x].checked = true;
+				if(input[x].value === item){
+					input[x].checked = true;
+				}
 			}
-		}
 		})
+		if(data[0] == 1){
+			xulyden(data[2].speaker, $('#button'));
+			xulyden(data[2].fanHumi, $('#button1'));
+			$('#toggle-event-mode').prop('checked', true).change();
+		}
+		else {
+			$('#toggle-event-mode').prop('checked', false).change();
+		}	
+		test = 0;
+	})
+	socket.on("onMa1", (data) => {
+		xulyden(data.fanHumi, $('#button1'));
+		xulyden(data.speaker, $('#button'));
 	})
 	$('#toggle-event-mode').change(function() {
-		if($(this).prop('checked') == true){
-			$("#controll").show();
-			$("#auto").hide();
-			socket.emit("mode", 1)
-		}
-		else {
-			$("#controll").hide();
-			$("#auto").show();
-			socket.emit("mode", 0)
+			if($(this).prop('checked') == true){
+				$("#controll").show();
+				$("#auto").hide();
+				socket.emit("mode", 1);
+			}
+			else {
+				$("#controll").hide();
+				$("#auto").show();
+				socket.emit("mode", 0);
+			}
+	});
+	$('#button').change(function() {
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden1");
+			}
+			else {
+				led.splice(1, 1, 0);
+				socket.emit("offden1");
+			}
 		}
 	});
-
-	function xulyden(item1, item2){
-	if(item1 == 0){
-		item2.bootstrapToggle('on');
-	}
-	else item2.bootstrapToggle('off');
-	}
-	socket.on("led", function(data){
-		led.splice(0,1,data["den1"]);
-		led.splice(1,1,data["den2"]);
-		led.splice(2,1,data["den3"]);
-		led.splice(3,1,data["den4"]);
-		xulyden(led[0],$('#toggle-event'))
-		xulyden(led[1],$('#toggle-event1'))
-		xulyden(led[2],$('#toggle-event2'))
-		xulyden(led[3],$('#toggle-event3'))
-	});
-
-	$('#toggle-event').change(function() {
-		if($(this).prop('checked') == true){
-			led.splice(0,1,0);
-			socket.emit("onden",mang);
-		}
-		else {
-			led.splice(0,1,1);
-			socket.emit("onden",mang);
+	$('#button1').change(function() {
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden2");
+			}
+			else {
+				socket.emit("offden2");
+			}
 		}
 	});
-
-	$('#toggle-event1').change(function() {
-		if($(this).prop('checked') == true){
-			led.splice(1,1,0);
-			socket.emit("onden",mang);
-		}
-		else {
-			led.splice(1,1,1);
-			socket.emit("onden",mang);
-		}
-	});
-
-	$('#toggle-event2').change(function() {
-		if($(this).prop('checked') == true){
-			led.splice(2,1,0);
-			socket.emit("onden",mang);
-		}
-		else {
-			led.splice(2,1,1);
-			socket.emit("onden",mang);
-		}
-	});
-
-	$('#toggle-event3').change(function() {
-		if($(this).prop('checked') == true){
-			led.splice(3,1,0);
-			socket.emit("onden",mang);
-		}
-		else {
-			led.splice(3,1,1);
-			socket.emit("onden",mang);
-		}
-	});
-
 }); //document
