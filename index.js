@@ -46,12 +46,9 @@ function xulyData(data){
 	}
 	return x;
 }
-AwakeHeroku.add({
-	url: "https://namcu.herokuapp.com"
-})
 
 AwakeHeroku.add({
-	url: "https://nam2351998.herokuapp.com"
+	url: "https://bonghoaxinh.herokuapp.com"
 })
 function loopSync(){
 	return new Promise((resolve, reject) => {
