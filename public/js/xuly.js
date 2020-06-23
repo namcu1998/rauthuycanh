@@ -1,4 +1,4 @@
-const socket = io("http://bonghoaxinh.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
+const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998"); //http://nam2351998.herokuapp.com/nam2351998
 let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){

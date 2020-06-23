@@ -1,4 +1,4 @@
-const socket = io("http://bonghoaxinh.herokuapp.com/nam2351998");
+const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998");
 window.onload = function() {
     var ctx = document.getElementById('chart').getContext('2d');
     window.myGauge = new Chart(ctx, config);

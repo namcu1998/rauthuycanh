@@ -1,4 +1,4 @@
-const socket = io("http://bonghoaxinh.herokuapp.com/nam2351998");
+const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998");
 const table = $("#lich");
 function xulyData(getid, array){
 	var html = array.map(function(x){
