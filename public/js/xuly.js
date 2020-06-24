@@ -24,14 +24,14 @@ $(document).ready(function(){
 				array.push(input[x].value);
 			}
 		}
-		var hourStart = $("#timeStart")[0].value.split(":");
-		var hourStop = $("#timeStop")[0].value.split(":");
+		var hourStart = $("#timeStart")[0].value.split(":")[0];
+		var hourStop = $("#timeStop")[0].value.split(":")[0];
 		if(parseInt($("#setHumi")[0].value) == 0 || $("#timeStart")[0].value == null || $("#timeStop")[0].value == null || array.length == 0){
 			alert("chưa nhập đủ dữ liệu")
 		}
 		else if($("#setHumi")[0].value > 95 || $("#setHumi")[0].value < 40) alert("độ ẩm quá lớn hoặc quá nhỏ");
 		else if($("#setTemp")[0].value > 60 || $("#setTemp")[0].value < 0) alert("nhiệt độ quá lớn hoặc quá nhỏ");
-		else if(parseInt(hourStart[0]) < parseInt(hourStop[0])) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc")
+		else if(parseInt(hourStart[]) < parseInt(hourStop[])) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc")
 		else{
 			data.speakerDay = array;
 			data.speakerTimeStart = $("#timeStart")[0].value;
