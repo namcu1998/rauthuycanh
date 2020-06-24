@@ -31,7 +31,7 @@ $(document).ready(function(){
 		}
 		else if($("#setHumi")[0].value > 95 || $("#setHumi")[0].value < 40) alert("độ ẩm quá lớn hoặc quá nhỏ");
 		else if($("#setTemp")[0].value > 60 || $("#setTemp")[0].value < 0) alert("nhiệt độ quá lớn hoặc quá nhỏ");
-		else if(hourStart < hourStop) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc")
+		else if(hourStart > hourStop) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc")
 		else{
 			data.speakerDay = array;
 			data.speakerTimeStart = $("#timeStart")[0].value;
