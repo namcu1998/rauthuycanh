@@ -15,9 +15,6 @@ const { AwakeHeroku } = require('awake-heroku');
 const nsp = io.of('/namcu1998');
 const webapp = io.of('/nam2351998');
 const middleware = require('socketio-wildcard')();
-const mang = {
-	led: [0, 0, 1, 1],
-};
 let scope = 0, scope1 = 0;
 app.use(express.static("./public"));
 app.set("view engine","ejs");
@@ -29,13 +26,6 @@ app.use(router);
 nsp.use(middleware);
 webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
-// database.on('child_added', function(snapshot) {
-//   var message=snapshot.val();
-//   number = message.id
-//   console.log(message)
-//   wd(message.temp,message.humi,message.time,message.id)
-// });
-//http://arduino.esp8266.com/stable/package_esp8266com_index.json
 chartData();
 function xulyData(data){
 	let x = {
@@ -51,23 +41,25 @@ AwakeHeroku.add({
 	url: "https://bonghoaxinh.herokuapp.com"
 })
 function loopSync(){
+	var timeConnect = 0;
 	return new Promise((resolve, reject) => {
 		setInterval(() => {
+			timeConnect++;
 			if(ma.getMode() == 0){
 				if(ma.getAuto().speakerDay.indexOf(time.timeDay()) >= 0){
 					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop){
 						for(scope ; scope < 1 ; scope ++){
-							mang.led.splice(0, 1, 1);
 							ma.speaker(1);
 							nsp.emit("LED", ma.getAll()[2]);
+							webapp.emit("onMa1", ma.getAll()[2]);
 							console.log("ok1")
 						}
 					}
 					else {
 						for(scope1 ; scope1 < 1 ; scope1 ++){
-							mang.led.splice(0, 1, 0);
 							ma.speaker(0);
 							nsp.emit("LED", ma.getAll()[2]);
+							webapp.emit("onMa1", ma.getAll()[2]);
 							console.log("ok1")
 						}
 					}
@@ -77,14 +69,23 @@ function loopSync(){
 					scope1 = 0;
 				}
 			}
+			if(timeConnect === 15){
+				nsp.emit("ping", "nam");
+				timeConnect = 0;
+				console.log("timeConnect")
+			}
 		}, 1000)
 	})
 }
 loopSync();
 nsp.on('connection', function(socket){
-	console.log("esp đã connected");
+	console.log(ma.getAll()[3]);
+	ma.statusEsp("esp connected");
+	webapp.emit("statusEsp", ma.getAll()[3]);
 	socket.on('disconnect', function(){
 		console.log("esp đã disconnect");
+		ma.statusEsp("esp disconnect");
+		webapp.emit("statusEsp", ma.getAll()[3]);
 	})
 	socket.on("JSON1",function(data){
 		webapp.emit("dulieu1",data);
@@ -95,11 +96,24 @@ nsp.on('connection', function(socket){
 			if(data.humi < ma.getAuto().setHumi){
 				ma.fanHumi(1);
 				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
 				console.log("ok2")
 			}
 			else {
 				ma.fanHumi(0);
 				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
+			}
+			if(data.temp > ma.getAuto().setTemp){
+				ma.fanTemp(1);
+				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
+				console.log("ok2")
+			}
+			else {
+				ma.fanTemp(0);
+				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
 			}
 		}
 	});
@@ -112,22 +126,32 @@ webapp.on('connection', function(socket){
 	socket.on("onden1", () => {
 		ma.speaker(1);
 		nsp.emit("LED", ma.getAll()[2]);
+		console.log("emitspeaker")
 	})
 	socket.on("offden1", () => {
 		ma.speaker(0);
 		nsp.emit("LED", ma.getAll()[2]);
+		console.log("emitspeaker")
 	})
 	socket.on("onden2", () => {
 		ma.fanHumi(1);
-	 	nsp.emit("LED", ma.getAll()[2]);		
+		 nsp.emit("LED", ma.getAll()[2]);
+		 console.log("emithumi")		
 	})
 	socket.on("offden2", () => {
 		ma.fanHumi(0);
 		nsp.emit("LED", ma.getAll()[2]);
+		console.log("emithumi")
 	})
-	socket.on("onden1", () => {
-		ma.speaker(1);
+	socket.on("onden3", () => {
+		ma.fanTemp(1);
 		nsp.emit("LED", ma.getAll()[2]);
+		console.log("emitTemp")		
+	})
+	socket.on("offden3", () => {
+		ma.fanTemp(0);
+		nsp.emit("LED", ma.getAll()[2]);
+		console.log("emitTemp")
 	})
 	socket.on("getData", () => {
 		webapp.emit("hmm", rd());
@@ -151,16 +175,10 @@ webapp.on('connection', function(socket){
 		scope = 0;
 		scope1 = 0;
 		if(data == 0) {
-			ma.fanHumi(0);
-			ma.speaker(0);
+			// ma.fanHumi(0);
+			// ma.speaker(0);
 		}
 		else webapp.emit("onMa1", ma.getAll()[2]);
 		console.log("mode");
-	})
-	socket.on("onden", (data) => {
-		ma.fanHumi(data.led[0]);
-		ma.speaker(data.led[1]);
-		console.log("btnOk")
-		console.log(data)
 	})
 });

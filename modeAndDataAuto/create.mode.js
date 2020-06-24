@@ -23,6 +23,18 @@ function speaker(speaker){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
+function fanTemp(fanTemp){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[2].fanTemp = fanTemp;
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
+}
+function statusEsp(esp){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[3] = esp;
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
+}
 function getMode(){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     return data[0];
@@ -39,6 +51,8 @@ module.exports.saveAuto = saveAuto;
 module.exports.saveMode = saveMode;
 module.exports.fanHumi = fanHumi;
 module.exports.speaker = speaker;
+module.exports.fanTemp = fanTemp;
 module.exports.getAuto = getAuto;
 module.exports.getMode = getMode;
 module.exports.getAll = getAll;
+module.exports.statusEsp = statusEsp;

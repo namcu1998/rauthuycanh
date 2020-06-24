@@ -8,7 +8,7 @@ window.onload = function() {
 function addData(data, data1) {
     config.data.datasets.forEach(function(item) {
         item.value = data;
-      });
+    });
     config1.data.datasets.forEach(function(item) {
       item.value = data1 - 10;
     });

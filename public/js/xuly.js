@@ -6,6 +6,13 @@ function xulyden(item1, item2){
 	}
 	else item2.bootstrapToggle('off');
 }
+function xulyData(item1, item2){
+	if(item2 == 1){
+		document.getElementById(item1).innerHTML = "ON";
+	}
+	else document.getElementById(item1).innerHTML = "OFF";
+}
+
 $(document).ready(function(){
 	socket.emit("getMa");
 	function run(){
@@ -17,14 +24,20 @@ $(document).ready(function(){
 				array.push(input[x].value);
 			}
 		}
+		var hourStart = $("#timeStart")[0].value.split(":");
+		var hourStop = $("#timeStop")[0].value.split(":");
 		if(parseInt($("#setHumi")[0].value) == 0 || $("#timeStart")[0].value == null || $("#timeStop")[0].value == null || array.length == 0){
 			alert("chưa nhập đủ dữ liệu")
 		}
+		else if($("#setHumi")[0].value > 95 || $("#setHumi")[0].value < 40) alert("độ ẩm quá lớn hoặc quá nhỏ");
+		else if($("#setTemp")[0].value > 60 || $("#setTemp")[0].value < 0) alert("nhiệt độ quá lớn hoặc quá nhỏ");
+		else if(parseInt(hourStart[0]) < parseInt(hourStop[0])) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc")
 		else{
 			data.speakerDay = array;
 			data.speakerTimeStart = $("#timeStart")[0].value;
 			data.speakerTimeStop = $("#timeStop")[0].value;
 			data.setHumi = $("#setHumi")[0].value;
+			data.setTemp  = $("#setTemp")[0].value;
 			socket.emit("ok", data)
 		}
 	}
@@ -33,7 +46,12 @@ $(document).ready(function(){
 	})
 	socket.on("onMa", (data) => {
 		test = 1;
+		document.getElementById("statusEsp").innerHTML = data[3];
+		xulyData("speaker", data[2].speaker);
+		xulyData("fanHumi", data[2].fanHumi);
+		xulyData("fanTemp", data[2].fanTemp);
 		$("#setHumi")[0].value = data[1].setHumi;
+		$("#setTemp")[0].value = data[1].setTemp;
 		$("#timeStop")[0].value = data[1].speakerTimeStop;
 		$("#timeStart")[0].value = data[1].speakerTimeStart;
 		data[1].speakerDay.map((item) => {
@@ -55,8 +73,16 @@ $(document).ready(function(){
 		test = 0;
 	})
 	socket.on("onMa1", (data) => {
+		test = 1;
+		xulyData("speaker", data.speaker);
+		xulyData("fanHumi", data.fanHumi);
+		xulyData("fanTemp", data.fanTemp);
 		xulyden(data.fanHumi, $('#button1'));
 		xulyden(data.speaker, $('#button'));
+		test = 0;
+	})
+	socket.on("statusEsp", (data) => {
+		document.getElementById("statusEsp").innerHTML = data;
 	})
 	$('#toggle-event-mode').change(function() {
 			if($(this).prop('checked') == true){
@@ -87,6 +113,16 @@ $(document).ready(function(){
 			}
 			else {
 				socket.emit("offden2");
+			}
+		}
+	});
+	$('#button2').change(function() {
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden3");
+			}
+			else {
+				socket.emit("offden3");
 			}
 		}
 	});
