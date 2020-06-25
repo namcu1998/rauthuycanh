@@ -8,6 +8,7 @@ const rd = require('./read.database/read.database')
 const chartData = require('./createDataCharts/create.charts')
 const time = require('./time/time')
 const ma = require("./modeAndDataAuto/create.mode")
+const bodyParser = require('body-parser')
 const app = express();
 const server = http.Server(app);
 const io = socketio(server);
@@ -16,27 +17,29 @@ const nsp = io.of('/namcu1998');
 const webapp = io.of('/nam2351998');
 const middleware = require('socketio-wildcard')();
 let scope = 0, scope1 = 0;
+let array = [];
 app.use(express.static("./public"));
 app.set("view engine","ejs");
 app.set("views","./views");
 app.use('/scripts', express.static(__dirname + '/node_modules/d3/'));
 app.use('/cssToggle', express.static(__dirname + '/bootstrapToggle/css/'));
 app.use('/jsToggle', express.static(__dirname + '/bootstrapToggle/js/'));
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(router);
 nsp.use(middleware);
 webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
 chartData();
-function xulyData(data){
+function xulyData(second, temp, humi, light){
 	let x = {
-		thoigian: data.second,
-		nhietdo: data.temp,
-		doam: data.humi,
-		light: data.light
+		thoigian: second,
+		nhietdo: temp,
+		doam: humi,
+		light: light
 	}
 	return x;
 }
-
 AwakeHeroku.add({
 	url: "https://bonghoaxinh.herokuapp.com"
 })
@@ -46,7 +49,7 @@ function loopSync(){
 		setInterval(() => {
 			timeConnect++;
 			if(ma.getMode() == 0){
-				if(ma.getAuto().speakerDay.indexOf(time.timeDay()) >= 0){
+				if(ma.getAuto().speakerDay.indexOf(time.timeDay()[0]) >= 0){
 					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop){
 						for(scope ; scope < 1 ; scope ++){
 							ma.speaker(1);
@@ -74,6 +77,11 @@ function loopSync(){
 				timeConnect = 0;
 				console.log("timeConnect")
 			}
+			if(time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45 && array.length == 5){
+				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
+				webapp.emit("emitChart", xulyData(time.timeDay()[1][2], array[0], array[1], array[2]));
+				webapp.emit("hmm", rd());
+			}
 		}, 1000)
 	})
 }
@@ -88,10 +96,7 @@ nsp.on('connection', function(socket){
 		webapp.emit("statusEsp", ma.getAll()[3]);
 	})
 	socket.on("JSON1",function(data){
-		webapp.emit("dulieu1",data);
-		wd(data.temp, data.humi, data.light, data.second, data.minute, data.hour, data.thing, data.day, data.month, data.year, data.speak, data.fanHumi);
-		webapp.emit("emitChart", xulyData(data));
-		webapp.emit("hmm", rd());
+		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi];
 		if(ma.getMode() === 0){
 			if(data.humi < ma.getAuto().setHumi){
 				ma.fanHumi(1);

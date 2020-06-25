@@ -1,6 +1,7 @@
 const moment = require('moment-timezone')
 function timeDay(){
     var ngay
+    var array = [];
     var day = moment().tz("Asia/Ho_Chi_Minh").format('dddd');
     switch(day){
       case 'Monday':
@@ -25,13 +26,16 @@ function timeDay(){
         ngay = 'chủ nhật'
         break;
     }
+    array[0] = ngay;
+    var time = moment().tz("Asia/Ho_Chi_Minh").format("HH:mm:ss");
+    array[1] = time.split(":");
     var date = moment().tz("Asia/Ho_Chi_Minh").format('DD-MM-YYYY');
-    return ngay
+    array[2] = date.split("-");
+    return array;
   }
 
 function time(){
   return moment().tz("Asia/Ho_Chi_Minh").format("HH:mm");
 }
-
 module.exports.time = time;
 module.exports.timeDay = timeDay;
