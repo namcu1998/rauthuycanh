@@ -14,7 +14,7 @@ module.exports =  function() {
 		dataJson.push(data);
 	})
 	if(dataJson.length > 5 ){
-		dataJson.splice(5, 1);
+		dataJson.splice(5, 95);
 	}
 	let data2 = JSON.stringify(dataJson.reverse());
 	fs.writeFileSync('./JSON/dataCharts.json',data2);
