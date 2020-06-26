@@ -8,29 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-      <% if (error) { %>
-        <h2><%= error %></h2>
-      <% } %>
-    <form action="/login" method="POST">
+    <form action="/auth/login" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
-          <% if (value) { %>
-          <input name="email" type="email" id="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value=<%=value%>>
-          <% } %>
+          <input name="email" type="email" id="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <% if (value) { %>
-          <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value=<%=value%>>
-          <% } %>
+          <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      <script>
-          <% if (value) { %>
-         <%=value%>
-        <% } %>
-        document.getElementById("email").value = value;
-      </script>
 </body>
 </html>

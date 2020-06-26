@@ -2,10 +2,12 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io')
 const router = require('./router/home.router')
+const authRouter = require('./router/auth.router')
 const database = require('./database/firebase')
 const wd = require('./read.database/write.database')
 const rd = require('./read.database/read.database')
 const chartData = require('./createDataCharts/create.charts')
+const Auth = require('./controllers/auth.controller')
 const time = require('./time/time')
 const ma = require("./modeAndDataAuto/create.mode")
 const bodyParser = require('body-parser')
@@ -16,6 +18,8 @@ const { AwakeHeroku } = require('awake-heroku');
 const nsp = io.of('/namcu1998');
 const webapp = io.of('/nam2351998');
 const middleware = require('socketio-wildcard')();
+const cookieParser = require('cookie-parser');
+const { use } = require('./router/home.router');
 let scope = 0, scope1 = 0;
 let array = [];
 app.use(express.static("./public"));
@@ -26,8 +30,8 @@ app.use('/cssToggle', express.static(__dirname + '/bootstrapToggle/css/'));
 app.use('/jsToggle', express.static(__dirname + '/bootstrapToggle/js/'));
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(router);
 nsp.use(middleware);
+app.use(cookieParser())
 webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
 chartData();
@@ -77,10 +81,11 @@ function loopSync(){
 				timeConnect = 0;
 				console.log("timeConnect")
 			}
-			if(time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45 && array.length == 5){
+			if((time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5){
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
 				webapp.emit("emitChart", xulyData(time.timeDay()[1][2], array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
+				console.log("arrayOk")
 			}
 		}, 1000)
 	})
@@ -187,3 +192,8 @@ webapp.on('connection', function(socket){
 		console.log("mode");
 	})
 });
+app.use('/home', Auth.SetCookie, router);
+app.use('/auth', authRouter);
+app.get('/', function(req, res){
+	res.render('home/gioithieu')
+})
