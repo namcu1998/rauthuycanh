@@ -7,14 +7,14 @@ module.exports =  function() {
 		let y = x[2].split(":");
 		let data = {
 			dataLight: item.light,
-			dataTime: y[2],
+			dataTime: item.thoigian,
 			dataTemp: item.nhietdo,
 			dataHumi: item.doam,
 		}
 		dataJson.push(data);
 	})
-	if(dataJson.length > 100 ){
-		dataJson.splice(100, 1);
+	if(dataJson.length > 5 ){
+		dataJson.splice(95, 1);
 	}
 	let data2 = JSON.stringify(dataJson.reverse());
 	fs.writeFileSync('./JSON/dataCharts.json',data2);
