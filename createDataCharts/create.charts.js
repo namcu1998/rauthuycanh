@@ -21,5 +21,3 @@ module.exports =  function() {
 	console.log(fs.readFileSync('./JSON/dataCharts.json','utf8'))
 	return JSON.parse(fs.readFileSync('./JSON/dataCharts.json','utf8'));
 }
-
-

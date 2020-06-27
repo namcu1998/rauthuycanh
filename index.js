@@ -59,7 +59,7 @@ function loopSync(){
 							ma.speaker(1);
 							nsp.emit("LED", ma.getAll()[2]);
 							webapp.emit("onMa1", ma.getAll()[2]);
-							console.log("ok1")
+							//("ok1")
 						}
 					}
 					else {
@@ -67,7 +67,7 @@ function loopSync(){
 							ma.speaker(0);
 							nsp.emit("LED", ma.getAll()[2]);
 							webapp.emit("onMa1", ma.getAll()[2]);
-							console.log("ok1")
+							//("ok1")
 						}
 					}
 				}
@@ -79,27 +79,28 @@ function loopSync(){
 			if(timeConnect === 15){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
-				console.log("timeConnect")
+				//("timeConnect")
 			}
 			if((time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5){
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
-				console.log("arrayOk")
+				//("arrayOk")
 			}
 		}, 1000)
 	})
 }
 loopSync();
 nsp.on('connection', function(socket){
-	console.log(ma.getAll()[3]);
+	//(ma.getAll()[3]);
 	ma.statusEsp("esp connected");
 	webapp.emit("statusEsp", ma.getAll()[3]);
 	socket.on('disconnect', function(){
-		console.log("esp đã disconnect");
+		//("esp đã disconnect");
 		ma.statusEsp("esp disconnect");
 		webapp.emit("statusEsp", ma.getAll()[3]);
+		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
 		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi];
@@ -108,7 +109,7 @@ nsp.on('connection', function(socket){
 				ma.fanHumi(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
-				console.log("ok2")
+				//("ok2")
 			}
 			else {
 				ma.fanHumi(0);
@@ -119,7 +120,7 @@ nsp.on('connection', function(socket){
 				ma.fanTemp(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
-				console.log("ok2")
+				//("ok2")
 			}
 			else {
 				ma.fanTemp(0);
@@ -130,39 +131,39 @@ nsp.on('connection', function(socket){
 	});
 })
 webapp.on('connection', function(socket){
-	console.log("webapp đã connected");
+	//("webapp đã connected");
 	socket.on('disconnect', function(){
-		console.log("webapp đã disconnect");
+		//("webapp đã disconnect");
 	})
 	socket.on("onden1", () => {
 		ma.speaker(1);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("emitspeaker")
+		//("emitspeaker")
 	})
 	socket.on("offden1", () => {
 		ma.speaker(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("emitspeaker")
+		//("emitspeaker")
 	})
 	socket.on("onden2", () => {
 		ma.fanHumi(1);
 		 nsp.emit("LED", ma.getAll()[2]);
-		 console.log("emithumi")		
+		 //("emithumi")		
 	})
 	socket.on("offden2", () => {
 		ma.fanHumi(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("emithumi")
+		//("emithumi")
 	})
 	socket.on("onden3", () => {
 		ma.fanTemp(1);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("emitTemp")		
+		//("emitTemp")		
 	})
 	socket.on("offden3", () => {
 		ma.fanTemp(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("emitTemp")
+		//("emitTemp")
 	})
 	socket.on("getData", () => {
 		webapp.emit("hmm", rd());
@@ -171,7 +172,7 @@ webapp.on('connection', function(socket){
 		webapp.emit("onCharts", chartData());
 	})
 	socket.on("getMa", () => {
-		console.log("ok")
+		//("ok")
 		webapp.emit("onMa", ma.getAll());
 	})
 	// dữ liệu cảm biến
@@ -179,7 +180,7 @@ webapp.on('connection', function(socket){
 		ma.saveAuto(data);
 		scope = 0;
 		scope1 = 0;
-		console.log("ok3")
+		//("ok3")
 	})
 	socket.on("mode",(data) => {
 		ma.saveMode(data);
@@ -190,7 +191,7 @@ webapp.on('connection', function(socket){
 			// ma.speaker(0);
 		}
 		else webapp.emit("onMa1", ma.getAll()[2]);
-		console.log("mode");
+		//("mode");
 	})
 });
 app.use('/home', Auth.SetCookie, router);

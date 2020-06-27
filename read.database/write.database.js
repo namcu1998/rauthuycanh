@@ -13,7 +13,6 @@ function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth,
   if(data.length > 100){
     data.splice(100,1);
   }
-  console.log(data.length)
   data.unshift(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, speaker, fanHumi, fanTemp))
   var data1 = JSON.stringify(data);
   fs.writeFileSync('./JSON/data.json',data1);
