@@ -98,8 +98,6 @@ nsp.on('connection', function(socket){
 	webapp.emit("statusEsp", ma.getAll()[3]);
 	socket.on('disconnect', function(){
 		//("esp đã disconnect");
-		ma.statusEsp("esp disconnect");
-		webapp.emit("statusEsp", ma.getAll()[3]);
 		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
