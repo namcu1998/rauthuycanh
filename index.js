@@ -44,9 +44,9 @@ function xulyData(second, temp, humi, light){
 	}
 	return x;
 }
-AwakeHeroku.add({
-	url: "https://bonghoaxinh.herokuapp.com"
-})
+// AwakeHeroku.add({
+// 	url: "https://bonghoaxinh.herokuapp.com"
+// })
 function loopSync(){
 	var timeConnect = 0;
 	return new Promise((resolve, reject) => {
@@ -59,7 +59,6 @@ function loopSync(){
 							ma.speaker(1);
 							nsp.emit("LED", ma.getAll()[2]);
 							webapp.emit("onMa1", ma.getAll()[2]);
-							//("ok1")
 						}
 					}
 					else {
@@ -67,7 +66,6 @@ function loopSync(){
 							ma.speaker(0);
 							nsp.emit("LED", ma.getAll()[2]);
 							webapp.emit("onMa1", ma.getAll()[2]);
-							//("ok1")
 						}
 					}
 				}
@@ -79,14 +77,12 @@ function loopSync(){
 			if(timeConnect === 15){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
-				//("timeConnect")
 			}
 			if((time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5){
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
-				//("arrayOk")
 			}
 		}, 1000)
 	})
@@ -97,7 +93,8 @@ nsp.on('connection', function(socket){
 	ma.statusEsp("esp connected");
 	webapp.emit("statusEsp", ma.getAll()[3]);
 	socket.on('disconnect', function(){
-		//("esp đã disconnect");
+		ma.statusEsp("esp disconnect");
+		webapp.emit("statusEsp", ma.getAll()[3]);
 		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
@@ -107,7 +104,6 @@ nsp.on('connection', function(socket){
 				ma.fanHumi(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
-				//("ok2")
 			}
 			else {
 				ma.fanHumi(0);
@@ -118,7 +114,6 @@ nsp.on('connection', function(socket){
 				ma.fanTemp(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
-				//("ok2")
 			}
 			else {
 				ma.fanTemp(0);
@@ -131,37 +126,30 @@ nsp.on('connection', function(socket){
 webapp.on('connection', function(socket){
 	//("webapp đã connected");
 	socket.on('disconnect', function(){
-		//("webapp đã disconnect");
 	})
 	socket.on("onden1", () => {
 		ma.speaker(1);
 		nsp.emit("LED", ma.getAll()[2]);
-		//("emitspeaker")
 	})
 	socket.on("offden1", () => {
 		ma.speaker(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		//("emitspeaker")
 	})
 	socket.on("onden2", () => {
 		ma.fanHumi(1);
-		 nsp.emit("LED", ma.getAll()[2]);
-		 //("emithumi")		
+		 nsp.emit("LED", ma.getAll()[2]);	
 	})
 	socket.on("offden2", () => {
 		ma.fanHumi(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		//("emithumi")
 	})
 	socket.on("onden3", () => {
 		ma.fanTemp(1);
-		nsp.emit("LED", ma.getAll()[2]);
-		//("emitTemp")		
+		nsp.emit("LED", ma.getAll()[2]);		
 	})
 	socket.on("offden3", () => {
 		ma.fanTemp(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		//("emitTemp")
 	})
 	socket.on("getData", () => {
 		webapp.emit("hmm", rd());
@@ -170,7 +158,6 @@ webapp.on('connection', function(socket){
 		webapp.emit("onCharts", chartData());
 	})
 	socket.on("getMa", () => {
-		//("ok")
 		webapp.emit("onMa", ma.getAll());
 	})
 	// dữ liệu cảm biến
@@ -178,7 +165,6 @@ webapp.on('connection', function(socket){
 		ma.saveAuto(data);
 		scope = 0;
 		scope1 = 0;
-		//("ok3")
 	})
 	socket.on("mode",(data) => {
 		ma.saveMode(data);
@@ -189,7 +175,6 @@ webapp.on('connection', function(socket){
 			// ma.speaker(0);
 		}
 		else webapp.emit("onMa1", ma.getAll()[2]);
-		//("mode");
 	})
 });
 app.use('/home', Auth.SetCookie, router);
