@@ -3,7 +3,6 @@ const express = require('express');
 const socketio = require('socket.io')
 const router = require('./router/home.router')
 const authRouter = require('./router/auth.router')
-const database = require('./database/firebase')
 const wd = require('./read.database/write.database')
 const rd = require('./read.database/read.database')
 const chartData = require('./createDataCharts/create.charts')
@@ -20,7 +19,7 @@ const webapp = io.of('/nam2351998');
 const middleware = require('socketio-wildcard')();
 const cookieParser = require('cookie-parser');
 const { use } = require('./router/home.router');
-let scope = 0, scope1 = 0;
+let scope = 0, scope1 = 0, scope2 = 0;
 let array = [];
 app.use(express.static("./public"));
 app.set("view engine","ejs");
@@ -78,7 +77,9 @@ function loopSync(){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
 			}
-			if((time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5){
+			if(time.timeDay()[1][2] !== scope2 && time.timeDay()[1][2] == scope2 + 2){
+				scope2 = time.timeDay()[1][2];
+				//(time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
@@ -89,7 +90,6 @@ function loopSync(){
 }
 loopSync();
 nsp.on('connection', function(socket){
-	//(ma.getAll()[3]);
 	ma.statusEsp("esp connected");
 	webapp.emit("statusEsp", ma.getAll()[3]);
 	socket.on('disconnect', function(){
