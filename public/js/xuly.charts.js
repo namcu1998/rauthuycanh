@@ -32,8 +32,8 @@ $(document).ready(function(){
         })
     });
     socket.on("emitChart",function(data){
-        addData(myChart, myChart1, myChart2, data.thoigian, data.light, data.nhietdo, data.doam);
         removeData(myChart, myChart1, myChart2);
+        addData(myChart, myChart1, myChart2, data.thoigian, data.light, data.nhietdo, data.doam);
     });
 }); //document
 var myChart = new Chart(ctx, {
@@ -107,7 +107,7 @@ var myChart1 = new Chart(ctx1, {
                     callback: function(value, index, values) {
                         return value + "°C";
                     },
-                    suggestedMin: 30,
+                    suggestedMin: 40,
                     suggestedMax: 50
                 }
             }]
@@ -147,7 +147,7 @@ var myChart2 = new Chart(ctx2, {
                     callback: function(value, index, values) {
                         return value + "%";
                     },
-                    suggestedMin: 30,
+                    suggestedMin: 0,
                     suggestedMax: 100
                 }
             }]
