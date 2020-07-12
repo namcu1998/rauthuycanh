@@ -146,7 +146,7 @@ var myChart2 = new Chart(ctx2, {
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "%";
-                    }
+                    },
                     suggestedMin: 30,
                     suggestedMax: 50
                 }
