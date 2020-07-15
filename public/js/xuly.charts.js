@@ -107,8 +107,8 @@ var myChart1 = new Chart(ctx1, {
                     callback: function(value, index, values) {
                         return value + "°C";
                     },
-                    suggestedMin: 40,
-                    suggestedMax: 50
+                    suggestedMin: 30,
+                    suggestedMax: 40
                 }
             }]
         }
