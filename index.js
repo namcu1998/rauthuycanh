@@ -92,6 +92,7 @@ loopSync();
 nsp.on('connection', function(socket){
 	ma.statusEsp("esp connected");
 	webapp.emit("statusEsp", ma.getAll()[3]);
+	nsp.emit("statusEsp", ma.getAll()[2]);
 	socket.on('disconnect', function(){
 		ma.statusEsp("esp disconnect");
 		webapp.emit("statusEsp", ma.getAll()[3]);
