@@ -1,5 +1,4 @@
 const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998"); 
-let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){
 		item2.bootstrapToggle('on');
@@ -45,7 +44,6 @@ $(document).ready(function(){
 		run();
 	})
 	socket.on("onMa", (data) => {
-		test = 1;
 		document.getElementById("statusEsp").innerHTML = data[3];
 		$("#setHumi")[0].value = data[1].setHumi;
 		$("#setTemp")[0].value = data[1].setTemp;
@@ -67,17 +65,14 @@ $(document).ready(function(){
 		else {
 			$('#toggle-event-mode').prop('checked', false).change();
 		}	
-		test = 0;
 	})
 	socket.on("onMa1", (data) => {
-		test = 1;
 		xulyData("speaker", data.speaker);
 		xulyData("fanHumi", data.fanHumi);
 		xulyData("fanTemp", data.fanTemp);
 		xulyden(data.fanHumi, $('#button1'));
 		xulyden(data.speaker, $('#button'));
 		xulyden(data.fanTemp, $('#button2'));
-		test = 0;
 	})
 	socket.on("statusEsp", (data) => {
 		document.getElementById("statusEsp").innerHTML = data;
@@ -95,33 +90,27 @@ $(document).ready(function(){
 			}
 	});
 	$('#button').change(function() {
-		if(test == 0){
-			if($(this).prop('checked') == true){
-				socket.emit("onden1");
-			}
-			else {
-				socket.emit("offden1");
-			}
+		if($(this).prop('checked') == true){
+			socket.emit("onden1");
+		}
+		else {
+			socket.emit("offden1");
 		}
 	});
 	$('#button1').change(function() {
-		if(test == 0){
-			if($(this).prop('checked') == true){
-				socket.emit("onden2");
-			}
-			else {
-				socket.emit("offden2");
-			}
+		if($(this).prop('checked') == true){
+			socket.emit("onden2");
+		}
+		else {
+			socket.emit("offden2");
 		}
 	});
 	$('#button2').change(function() {
-		if(test == 0){
-			if($(this).prop('checked') == true){
-				socket.emit("onden3");
-			}
-			else {
-				socket.emit("offden3");
-			}
+		if($(this).prop('checked') == true){
+			socket.emit("onden3");
+		}
+		else {
+			socket.emit("offden3");
 		}
 	});
 }); //document
