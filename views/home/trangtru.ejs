@@ -53,19 +53,19 @@
 		  <div style="text-align: left;" class="col-sm">
 			<div class="led">
 				<span class="led">Loa:</span>
-				<input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large">
+				<input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.speaker == 1) { %>checked<% } %>>
 			</div>
 		  </div>
 		  <div style="text-align: center;" class="col-sm">
 			<div class="led">
 				<span class="led">FanHumi:</span>
-				<input id="button1" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large">
+				<input id="button1" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanHumi == 1) { %>checked<% } %>>
 			</div>
 		  </div>
 		  <div style="text-align: right;" class="col-sm">
 			<div class="led">
 				<span class="led">FanTemp:</span>
-				<input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large">
+				<input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanTemp == 1) { %>checked<% } %>>
 			</div>
 		  </div>
 		</div>

@@ -1,9 +1,10 @@
 // module.exports.gioithieu = function(req, res, next){
 //     res.render('home/gioithieu');
 // };
+const ma = require('../modeAndDataAuto/create.mode')
 module.exports.trangtru = function(req, res, next){
     res.render('home/trangtru', {
-        nam: 10,
+        data: ma.getAll()[2],
     });
 };
 module.exports.cambien = function(req, res, next){
