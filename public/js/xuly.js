@@ -70,9 +70,6 @@ $(document).ready(function(){
 		xulyData("speaker", data.speaker);
 		xulyData("fanHumi", data.fanHumi);
 		xulyData("fanTemp", data.fanTemp);
-		xulyden(data.fanHumi, $('#button1'));
-		xulyden(data.speaker, $('#button'));
-		xulyden(data.fanTemp, $('#button2'));
 	})
 	socket.on("statusEsp", (data) => {
 		document.getElementById("statusEsp").innerHTML = data;
