@@ -47,9 +47,6 @@ $(document).ready(function(){
 	socket.on("onMa", (data) => {
 		test = 1;
 		document.getElementById("statusEsp").innerHTML = data[3];
-		xulyData("speaker", data[2].speaker);
-		xulyData("fanHumi", data[2].fanHumi);
-		xulyData("fanTemp", data[2].fanTemp);
 		$("#setHumi")[0].value = data[1].setHumi;
 		$("#setTemp")[0].value = data[1].setTemp;
 		$("#timeStop")[0].value = data[1].speakerTimeStop;

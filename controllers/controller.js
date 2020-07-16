@@ -5,6 +5,7 @@ const ma = require('../modeAndDataAuto/create.mode')
 module.exports.trangtru = function(req, res, next){
     res.render('home/trangtru', {
         data: ma.getAll()[2],
+        data1: ma.getAll()[0],
     });
 };
 module.exports.cambien = function(req, res, next){
