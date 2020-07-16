@@ -1,4 +1,5 @@
-const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998"); 
+const socket = io("http://localhost:3484/nam2351998"); 
+let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){
 		item2.bootstrapToggle('on');
@@ -44,6 +45,7 @@ $(document).ready(function(){
 		run();
 	})
 	socket.on("onMa", (data) => {
+		test = 1;
 		document.getElementById("statusEsp").innerHTML = data[3];
 		$("#setHumi")[0].value = data[1].setHumi;
 		$("#setTemp")[0].value = data[1].setTemp;
@@ -60,20 +62,30 @@ $(document).ready(function(){
 		if(data[0] == 1){
 			xulyden(data[2].speaker, $('#button'));
 			xulyden(data[2].fanHumi, $('#button1'));
-			$('#toggle-event-mode').prop('checked', true).change();
 		}
-		else {
-			$('#toggle-event-mode').prop('checked', false).change();
-		}	
+		test = 0;
 	})
 	socket.on("onMa1", (data) => {
+		test = 1;
 		xulyData("speaker", data.speaker);
 		xulyData("fanHumi", data.fanHumi);
 		xulyData("fanTemp", data.fanTemp);
+		xulyden(data.fanHumi, $('#button1'));
+		xulyden(data.speaker, $('#button'));
+		xulyden(data.fanTemp, $('#button2'));
+		test = 0;
 	})
 	socket.on("statusEsp", (data) => {
 		document.getElementById("statusEsp").innerHTML = data;
 	})
+	if($('#toggle-event-mode').prop('checked') == true){
+		$("#controll").show();
+		$("#auto").hide();
+	}
+	else {
+		$("#controll").hide();
+		$("#auto").show();
+	}
 	$('#toggle-event-mode').change(function() {
 			if($(this).prop('checked') == true){
 				$("#controll").show();
@@ -87,27 +99,33 @@ $(document).ready(function(){
 			}
 	});
 	$('#button').change(function() {
-		if($(this).prop('checked') == true){
-			socket.emit("onden1");
-		}
-		else {
-			socket.emit("offden1");
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden1");
+			}
+			else {
+				socket.emit("offden1");
+			}
 		}
 	});
 	$('#button1').change(function() {
-		if($(this).prop('checked') == true){
-			socket.emit("onden2");
-		}
-		else {
-			socket.emit("offden2");
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden2");
+			}
+			else {
+				socket.emit("offden2");
+			}
 		}
 	});
 	$('#button2').change(function() {
-		if($(this).prop('checked') == true){
-			socket.emit("onden3");
-		}
-		else {
-			socket.emit("offden3");
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden3");
+			}
+			else {
+				socket.emit("offden3");
+			}
 		}
 	});
 }); //document
