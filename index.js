@@ -89,6 +89,9 @@ function loopSync(){
 			else {
 				nsp.emit("LED", ma.getAll()[2]);
 			}
+			if(array[5] === "1") {
+				ma.statusEsp("esp connected");
+			}
 		}, 1000)
 	})
 }
@@ -103,7 +106,7 @@ nsp.on('connection', function(socket){
 		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
-		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi];
+		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp];
 		if(ma.getMode() === 0){
 			if(data.humi < ma.getAuto().setHumi){
 				ma.fanHumi(1);
