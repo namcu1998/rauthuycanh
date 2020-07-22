@@ -1,4 +1,4 @@
-const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998");  //http://localhost:3484/nam2351998
+const socket = io("http://localhost:3484/nam2351998");  //http://localhost:3484/nam2351998
 const ctx = document.getElementById('myChart').getContext('2d');
 const ctx1 = document.getElementById('myChart1').getContext('2d');
 const ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -107,8 +107,8 @@ var myChart1 = new Chart(ctx1, {
                     callback: function(value, index, values) {
                         return value + "°C";
                     },
-                    suggestedMin: 30,
-                    suggestedMax: 40
+                    // suggestedMin: 30,
+                    // suggestedMax: 40
                 }
             }]
         }

@@ -1,4 +1,4 @@
-const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998"); 
+const socket = io("http://localhost:3484/nam2351998"); 
 let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){
@@ -59,10 +59,6 @@ $(document).ready(function(){
 				}
 			}
 		})
-		if(data[0] == 1){
-			xulyden(data[2].speaker, $('#button'));
-			xulyden(data[2].fanHumi, $('#button1'));
-		}
 		test = 0;
 	})
 	socket.on("onMa1", (data) => {

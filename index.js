@@ -77,13 +77,17 @@ function loopSync(){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
 			}
-			if(time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 2 === 0){
+			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 15 === 0) && ma.getAll()[3] === "esp connected"){
 				scope2 = time.timeDay()[1][2];
 				//(time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
+			}
+			if(ma.getAll()[2].speak == array[3] && ma.getAll()[2].fanHumi == array[3]) {}
+			else {
+				nsp.emit("LED", ma.getAll()[2]);
 			}
 		}, 1000)
 	})
