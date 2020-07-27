@@ -102,6 +102,7 @@ nsp.on('connection', function(socket){
 	nsp.emit("statusEsp", ma.getAll()[2]);
 	socket.on('disconnect', function(){
 		ma.statusEsp("esp disconnect");
+		array[5] = 0;
 		webapp.emit("statusEsp", ma.getAll()[3]);
 		console.log(time.getTime());
 	})
