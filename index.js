@@ -90,18 +90,18 @@ function loopSync(){
 				nsp.emit("LED", ma.getAll()[2]);
 			}
 			if(array[5] === "1") {
-				ma.statusEsp("esp connected");
+				ma.statusEsp("ESP Connected");
 			}
 		}, 1000)
 	})
 }
 loopSync();
 nsp.on('connection', function(socket){
-	ma.statusEsp("esp connected");
+	ma.statusEsp("ESP Connected");
 	webapp.emit("statusEsp", ma.getAll()[3]);
 	nsp.emit("statusEsp", ma.getAll()[2]);
 	socket.on('disconnect', function(){
-		ma.statusEsp("esp disconnect");
+		ma.statusEsp("ESP Disconnect");
 		array[5] = 0;
 		webapp.emit("statusEsp", ma.getAll()[3]);
 		console.log(time.getTime());
