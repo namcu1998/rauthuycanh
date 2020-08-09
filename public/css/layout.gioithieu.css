@@ -24,7 +24,19 @@ body {
 /* img{
 	float: left;
 } */
+#content{
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
 p{
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	font-size: 3em;
+	font-family: 'Times New Roman', serif;
+	font-size: 1.5em;
+}
+img{
+	position: absolute;
+	z-index: -1;
+}
+#p{
+	z-index: 0;
 }
