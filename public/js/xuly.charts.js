@@ -147,8 +147,8 @@ var myChart2 = new Chart(ctx2, {
                     callback: function(value, index, values) {
                         return value + "%";
                     },
-                    suggestedMin: 0,
-                    suggestedMax: 100
+                    // suggestedMin: 0,
+                    // suggestedMax: 100
                 }
             }]
         }
