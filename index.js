@@ -79,7 +79,6 @@ function loopSync(){
 			}
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 1 === 0) && ma.getAll()[3] === "ESP Connected"){
 				scope2 = time.timeDay()[1][2];
-				//(time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
@@ -89,7 +88,6 @@ function loopSync(){
 			}
 			else {
 				nsp.emit("LED", ma.getAll()[2]);
-				console.log(ma.getAll()[2])
 			}
 			if(array[5] === "1") {
 				ma.statusEsp("ESP Connected");
@@ -111,23 +109,38 @@ nsp.on('connection', function(socket){
 	socket.on("JSON1",function(data){
 		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan];
 		if(ma.getMode() === 0){
-			if(data.humi < ma.getAuto().setHumi && data.fanHumi != 1){
+			if(data.humi < ma.getAuto().setHumi[1] && data.fanHumi != 1){
 				ma.fanHumi(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
+				console.log("bat humi")
 			}
-			if(data.humi > ma.getAuto().setHumi && (data.fanHumi) != 0){
+			if(data.humi > ma.getAuto().setHumi[0] && (data.fan) != 1){
+				ma.fan(1);
+				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
+				console.log("bat fan")
+			}
+			if(data.humi > ma.getAuto().setHumi[1] && data.humi < ma.getAuto().setHumi[0] && (data.fanHumi) != 0 && (data.fan) != 0){
 				ma.fanHumi(0);
+				ma.fan(0);
+				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
+				console.log("all off")
+			}
+			if(data.temp > ma.getAuto().setTempMax && data.fan != 1){
+				ma.fan(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
-			if(data.temp > ma.getAuto().setTemp && data.fanTemp != 1){
-				ma.fanTemp(1);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-			}
-			if(data.temp < ma.getAuto().setTemp && data.fanTemp != 0){
+			if(data.temp < ma.getAuto().setTempMin && data.fanTemp != 1){
 				ma.fanTemp(0);
+				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
+			}
+			if(data.temp > ma.getAuto().setTempMin && data.temp < ma.getAuto().setTempMax && data.fanTemp != 0 && data.fan != 0){
+				ma.fanTemp(0);
+				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
@@ -182,6 +195,7 @@ webapp.on('connection', function(socket){
 	// dữ liệu cảm biến
 	socket.on("ok", (data) => {
 		ma.saveAuto(data);
+		console.log(data)
 		scope = 0;
 		scope1 = 0;
 	})

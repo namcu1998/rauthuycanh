@@ -120,16 +120,29 @@
 		<div style="clear: both;">
 			<h2 style="text-align: center;">---------------------------------------------------------------------------------------------</h2>
 		</div>
-		<div style="text-align: center;">
+		<div style="text-align: center; float: left;">
 			<h3>Thiết lập giá trị nhiệt độ</h3>
-			<input id="setTemp" style="margin: 10px;" type="number" placeholder="nhập giá trị" >
+			<div>
+				<span>Max</span>
+				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" >
+			</div>
+			<div>
+				<span>Min</span>
+				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" >
+			</div>
 		</div>
-		<div style="text-align: center;">
+		<div style="text-align: center; float: right;">
 			<h3>Thiết lập giá trị độ ẩm</h3>
-			<input id="setHumi" style="margin: 10px;" type="number" placeholder="nhập giá trị" value="0">
+			<div>
+				<span>Max</span>
+				<input id="setHumiMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" value="0">
+			</div>
+			<div>
+				<span>Min</span>
+				<input id="setHumiMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" value="0">
+			</div>
 		</div>
-		<input id="submit" class="btn btn-primary" type="button" value="Submit">
-		<div  style="height: 50px; width: 400px; border-radius: 10px; margin: 10px auto; background-color: rgb(24, 68, 43); color: seashell; text-align: center; padding: 15px;" class="container ">
+		<div style="height: 75px; width: 400px; border-radius: 10px; margin: 35px auto; background-color: rgb(24, 68, 43); color: seashell; text-align: center; padding: 15px;" class="container ">
 			<div class="row">
 				<div class="col-sm">
 					<span>Loa:</span>
@@ -139,12 +152,20 @@
 					<span>Phun sương:</span>
 					<span id="fanHumi"></span>
 				</div>
+			</div>
+			<div style="height: 5px;"></div>
+			<div class="row">
 				<div class="col-sm">
 					<span>Sưởi:</span>
 					<span id="fanTemp"></span>
 				</div>
+				<div class="col-sm">
+					<span>Quạt:</span>
+					<span id="fan"></span>
+				</div>
 			</div>
 		</div>
+		<input style="margin-top: 0px" id="submit" class="btn btn-primary" type="button" value="Submit">
 	</div>
 </body>
 </html>

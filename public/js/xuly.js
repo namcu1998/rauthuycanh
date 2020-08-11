@@ -1,7 +1,7 @@
 const socket = io("https://nhayen.herokuapp.com/nam2351998"); 
 let test = 0;
 function xulyden(item1, item2){
-	if(item1 == 1){hdjfd
+	if(item1 == 1){
 		item2.bootstrapToggle('on');
 	}
 	else item2.bootstrapToggle('off');
@@ -26,18 +26,19 @@ $(document).ready(function(){
 		}
 		var hourStart = parseInt($("#timeStart")[0].value.split(":")[0]);
 		var hourStop = parseInt($("#timeStop")[0].value.split(":")[0]);
-		if(parseInt($("#setHumi")[0].value) == 0 || $("#timeStart")[0].value == null || $("#timeStop")[0].value == null || array.length == 0){
+		if(parseInt($("#setHumiMax")[0].value) == 0 || parseInt($("#setHumiMin")[0].value) == 0 || parseInt($("#setTempMax")[0].value) == 0 || parseInt($("#setTempMin")[0].value) == 0 || $("#timeStart")[0].value == null || $("#timeStop")[0].value == null || array.length == 0){
 			alert("chưa nhập đủ dữ liệu")
 		}
-		else if($("#setHumi")[0].value > 95 || $("#setHumi")[0].value < 40) alert("độ ẩm quá lớn hoặc quá nhỏ");
-		else if($("#setTemp")[0].value > 60 || $("#setTemp")[0].value < 0) alert("nhiệt độ quá lớn hoặc quá nhỏ");
-		else if(hourStart > hourStop) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc")
+		else if($("#setHumiMax")[0].value > 95 || $("#setHumiMin")[0].value < 40) alert("độ ẩm quá lớn hoặc quá nhỏ");
+		else if($("#setTempMax")[0].value > 60 || $("#setTempMin")[0].value < 0) alert("nhiệt độ quá lớn hoặc quá nhỏ");
+		else if(hourStart > hourStop) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc");
+		else if($("#setHumiMax")[0].value < $("#setHumiMin")[0].value || $("#setTempMax")[0].value < $("#setTempMin")[0].value) alert ("độ ẩm và nhiệt độ không được min lớn hơn max")
 		else{
 			data.speakerDay = array;
 			data.speakerTimeStart = $("#timeStart")[0].value;
 			data.speakerTimeStop = $("#timeStop")[0].value;
-			data.setHumi = $("#setHumi")[0].value;
-			data.setTemp  = $("#setTemp")[0].value;
+			data.setHumi = [$("#setHumiMax")[0].value, $("#setHumiMin")[0].value];
+			data.setTemp  = [$("#setTempMax")[0].value, $("#setTempMin")[0].value];
 			socket.emit("ok", data)
 		}
 	}
@@ -47,13 +48,16 @@ $(document).ready(function(){
 	socket.on("onMa", (data) => {
 		test = 1;
 		document.getElementById("statusEsp").innerHTML = data[3];
-		$("#setHumi")[0].value = data[1].setHumi;
-		$("#setTemp")[0].value = data[1].setTemp;
+		$("#setHumiMax")[0].value = data[1].setHumi[0];
+		$("#setHumiMin")[0].value = data[1].setHumi[1];
+		$("#setTempMax")[0].value = data[1].setTemp[0];
+		$("#setTempMin")[0].value = data[1].setTemp[1];
 		$("#timeStop")[0].value = data[1].speakerTimeStop;
 		$("#timeStart")[0].value = data[1].speakerTimeStart;
 		xulyData("speaker", data[2].speaker);
 		xulyData("fanHumi", data[2].fanHumi);
 		xulyData("fanTemp", data[2].fanTemp);
+		xulyData("fan", data.fan);
 		data[1].speakerDay.map((item) => {
 			let input = document.querySelectorAll("#auto input");
 			for(let x = 0 ; x < input.length ; x++){
@@ -69,6 +73,7 @@ $(document).ready(function(){
 		xulyData("speaker", data.speaker);
 		xulyData("fanHumi", data.fanHumi);
 		xulyData("fanTemp", data.fanTemp);
+		xulyData("fan", data.fan);
 		xulyden(data.speaker, $('#button'));
 		xulyden(data.fanHumi, $('#button1'));
 		xulyden(data.fanTemp, $('#button2'));
