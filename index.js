@@ -85,12 +85,12 @@ function loopSync(){
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
 			}
-			// if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7]) {
-			// }
-			// else {
-			// 	nsp.emit("LED", ma.getAll()[2]);
-			// 	console.log(ma.getAll()[2])
-			// }
+			if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7]) {
+			}
+			else {
+				nsp.emit("LED", ma.getAll()[2]);
+				console.log(ma.getAll()[2])
+			}
 			if(array[5] === "1") {
 				ma.statusEsp("ESP Connected");
 			}
