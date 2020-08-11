@@ -44,7 +44,7 @@ function xulyData(second, temp, humi, light){
 	return x;
 }
 AwakeHeroku.add({
-	url: "https://bonghoaxinh.herokuapp.com"
+	url: "https://nhayen.herokuapp.com"
 })
 function loopSync(){
 	var timeConnect = 0;
