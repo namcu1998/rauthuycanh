@@ -29,6 +29,12 @@ function fanTemp(fanTemp){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
+function fan(fan){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[2].fan = fan;
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
+}
 function statusEsp(esp){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     data[3] = esp;
@@ -52,6 +58,7 @@ module.exports.saveMode = saveMode;
 module.exports.fanHumi = fanHumi;
 module.exports.speaker = speaker;
 module.exports.fanTemp = fanTemp;
+module.exports.fan = fan;
 module.exports.getAuto = getAuto;
 module.exports.getMode = getMode;
 module.exports.getAll = getAll;

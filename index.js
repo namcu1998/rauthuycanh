@@ -77,7 +77,7 @@ function loopSync(){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
 			}
-			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 15 === 0) && ma.getAll()[3] === "ESP Connected"){
+			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 1 === 0) && ma.getAll()[3] === "ESP Connected"){
 				scope2 = time.timeDay()[1][2];
 				//(time.timeDay()[1][2] == 0 || time.timeDay()[1][2] == 15 || time.timeDay()[1][2] == 30 || time.timeDay()[1][2] == 45) && array.length === 5
 				chartData();
@@ -85,10 +85,12 @@ function loopSync(){
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
 			}
-			if(ma.getAll()[2].speak == array[3] && ma.getAll()[2].fanHumi == array[3]) {}
-			else {
-				nsp.emit("LED", ma.getAll()[2]);
-			}
+			// if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7]) {
+			// }
+			// else {
+			// 	nsp.emit("LED", ma.getAll()[2]);
+			// 	console.log(ma.getAll()[2])
+			// }
 			if(array[5] === "1") {
 				ma.statusEsp("ESP Connected");
 			}
@@ -107,24 +109,24 @@ nsp.on('connection', function(socket){
 		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
-		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp];
+		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan];
 		if(ma.getMode() === 0){
-			if(data.humi < ma.getAuto().setHumi){
+			if(data.humi < ma.getAuto().setHumi && data.fanHumi != 1){
 				ma.fanHumi(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
-			else {
+			if(data.humi > ma.getAuto().setHumi && (data.fanHumi) != 0){
 				ma.fanHumi(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
-			if(data.temp > ma.getAuto().setTemp){
+			if(data.temp > ma.getAuto().setTemp && data.fanTemp != 1){
 				ma.fanTemp(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
-			else {
+			if(data.temp < ma.getAuto().setTemp && data.fanTemp != 0){
 				ma.fanTemp(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
@@ -160,6 +162,14 @@ webapp.on('connection', function(socket){
 		ma.fanTemp(0);
 		nsp.emit("LED", ma.getAll()[2]);
 	})
+	socket.on("onden4", () => {
+		ma.fan(1);
+		nsp.emit("LED", ma.getAll()[2]);		
+	})
+	socket.on("offden4", () => {
+		ma.fan(0);
+		nsp.emit("LED", ma.getAll()[2]);
+	})	
 	socket.on("getData", () => {
 		webapp.emit("hmm", rd());
 	})

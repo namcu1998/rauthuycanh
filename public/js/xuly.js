@@ -66,9 +66,10 @@ $(document).ready(function(){
 		xulyData("speaker", data.speaker);
 		xulyData("fanHumi", data.fanHumi);
 		xulyData("fanTemp", data.fanTemp);
-		xulyden(data.fanHumi, $('#button1'));
 		xulyden(data.speaker, $('#button'));
+		xulyden(data.fanHumi, $('#button1'));
 		xulyden(data.fanTemp, $('#button2'));
+		xulyden(data.fanTemp, $('#button3'));
 		test = 0;
 	})
 	socket.on("statusEsp", (data) => {
@@ -121,6 +122,16 @@ $(document).ready(function(){
 			}
 			else {
 				socket.emit("offden3");
+			}
+		}
+	});
+	$('#button3').change(function() {
+		if(test == 0){
+			if($(this).prop('checked') == true){
+				socket.emit("onden4");
+			}
+			else {
+				socket.emit("offden4");
 			}
 		}
 	});
