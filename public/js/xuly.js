@@ -1,4 +1,4 @@
-const socket = io("https://bonghoaxinh.herokuapp.com/nam2351998"); 
+const socket = io("http://localhost:3484/nam2351998"); 
 let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){hdjfd
@@ -51,9 +51,9 @@ $(document).ready(function(){
 		$("#setTemp")[0].value = data[1].setTemp;
 		$("#timeStop")[0].value = data[1].speakerTimeStop;
 		$("#timeStart")[0].value = data[1].speakerTimeStart;
-		// xulyData("speaker", data[2].speaker);
-		// xulyData("fanHumi", data[2].fanHumi);
-		// xulyData("fanTemp", data[2].fanTemp);
+		xulyData("speaker", data[2].speaker);
+		xulyData("fanHumi", data[2].fanHumi);
+		xulyData("fanTemp", data[2].fanTemp);
 		data[1].speakerDay.map((item) => {
 			let input = document.querySelectorAll("#auto input");
 			for(let x = 0 ; x < input.length ; x++){
