@@ -117,7 +117,6 @@ nsp.on('connection', function(socket){
 				console.log("bat humi")
 			}
 			if(data.humi > ma.getAuto().setHumi[0] && (data.fan) != 1){
-				if(ma.getAll()[2].fan == 1)
 				ma.fan(1);
 				ma.fanHumi(0);
 				nsp.emit("LED", ma.getAll()[2]);
@@ -146,7 +145,7 @@ nsp.on('connection', function(socket){
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
-			if(((data.temp > ma.getAuto().setTemp[1] && data.temp < ma.getAuto().setTemp[0]) && (data.humi > ma.getAuto().setHumi[1] && data.humi < ma.getAuto().setHumi[0])) && data.fanHumi != 0){
+			if((data.temp > ma.getAuto().setTemp[1] && data.temp < ma.getAuto().setTemp[0]) && (data.humi > ma.getAuto().setHumi[1] && data.humi < ma.getAuto().setHumi[0]) && data.fanHumi != 0){
 				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
