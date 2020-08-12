@@ -111,41 +111,37 @@ nsp.on('connection', function(socket){
 		if(ma.getMode() === 0){
 			if(data.humi < ma.getAuto().setHumi[1] && data.fanHumi != 1){
 				ma.fanHumi(1);
-				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 				console.log("bat humi")
 			}
-			if(data.humi > ma.getAuto().setHumi[0] && (data.fan) != 1){
-				ma.fan(1);
+			if(data.humi > ma.getAuto().setHumi[1] && data.fanHumi != 0){
 				ma.fanHumi(0);
+				nsp.emit("LED", ma.getAll()[2]);
+				webapp.emit("onMa1", ma.getAll()[2]);
+				console.log("bat humi")
+			}
+			//--------------------------------------------------------------//
+			if((data.humi > ma.getAuto().setHumi[0] || data.temp > ma.getAuto().setTemp[0]) && (data.fan) != 1){
+				ma.fan(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 				console.log("bat fan")
 			}
-			if(data.temp > ma.getAuto().setTemp[0] && data.fan != 1){
-				ma.fan(1);
-				ma.fanTemp(0);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-			}
-			if(data.temp < ma.getAuto().setTemp[1] && data.fanTemp != 1){
-				ma.fanTemp(1);
+			if((data.humi < ma.getAuto().setHumi[0] && data.temp < ma.getAuto().setTemp[0]) && (data.fan) != 0){
 				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
+				console.log("bat fan")
 			}
-			if(data.humi > ma.getAuto().setHumi[1] && data.humi < ma.getAuto().setHumi[0] && (data.fanHumi) != 0){
-				ma.fanHumi(0);
+			//--------------------------------------------------------------//
+			if(data.temp < ma.getAuto().setTemp[1] && data.fanTemp != 1){
+				ma.fanTemp(1);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
-			if(data.temp > ma.getAuto().setTemp[1] && data.temp < ma.getAuto().setTemp[0] && data.fanTemp != 0) {
+			if(data.temp > ma.getAuto().setTemp[1] && data.fanTemp != 0){
 				ma.fanTemp(0);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-			}
-			if((data.temp > ma.getAuto().setTemp[1] && data.temp < ma.getAuto().setTemp[0]) && (data.humi > ma.getAuto().setHumi[1] && data.humi < ma.getAuto().setHumi[0]) && data.fanHumi != 0){
 				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
