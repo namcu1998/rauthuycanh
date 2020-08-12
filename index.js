@@ -111,12 +111,14 @@ nsp.on('connection', function(socket){
 		if(ma.getMode() === 0){
 			if(data.humi < ma.getAuto().setHumi[1] && data.fanHumi != 1){
 				ma.fanHumi(1);
+				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 				console.log("bat humi")
 			}
 			if(data.humi > ma.getAuto().setHumi[0] && (data.fan) != 1){
 				ma.fan(1);
+				ma.fanHumi(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 				console.log("bat fan")
@@ -130,11 +132,13 @@ nsp.on('connection', function(socket){
 			}
 			if(data.temp > ma.getAuto().setTempMax && data.fan != 1){
 				ma.fan(1);
+				ma.fanTemp(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
 			if(data.temp < ma.getAuto().setTempMin && data.fanTemp != 1){
-				ma.fanTemp(0);
+				ma.fanTemp(1);
+				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
@@ -143,7 +147,7 @@ nsp.on('connection', function(socket){
 				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
-			}
+			
 		}
 	});
 })
