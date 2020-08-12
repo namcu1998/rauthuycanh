@@ -147,7 +147,7 @@ nsp.on('connection', function(socket){
 				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
-			
+			}
 		}
 	});
 })
