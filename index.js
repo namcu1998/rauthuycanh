@@ -142,7 +142,6 @@ nsp.on('connection', function(socket){
 			}
 			if(data.temp > ma.getAuto().setTemp[1] && data.fanTemp != 0){
 				ma.fanTemp(0);
-				ma.fan(0);
 				nsp.emit("LED", ma.getAll()[2]);
 				webapp.emit("onMa1", ma.getAll()[2]);
 			}
