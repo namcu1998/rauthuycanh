@@ -77,7 +77,7 @@ $(document).ready(function(){
 		xulyden(data.speaker, $('#button'));
 		xulyden(data.fanHumi, $('#button1'));
 		xulyden(data.fanTemp, $('#button2'));
-		xulyden(data.fanTemp, $('#button3'));
+		xulyden(data.fan, $('#button3'));
 		test = 0;
 	})
 	socket.on("statusEsp", (data) => {
