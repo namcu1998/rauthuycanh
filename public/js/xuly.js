@@ -57,7 +57,7 @@ $(document).ready(function(){
 		xulyData("speaker", data[2].speaker);
 		xulyData("fanHumi", data[2].fanHumi);
 		xulyData("fanTemp", data[2].fanTemp);
-		xulyData("fan", data.fan);
+		xulyData("fan", data[2].fan);
 		data[1].speakerDay.map((item) => {
 			let input = document.querySelectorAll("#auto input");
 			for(let x = 0 ; x < input.length ; x++){

@@ -178,11 +178,13 @@ webapp.on('connection', function(socket){
 	})
 	socket.on("onden4", () => {
 		ma.fan(1);
-		nsp.emit("LED", ma.getAll()[2]);		
+		nsp.emit("LED", ma.getAll()[2]);
+		console.log("fanOn")		
 	})
 	socket.on("offden4", () => {
 		ma.fan(0);
 		nsp.emit("LED", ma.getAll()[2]);
+		console.log("fanOff")
 	})	
 	socket.on("getData", () => {
 		webapp.emit("hmm", rd());
