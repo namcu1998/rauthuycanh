@@ -204,14 +204,14 @@ webapp.on('connection', function(socket){
 		ma.saveMode(data);
 		scope = 0;
 		scope1 = 0;
-		if(data == 0) {
-			ma.fanHumi(0);
-			ma.speaker(0);
-			ma.fanTemp(0);
-			ma.fan(0);
-			nsp.emit("LED", ma.getAll()[2]);
-			webapp.emit("onMa1", ma.getAll()[2]);
-		}
+		// if(data == 0) {
+		// 	ma.fanHumi(0);
+		// 	ma.speaker(0);
+		// 	ma.fanTemp(0);
+		// 	ma.fan(0);
+		// 	nsp.emit("LED", ma.getAll()[2]);
+		// 	webapp.emit("onMa1", ma.getAll()[2]);
+		// }
 		else webapp.emit("onMa1", ma.getAll()[2]);
 	})
 });
