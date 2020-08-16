@@ -77,7 +77,7 @@ function loopSync(){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
 			}
-			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 30 === 0) && ma.getAll()[3] === "ESP Connected"){
+			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % ma.getAuto().setUpload === 0) && ma.getAll()[3] === "ESP Connected"){
 				//scope2 = time.timeDay()[1][2];
 				if(ma.getMode() === 0){
 					if(array[1] < ma.getAuto().setHumi[1] && array[4] != 1){
