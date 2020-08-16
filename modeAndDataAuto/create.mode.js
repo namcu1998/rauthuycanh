@@ -41,6 +41,12 @@ function statusEsp(esp){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
+function setUpload(upLoad){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[2].upload = upLoad;
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
+}
 function getMode(){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     return data[0];
@@ -58,6 +64,7 @@ module.exports.saveMode = saveMode;
 module.exports.fanHumi = fanHumi;
 module.exports.speaker = speaker;
 module.exports.fanTemp = fanTemp;
+module.exports.setUpload = setUpload;
 module.exports.fan = fan;
 module.exports.getAuto = getAuto;
 module.exports.getMode = getMode;

@@ -1,4 +1,4 @@
-const socket = io("https://nhayen.herokuapp.com/nam2351998"); 
+const socket = io("http://localhost:3484/nam2351998"); 
 let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){
@@ -33,12 +33,14 @@ $(document).ready(function(){
 		else if($("#setTempMax")[0].value > 60 || $("#setTempMin")[0].value < 0) alert("nhiệt độ quá lớn hoặc quá nhỏ");
 		else if(hourStart > hourStop) alert("thời gian bắt đầu phải bé hơn thời gian kết thúc");
 		else if($("#setHumiMax")[0].value < $("#setHumiMin")[0].value || $("#setTempMax")[0].value < $("#setTempMin")[0].value) alert ("độ ẩm và nhiệt độ không được min lớn hơn max")
+		else if($("#setUpload")[0].value > 60 || $("#setUpload")[0].value < 0) alert("Thời gian phải trong khoảng từ 0 đến 60");
 		else{
 			data.speakerDay = array;
 			data.speakerTimeStart = $("#timeStart")[0].value;
 			data.speakerTimeStop = $("#timeStop")[0].value;
 			data.setHumi = [$("#setHumiMax")[0].value, $("#setHumiMin")[0].value];
 			data.setTemp  = [$("#setTempMax")[0].value, $("#setTempMin")[0].value];
+			data.setUpload = $("#setUpload")[0].value;
 			socket.emit("ok", data)
 		}
 	}
@@ -54,6 +56,7 @@ $(document).ready(function(){
 		$("#setTempMin")[0].value = data[1].setTemp[1];
 		$("#timeStop")[0].value = data[1].speakerTimeStop;
 		$("#timeStart")[0].value = data[1].speakerTimeStart;
+		$("#setUpload")[0].value = data[1].setUpload;
 		xulyData("speaker", data[2].speaker);
 		xulyData("fanHumi", data[2].fanHumi);
 		xulyData("fanTemp", data[2].fanTemp);

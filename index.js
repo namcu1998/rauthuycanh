@@ -198,6 +198,7 @@ webapp.on('connection', function(socket){
 	// dữ liệu cảm biến
 	socket.on("ok", (data) => {
 		ma.saveAuto(data);
+		ma.setUpload(data.setUpload)
 		console.log(data)
 		scope = 0;
 		scope1 = 0;
