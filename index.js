@@ -126,6 +126,7 @@ function loopSync(){
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4], array[6], array[7]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
+				webapp.emit("hmm", rd());
 			}
 			if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7]) {
 			}
