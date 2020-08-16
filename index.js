@@ -78,7 +78,45 @@ function loopSync(){
 				timeConnect = 0;
 			}
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 30 === 0) && ma.getAll()[3] === "ESP Connected"){
-				scope2 = time.timeDay()[1][2];
+				//scope2 = time.timeDay()[1][2];
+				if(ma.getMode() === 0){
+					if(array[1] < ma.getAuto().setHumi[1] && array[4] != 1){
+						ma.fanHumi(1);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+						console.log("bat humi")
+					}
+					if(array[1] >= ma.getAuto().setHumi[0] && array[4] != 0){
+						ma.fanHumi(0);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+						console.log("bat humi")
+					}
+					//--------------------------------------------------------------//
+					if((array[1] > ma.getAuto().setHumi[0] || array[0] > ma.getAuto().setTemp[0]) && (array[7]) != 1){
+						ma.fan(1);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+						console.log("bat fan")
+					}
+					if((array[1] < ma.getAuto().setHumi[0] && array[0] < ma.getAuto().setTemp[0]) && (array[7]) != 0){
+						ma.fan(0);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+						console.log("bat fan")
+					}
+					//--------------------------------------------------------------//
+					if(array[0] < ma.getAuto().setTemp[1] && array[6] != 1){
+						ma.fanTemp(1);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+					}
+					if(array[0] >= ma.getAuto().setTemp[0] && array[6] != 0){
+						ma.fanTemp(0);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+					}
+				}
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4], array[6], array[7]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
@@ -108,44 +146,6 @@ nsp.on('connection', function(socket){
 	})
 	socket.on("JSON1",function(data){
 		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan];
-		if(ma.getMode() === 0){
-			if(data.humi < ma.getAuto().setHumi[1] && data.fanHumi != 1){
-				ma.fanHumi(1);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-				console.log("bat humi")
-			}
-			if(data.humi >= ma.getAuto().setHumi[0] && data.fanHumi != 0){
-				ma.fanHumi(0);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-				console.log("bat humi")
-			}
-			//--------------------------------------------------------------//
-			if((data.humi > ma.getAuto().setHumi[0] || data.temp > ma.getAuto().setTemp[0]) && (data.fan) != 1){
-				ma.fan(1);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-				console.log("bat fan")
-			}
-			if((data.humi < ma.getAuto().setHumi[0] && data.temp < ma.getAuto().setTemp[0]) && (data.fan) != 0){
-				ma.fan(0);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-				console.log("bat fan")
-			}
-			//--------------------------------------------------------------//
-			if(data.temp < ma.getAuto().setTemp[1] && data.fanTemp != 1){
-				ma.fanTemp(1);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-			}
-			if(data.temp >= ma.getAuto().setTemp[0] && data.fanTemp != 0){
-				ma.fanTemp(0);
-				nsp.emit("LED", ma.getAll()[2]);
-				webapp.emit("onMa1", ma.getAll()[2]);
-			}
-		}
 	});
 })
 webapp.on('connection', function(socket){
