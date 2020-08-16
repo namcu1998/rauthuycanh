@@ -37,7 +37,7 @@ $(document).ready(function(){
     });
 }); //document
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: [],
         datasets: [
@@ -75,7 +75,7 @@ var myChart = new Chart(ctx, {
     }
 });
 var myChart1 = new Chart(ctx1, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: [],
         datasets: [
@@ -107,8 +107,8 @@ var myChart1 = new Chart(ctx1, {
                     callback: function(value, index, values) {
                         return value + "°C";
                     },
-                    // suggestedMin: 30,
-                    // suggestedMax: 40
+                    suggestedMin: 25,
+                    suggestedMax: 40
                 }
             }]
         }
@@ -147,8 +147,8 @@ var myChart2 = new Chart(ctx2, {
                     callback: function(value, index, values) {
                         return value + "%";
                     },
-                    // suggestedMin: 0,
-                    // suggestedMax: 100
+                    suggestedMin: 20,
+                    suggestedMax: 100
                 }
             }]
         }
