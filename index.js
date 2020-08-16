@@ -85,12 +85,14 @@ function loopSync(){
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						console.log("bat humi")
+						webapp.emit("hmm", rd());
 					}
 					if(array[1] >= ma.getAuto().setHumi[0] && array[4] != 0){
 						ma.fanHumi(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						console.log("bat humi")
+						webapp.emit("hmm", rd());
 					}
 					//--------------------------------------------------------------//
 					if((array[1] > ma.getAuto().setHumi[0] || array[0] > ma.getAuto().setTemp[0]) && (array[7]) != 1){
@@ -98,29 +100,32 @@ function loopSync(){
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						console.log("bat fan")
+						webapp.emit("hmm", rd());
 					}
 					if((array[1] < ma.getAuto().setHumi[0] && array[0] < ma.getAuto().setTemp[0]) && (array[7]) != 0){
 						ma.fan(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						console.log("bat fan")
+						webapp.emit("hmm", rd());
 					}
 					//--------------------------------------------------------------//
 					if(array[0] < ma.getAuto().setTemp[1] && array[6] != 1){
 						ma.fanTemp(1);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
+						webapp.emit("hmm", rd());
 					}
 					if(array[0] >= ma.getAuto().setTemp[0] && array[6] != 0){
 						ma.fanTemp(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
+						webapp.emit("hmm", rd());
 					}
 				}
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4], array[6], array[7]);
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
-				webapp.emit("hmm", rd());
 			}
 			if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7]) {
 			}
