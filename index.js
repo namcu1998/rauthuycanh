@@ -202,6 +202,7 @@ webapp.on('connection', function(socket){
 		console.log(data)
 		scope = 0;
 		scope1 = 0;
+		nsp.emit("LED", ma.getAll()[2]);
 	})
 	socket.on("mode",(data) => {
 		ma.saveMode(data);
