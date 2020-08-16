@@ -77,7 +77,7 @@ function loopSync(){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
 			}
-			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 1 === 0) && ma.getAll()[3] === "ESP Connected"){
+			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 30 === 0) && ma.getAll()[3] === "ESP Connected"){
 				scope2 = time.timeDay()[1][2];
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4]);
