@@ -59,7 +59,7 @@ function loopSync(){
 						webapp.emit("onMa1", ma.getAll()[2]);
 						webapp.emit("hmm", rd());
 					}
-					if(time.time() < ma.getAuto().speakerTimeStart && time.time() > ma.getAuto().speakerTimeStop && array[3] != 0){
+					if(time.time() < ma.getAuto().speakerTimeStart || time.time() > ma.getAuto().speakerTimeStop && array[3] != 0){
 						ma.speaker(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
