@@ -53,19 +53,17 @@ function loopSync(){
 			timeConnect++;
 			if(ma.getMode() == 0){
 				if(ma.getAuto().speakerDay.indexOf(time.timeDay()[0]) >= 0){
-					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop){
-						for(scope ; scope < 1 ; scope ++){
-							ma.speaker(1);
-							nsp.emit("LED", ma.getAll()[2]);
-							webapp.emit("onMa1", ma.getAll()[2]);
-						}
+					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop && array[3] != 1){
+						ma.speaker(1);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+						webapp.emit("hmm", rd());
 					}
-					else {
-						for(scope1 ; scope1 < 1 ; scope1 ++){
-							ma.speaker(0);
-							nsp.emit("LED", ma.getAll()[2]);
-							webapp.emit("onMa1", ma.getAll()[2]);
-						}
+					if(time.time() < ma.getAuto().speakerTimeStart && time.time() > ma.getAuto().speakerTimeStop && array[3] != 0){
+						ma.speaker(0);
+						nsp.emit("LED", ma.getAll()[2]);
+						webapp.emit("onMa1", ma.getAll()[2]);
+						webapp.emit("hmm", rd());
 					}
 				}
 				else {
