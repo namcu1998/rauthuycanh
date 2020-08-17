@@ -66,10 +66,6 @@ function loopSync(){
 						webapp.emit("hmm", rd());
 					}
 				}
-				else {
-					scope = 0;
-					scope1 = 0;
-				}
 			}
 			if(timeConnect === 15){
 				nsp.emit("ping", "nam");
@@ -86,7 +82,7 @@ function loopSync(){
 						webapp.emit("hmm", rd());
 					}
 					if(array[1] >= ma.getAuto().setHumi[0] && array[4] != 0){
-						ma.fanHumi(0);
+						ma.fanHumi(0);W
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						console.log("bat humi")
