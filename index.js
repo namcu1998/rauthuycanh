@@ -10,6 +10,7 @@ const Auth = require('./controllers/auth.controller')
 const time = require('./time/time')
 const ma = require("./modeAndDataAuto/create.mode")
 const bodyParser = require('body-parser')
+const dbFirebase = require('./database/firebase')
 const app = express();
 const server = http.Server(app);
 const io = socketio(server);
@@ -70,6 +71,9 @@ function loopSync(){
 			if(timeConnect === 15){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
+			}
+			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 15 === 0) && ma.getAll()[3] === "ESP Connected"){
+				dbFirebase.push([array[0], array[1], array[2], time.getTime(), array[3], array[4], array[6], array[7]])
 			}
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % ma.getAuto().setUpload === 0) && ma.getAll()[3] === "ESP Connected"){
 				//scope2 = time.timeDay()[1][2];

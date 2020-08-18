@@ -2,11 +2,11 @@ var admin = require("firebase-admin");
 var serviceAccount = require("../serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://hutechthanh123.firebaseio.com/"
+  databaseURL: "https://nhayen-38cba.firebaseio.com/"
 });
 var number = 0;
 var db = admin.database();
-var ref = db.ref("Nam");
+var ref = db.ref("data");
 // ref.remove()
 //   .then(function() {
 //    console.log("Remove succeeded.")
