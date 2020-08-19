@@ -66,7 +66,7 @@ function timeDay(){
     array[1] = time.split(":");
     var date = moment().tz("Asia/Ho_Chi_Minh").format('DD-MM-YYYY');
     array[2] = date.split("-");
-    return ngay + date + time;
+    return ngay + " " + date + " " + time;
   }
 function time(){
   return moment().tz("Asia/Ho_Chi_Minh").format("HH:mm");
