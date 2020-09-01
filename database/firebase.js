@@ -7,13 +7,13 @@ admin.initializeApp({
 var number = 0;
 var db = admin.database();
 var ref = db.ref("data");
-ref.remove()
-  .then(function() {
-   console.log("Remove succeeded.")
-  })
-  .catch(function(error) {
-   console.log("Remove failed: " + error.message)
- });
+// ref.remove()
+//   .then(function() {
+//    console.log("Remove succeeded.")
+//   })
+//   .catch(function(error) {
+//    console.log("Remove failed: " + error.message)
+//  });
 // ref.on('child_added', function(snapshot) {
 //   var message=snapshot.val();
 //   number = message.id

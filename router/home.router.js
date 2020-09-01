@@ -9,4 +9,6 @@ router.get("/lichsu",controller.lichsu);
 
 router.get("/charts",controller.charts);
 
+router.get("/tracuu",controller.tracuu);
+
 module.exports = router

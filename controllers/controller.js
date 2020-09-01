@@ -20,3 +20,6 @@ module.exports.charts = function(req, res, next){
 module.exports.login = function(req, res, next){
     res.render('home/login');
 };
+module.exports.tracuu = function(req, res, next){
+    res.render('home/tracuu');
+};
