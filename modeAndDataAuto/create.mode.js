@@ -55,7 +55,6 @@ function statusEsp(esp){
     data[3] = esp;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
-    db.data1.push(getModeAutoDriver())
 }
 function setUpload(upLoad){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
