@@ -1,21 +1,22 @@
 
 #header ul{
-    padding: 0;
-    text-align: center;
-    background-color: #442424;
-  }
-  #header ul li{
-    width: 100px;
-    height: 40px;
-    display: inline-table;
-    line-height: 40px;
-  }
-  #header ul li a{
-    color: #ffffff;
-    display: block;
-    text-decoration: none;
-  }
-  #header ul li :hover{
-      background-color: black;
-  }
+  padding: 0;
+  text-align: center;
+  background-color: #442424;
+}
+
+#header ul li{
+  width: 100px;
+  height: 40px;
+  display: inline-table;
+  line-height: 40px;
+}
+#header ul li a{
+  color: #ffffff;
+  display: block;
+  text-decoration: none;
+}
+#header ul li :hover{
+    background-color: black;
+}
   

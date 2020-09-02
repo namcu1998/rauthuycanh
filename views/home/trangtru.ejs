@@ -47,52 +47,40 @@
 			</div>
 		</div>
 	</div>
-	<div id="line" style="height: 1px; background-color: white; margin: 10px;"></div>
-	<div class="container" id="controll" style="color: white; font-size: 3em; padding-top: 20px;">
+	<div id="line"></div>
+	<div class="container" id="controll">
 		<div class="row">
-		  <div style="text-align: left;" class="col-sm">
+		  <div class="col-sm">
 			<div class="led">
 				<span class="led">Loa:</span>
 				<input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.speaker == 1) { %>checked<% } %>>
 			</div>
 		  </div>
-		  <div style="text-align: center;" class="col-sm">
+		  <div class="col-sm">
 			<div class="led">
 				<span class="led">Phun sương:</span>
 				<input id="button1" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanHumi == 1) { %>checked<% } %>>
 			</div>
 		  </div>
-		  <div style="text-align: right;" class="col-sm">
+		  <div class="col-sm">
 			<div class="led">
 				<span class="led">Sưởi:</span>
 				<input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanTemp == 1) { %>checked<% } %>>
 			</div>
 		  </div>
 		</div>
-		<div style="margin-top: 50px;" class="row">
-			<div style="text-align: left;" class="col-sm">
-			  <!-- <div class="led">
-				  <span class="led">Loa:</span>
-				  <input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.speaker == 1) { %>checked<% } %>>
-			  </div> -->
-			</div>
-			<div style="text-align: center;" class="col-sm">
+		<div class="row">
+			<div class="col-sm">
 			  <div class="led">
 				  <span class="led">Quạt:</span>
 				  <input id="button3" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fan == 1) { %>checked<% } %>>
 			  </div>
 			</div>
-			<div style="text-align: right;" class="col-sm">
-			  <!-- <div class="led">
-				  <span class="led">Sưởi:</span>
-				  <input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanTemp == 1) { %>checked<% } %>>
-			  </div> -->
-			</div>
 		  </div>
 	  </div>
 	<div id="auto">
 		<h1 style="text-align: center;">Bảng thiết lập chế độ auto</h1>
-		<h2 style="text-align: center;"><---------------------------------------------------------------------------------------------></h2>
+		<h2 id="line1" style="text-align: center;"><---------------------------------------------------------------------------------------------></h2>
 		<div style="text-align: center;">
 			<h3>Thiết lập thời gian loa</h3>
 			<input class="checkBoxDay" type="checkbox" id="0" value="thứ hai">
@@ -109,19 +97,19 @@
 			<label class="labelCheckBoxDay" for="5">Thứ bảy</label>
 			<input class="checkBoxDay" type="checkbox" id="6" value="chủ nhật">
 			<label class="labelCheckBoxDay" for="6">Chủ nhật</label>
-			<div style="float: left; margin: 2em 0 0 5em;">
+			<div id="TS">
 				<input type="time" id="timeStart">
 				<label for="timeStart">Thời gian bắt đầu</label>
 			</div>
-			<div style="float: right; margin: 2em 5em 0 0;">
+			<div id="TE">
 				<label for="timeStart">Thời gian kết thúc</label>
 				<input type="time" id="timeStop">
 			</div>
 		</div>
-		<div style="clear: both;">
+		<div id="line2">
 			<h2 style="text-align: center;">---------------------------------------------------------------------------------------------</h2>
 		</div>
-		<div style="text-align: center; float: left;">
+		<div id="MMT">
 			<h3>Thiết lập giá trị nhiệt độ</h3>
 			<div>
 				<span>Max</span>
@@ -132,7 +120,7 @@
 				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" >
 			</div>
 		</div>
-		<div style="text-align: center; float: right;">
+		<div id="MMH">
 			<h3>Thiết lập giá trị độ ẩm</h3>
 			<div>
 				<span>Max</span>
@@ -147,7 +135,7 @@
 			<h3>Thiết lập thời gian cập nhật(s)</h3>
 			<input id="setUpload" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" value="0">
 		</div>
-		<div style="height: 75px; width: 400px; border-radius: 10px; margin: 35px auto; background-color: rgb(24, 68, 43); color: seashell; text-align: center; padding: 15px;" class="container ">
+		<div id="statusDriver" style="" class="container ">
 			<div class="row">
 				<div class="col-sm">
 					<span>Loa:</span>
