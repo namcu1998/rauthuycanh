@@ -15,24 +15,18 @@ module.exports.login = function(req, res, next){
 }
 
 module.exports.postLogin = function(req, res, next){
-    if(req.body.email == ma.getAll()[4].email){
-    }
-    else{
-        res.render("auth/login", {
-            error: "sai tai khoan",
-            value: req.body.email
-        });
-        return;
-    }
-    if(req.body.password == ma.getAll()[4].password){
-    }
-    else{
-        res.render("auth/login", {
-            error: "sai mat khau",
-            nam: req.body.password
-        });
-        return;
-    }
+    let scopeLogin = 0;
+    ma.getAll()[4].map(item => {
+        if(item.email == req.body.email && item.password == req.body.password) {
+          scopeLogin = 1;
+        }
+      })
+      if(scopeLogin == 1){
+      }
+      else {
+        res.render("auth/login");
+                return;
+      }
     res.cookie('login', "ASDDDASASD")
     res.redirect('/home/');
 };
