@@ -73,7 +73,7 @@ function loopSync(){
 				timeConnect = 0;
 			}
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 15 === 0) && ma.getAll()[3] === "ESP Connected"){
-				dbFirebase.data.push([array[0], array[1], array[2], time.getTime(), array[3], array[4], array[6], array[7]])
+				//dbFirebase.data.push([array[0], array[1], array[2], time.getTime(), array[3], array[4], array[6], array[7]])
 			}
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % ma.getAuto().setUpload === 0) && ma.getAll()[3] === "ESP Connected"){
 				//scope2 = time.timeDay()[1][2];
