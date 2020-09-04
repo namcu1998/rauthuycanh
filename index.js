@@ -126,7 +126,7 @@ function loopSync(){
 				webapp.emit("emitChart", xulyData(time.getTime(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
 			}
-			if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7]) {
+			if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7] && ma.getAll()[2].upload == array[8]) {
 			}
 			else {
 				nsp.emit("LED", ma.getAll()[2]);
@@ -149,7 +149,7 @@ nsp.on('connection', function(socket){
 		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
-		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan];
+		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan, data.upload];
 	});
 })
 webapp.on('connection', function(socket){
@@ -210,6 +210,7 @@ webapp.on('connection', function(socket){
 	})
 	socket.on("mode",(data) => {
 		ma.saveMode(data);
+		ma.setMode(data);
 		scope = 0;
 		scope1 = 0;
 		if(data == 0) {

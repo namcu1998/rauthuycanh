@@ -61,7 +61,12 @@ function setUpload(upLoad){
     data[2].upload = upLoad;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
-    db.data1.push(getModeAutoDriver())
+}
+function setMode(mode){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[2].mode = mode;
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
 function getMode(){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
@@ -86,6 +91,7 @@ module.exports.fanHumi = fanHumi;
 module.exports.speaker = speaker;
 module.exports.fanTemp = fanTemp;
 module.exports.setUpload = setUpload;
+module.exports.setMode = setMode;
 module.exports.fan = fan;
 module.exports.getAuto = getAuto;
 module.exports.getMode = getMode;
