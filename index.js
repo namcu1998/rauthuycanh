@@ -68,7 +68,7 @@ function loopSync(){
 					}
 				}
 			}
-			if(timeConnect === 15){
+			if(timeConnect === 5){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
 			}
@@ -139,7 +139,6 @@ function loopSync(){
 }
 loopSync();
 nsp.on('connection', function(socket){
-	ma.statusEsp("ESP Connected");
 	webapp.emit("statusEsp", ma.getAll()[3]);
 	nsp.emit("statusEsp", ma.getAll()[2]);
 	socket.on('disconnect', function(){
