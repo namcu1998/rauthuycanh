@@ -125,6 +125,12 @@ body h3{
   text-align: center; 
   padding: 15px;
 }
+.col-sm{
+  text-align: center;
+}
+#quat{
+  margin-top: 20px;
+}
 }
 @media only screen and (max-width: 600px) {
   #header ul{

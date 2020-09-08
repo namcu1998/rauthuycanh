@@ -71,6 +71,9 @@ var myChart = new Chart(ctx, {
                     },
                 }
             }]
+        },
+        animation: {
+            duration: 2000,
         }
     }
 });
@@ -100,6 +103,22 @@ var myChart1 = new Chart(ctx1, {
     ]
     },
     options: {
+        // animation: {
+        //     duration: 200,
+        // },
+        // hover: {
+        //     animationDuration: 0 // duration of animations when hovering an item
+        // },
+        // tooltips: {
+        //     mode: 'x',
+        // },
+        // reverse: true,
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)'
+            }
+        },
         scales: {
             yAxes: [{
                 ticks: {
