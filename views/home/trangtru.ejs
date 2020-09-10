@@ -44,12 +44,19 @@
 				<input id="toggle-event-mode" data-on="CONTROL" data-off="AUTO" type="checkbox" data-toggle="toggle" <% if (data1 == 1) { %>checked<% } %>>
 			</div>
 			<div class="col-sm">
+			<div style="float: left;">
 				<div class="statusEsp">
 					<% if (user) { %>
 						<span>Chào <%= user %></span>
-					  <% } %>
+					<% } %>
 				</div>
 			</div>
+			<div style="float: right;">
+				<form action="/auth/logout" method="POST">
+					<button type="submit" class="btn btn-primary">Đăng Xuất</button>
+				</form>	
+			</div>
+		</div>
 		</div>
 	</div>
 	<div id="line"></div>

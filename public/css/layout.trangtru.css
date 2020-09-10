@@ -77,6 +77,16 @@ body{
   text-align: center;
   height: 100%;
 }
+#statusEsp{
+  color: white;
+  padding: 6px; 
+  text-align: left;  
+  background-color: rgb(95, 75, 211); 
+  border: 1px solid white; 
+  border-radius: 20px; 
+  text-align: center;
+  height: 100%;
+}
 body h1{
   margin: 0 0 0 0;
 }

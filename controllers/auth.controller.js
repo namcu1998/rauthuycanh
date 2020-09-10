@@ -9,7 +9,11 @@ module.exports.SetCookie = function(req, res, next){
     }
     next();
 }
-
+module.exports.logout = function(req, res, next){
+	res.clearCookie('user');
+	res.clearCookie('login');
+	res.render('auth/login');
+}
 module.exports.login = function(req, res, next){
     res.render('auth/login')
 }
