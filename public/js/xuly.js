@@ -49,7 +49,7 @@ $(document).ready(function(){
 	})
 	socket.on("onMa", (data) => {
 		test = 1;
-		document.getElementById("statusEsp").innerHTML = data[3];
+		//document.getElementById("statusEsp").innerHTML = data[3];
 		$("#setHumiMax")[0].value = data[1].setHumi[0];
 		$("#setHumiMin")[0].value = data[1].setHumi[1];
 		$("#setTempMax")[0].value = data[1].setTemp[0];

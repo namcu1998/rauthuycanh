@@ -6,6 +6,8 @@ module.exports.trangtru = function(req, res, next){
     res.render('home/trangtru', {
         data: ma.getAll()[2],
         data1: ma.getAll()[0],
+        user: req.cookies.user,
+        statusEsp: ma.getAll()[3]
     });
 };
 module.exports.cambien = function(req, res, next){

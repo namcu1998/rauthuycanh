@@ -35,7 +35,9 @@
 			<div class="col-sm">
 				<div class="statusEsp">
 					<span>Trạng thái ESP: </span>
-					<span id="statusEsp"></span>
+					<% if (statusEsp) { %>
+						<span><%= statusEsp %></span>
+					  <% } %>
 				</div>
 			</div>
 			<div class="col-sm">
@@ -43,6 +45,9 @@
 			</div>
 			<div class="col-sm">
 				<div class="statusEsp">
+					<% if (user) { %>
+						<span>Chào <%= user %></span>
+					  <% } %>
 				</div>
 			</div>
 		</div>
