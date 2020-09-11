@@ -54,14 +54,14 @@ function loopSync(){
 			timeConnect++;
 			if(ma.getMode() == 0){
 				if(ma.getAuto().speakerDay.indexOf(time.timeDay()[0]) >= 0 ){
-					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop && array[3] != 1 && ma.getAll()[3] === "ESP Connected"){
+					if(time.time() >= ma.getAuto().speakerTimeStart && time.time() <= ma.getAuto().speakerTimeStop && ma.getAll()[2].speaker != 1){
 						ma.speaker(1);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						webapp.emit("hmm", rd());
 						console.log("loa on")
 					}
-					if((time.time() < ma.getAuto().speakerTimeStart || time.time() > ma.getAuto().speakerTimeStop) && array[3] != 0 && ma.getAll()[3] === "ESP Connected"){
+					if((time.time() < ma.getAuto().speakerTimeStart || time.time() > ma.getAuto().speakerTimeStop) && ma.getAll()[2].speaker != 0){
 						ma.speaker(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
