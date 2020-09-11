@@ -6,6 +6,7 @@ function saveMode(mode){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
     db.data1.push(getModeAutoDriver())
+    console.log("mode1")
 }
 function saveAuto(auto){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
@@ -13,6 +14,7 @@ function saveAuto(auto){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
     db.data1.push(getModeAutoDriver())
+    console.log("mode2")
 }
 function savePin(mode, auto, pin){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
@@ -28,6 +30,7 @@ function fanHumi(fanHumi){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
     db.data1.push(getModeAutoDriver())
+    console.log("mode3")
 }
 function speaker(speaker){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
@@ -35,6 +38,7 @@ function speaker(speaker){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
     db.data1.push(getModeAutoDriver())
+    console.log("mode4")
 }
 function fanTemp(fanTemp){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
@@ -42,6 +46,7 @@ function fanTemp(fanTemp){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
     db.data1.push(getModeAutoDriver())
+    console.log("mode5")
 }
 function fan(fan){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
@@ -49,6 +54,7 @@ function fan(fan){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
     db.data1.push(getModeAutoDriver())
+    console.log("mode6")
 }
 function statusEsp(esp){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
