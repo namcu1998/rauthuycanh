@@ -49,7 +49,15 @@
 					<% if (signal) { %>
 						<span><%= signal %></span>
 					  <% } %>
-					  <span>dBm</span>
+					  <span>dBm</span> <br>
+					  <span>cảm biến DHT: </span>
+					<% if (statusDHT) { %>
+						<span><%= statusDHT %></span>
+					  <% } %> <br>
+					  <span>cảm biến Lux: </span>
+					<% if (statusLux) { %>
+						<span><%= statusLux %></span>
+					  <% } %> <br>
 				</div>
 			</div>
 			<div class="col-sm">
