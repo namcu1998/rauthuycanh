@@ -34,6 +34,7 @@ function saveIPAndSignalStrength(ip, SS, DHT, Lux){
     data[5] = obj;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
+    console.log(obj);
 }
 function fanHumi(fanHumi){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
