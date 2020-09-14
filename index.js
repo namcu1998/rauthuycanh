@@ -144,16 +144,17 @@ nsp.on('connection', function(socket){
 	nsp.emit("statusEsp", ma.getAll()[2]);
 	socket.on('disconnect', function(){
 		ma.statusEsp("ESP Disconnect");
+		ma.saveIPAndSignalStrength("...", "...", "...", "...");
 		array[5] = 0;
 		webapp.emit("statusEsp", ma.getAll()[3]);
 		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
 		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan, data.upload];
-		ma.saveIPAndSignalStrength(data.ip, data.signal);
+		ma.saveIPAndSignalStrength(data.ip, data.signal, data.statusDHT, data.statusLux);
 	});
 	socket.on("Error", function(data){
-
+		ma.saveIPAndSignalStrength(data.ip, data.signal, data.statusDHT, data.statusLux);
 	})
 })
 webapp.on('connection', function(socket){
