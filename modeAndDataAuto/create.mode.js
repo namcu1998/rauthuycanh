@@ -25,9 +25,11 @@ function savePin(mode, auto, pin){
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
 function saveIPAndSignalStrength(ip, SS){
+    var obj = {};
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
-    data[5].ip = ip;
-    data[5].SignalStrength = SS;
+    obj.ip = ip;
+    obj.SignalStrength = SS;
+    data[5] = obj;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
