@@ -10,8 +10,8 @@ module.exports.trangtru = function(req, res, next){
         statusEsp: ma.getAll()[3],
         signal: ma.getAll()[5].SignalStrength,
         ip: ma.getAll()[5].ip,
-        statusDHT: ma.getAll().statusDHT,
-        statusLux: ma.getAll().statusLux,
+        statusDHT: ma.getAll([5]).statusDHT,
+        statusLux: ma.getAll()[5].statusLux,
     });
 };
 module.exports.cambien = function(req, res, next){
