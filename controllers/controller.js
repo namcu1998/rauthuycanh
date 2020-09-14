@@ -7,7 +7,9 @@ module.exports.trangtru = function(req, res, next){
         data: ma.getAll()[2],
         data1: ma.getAll()[0],
         user: req.cookies.user,
-        statusEsp: ma.getAll()[3]
+        statusEsp: ma.getAll()[3],
+        signal: ma.getAll()[5].SignalStrength,
+        ip: ma.getAll()[5].ip,
     });
 };
 module.exports.cambien = function(req, res, next){

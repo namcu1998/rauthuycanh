@@ -24,6 +24,13 @@ function savePin(mode, auto, pin){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
+function saveIPAndSignalStrength(ip, SS){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[5].ip = ip;
+    data[5].SignalStrength = SS;
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
+}
 function fanHumi(fanHumi){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     data[2].fanHumi = fanHumi;
@@ -93,6 +100,7 @@ function getModeAutoDriver(){
 module.exports.saveAuto = saveAuto;
 module.exports.saveMode = saveMode;
 module.exports.savePin = savePin;
+module.exports.saveIPAndSignalStrength = saveIPAndSignalStrength;
 module.exports.fanHumi = fanHumi;
 module.exports.speaker = speaker;
 module.exports.fanTemp = fanTemp;

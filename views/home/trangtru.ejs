@@ -39,6 +39,17 @@
 						<span><%= statusEsp %></span>
 					  <% } %>
 				</div>
+				<div class="information">
+					<span>thông tin</span> <br>
+					<span>IPAddress: </span>
+					<% if (ip) { %>
+						<span><%= ip %></span>
+					  <% } %> <br>
+					<span>tín hiệu: </span>
+					<% if (signal) { %>
+						<span><%= signal %></span>
+					  <% } %>
+				</div>
 			</div>
 			<div class="col-sm">
 				<input id="toggle-event-mode" data-on="CONTROL" data-off="AUTO" type="checkbox" data-toggle="toggle" <% if (data1 == 1) { %>checked<% } %>>
