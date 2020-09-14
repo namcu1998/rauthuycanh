@@ -30,7 +30,7 @@ function saveIPAndSignalStrength(ip, SS, DHT, Lux){
     obj.ip = ip;
     obj.SignalStrength = SS;
     obj.statusDHT = DHT;
-    obj.StatusLux = Lux;
+    obj.statusLux = Lux;
     data[5] = obj;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
