@@ -35,6 +35,13 @@ function saveIPAndSignalStrength(ip, SS, DHT, Lux){
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
+function saveCPUAndRAM(CPU, RAM){
+    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
+    data[5].CPU = CPU;
+    data[5].RAM = RAM
+    var array1 = JSON.stringify(data);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
+}
 function fanHumi(fanHumi){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     data[2].fanHumi = fanHumi;
@@ -105,6 +112,7 @@ module.exports.saveAuto = saveAuto;
 module.exports.saveMode = saveMode;
 module.exports.savePin = savePin;
 module.exports.saveIPAndSignalStrength = saveIPAndSignalStrength;
+module.exports.saveCPUAndRAM = saveCPUAndRAM;
 module.exports.fanHumi = fanHumi;
 module.exports.speaker = speaker;
 module.exports.fanTemp = fanTemp;

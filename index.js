@@ -152,6 +152,7 @@ nsp.on('connection', function(socket){
 	socket.on("JSON1",function(data){
 		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan, data.upload];
 		ma.saveIPAndSignalStrength(data.ip, data.signal, data.sensorDHT, data.sensorLux);
+		ma.saveCPUAndRAM(data.clockCPU, data.ramLeft);
 	});
 	socket.on("Error", function(data){
 		ma.saveIPAndSignalStrength(data.ip, data.signal, data.sensorDHT, data.sensorLux);

@@ -50,6 +50,15 @@
 						<span><%= signal %></span>
 					  <% } %>
 					  <span>dBm</span> <br>
+					  <span>CPU: </span>
+					<% if (CPU) { %>
+						<span><%= CPU %></span>
+					  <% } %>
+					  <span>Mhz</span> <br>
+					  <span>RAM: </span>
+					<% if (RAM) { %>
+						<span><%= RAM %></span>
+					  <% } %> <br>
 					  <span>cảm biến DHT: </span>
 					<% if (statusDHT) { %>
 						<span><%= statusDHT %></span>

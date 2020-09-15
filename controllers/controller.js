@@ -12,6 +12,8 @@ module.exports.trangtru = function(req, res, next){
         ip: ma.getAll()[5].ip,
         statusDHT: ma.getAll()[5].statusDHT,
         statusLux: ma.getAll()[5].statusLux,
+        CPU: ma.getAll()[5].CPU,
+        RAM: ma.getAll()[5].RAM,
     });
 };
 module.exports.cambien = function(req, res, next){
