@@ -150,7 +150,7 @@ body h3{
   color: white;
 }
 .statusEsp:hover + .information {
-  height: 100px;
+  height: 130px;
   opacity: 1; 
 }
 }
