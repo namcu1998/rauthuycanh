@@ -32,7 +32,7 @@
 	</div>
 	<div id="controller">
 		<div class="row">
-			<div class="col-sm">
+			<div class="col-sm" id="thongtin">
 				<div class="statusEsp">
 					<span>Trạng thái ESP: </span>
 					<% if (statusEsp) { %>
@@ -40,12 +40,12 @@
 					  <% } %>
 				</div>
 				<div class="information">
-					<span>thông tin</span> <br>
+					<span>Thông tin</span> <br>
 					<span>IPAddress: </span>
 					<% if (ip) { %>
 						<span><%= ip %></span>
 					  <% } %> <br>
-					<span>tín hiệu: </span>
+					<span>Tín hiệu: </span>
 					<% if (signal) { %>
 						<span><%= signal %></span>
 					  <% } %>
@@ -59,11 +59,11 @@
 					<% if (RAM) { %>
 						<span><%= RAM %></span>
 					  <% } %> <br>
-					  <span>cảm biến DHT: </span>
+					  <span>Cảm biến DHT: </span>
 					<% if (statusDHT) { %>
 						<span><%= statusDHT %></span>
 					  <% } %> <br>
-					  <span>cảm biến Lux: </span>
+					  <span>Cảm biến Lux: </span>
 					<% if (statusLux) { %>
 						<span><%= statusLux %></span>
 					  <% } %> <br>

@@ -1,4 +1,8 @@
 @media only screen and (min-width: 600px) {
+* {
+  margin: 0;
+  padding: 0;
+}
 body{
   width: 100%;
   height: 600px;
@@ -140,18 +144,22 @@ body h3{
 #quat{
   margin-top: 20px;
 }
+#thongtin {
+  position: relative;
+  padding: 0;
+  margin: 0 0 0 15px;
+}
 .information {
-  height: 0px;
+  display: none;
   width: 100%;
   border-radius: 10px;
   background-color: rgb(95, 75, 211);
-  opacity: 0;
-  transition: all .1s ease-in-out;
   color: white;
+  position: absolute;
+  z-index: 1;
 }
-.statusEsp:hover + .information {
-  height: 130px;
-  opacity: 1; 
+#thongtin:hover .information {
+  display: block;
 }
 }
 @media only screen and (max-width: 600px) {
