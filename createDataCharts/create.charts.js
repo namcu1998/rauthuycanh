@@ -5,7 +5,8 @@ module.exports =  function() {
 		let data1 = JSON.parse(fs.readFileSync('./JSON/data.json','utf8'));
 		data1.map(function(item){
 		let x = item.thoigian.split(" ");
-		let y = x[2].split(":");
+		let y = x[3].split(":")[2];
+		console.log(y)
 		let data = {
 			dataLight: item.light,
 			dataTime: y,

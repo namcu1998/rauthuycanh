@@ -71,6 +71,11 @@ function timeDay(){
 function time(){
   return moment().tz("Asia/Ho_Chi_Minh").format("HH:mm");
 }
+function timeSecond(){
+  var time =  moment().tz("Asia/Ho_Chi_Minh").format("ss");
+  return time;
+}
 module.exports.time = time;
 module.exports.timeDay = timeDay;
 module.exports.getTime = getTime;
+module.exports.timeSecond = timeSecond;
