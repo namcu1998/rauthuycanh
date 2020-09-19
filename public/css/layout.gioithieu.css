@@ -1,7 +1,8 @@
-body {
-	margin: 0 auto;
-}
-#header ul{
+@media only screen and (min-width: 600px) {
+  body {
+    margin: 0 auto;
+  }
+  #header ul{
     padding: 0;
     text-align: center;
     background-color: #442424;
@@ -15,29 +16,52 @@ body {
   #header ul li a{
     color: #ffffff;
     display: block;
-	text-decoration: none;
-	font-size: 1em;
+    text-decoration: none;
+    font-size: 1em;
   }
   #header ul li :hover{
-      background-color: black;
+    background-color: black;
   }
-  
-/* img{
-	float: left;
-} */
-#content{
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
+
+  #content{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  p{
+    font-family: 'Times New Roman', serif;
+    font-size: 1.5em;
+  }
+  img{
+    position: absolute;
+    z-index: -1;
+  }
+  #p{
+    z-index: 0;
+  }
 }
-p{
-	font-family: 'Times New Roman', serif;
-	font-size: 1.5em;
-}
-img{
-	position: absolute;
-	z-index: -1;
-}
-#p{
-	z-index: 0;
+@media only screen and (Max-width: 600px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  #header
+  {
+    background-color: #442424;
+    width: 200px;
+    height: 1000vh;
+    font-size: 3em;
+    position: fixed;
+  }
+  #header ul
+  {
+  list-style-type: none;
+  text-align: left;
+  }
+  #header ul li 
+  {
+    height: 200px;
+    width: 200px;
+    line-height: 100px;
+  }
 }

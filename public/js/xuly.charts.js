@@ -2,6 +2,11 @@ const socket = io("https://nhayen.herokuapp.com/nam2351998");  //http://localhos
 const ctx = document.getElementById('myChart').getContext('2d');
 const ctx1 = document.getElementById('myChart1').getContext('2d');
 const ctx2 = document.getElementById('myChart2').getContext('2d');
+Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
+    color: '#361ddb',
+    anchor: 'center',
+    align: 'top', 
+});
 function addData(chart, chart1, chart2, label, data, data1, data2) {
     chart.data.labels.push(label);
     chart1.data.labels.push(label);
@@ -14,12 +19,14 @@ function addData(chart, chart1, chart2, label, data, data1, data2) {
     chart2.update();
 }
 function removeData(chart, chart1, chart2) {
-    chart.data.labels.shift();
-    chart1.data.labels.shift();
-    chart2.data.labels.shift();
-    chart.data.datasets[0].data.shift();
-    chart1.data.datasets[0].data.shift();
-    chart2.data.datasets[0].data.shift();
+    if(chart.data.labels.length > 20) {
+        chart.data.labels.shift();
+        chart1.data.labels.shift();
+        chart2.data.labels.shift();
+        chart.data.datasets[0].data.shift();
+        chart1.data.datasets[0].data.shift();
+        chart2.data.datasets[0].data.shift();
+    }
     chart.update();
     chart1.update();
     chart2.update();
@@ -74,11 +81,19 @@ var myChart = new Chart(ctx, {
         },
         animation: {
             duration: 2000,
-        }
+        },
+        plugins: {
+            // Change options for ALL labels of THIS CHART
+            datalabels: {
+                formatter: function(value, context) {
+                    return  value + 'Lux';
+                }, 
+            }
+        },
     }
 });
 var myChart1 = new Chart(ctx1, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: [],
         datasets: [
@@ -103,16 +118,14 @@ var myChart1 = new Chart(ctx1, {
     ]
     },
     options: {
-        // animation: {
-        //     duration: 200,
-        // },
-        // hover: {
-        //     animationDuration: 0 // duration of animations when hovering an item
-        // },
-        // tooltips: {
-        //     mode: 'x',
-        // },
-        // reverse: true,
+        plugins: {
+            // Change options for ALL labels of THIS CHART
+            datalabels: {
+                formatter: function(value, context) {
+                    return  value + '°C';
+                }, 
+            }
+        },
         legend: {
             display: true,
             labels: {
@@ -170,7 +183,15 @@ var myChart2 = new Chart(ctx2, {
                     suggestedMax: 100
                 }
             }]
-        }
+        },
+        plugins: {
+            // Change options for ALL labels of THIS CHART
+            datalabels: {
+                formatter: function(value, context) {
+                    return  value + '%';
+                }, 
+            }
+        },
     }
 });
     

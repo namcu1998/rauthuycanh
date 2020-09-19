@@ -8,7 +8,7 @@ module.exports =  function() {
 		let y = x[2].split(":");
 		let data = {
 			dataLight: item.light,
-			dataTime: item.thoigian,
+			dataTime: y,
 			dataTemp: item.nhietdo,
 			dataHumi: item.doam,
 		}
