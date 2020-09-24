@@ -44,11 +44,15 @@
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+  }
+  #content img {
+    background-repeat: repeat;
   }
   #header
   {
-    background-color: #442424;
-    width: 200px;
+    display: none;
+    width: 300px;
     height: 1000vh;
     font-size: 3em;
     position: fixed;
@@ -61,7 +65,11 @@
   #header ul li 
   {
     height: 200px;
-    width: 200px;
+    width: 300px;
     line-height: 100px;
+    border: white 1px solid;
+    display: flex;
+    align-items: center;
+    align-content: center;
   }
 }
