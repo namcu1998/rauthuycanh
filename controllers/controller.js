@@ -8,12 +8,12 @@ module.exports.trangtru = function(req, res, next){
         data1: ma.getAll()[0],
         user: req.cookies.user,
         statusEsp: ma.getAll()[3],
-        signal: 'ma.getAll()[5].SignalStrength',
-        ip: 'ma.getAll()[5].ip',
-        statusDHT: 'ma.getAll()[5].statusDHT',
-        statusLux: 'ma.getAll()[5].statusLux',
-        CPU: 'ma.getAll()[5].CPU',
-        RAM: 'ma.getAll()[5].RAM',
+        signal: ma.getAll()[5].SignalStrength,
+        ip: ma.getAll()[5].ip,
+        statusDHT: ma.getAll()[5].statusDHT,
+        statusLux: ma.getAll()[5].statusLux,
+        CPU: ma.getAll()[5].CPU,
+        RAM: ma.getAll()[5].RAM,
     });
 };
 module.exports.cambien = function(req, res, next){
