@@ -59,7 +59,6 @@ function loopSync(){
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
 						webapp.emit("hmm", rd());
-						console.log("loa on")
 					}
 					if((time.time() < ma.getAuto().speakerTimeStart || time.time() > ma.getAuto().speakerTimeStop) && ma.getAll()[2].speaker != 0){
 						ma.speaker(0);
@@ -77,20 +76,17 @@ function loopSync(){
 				dbFirebase.data.push([array[0], array[1], array[2], time.getTime(), array[3], array[4], array[6], array[7]])
 			}
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % ma.getAuto().setUpload === 0) && ma.getAll()[3] === "ESP Connected"){
-				//scope2 = time.timeDay()[1][2];
 				if(ma.getMode() === 0){
 					if(array[1] < ma.getAuto().setHumi[1] && array[4] != 1){
 						ma.fanHumi(1);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
-						console.log("bat humi")
 						webapp.emit("hmm", rd());
 					}
 					if(array[1] >= ma.getAuto().setHumi[0] && array[4] != 0){
 						ma.fanHumi(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
-						console.log("bat humi")
 						webapp.emit("hmm", rd());
 					}
 					//--------------------------------------------------------------//
@@ -98,14 +94,12 @@ function loopSync(){
 						ma.fan(1);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
-						console.log("bat fan")
 						webapp.emit("hmm", rd());
 					}
 					if((array[1] < ma.getAuto().setHumi[0] && array[0] < ma.getAuto().setTemp[0]) && (array[7]) != 0){
 						ma.fan(0);
 						nsp.emit("LED", ma.getAll()[2]);
 						webapp.emit("onMa1", ma.getAll()[2]);
-						console.log("bat fan")
 						webapp.emit("hmm", rd());
 					}
 					//--------------------------------------------------------------//
@@ -147,7 +141,6 @@ nsp.on('connection', function(socket){
 		ma.saveIPAndSignalStrength("...", "...", "...", "...");
 		array[5] = 0;
 		webapp.emit("statusEsp", ma.getAll()[3]);
-		console.log(time.getTime());
 	})
 	socket.on("JSON1",function(data){
 		array = [data.temp, data.humi, data.light, data.speak, data.fanHumi, data.statusEsp, data.fanTemp, data.fan, data.upload];
@@ -189,12 +182,10 @@ webapp.on('connection', function(socket){
 	socket.on("onden4", () => {
 		ma.fan(1);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("fanOn")		
 	})
 	socket.on("offden4", () => {
 		ma.fan(0);
 		nsp.emit("LED", ma.getAll()[2]);
-		console.log("fanOff")
 	})	
 	socket.on("getData", () => {
 		webapp.emit("hmm", rd());
@@ -209,7 +200,6 @@ webapp.on('connection', function(socket){
 	socket.on("ok", (data) => {
 		ma.saveAuto(data);
 		ma.setUpload(data.setUpload)
-		console.log(data)
 		scope = 0;
 		scope1 = 0;
 		nsp.emit("LED", ma.getAll()[2]);

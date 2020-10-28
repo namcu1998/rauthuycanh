@@ -163,7 +163,6 @@
   }
 }
 
-
 @media only screen and (max-width: 600px) {
   #header ul{
     padding: 0;
@@ -186,28 +185,36 @@
   }
   #controll {
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 3em;
   }
   #controller {
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
   }
   .led {
     margin: 10px;
   }
   #line1 {
-    height: 1px; 
-    background-color: white; 
-    margin: 10px;
     display: none;
   }
   #auto {
     text-align: center;
-    color: white;
   }
-  input {
-    color: #442424;
+  #statusDriver span {
+    color: #ffffff;
+  }
+  #auto h1 {
+    color: #ffffff;
+  }
+  #auto h3 {
+    color: #ffffff;
+  }
+  #auto label {
+    color: #ffffff;
+  }
+  #auto span {
+    color: #ffffff;
   }
   #line2 {
     display: none;
