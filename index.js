@@ -152,7 +152,7 @@ function loopSync() {
         (ma.getAll()[2].speaker !== array[3] ||
           ma.getAll()[2].fanHumi !== array[4] ||
           ma.getAll()[2].fanTemp !== array[6] ||
-          ma.getAll()[2].fan 1== array[7])
+          ma.getAll()[2].fan !== array[7])
       ) {
         wd(
           array[0],
