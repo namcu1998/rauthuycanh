@@ -14,8 +14,8 @@ function tempChange(tempChange) {
 	}
 	dataJson.push(data);
 	})
-	if(dataJson.length > 5 ){
-		dataJson.splice(5, 96);
+	if(dataJson.length > 20 ){
+		dataJson.splice(20, 96);
 	}
 	let data2 = JSON.stringify(dataJson.reverse());
 	fs.writeFileSync('./JSON/dataCharts.json',data2);
