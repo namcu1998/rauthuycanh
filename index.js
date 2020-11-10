@@ -34,7 +34,6 @@ nsp.use(middleware);
 app.use(cookieParser())
 webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
-chartData();
 function xulyData(second, temp, humi, light){
 	let x = {
 		thoigian: second,
@@ -47,6 +46,7 @@ function xulyData(second, temp, humi, light){
 AwakeHeroku.add({
 	url: "https://nhayen.herokuapp.com"
 })
+console.log(rd()[0]);
 function loopSync(){
 	var timeConnect = 0;
 	return new Promise((resolve, reject) => {
@@ -68,6 +68,46 @@ function loopSync(){
 					}
 				}
 			}
+			if(ma.getMode() === 0){
+				if(array[1] < ma.getAuto().setHumi[1] && array[4] != 1){
+					ma.fanHumi(1);
+					nsp.emit("LED", ma.getAll()[2]);
+					webapp.emit("onMa1", ma.getAll()[2]);
+					webapp.emit("hmm", rd());
+				}
+				if(array[1] >= ma.getAuto().setHumi[0] && array[4] != 0){
+					ma.fanHumi(0);
+					nsp.emit("LED", ma.getAll()[2]);
+					webapp.emit("onMa1", ma.getAll()[2]);
+					webapp.emit("hmm", rd());
+				}
+				//--------------------------------------------------------------//
+				if((array[1] > ma.getAuto().setHumi[0] || array[0] > ma.getAuto().setTemp[0]) && (array[7]) != 1){
+					ma.fan(1);
+					nsp.emit("LED", ma.getAll()[2]);
+					webapp.emit("onMa1", ma.getAll()[2]);
+					webapp.emit("hmm", rd());
+				}
+				if((array[1] < ma.getAuto().setHumi[0] && array[0] < ma.getAuto().setTemp[0]) && (array[7]) != 0){
+					ma.fan(0);
+					nsp.emit("LED", ma.getAll()[2]);
+					webapp.emit("onMa1", ma.getAll()[2]);
+					webapp.emit("hmm", rd());
+				}
+				//--------------------------------------------------------------//
+				if(array[0] < ma.getAuto().setTemp[1] && array[6] != 1){
+					ma.fanTemp(1);
+					nsp.emit("LED", ma.getAll()[2]);
+					webapp.emit("onMa1", ma.getAll()[2]);
+					webapp.emit("hmm", rd());
+				}
+				if(array[0] >= ma.getAuto().setTemp[0] && array[6] != 0){
+					ma.fanTemp(0);
+					nsp.emit("LED", ma.getAll()[2]);
+					webapp.emit("onMa1", ma.getAll()[2]);
+					webapp.emit("hmm", rd());
+				}
+			}
 			if(timeConnect === 5){
 				nsp.emit("ping", "nam");
 				timeConnect = 0;
@@ -75,47 +115,7 @@ function loopSync(){
 			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 15 === 0) && ma.getAll()[3] === "ESP Connected"){
 				dbFirebase.data.push([array[0], array[1], array[2], time.getTime(), array[3], array[4], array[6], array[7]])
 			}
-			if((time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % ma.getAuto().setUpload === 0) && ma.getAll()[3] === "ESP Connected"){
-				if(ma.getMode() === 0){
-					if(array[1] < ma.getAuto().setHumi[1] && array[4] != 1){
-						ma.fanHumi(1);
-						nsp.emit("LED", ma.getAll()[2]);
-						webapp.emit("onMa1", ma.getAll()[2]);
-						webapp.emit("hmm", rd());
-					}
-					if(array[1] >= ma.getAuto().setHumi[0] && array[4] != 0){
-						ma.fanHumi(0);
-						nsp.emit("LED", ma.getAll()[2]);
-						webapp.emit("onMa1", ma.getAll()[2]);
-						webapp.emit("hmm", rd());
-					}
-					//--------------------------------------------------------------//
-					if((array[1] > ma.getAuto().setHumi[0] || array[0] > ma.getAuto().setTemp[0]) && (array[7]) != 1){
-						ma.fan(1);
-						nsp.emit("LED", ma.getAll()[2]);
-						webapp.emit("onMa1", ma.getAll()[2]);
-						webapp.emit("hmm", rd());
-					}
-					if((array[1] < ma.getAuto().setHumi[0] && array[0] < ma.getAuto().setTemp[0]) && (array[7]) != 0){
-						ma.fan(0);
-						nsp.emit("LED", ma.getAll()[2]);
-						webapp.emit("onMa1", ma.getAll()[2]);
-						webapp.emit("hmm", rd());
-					}
-					//--------------------------------------------------------------//
-					if(array[0] < ma.getAuto().setTemp[1] && array[6] != 1){
-						ma.fanTemp(1);
-						nsp.emit("LED", ma.getAll()[2]);
-						webapp.emit("onMa1", ma.getAll()[2]);
-						webapp.emit("hmm", rd());
-					}
-					if(array[0] >= ma.getAuto().setTemp[0] && array[6] != 0){
-						ma.fanTemp(0);
-						nsp.emit("LED", ma.getAll()[2]);
-						webapp.emit("onMa1", ma.getAll()[2]);
-						webapp.emit("hmm", rd());
-					}
-				}
+			if(rd()[0].nhietdo !== array[0] && rd()[0].doam !== array[1] && rd()[0].light !== array[0]){
 				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4], array[6], array[7]);
 				webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
@@ -129,6 +129,7 @@ function loopSync(){
 			if(array[5] === "1") {
 				ma.statusEsp("ESP Connected");
 			}
+			
 		}, 1000)
 	})
 }
