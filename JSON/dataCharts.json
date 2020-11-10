@@ -1,1 +1,29 @@
-[{"dataTime":"18"},{"dataTime":"32"},{"dataTime":"33"},{"dataTime":"34"},{"dataTime":"35"}]
+[
+    {
+        "dataLight": 54612,
+        "dataTime": "thứ ba 11/08/2020 14:17:27",
+        "dataTemp": 31.8,
+        "dataHumi": 95
+    },
+    {
+        "dataLight": 54612,
+        "dataTime": "thứ ba 11/08/2020 14:17:28",
+        "dataTemp": 31.8,
+        "dataHumi": 95
+    },
+    {
+        "dataLight": 54612,
+        "dataTime": "thứ ba 11/08/2020 14:17:29",
+        "dataTemp": 31.8,
+        "dataHumi": 95
+    },
+    {
+        "dataLight": 54612,
+        "dataTime": "thứ ba 11/08/2020 14:17:30",
+        "dataTemp": 31.8,
+        "dataHumi": 95
+    },
+    {
+        "dataTime": "thứ ba 10/11/2020 21:35:32"
+    }
+]
