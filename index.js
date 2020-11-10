@@ -148,7 +148,7 @@ function loopSync() {
       if (
         rd()[0].nhietdo !== array[0] ||
         rd()[0].doam !== array[1] ||
-        rd()[0].light !== array[0] ||
+        rd()[0].light !== array[2] ||
         ma.getAll()[2].speaker !== array[3] ||
         ma.getAll()[2].fanHumi !== array[4] ||
         ma.getAll()[2].fanTemp !== array[6] ||
