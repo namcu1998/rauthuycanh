@@ -171,13 +171,15 @@ function loopSync() {
           array[7]
         );
         //webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
-        webapp.emit("hmm", rd());
+		webapp.emit("hmm", rd());
+		console.log(array);
+		console.log(ma.getAll()[2]);
       }
       if (
-        ma.getAll()[2].speaker == array[3] &&
-        ma.getAll()[2].fanHumi == array[4] &&
-        ma.getAll()[2].fanTemp == array[6] &&
-        ma.getAll()[2].fan == array[7] &&
+        ma.getAll()[2].speaker == array[3] ||
+        ma.getAll()[2].fanHumi == array[4] ||
+        ma.getAll()[2].fanTemp == array[6] ||
+        ma.getAll()[2].fan == array[7] ||
         ma.getAll()[2].upload == array[8]
       ) {
       } else {
