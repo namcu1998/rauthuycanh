@@ -8,7 +8,7 @@ function tempChange(tempChange) {
 	console.log(item)
 	let data = {
 		dataLight: item.light,
-		dataTime: item.thoigian,
+		dataTime: y,
 		dataTemp: item.nhietdo,
 		dataHumi: item.doam,
 	}
