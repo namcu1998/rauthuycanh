@@ -266,7 +266,7 @@ webapp.on("connection", function (socket) {
     webapp.emit("hmm", rd());
   });
   socket.on("getDataCharts", () => {
-    //webapp.emit("onCharts", chartData());
+    webapp.emit("onCharts", chartData());
   });
   socket.on("getMa", () => {
     webapp.emit("onMa", ma.getAll());
