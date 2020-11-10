@@ -116,7 +116,6 @@ function loopSync(){
 				dbFirebase.data.push([array[0], array[1], array[2], time.getTime(), array[3], array[4], array[6], array[7]])
 			}
 			if(rd()[0].nhietdo !== array[0] && rd()[0].doam !== array[1] && rd()[0].light !== array[0]){
-				chartData();
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4], array[6], array[7]);
 				webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
