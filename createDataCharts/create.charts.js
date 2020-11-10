@@ -20,3 +20,5 @@ function tempChange(tempChange) {
 	fs.writeFileSync('./JSON/dataCharts.json',data2);
 	return JSON.parse(fs.readFileSync('./JSON/dataCharts.json','utf8'));
 }
+
+module.exports = tempChange;

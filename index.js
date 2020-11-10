@@ -48,7 +48,7 @@ function xulyData(second, temp, humi, light) {
 AwakeHeroku.add({
   url: "https://nhayen.herokuapp.com",
 });
-console.log(rd()[0]);
+chartData();
 function loopSync() {
   var timeConnect = 0;
   return new Promise((resolve, reject) => {
@@ -131,8 +131,9 @@ function loopSync() {
         timeConnect = 0;
       }
       if (
-        (time.timeDay()[1][2] === 0 || time.timeDay()[1][2] % 15 === 0) &&
-        ma.getAll()[3] === "ESP Connected"
+        rd()[0].nhietdo !== array[0] ||
+        rd()[0].doam !== array[1] ||
+        rd()[0].light !== array[2]
       ) {
         dbFirebase.data.push([
           array[0],
@@ -166,10 +167,10 @@ function loopSync() {
           array[6],
           array[7]
         );
-        //webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
-		webapp.emit("hmm", rd());
-		console.log(array);
-		console.log(ma.getAll()[2]);
+        webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
+        webapp.emit("hmm", rd());
+        console.log(array);
+        console.log(ma.getAll()[2]);
       }
       if (
         ma.getAll()[2].speaker == array[3] ||
