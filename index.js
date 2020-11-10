@@ -117,7 +117,7 @@ function loopSync(){
 			}
 			if(rd()[0].nhietdo !== array[0] && rd()[0].doam !== array[1] && rd()[0].light !== array[0]){
 				wd(array[0], array[1], array[2], time.timeDay()[1][2], time.timeDay()[1][1], time.timeDay()[1][0], time.timeDay()[0], time.timeDay()[2][0], time.timeDay()[2][1], time.timeDay()[2][2], array[3], array[4], array[6], array[7]);
-				webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
+				//webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
 				webapp.emit("hmm", rd());
 			}
 			if(ma.getAll()[2].speaker == array[3] && ma.getAll()[2].fanHumi == array[4] && ma.getAll()[2].fanTemp == array[6] && ma.getAll()[2].fan == array[7] && ma.getAll()[2].upload == array[8]) {
@@ -191,7 +191,7 @@ webapp.on('connection', function(socket){
 		webapp.emit("hmm", rd());
 	})
 	socket.on("getDataCharts", () => {
-		webapp.emit("onCharts", chartData());
+		//webapp.emit("onCharts", chartData());
 	})
 	socket.on("getMa", () => {
 		webapp.emit("onMa", ma.getAll());
