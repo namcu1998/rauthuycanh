@@ -140,7 +140,7 @@ var myChart1 = new Chart(ctx1, {
                         return value + "°C";
                     },
                     suggestedMin: 25,
-                    suggestedMax: 50
+                    suggestedMax: 40
                 }
             }]
         }

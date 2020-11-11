@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="vi" >
+<html lang="vi">
+
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
 	<title>Giới thiệu</title>
-	<link rel="stylesheet" type = "text/css" href="/css/layout.gioithieu.css"/>
-	<link rel="shortcut icon" type="image/png" href="/image/content.png"/>
+	<link rel="stylesheet" type="text/css" href="/css/layout.gioithieu.css" />
+	<link rel="shortcut icon" type="image/png" href="/image/content.png" />
 </head>
+
 <body>
 	<div id="header">
 		<ul>
@@ -17,12 +19,20 @@
 			<li><a href="/home/charts">Biều đồ</a></li>
 		</ul>
 	</div>
-	<div id="content">
-		<img width="100%" src="https://dulichvietnam.com.vn/kinh-nghiem/wp-content/uploads/2020/03/kinh-nghiem-du-lich-vung-chua-dao-yen-1.jpg" alt="">
-		<div style="text-align: center; color: brown; padding-top: 20px;">
-			<h1>ĐỀ TÀI: THIẾT KẾ VÀ THI CÔNG MÔ HÌNH <br> NHÀ NUÔI CHIM YẾN ĐIỀU KHIỂN, GIÁM SÁT TỪ XA</h1>
-		</div>
-	</div>
+	<img id="image" src="https://images3.alphacoders.com/110/thumb-1920-1105694.jpg" alt="">
+	<img id="none" src="https://images3.alphacoders.com/110/thumb-1920-1109247.png" alt="">
+	<img id="none" src="https://images2.alphacoders.com/110/thumb-1920-1109233.jpg" alt="">
 </body>
 </body>
+<script>
+	var img = document.getElementById('image');
+	var up = 0;
+	var url = ['https://images3.alphacoders.com/110/thumb-1920-1105694.jpg', 'https://images3.alphacoders.com/110/thumb-1920-1109247.png', 'https://images2.alphacoders.com/110/thumb-1920-1109233.jpg']
+	setInterval(() => {
+		img.src = url[up];
+		up++;
+		if(up > 2) up = 0;
+	},5000)
+</script>
+
 </html>

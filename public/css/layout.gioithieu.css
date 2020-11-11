@@ -1,45 +1,87 @@
 @media only screen and (min-width: 600px) {
-  *{
+  * {
     margin: 0;
     padding: 0;
   }
   body {
     margin: 0 auto;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
   }
-  #header ul{
+  #header ul {
     padding: 0;
     margin: 0 0 0 0;
     text-align: center;
     background-color: #442424;
   }
-  #header ul li{
+  #header ul li {
     width: 100px;
     height: 40px;
     display: inline-table;
     line-height: 40px;
   }
-  #header ul li a{
+  #header ul li a {
     color: #ffffff;
     display: block;
     text-decoration: none;
     font-size: 1.2em;
   }
-  #header ul li :hover{
+  #header ul li :hover {
     background-color: black;
   }
-  #content{
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
+  img {
+    min-height: 100vh;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
   }
-  img{
-    position: absolute;
-    z-index: -1;
-  }
-  #p{
-    z-index: 0;
+  #none {
+    display: none;
   }
 }
-@media only screen and (Max-width: 600px) {
+@media only screen and (max-width: 600px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-weight: 300;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  img {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #header {
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #header ul {
+    display: flex;
+  }
+
+  #header ul li {
+    list-style: none;
+    display: block;
+    width: 150px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+  }
+
+  #header ul li a {
+    font-size: 2em;
+    color: #000000;
+    text-decoration: none;
+    transition: 1s;
+  }
+
+  #header ul li:hover {
+    background-color: rgb(179, 93, 93);
+  }
 }
