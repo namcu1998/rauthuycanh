@@ -68,8 +68,6 @@
 
   .form-group {
     margin: 0 auto;
-    border-bottom: 5px solid white;
-    width: 50%;
   }
 
   .login-form {
@@ -77,11 +75,13 @@
   }
 
   .form-group input {
-    background: none;
+    text-align: center;
+    border: 5px solid white;
+    border-radius: 40px;
     outline: none;
-    border: none;
     color: white;
     margin-top: 20px;
+    width: 300px;
     height: 40px;
   }
 

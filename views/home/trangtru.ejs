@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Trang trủ</title>
 	<script src="/js/jquery.js"></script>
-	<script src ="/socket.io/socket.io.js"></script>
-	<script src = "/js/xuly.js"></script>
-	<link rel="stylesheet" type = "text/css" href="/css/layout.trangtru.css"/>
-	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/xuly.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/layout.trangtru.css" />
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+		integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="namcu">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <link rel="canonical" href="http://www.bootstraptoggle.com">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet" >
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="/image/browser.png"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link rel="canonical" href="http://www.bootstraptoggle.com">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="/image/browser.png" />
 	<link href="/cssToggle/bootstrap-toggle.css" rel="stylesheet">
-	<script src="/jsToggle/bootstrap-toggle.js"></script>	
+	<script src="/jsToggle/bootstrap-toggle.js"></script>
 </head>
-<body style="background-color: rgb(26, 48, 20);">
+
+<body style="background-color: #442424">
 	<div id="header">
 		<ul>
 			<li><a href="/">Giới thiệu</a></li>
@@ -36,93 +40,84 @@
 				<div class="statusEsp">
 					<span>Trạng thái ESP: </span>
 					<% if (statusEsp) { %>
-						<span><%= statusEsp %></span>
-					  <% } %>
-				</div>
-				<div class="information">
-					<span>Thông tin</span> <br>
-					<span>IPAddress: </span>
-					<% if (ip) { %>
-						<span><%= ip %></span>
-					  <% } %> <br>
-					<span>Tín hiệu: </span>
-					<% if (signal) { %>
-						<span><%= signal %></span>
-					  <% } %>
-					  <span>dBm</span> <br>
-					  <span>CPU: </span>
-					<% if (CPU) { %>
-						<span><%= CPU %></span>
-					  <% } %>
-					  <span>Mhz</span> <br>
-					  <span>RAM: </span>
-					<% if (RAM) { %>
-						<span><%= RAM %></span>
-					  <% } %> <br>
-					  <span>Cảm biến DHT: </span>
-					<% if (statusDHT) { %>
-						<span><%= statusDHT %></span>
-					  <% } %> <br>
-					  <span>Cảm biến Lux: </span>
-					<% if (statusLux) { %>
-						<span><%= statusLux %></span>
-					  <% } %> <br>
-				</div>
-			</div>
-			<div class="col-sm">
-				<input id="toggle-event-mode" data-on="CONTROL" data-off="AUTO" type="checkbox" data-toggle="toggle" <% if (data1 == 1) { %>checked<% } %>>
-			</div>
-			<div class="col-sm">
-			<div style="float: left;">
-				<div class="statusEsp">
-					<% if (user) { %>
-						<span>Chào <%= user %></span>
+					<span><%= statusEsp %></span>
 					<% } %>
 				</div>
+				<div class="information">
+					<img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+					<% if (ip) { %>
+					<span><%= ip %></span>
+					<% } %> <br>
+					<img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+					<% if (signal) { %>
+					<span><%= signal %></span>
+					<% } %>
+					<span>dBm</span> <br>
+					<img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px"> <% if (CPU) { %>
+					<span><%= CPU %></span>
+					<% } %>
+					<span>Mhz</span> <br>
+					<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+					<% if (RAM) { %>
+					<span><%= RAM %></span>
+					<% } %> <br>
+					<img src="/image/humidity.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+					<% if (statusDHT) { %>
+					<span><%= statusDHT %></span>
+					<% } %> <br>
+					<img src="/image/hot.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+					<% if (statusLux) { %>
+					<span><%= statusLux %></span>
+					<% } %> <br>
+				</div>
 			</div>
-			<div style="float: right;">
-				<form action="/auth/logout" method="POST">
-					<button type="submit" class="btn btn-primary">Đăng Xuất</button>
-				</form>	
+			<div class="col-sm">
+				<input id="toggle-event-mode" data-on="CONTROL" data-off="AUTO" type="checkbox" data-toggle="toggle"
+					<% if (data1 == 1) { %>checked<% } %>>
 			</div>
-		</div>
+			<div class="col-sm">
+				<div style="float: left;">
+					<div class="statusEsp">
+						<% if (user) { %>
+						<span>Chào <%= user %></span>
+						<% } %>
+					</div>
+				</div>
+				<div style="float: right;">
+					<form action="/auth/logout" method="POST">
+						<button type="submit" class="btn btn-primary">Đăng Xuất</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="line"></div>
-	<div class="container" id="controll">
-		<div class="row">
-		  <div class="col-sm">
-			<div class="led">
-				<span class="led">Loa:</span>
-				<input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.speaker == 1) { %>checked<% } %>>
-			</div>
-		  </div>
-		  <div class="col-sm">
-			<div class="led">
-				<span class="led">Phun sương:</span>
-				<input id="button1" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanHumi == 1) { %>checked<% } %>>
-			</div>
-		  </div>
-		  <div class="col-sm">
-			<div class="led">
-				<span class="led">Sưởi:</span>
-				<input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fanTemp == 1) { %>checked<% } %>>
-			</div>
-		  </div>
+	<div class="container1" id="controll">
+		<div class="btn-right">
+			<span class="led">Loa</span>
+			<input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
+				<% if (data.speaker == 1) { %>checked<% } %>>
+
+			<span class="led">Phun sương</span>
+			<input id="button1" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
+				<% if (data.fanHumi == 1) { %>checked<% } %>>
 		</div>
-		<div id="quat" class="row">
-			<div class="col-sm">
-			  <div class="led">
-				  <span class="led">Quạt:</span>
-				  <input id="button3" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large" <% if (data.fan == 1) { %>checked<% } %>>
-			  </div>
-			</div>
-		  </div>
-	  </div>
+		<div class="btn-left">
+			<span class="led">Sưởi</span>
+			<input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
+				<% if (data.fanTemp == 1) { %>checked<% } %>>
+
+			<span class="led">Quạt</span>
+			<input id="button3" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
+				<% if (data.fan == 1) { %>checked<% } %>>
+		</div>
+	</div>
 	<div id="auto">
 		<h1 style="text-align: center;">Bảng thiết lập chế độ auto</h1>
-		<h2 id="line1" style="text-align: center;"><---------------------------------------------------------------------------------------------></h2>
-		<div style="text-align: center;">
+		<h2 id="line1" style="text-align: center;">
+			<--------------------------------------------------------------------------------------------->
+		</h2>
+		<div class="timeSpeak" style="text-align: center;">
 			<h3>Thiết lập thời gian loa</h3>
 			<input class="checkBoxDay" type="checkbox" id="0" value="thứ hai">
 			<label class="labelCheckBoxDay" for="0">Thứ hai</label>
@@ -148,58 +143,57 @@
 			</div>
 		</div>
 		<div id="line2">
-			<h2 style="text-align: center;">---------------------------------------------------------------------------------------------</h2>
+			<h2 style="text-align: center;">
+				---------------------------------------------------------------------------------------------</h2>
 		</div>
 		<div id="MMT">
 			<h3>Thiết lập giá trị nhiệt độ</h3>
 			<div>
 				<span>Max</span>
-				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" >
+				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number"
+					placeholder="nhập giá trị">
 			</div>
 			<div>
 				<span>Min</span>
-				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" >
+				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number"
+					placeholder="nhập giá trị">
 			</div>
 		</div>
 		<div id="MMH">
 			<h3>Thiết lập giá trị độ ẩm</h3>
 			<div>
 				<span>Max</span>
-				<input id="setHumiMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" value="0">
+				<input id="setHumiMax" style="margin: 10px; text-align: center;" type="number"
+					placeholder="nhập giá trị" value="0">
 			</div>
 			<div>
 				<span>Min</span>
-				<input id="setHumiMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" value="0">
+				<input id="setHumiMin" style="margin: 10px; text-align: center;" type="number"
+					placeholder="nhập giá trị" value="0">
 			</div>
 		</div>
 		<div>
 			<h3>Thiết lập thời gian cập nhật(s)</h3>
-			<input id="setUpload" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị" value="0">
+			<input id="setUpload" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
+				value="0">
 		</div>
-		<div id="statusDriver" class="container ">
-			<div class="row">
-				<div class="col-sm">
-					<span>Loa:</span>
-					<span id="speaker"></span>
-				</div>
-				<div class="col-sm">
-					<span>Phun sương:</span>
-					<span id="fanHumi"></span>
-				</div>
+		<div class="container2">
+			<div class="status-right">
+				<span>Loa:</span>
+				<span id="speaker"></span> <br>
+				<span>Phun sương:</span>
+				<span id="fanHumi"></span>
 			</div>
-			<div style="height: 5px;"></div>
-			<div class="row">
-				<div class="col-sm">
-					<span>Sưởi:</span>
-					<span id="fanTemp"></span>
-				</div>
-				<div class="col-sm">
-					<span>Quạt:</span>
-					<span id="fan"></span>
-				</div>
+			<div class="status-left">
+				<span>Sưởi:</span>
+				<span id="fanTemp"></span> <br>
+				<span>Quạt:</span>
+				<span id="fan"></span>
 			</div>
 		</div>
-		<input style="margin-top: 0px" id="submit" class="btn btn-primary" type="button" value="Submit">
+		<input style="margin-top: 0px" id="submit" class="btn btn-primary" type="button" value="Gửi">
 	</div>
+	<div style="height: 51px;"></div>
 </body>
+
 </html>
