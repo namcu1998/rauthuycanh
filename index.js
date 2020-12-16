@@ -156,10 +156,10 @@ function loopSync() {
         webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
       }
       if(rd()[0].doam !== array[1]) {
-        webapp.emit("pushHumi", pushTemp(array[1], time.timeSecond()));
+        webapp.emit("pushHumi", pushHumi(array[1], time.timeSecond()));
       }
       if(rd()[0].light !== array[2]) {
-        webapp.emit("pushLux", pushTemp(array[2], time.timeSecond()));
+        webapp.emit("pushLux", pushLux(array[2], time.timeSecond()));
       }
       //Kiểm tra esp kết nối lại
       if (
