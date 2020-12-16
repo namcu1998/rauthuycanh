@@ -30,14 +30,16 @@ $(document).ready(function () {
   socket.on("onCharts", function (data) {
     data.dataTemp.map((item) => {
       addData(myChart1, item.thoigian, item.nhietdo);
+      removeData(myChart1)
     });
     data.dataHumi.map((item) => {
       addData(myChart2, item.thoigian, item.doam);
+      removeData(myChart2)
     });
     data.dataLux.map((item) => {
       addData(myChart, item.thoigian, item.anhsang);
+      removeData(myChart)
     });
-    console.log(data);
   });
   socket.on("pushTemp", function (data) {
     addData(myChart1, data[1], data[0]);

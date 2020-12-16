@@ -135,27 +135,28 @@ function loopSync() {
         timeConnect = 0;
       }
       //gửi dữ liệu lên database
-      if (
-        rd()[0].nhietdo !== array[0] ||
-        rd()[0].doam !== array[1] ||
-        rd()[0].light !== array[2]
-      ) {
-        dbFirebase.data.push([
-          array[0],
-          array[1],
-          array[2],
-          time.getTime(),
-          array[3],
-          array[4],
-          array[6],
-          array[7],
-        ]);
-      }
+      // if (
+      //   rd()[0].nhietdo !== array[0] ||
+      //   rd()[0].doam !== array[1] ||
+      //   rd()[0].light !== array[2]
+      // ) {
+      //   dbFirebase.data.push([
+      //     array[0],
+      //     array[1],
+      //     array[2],
+      //     time.getTime(),
+      //     array[3],
+      //     array[4],
+      //     array[6],
+      //     array[7],
+      //   ]);
+      // }
       //lưu trữ dữ liệu biểu đồ và emit
       if (
-        rd()[0].nhietdo !== array[0] ||
-        rd()[0].doam !== array[1] ||
-        rd()[0].light !== array[2]
+        (rd()[0].nhietdo !== array[0] ||
+          rd()[0].doam !== array[1] ||
+          rd()[0].light !== array[2]) &&
+        array.length > 0
       ) {
         wd(
           array[0],
@@ -175,15 +176,14 @@ function loopSync() {
         );
         webapp.emit("hmm", rd());
       }
-      if (rd()[0].nhietdo !== array[0]) {
+      if (getDataChart().dataTemp[getDataChart().dataTemp.length - 1].nhietdo !== array[0] && array.length > 0) {
         webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
       }
-      if (rd()[0].doam !== array[1]) {
+      if (getDataChart().dataHumi[getDataChart().dataHumi.length - 1].doam !== array[1] && array.length > 0) {
         webapp.emit("pushHumi", pushHumi(array[1], time.timeSecond()));
       }
-      if (rd()[0].light !== array[2]) {
+      if (getDataChart().dataLux[getDataChart().dataLux.length - 1].anhsang !== array[2] && array.length > 0) {
         webapp.emit("pushLux", pushLux(array[2], time.timeSecond()));
-        console.log(array[2], time.timeSecond())
       }
       //Kiểm tra esp kết nối lại
       if (
