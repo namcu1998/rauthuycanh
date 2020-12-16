@@ -174,7 +174,6 @@ function loopSync() {
           array[7]
         );
         webapp.emit("hmm", rd());
-        console.log(getDataChart())
       }
       if (rd()[0].nhietdo !== array[0]) {
         webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
@@ -184,6 +183,7 @@ function loopSync() {
       }
       if (rd()[0].light !== array[2]) {
         webapp.emit("pushLux", pushLux(array[2], time.timeSecond()));
+        console.log(array[2], time.timeSecond())
       }
       //Kiểm tra esp kết nối lại
       if (
