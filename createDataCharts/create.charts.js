@@ -16,7 +16,7 @@ function pushHumi(item, item1) {
     thoigian: item1,
   });
   let data2 = JSON.stringify(data1);
-  fs.writeFileSync("../JSON/dataCharts.json", data2);
+  fs.writeFileSync("./JSON/dataCharts.json", data2);
   return [item, item1];
 }
 function pushLux(item, item1) {
