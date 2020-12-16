@@ -20,9 +20,6 @@ const webapp = io.of("/nam2351998");
 const middleware = require("socketio-wildcard")();
 const cookieParser = require("cookie-parser");
 const { use } = require("./router/home.router");
-let scope = 0,
-  scope1 = 0,
-  scope2 = 0;
 let array = [];
 app.use(express.static("./public"));
 app.set("view engine", "ejs");
@@ -292,4 +289,18 @@ app.use("/home", Auth.SetCookie, router);
 app.use("/auth", authRouter);
 app.get("/", function (req, res) {
   res.render("home/gioithieu");
+});
+app.get("/react", function(req, res, next){
+  res.json({
+      data: ma.getAll()[2],
+      data1: ma.getAll()[0],
+      user: req.cookies.user,
+      statusEsp: ma.getAll()[3],
+      signal: ma.getAll()[5].SignalStrength,
+      ip: ma.getAll()[5].ip,
+      statusDHT: ma.getAll()[5].statusDHT,
+      statusLux: ma.getAll()[5].statusLux,
+      CPU: ma.getAll()[5].CPU,
+      RAM: ma.getAll()[5].RAM,
+  });
 });
