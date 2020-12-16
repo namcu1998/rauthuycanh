@@ -152,13 +152,36 @@ function loopSync() {
         ]);
       }
       //lưu trữ dữ liệu biểu đồ và emit
-      if (rd()[0].nhietdo !== array[0]) {
+      if (
+        rd()[0].nhietdo !== array[0] ||
+        rd()[0].doam !== array[1] ||
+        rd()[0].light !== array[2]
+      ) {
+        wd(
+          array[0],
+          array[1],
+          array[2],
+          time.timeDay()[1][2],
+          time.timeDay()[1][1],
+          time.timeDay()[1][0],
+          time.timeDay()[0],
+          time.timeDay()[2][0],
+          time.timeDay()[2][1],
+          time.timeDay()[2][2],
+          array[3],
+          array[4],
+          array[6],
+          array[7]
+        );
+        webapp.emit("hmm", rd());
+      }
+      if (getDataChart().dataTemp[0].nhietdo !== array[0]) {
         webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
       }
-      if(rd()[0].doam !== array[1]) {
+      if (getDataChart().dataHumi[0].doam !== array[1]) {
         webapp.emit("pushHumi", pushHumi(array[1], time.timeSecond()));
       }
-      if(rd()[0].light !== array[2]) {
+      if (getDataChart().dataLux[0].anhsang !== array[2]) {
         webapp.emit("pushLux", pushLux(array[2], time.timeSecond()));
       }
       //Kiểm tra esp kết nối lại
