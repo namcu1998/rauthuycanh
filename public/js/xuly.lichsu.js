@@ -1,5 +1,4 @@
-const host = process.env.DB_HOST;
-const socket = io(host); //https://bonghoaxinh.herokuapp.com/nam2351998
+const socket = io("https://nhayen.herokuapp.com/nam2351998"); //https://bonghoaxinh.herokuapp.com/nam2351998
 const table = $("#lich");
 function convert(data) {
   if (data == 1) return "Bật";

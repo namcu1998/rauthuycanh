@@ -1,4 +1,4 @@
-const socket = io(process.env.DB_HOST); 
+const socket = io("https://nhayen.herokuapp.com/nam2351998"); 
 let test = 0;
 function xulyden(item1, item2){
 	if(item1 == 1){

@@ -1,1 +1,44 @@
-[{"dataLight":54612,"dataTime":"15","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"16","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"17","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"18","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"19","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"20","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"21","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"22","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"23","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"24","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"25","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"26","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"27","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"28","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"29","dataTemp":31.8,"dataHumi":95},{"dataLight":54612,"dataTime":"30","dataTemp":31.8,"dataHumi":95},{"dataTime":"32"}]
+{
+    "dataTemp": [
+        {
+            "nhietdo": 30.1,
+            "thoigian": 17
+        },
+        {
+            "nhietdo": 30,
+            "thoigian": 17
+        },
+        {
+            "nhietdo": 30,
+            "thoigian": 17
+        }
+    ],
+    "dataHumi": [
+        {
+            "doam": 30,
+            "thoigian": 17
+        },
+        {
+            "doam": 30,
+            "thoigian": 17
+        },
+        {
+            "doam": 30,
+            "thoigian": 17
+        }
+    ],
+    "dataLux": [
+        {
+            "anhsang": 30,
+            "thoigian": 17
+        },
+        {
+            "anhsang": 30,
+            "thoigian": 17
+        },
+        {
+            "anhsang": 30,
+            "thoigian": 17
+        }
+    ]
+}

@@ -1,25 +1,40 @@
-const fs  = require('fs')
-function tempChange(tempChange) {
-	let dataJson = [];
-	let data1 = JSON.parse(fs.readFileSync('./JSON/data.json','utf8'));
-	data1.map(function(item){
-	let x = item.thoigian.split(" ");
-	let y = x[3].split(":")[2];
-	console.log(item)
-	let data = {
-		dataLight: item.light,
-		dataTime: y,
-		dataTemp: item.nhietdo,
-		dataHumi: item.doam,
-	}
-	dataJson.push(data);
-	})
-	if(dataJson.length > 20 ){
-		dataJson.splice(20, 96);
-	}
-	let data2 = JSON.stringify(dataJson.reverse());
-	fs.writeFileSync('./JSON/dataCharts.json',data2);
-	return JSON.parse(fs.readFileSync('./JSON/dataCharts.json','utf8'));
+const fs = require("fs");
+function pushTemp(item, item1) {
+  let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+  data1.dataTemp.push({
+    nhietdo: item,
+    thoigian: item1,
+  });
+  let data2 = JSON.stringify(data1);
+  fs.writeFileSync("db.json", data2);
+  return [item, item1];
 }
-
-module.exports = tempChange;
+function pushHumi(item, item1) {
+  let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+  data1.dataHumi.push({
+    doam: item,
+    thoigian: item1,
+  });
+  let data2 = JSON.stringify(data1);
+  fs.writeFileSync("../JSON/dataCharts.json", data2);
+  return [item, item1];
+}
+function pushLux(item, item1) {
+  let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+  data1.dataLux.push({
+    anhsang: item,
+    thoigian: item1,
+  });
+  let data2 = JSON.stringify(data1);
+  fs.writeFileSync("../JSON/dataCharts.json", data2);
+  return [item, item1];
+}
+function getDataChart() {
+	return JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+}
+module.exports = {
+	pushTemp,
+	pushHumi,
+	pushLux,
+	getDataChart
+}

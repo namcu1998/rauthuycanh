@@ -5,7 +5,12 @@ const router = require("./router/home.router");
 const authRouter = require("./router/auth.router");
 const wd = require("./read.database/write.database");
 const rd = require("./read.database/read.database");
-const chartData = require("./createDataCharts/create.charts");
+const {
+  pushTemp,
+  pushHumi,
+  pushLux,
+  getDataChart,
+} = require("./createDataCharts/create.charts");
 const Auth = require("./controllers/auth.controller");
 const time = require("./time/time");
 const ma = require("./modeAndDataAuto/create.mode");
@@ -45,12 +50,12 @@ function xulyData(second, temp, humi, light) {
 AwakeHeroku.add({
   url: "https://nhayen.herokuapp.com",
 });
-chartData();
 function loopSync() {
   var timeConnect = 0;
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
+      //kiểm tra và so sánh ngày và giờ bật thiết bị trong chế độ auto
       if (ma.getMode() == 0) {
         if (ma.getAuto().speakerDay.indexOf(time.timeDay()[0]) >= 0) {
           if (
@@ -75,6 +80,7 @@ function loopSync() {
           }
         }
       }
+      //kiểm tra và so sánh dữ liệu bật thiết bị trong chế độ auto
       if (ma.getMode() === 0) {
         if (array[1] < ma.getAuto().setHumi[1] && array[4] != 1) {
           ma.fanHumi(1);
@@ -123,10 +129,12 @@ function loopSync() {
           webapp.emit("hmm", rd());
         }
       }
+      //ping esp
       if (timeConnect === 5) {
         nsp.emit("ping", "nam");
         timeConnect = 0;
       }
+      //gửi dữ liệu lên database
       if (
         rd()[0].nhietdo !== array[0] ||
         rd()[0].doam !== array[1] ||
@@ -143,32 +151,17 @@ function loopSync() {
           array[7],
         ]);
       }
-      if (
-        rd()[0].nhietdo !== array[0] ||
-        rd()[0].doam !== array[1] ||
-        rd()[0].light !== array[2]
-      ) {
-        wd(
-          array[0],
-          array[1],
-          array[2],
-          time.timeDay()[1][2],
-          time.timeDay()[1][1],
-          time.timeDay()[1][0],
-          time.timeDay()[0],
-          time.timeDay()[2][0],
-          time.timeDay()[2][1],
-          time.timeDay()[2][2],
-          array[3],
-          array[4],
-          array[6],
-          array[7]
-        );
-        webapp.emit("emitChart", xulyData(time.timeSecond(), array[0], array[1], array[2]));
-        webapp.emit("hmm", rd());
-        console.log(array);
-        console.log(ma.getAll()[2]);
+      //lưu trữ dữ liệu biểu đồ và emit
+      if (rd()[0].nhietdo !== array[0]) {
+        webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
       }
+      if(rd()[0].doam !== array[1]) {
+        webapp.emit("pushHumi", pushTemp(array[1], time.timeSecond()));
+      }
+      if(rd()[0].light !== array[2]) {
+        webapp.emit("pushLux", pushTemp(array[2], time.timeSecond()));
+      }
+      //Kiểm tra esp kết nối lại
       if (
         ma.getAll()[2].speaker == array[3] ||
         ma.getAll()[2].fanHumi == array[4] ||
@@ -263,7 +256,7 @@ webapp.on("connection", function (socket) {
     webapp.emit("hmm", rd());
   });
   socket.on("getDataCharts", () => {
-    webapp.emit("onCharts", chartData());
+    webapp.emit("onCharts", getDataChart());
   });
   socket.on("getMa", () => {
     webapp.emit("onMa", ma.getAll());
@@ -290,17 +283,17 @@ app.use("/auth", authRouter);
 app.get("/", function (req, res) {
   res.render("home/gioithieu");
 });
-app.get("/react", function(req, res, next){
+app.get("/react", function (req, res, next) {
   res.json({
-      data: ma.getAll()[2],
-      data1: ma.getAll()[0],
-      user: req.cookies.user,
-      statusEsp: ma.getAll()[3],
-      signal: ma.getAll()[5].SignalStrength,
-      ip: ma.getAll()[5].ip,
-      statusDHT: ma.getAll()[5].statusDHT,
-      statusLux: ma.getAll()[5].statusLux,
-      CPU: ma.getAll()[5].CPU,
-      RAM: ma.getAll()[5].RAM,
+    data: ma.getAll()[2],
+    data1: ma.getAll()[0],
+    user: req.cookies.user,
+    statusEsp: ma.getAll()[3],
+    signal: ma.getAll()[5].SignalStrength,
+    ip: ma.getAll()[5].ip,
+    statusDHT: ma.getAll()[5].statusDHT,
+    statusLux: ma.getAll()[5].statusLux,
+    CPU: ma.getAll()[5].CPU,
+    RAM: ma.getAll()[5].RAM,
   });
 });
