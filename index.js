@@ -175,13 +175,13 @@ function loopSync() {
         );
         webapp.emit("hmm", rd());
       }
-      if (getDataChart().dataTemp[0].nhietdo !== array[0]) {
+      if (rd()[0].nhietdo !== array[0]) {
         webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
       }
-      if (getDataChart().dataHumi[0].doam !== array[1]) {
+      if (rd()[0].doam !== array[1]) {
         webapp.emit("pushHumi", pushHumi(array[1], time.timeSecond()));
       }
-      if (getDataChart().dataLux[0].anhsang !== array[2]) {
+      if (rd()[0].light !== array[2]) {
         webapp.emit("pushLux", pushLux(array[2], time.timeSecond()));
       }
       //Kiểm tra esp kết nối lại
