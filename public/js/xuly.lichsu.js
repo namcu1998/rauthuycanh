@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/nam2351998"); //https://bonghoaxinh.herokuapp.com/nam2351998
+const socket = io("https://rauthuycanh.herokuapp.com/nam2351998"); //https://bonghoaxinh.herokuapp.com/nam2351998
 const table = $("#lich");
 function convert(data) {
   if (data == 1) return "Bật";

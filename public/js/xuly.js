@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/nam2351998");
+const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
 let test = 0;
 function xulyden(item1, item2) {
   if (item1 == 1) {
