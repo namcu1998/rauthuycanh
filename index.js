@@ -237,7 +237,7 @@ espSensor.on("connection", function (socket) {
     );
   });
   socket.on("disconnect", function () {
-    statusEsp("espSensor", 0, "none", "none", "none", "none");
+    statusEsp("espControll", 0, "none", "none", "none", "none");
   });
 });
 webapp.on("connection", function (socket) {
