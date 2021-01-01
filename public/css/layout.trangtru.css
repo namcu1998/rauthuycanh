@@ -53,6 +53,7 @@
     height: 600px;
   }
   #auto {
+    position: relative;
     text-align: center;
     background-color: wheat;
     width: 1000px;
@@ -143,10 +144,14 @@
     background-color: rgb(24, 68, 43);
     color: seashell;
     text-align: center;
-    padding: 15px 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
+
+  .status-right, .status-left {
+    padding-top: 10px;
+  }
+
   .col-sm {
     text-align: center;
   }

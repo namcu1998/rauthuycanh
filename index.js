@@ -13,19 +13,29 @@ const {
 } = require("./createDataCharts/create.charts");
 const Auth = require("./controllers/auth.controller");
 const time = require("./time/time");
-const ma = require("./modeAndDataAuto/create.mode");
+const {
+  saveMode,
+  saveAuto,
+  statusEsp,
+  setDevice,
+  getAll,
+  getModeAutoDriver,
+} = require("./modeAndDataAuto/create.mode");
 const bodyParser = require("body-parser");
-const dbFirebase = require("./database/firebase");
 const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 const { AwakeHeroku } = require("awake-heroku");
-const nsp = io.of("/namcu1998");
+const espControll = io.of("/espControll");
+const espSensor = io.of("/espSensor");
 const webapp = io.of("/nam2351998");
 const middleware = require("socketio-wildcard")();
 const cookieParser = require("cookie-parser");
 const { use } = require("./router/home.router");
-let array = [];
+let array = {
+  espControll: [],
+  espSensor: [],
+};
 app.use(express.static("./public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -34,7 +44,8 @@ app.use("/cssToggle", express.static(__dirname + "/bootstrapToggle/css/"));
 app.use("/jsToggle", express.static(__dirname + "/bootstrapToggle/js/"));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-nsp.use(middleware);
+espControll.use(middleware);
+espSensor.use(middleware);
 app.use(cookieParser());
 webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
@@ -51,117 +62,77 @@ AwakeHeroku.add({
   url: "https://nhayen.herokuapp.com",
 });
 function loopSync() {
-  var timeConnect = 0;
+  var timeConnect = 0,
+    timeUp = 0;
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
-      //kiểm tra và so sánh ngày và giờ bật thiết bị trong chế độ auto
-      if (ma.getMode() == 0) {
-        if (ma.getAuto().speakerDay.indexOf(time.timeDay()[0]) >= 0) {
-          if (
-            time.time() >= ma.getAuto().speakerTimeStart &&
-            time.time() <= ma.getAuto().speakerTimeStop &&
-            ma.getAll()[2].speaker != 1
-          ) {
-            ma.speaker(1);
-            nsp.emit("LED", ma.getAll()[2]);
-            webapp.emit("onMa1", ma.getAll()[2]);
-            webapp.emit("hmm", rd());
-          }
-          if (
-            (time.time() < ma.getAuto().speakerTimeStart ||
-              time.time() > ma.getAuto().speakerTimeStop) &&
-            ma.getAll()[2].speaker != 0
-          ) {
-            ma.speaker(0);
-            nsp.emit("LED", ma.getAll()[2]);
-            webapp.emit("onMa1", ma.getAll()[2]);
-            webapp.emit("hmm", rd());
-          }
-        }
-      }
-      //kiểm tra và so sánh dữ liệu bật thiết bị trong chế độ auto
-      if (ma.getMode() === 0) {
-        if (array[1] < ma.getAuto().setHumi[1] && array[4] != 1) {
-          ma.fanHumi(1);
-          nsp.emit("LED", ma.getAll()[2]);
-          webapp.emit("onMa1", ma.getAll()[2]);
-          webapp.emit("hmm", rd());
-        }
-        if (array[1] >= ma.getAuto().setHumi[0] && array[4] != 0) {
-          ma.fanHumi(0);
-          nsp.emit("LED", ma.getAll()[2]);
-          webapp.emit("onMa1", ma.getAll()[2]);
-          webapp.emit("hmm", rd());
-        }
-        //--------------------------------------------------------------//
+      if (getAll().mode === 0) {
+        timeUp++;
         if (
-          (array[1] > ma.getAuto().setHumi[0] ||
-            array[0] > ma.getAuto().setTemp[0]) &&
-          array[7] != 1
+          timeUp <= getAll().autoData.setTimePump * 30 &&
+          array.espControll[0] != 1
         ) {
-          ma.fan(1);
-          nsp.emit("LED", ma.getAll()[2]);
-          webapp.emit("onMa1", ma.getAll()[2]);
-          webapp.emit("hmm", rd());
+          setDevice("Device", 1);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
+        } else if (
+          timeUp > getAll().autoData.setTimePump * 60 &&
+          timeUp <= getAll().autoData.setTimePump * 120 &&
+          array.espControll[0] != 0
+        ) {
+          setDevice("Device", 0);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
+        }
+        //-------------------------------------------------------//
+        if (
+          getAll().autoData.setLux[0] < array.espSensor[2] &&
+          array.espControll[2] != 1
+        ) {
+          setDevice("Device2", 1);
+          setDevice("Device3", 0);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
         }
         if (
-          array[1] < ma.getAuto().setHumi[0] &&
-          array[0] < ma.getAuto().setTemp[0] &&
-          array[7] != 0
+          getAll().autoData.setLux[1] > array.espSensor[2] &&
+          array.espControll[3] != 1
         ) {
-          ma.fan(0);
-          nsp.emit("LED", ma.getAll()[2]);
-          webapp.emit("onMa1", ma.getAll()[2]);
-          webapp.emit("hmm", rd());
+          setDevice("Device2", 0);
+          setDevice("Device3", 1);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
         }
-        //--------------------------------------------------------------//
-        if (array[0] < ma.getAuto().setTemp[1] && array[6] != 1) {
-          ma.fanTemp(1);
-          nsp.emit("LED", ma.getAll()[2]);
-          webapp.emit("onMa1", ma.getAll()[2]);
-          webapp.emit("hmm", rd());
+        if (
+          getAll().autoData.setLux[0] > array.espSensor[2] &&
+          getAll().autoData.setLux[1] < array.espSensor[2] &&
+          (array.espControll[2] != 0 || array.espControll[3] != 0)
+        ) {
+          setDevice("Device2", 0);
+          setDevice("Device3", 0);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
         }
-        if (array[0] >= ma.getAuto().setTemp[0] && array[6] != 0) {
-          ma.fanTemp(0);
-          nsp.emit("LED", ma.getAll()[2]);
-          webapp.emit("onMa1", ma.getAll()[2]);
-          webapp.emit("hmm", rd());
-        }
+        //------------------------------------------------------//
       }
-      //ping esp
-      if (timeConnect === 5) {
-        nsp.emit("ping", "nam");
+
+      if (timeConnect === 2) {
+        espControll.emit("ping", "nam");
+        espSensor.emit("ping", "nam");
         timeConnect = 0;
-      }
-      //gửi dữ liệu lên database
-      // if (
-      //   rd()[0].nhietdo !== array[0] ||
-      //   rd()[0].doam !== array[1] ||
-      //   rd()[0].light !== array[2]
-      // ) {
-      //   dbFirebase.data.push([
-      //     array[0],
-      //     array[1],
-      //     array[2],
-      //     time.getTime(),
-      //     array[3],
-      //     array[4],
-      //     array[6],
-      //     array[7],
-      //   ]);
-      // }
-      //lưu trữ dữ liệu biểu đồ và emit
+      } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
       if (
-        (rd()[0].nhietdo !== array[0] ||
-          rd()[0].doam !== array[1] ||
-          rd()[0].light !== array[2]) &&
-        array.length > 0
+        (rd()[0].nhietdo !== array.espSensor[0] ||
+          rd()[0].doam !== array.espSensor[1] ||
+          rd()[0].light !== array.espSensor[2]) &&
+        array.espSensor.length > 0 &&
+        array.espControll.length > 0
       ) {
         wd(
-          array[0],
-          array[1],
-          array[2],
+          array.espSensor[0],
+          array.espSensor[1],
+          array.espSensor[2],
           time.timeDay()[1][2],
           time.timeDay()[1][1],
           time.timeDay()[1][0],
@@ -169,112 +140,113 @@ function loopSync() {
           time.timeDay()[2][0],
           time.timeDay()[2][1],
           time.timeDay()[2][2],
-          array[3],
-          array[4],
-          array[6],
-          array[7]
+          array.espControll[0],
+          array.espControll[1],
+          array.espControll[2],
+          array.espControll[3],
+          array.espControll[4],
+          array.espControll[5]
         );
         webapp.emit("hmm", rd());
       }
-      if (getDataChart().dataTemp[getDataChart().dataTemp.length - 1].nhietdo !== array[0] && array.length > 0) {
-        webapp.emit("pushTemp", pushTemp(array[0], time.timeSecond()));
+      if (
+        getDataChart().dataTemp[getDataChart().dataTemp.length - 1].nhietdo !==
+          array.espSensor[0] &&
+        array.espSensor.length > 0
+      ) {
+        webapp.emit(
+          "pushTemp",
+          pushTemp(array.espSensor[0], time.timeSecond())
+        );
       }
-      if (getDataChart().dataHumi[getDataChart().dataHumi.length - 1].doam !== array[1] && array.length > 0) {
-        webapp.emit("pushHumi", pushHumi(array[1], time.timeSecond()));
+      if (
+        getDataChart().dataHumi[getDataChart().dataHumi.length - 1].doam !==
+          array.espSensor[1] &&
+        array.espSensor.length > 0
+      ) {
+        webapp.emit(
+          "pushHumi",
+          pushHumi(array.espSensor[1], time.timeSecond())
+        );
       }
-      if (getDataChart().dataLux[getDataChart().dataLux.length - 1].anhsang !== array[2] && array.length > 0) {
-        webapp.emit("pushLux", pushLux(array[2], time.timeSecond()));
+      if (
+        getDataChart().dataLux[getDataChart().dataLux.length - 1].anhsang !==
+          array.espSensor[2] &&
+        array.espSensor.length > 0
+      ) {
+        console.log("om");
+        webapp.emit("pushLux", pushLux(array.espSensor[2], time.timeSecond()));
       }
       //Kiểm tra esp kết nối lại
       if (
-        ma.getAll()[2].speaker == array[3] ||
-        ma.getAll()[2].fanHumi == array[4] ||
-        ma.getAll()[2].fanTemp == array[6] ||
-        ma.getAll()[2].fan == array[7] ||
-        ma.getAll()[2].upload == array[8]
+        getAll().statusDevice.Device.Device === array.espControll[0] ||
+        getAll().statusDevice.Device.Device1 === array.espControll[1] ||
+        getAll().statusDevice.Device.Device2 === array.espControll[2] ||
+        getAll().statusDevice.Device.Device3 === array.espControll[3] ||
+        getAll().statusDevice.Device.Device4 === array.espControll[4]
       ) {
       } else {
-        nsp.emit("LED", ma.getAll()[2]);
-      }
-      if (array[5] === "1") {
-        ma.statusEsp("ESP Connected");
+        espControll.emit("LED", getAll().statusDevice.Device);
       }
     }, 1000);
   });
 }
+
 loopSync();
-nsp.on("connection", function (socket) {
-  webapp.emit("statusEsp", ma.getAll()[3]);
-  nsp.emit("statusEsp", ma.getAll()[2]);
+
+espControll.on("connection", function (socket) {
   socket.on("disconnect", function () {
-    ma.statusEsp("ESP Disconnect");
-    ma.saveIPAndSignalStrength("...", "...", "...", "...");
-    array[5] = 0;
-    webapp.emit("statusEsp", ma.getAll()[3]);
+    statusEsp("espSensor", 0, "none", "none", "none", "none");
   });
   socket.on("JSON1", function (data) {
-    array = [
-      data.temp,
-      data.humi,
-      data.light,
-      data.speak,
-      data.fanHumi,
+    array = {
+      espControll: [
+        data.device,
+        data.device1,
+        data.device2,
+        data.device3,
+        data.device4,
+        data.device5,
+      ],
+      espSensor: [...array.espSensor],
+    };
+    statusEsp(
+      "espControll",
       data.statusEsp,
-      data.fanTemp,
-      data.fan,
-      data.upload,
-    ];
-    ma.saveIPAndSignalStrength(
       data.ip,
       data.signal,
-      data.sensorDHT,
-      data.sensorLux
+      data.clockCPU,
+      data.ramLeft
     );
-    ma.saveCPUAndRAM(data.clockCPU, data.ramLeft);
   });
-  socket.on("Error", function (data) {
-    ma.saveIPAndSignalStrength(
+});
+espSensor.on("connection", function (socket) {
+  console.log("espSensor Connection");
+  socket.on("JSON1", (data) => {
+    array = {
+      espControll: [...array.espControll],
+      espSensor: [Math.round(data.temp), Math.round(data.humi), Math.round(data.light)],
+    };
+    statusEsp(
+      "espSensor",
+      data.statusEsp,
       data.ip,
       data.signal,
-      data.sensorDHT,
-      data.sensorLux
+      data.clockCPU,
+      data.ramLeft
     );
+  });
+  socket.on("disconnect", function () {
+    statusEsp("espSensor", 0, "none", "none", "none", "none");
   });
 });
 webapp.on("connection", function (socket) {
   //("webapp đã connected");
   socket.on("disconnect", function () {});
-  socket.on("onden1", () => {
-    ma.speaker(1);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("offden1", () => {
-    ma.speaker(0);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("onden2", () => {
-    ma.fanHumi(1);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("offden2", () => {
-    ma.fanHumi(0);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("onden3", () => {
-    ma.fanTemp(1);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("offden3", () => {
-    ma.fanTemp(0);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("onden4", () => {
-    ma.fan(1);
-    nsp.emit("LED", ma.getAll()[2]);
-  });
-  socket.on("offden4", () => {
-    ma.fan(0);
-    nsp.emit("LED", ma.getAll()[2]);
+  socket.on("activeDevice", (item) => {
+    console.log(item)
+    setDevice(item[0], item[1]);
+    espControll.emit("LED", getAll().statusDevice.Device);
   });
   socket.on("getData", () => {
     webapp.emit("hmm", rd());
@@ -283,41 +255,19 @@ webapp.on("connection", function (socket) {
     webapp.emit("onCharts", getDataChart());
   });
   socket.on("getMa", () => {
-    webapp.emit("onMa", ma.getAll());
+    webapp.emit("onMa", getAll().autoData);
   });
   // dữ liệu cảm biến
   socket.on("ok", (data) => {
-    ma.saveAuto(data);
-    ma.setUpload(data.setUpload);
-    scope = 0;
-    scope1 = 0;
-    nsp.emit("LED", ma.getAll()[2]);
+    saveAuto(data);
   });
   socket.on("mode", (data) => {
-    ma.saveMode(data);
-    ma.setMode(data);
-    scope = 0;
-    scope1 = 0;
-    if (data == 0) {
-    } else webapp.emit("onMa1", ma.getAll()[2]);
+    saveMode(data);
   });
 });
+
 app.use("/home", Auth.SetCookie, router);
 app.use("/auth", authRouter);
 app.get("/", function (req, res) {
   res.render("home/gioithieu");
-});
-app.get("/react", function (req, res, next) {
-  res.json({
-    data: ma.getAll()[2],
-    data1: ma.getAll()[0],
-    user: req.cookies.user,
-    statusEsp: ma.getAll()[3],
-    signal: ma.getAll()[5].SignalStrength,
-    ip: ma.getAll()[5].ip,
-    statusDHT: ma.getAll()[5].statusDHT,
-    statusLux: ma.getAll()[5].statusLux,
-    CPU: ma.getAll()[5].CPU,
-    RAM: ma.getAll()[5].RAM,
-  });
 });

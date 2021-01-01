@@ -1,28 +1,30 @@
 const fs  = require('fs')
 let newId;
-function Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, speaker, fanHumi, fanTemp, fan){
+function Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, device, device1, device2, device3, device4, device5){
   this.nhietdo = nhietdo;
   this.doam = doam;
   this.light = light;
   this.thoigian = thing + " " + day + "/" + mouth + "/" + year + " " + hour + ":" + minute + ":" + second;
-  this.fanHumi = fanHumi;
-  this.speaker = speaker;
-  this.fanTemp = fanTemp;
-  this.fan = fan;
+  this.device1 = device1;
+  this.device = device;
+  this.device2 = device2;
+  this.device3 = device3;
+  this.device4 = device4;
+  this.device5 = device5;
 }
-function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, speaker, fanHumi, fanTemp, fan){
+function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, device, device1, device2, device3){
   if(fs.readFileSync('./JSON/data.json','utf8')) {
     var data = JSON.parse(fs.readFileSync('./JSON/data.json','utf8'))
     if(data.length > 100){
       data.splice(100,1);
     }
-    data.unshift(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, speaker, fanHumi, fanTemp, fan));
+    data.unshift(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, device, device1, device2, device3));
     var data1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/data.json',data1);
   }
   else {
     let data = [];
-    data.push(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, speaker, fanHumi, fanTemp));
+    data.push(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, device, device1, device2));
     let data1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/data.json',data1);
   }

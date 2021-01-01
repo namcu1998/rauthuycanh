@@ -1,6 +1,5 @@
 @media (max-width: 700px) {
   body {
-    background-image: url(https://mfiles.alphacoders.com/890/thumb-1920-890379.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: rgb(255, 255, 255);
@@ -42,7 +41,6 @@
 
 @media (min-width: 700px) {
   body {
-    background-image: url(https://images2.alphacoders.com/111/thumb-1920-1110676.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

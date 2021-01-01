@@ -1,12 +1,12 @@
-const ma = require("../modeAndDataAuto/create.mode")
+const { getAll } = require("../modeAndDataAuto/create.mode")
 module.exports.SetCookie = function(req, res, next){
-    if(!req.cookies) res.render('auth/login');
-    if(req.cookies.login === 'ASDDDASASD'){
-    }
-    else {
-        res.render('auth/login');
-        return;
-    }
+    // if(!req.cookies) res.render('auth/login');
+    // if(req.cookies.login === 'ASDDDASASD'){
+    // }
+    // else {
+    //     res.render('auth/login');
+    //     return;
+    // }
     next();
 }
 module.exports.logout = function(req, res, next){
@@ -19,19 +19,20 @@ module.exports.login = function(req, res, next){
 }
 
 module.exports.postLogin = function(req, res, next){
-    let scopeLogin = 0;
-    ma.getAll()[4].map(item => {
-        if(item.email == req.body.email && item.password == req.body.password) {
-          scopeLogin = 1;
-        }
-      })
-      if(scopeLogin == 1){
-      }
-      else {
-        res.render("auth/login");
-                return;
-      }
-    res.cookie('login', "ASDDDASASD")
-    res.cookie('user', req.body.email)
-    res.redirect('/home/');
+    // let scopeLogin = 0;
+    // getAll().account.map(item => {
+    //     if(item.email == req.body.email && item.password == req.body.password) {
+    //       scopeLogin = 1;
+    //     }
+    //   })
+    //   if(scopeLogin == 1){
+    //   }
+    //   else {
+    //     res.render("auth/login");
+    //             return;
+    //   }
+    // res.cookie('login', "ASDDDASASD")
+    // res.cookie('user', req.body.email)
+    // res.redirect('/home/');
+    next();
 };

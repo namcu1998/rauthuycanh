@@ -5,7 +5,6 @@
 	<title>Trang trủ</title>
 	<script src="/js/jquery.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/xuly.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/layout.trangtru.css" />
 	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
 		integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
@@ -28,9 +27,7 @@
 		<ul>
 			<li><a href="/">Giới thiệu</a></li>
 			<li><a href="/home/">Điều khiển</a></li>
-			<li><a href="/home/cambien">Cảm biến</a></li>
 			<li><a href="/home/lichsu">Lịch Sử</a></li>
-			<li><a href="/home/tracuu">Tra cứu</a></li>
 			<li><a href="/home/charts">Biểu đồ</a></li>
 		</ul>
 	</div>
@@ -38,37 +35,66 @@
 		<div class="row">
 			<div class="col-sm" id="thongtin">
 				<div class="statusEsp">
-					<span>Trạng thái ESP: </span>
-					<% if (statusEsp) { %>
-					<span><%= statusEsp %></span>
+					<span>Trạng thái ESP1: </span>
+					<% if (statusEsp1.status === true) { %>
+					<span>connected</span>
+					<% } %>
+					<% if (statusEsp2.status === true) { %>
+					<span>Trạng thái ESP2: </span>
+					<span>connected</span>
 					<% } %>
 				</div>
 				<div class="information">
-					<img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-					<% if (ip) { %>
-					<span><%= ip %></span>
-					<% } %> <br>
-					<img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-					<% if (signal) { %>
-					<span><%= signal %></span>
-					<% } %>
-					<span>dBm</span> <br>
-					<img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px"> <% if (CPU) { %>
-					<span><%= CPU %></span>
-					<% } %>
-					<span>Mhz</span> <br>
-					<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-					<% if (RAM) { %>
-					<span><%= RAM %></span>
-					<% } %> <br>
-					<img src="/image/humidity.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-					<% if (statusDHT) { %>
-					<span><%= statusDHT %></span>
-					<% } %> <br>
-					<img src="/image/hot.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-					<% if (statusLux) { %>
-					<span><%= statusLux %></span>
-					<% } %> <br>
+					<div style="display: flex; justify-content: space-around;">
+						<div style="text-align: center;">
+							<img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp1.ip) { %>
+							<span><%= statusEsp1.ip %></span>
+							<% } %> <br>
+							<img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp1.SignalStrength) { %>
+							<span><%= statusEsp1.SignalStrength %></span>
+							<% } %>
+							<span>dBm</span> <br>
+							<img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp1.ram) { %>
+							<span><%= statusEsp1.cpu %></span>
+							<% } %>
+							<span>Mhz</span> <br>
+							<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp1.ram) { %>
+							<span><%= statusEsp1.ram %></span>
+							<% } %> <br>
+							<!-- <img src="/image/humidity.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusDHT) { %>
+							<span><%= statusDHT %></span>
+							<% } %> <br>
+							<img src="/image/hot.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusLux) { %>
+							<span><%= statusLux %></span>
+							<% } %> <br> -->
+						</div>
+						<div style="text-align: center;">
+							<img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp2.ip) { %>
+							<span><%= statusEsp2.ip %></span>
+							<% } %> <br>
+							<img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp2.SignalStrength) { %>
+							<span><%= statusEsp2.SignalStrength %></span>
+							<% } %>
+							<span>dBm</span> <br>
+							<img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp2.cpu) { %>
+							<span><%= statusEsp2.cpu %></span>
+							<% } %>
+							<span>Mhz</span> <br>
+							<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+							<% if (statusEsp2.ram) { %>
+							<span><%= statusEsp2.ram %></span>
+							<% } %>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm">
@@ -94,53 +120,43 @@
 	<div id="line"></div>
 	<div class="container1" id="controll">
 		<div class="btn-right">
-			<span class="led">Loa</span>
-			<input id="button" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
-				<% if (data.speaker == 1) { %>checked<% } %>>
+			<span class="led">Máy bơm</span>
+			<input id="button" data-on="ON" name="Device" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device == 1) { %>checked<% } %>>
 
 			<span class="led">Phun sương</span>
-			<input id="button1" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
-				<% if (data.fanHumi == 1) { %>checked<% } %>>
+			<input id="button1" data-on="ON" name="Device1" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				onchange="" data-toggle="toggle" data-size="large" <% if (data.Device1 == 1) { %>checked<% } %>>
+
+			<span class="led">Đóng rèm</span>
+			<input id="button2" data-on="ON" name="Device2" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
 		</div>
 		<div class="btn-left">
-			<span class="led">Sưởi</span>
-			<input id="button2" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
-				<% if (data.fanTemp == 1) { %>checked<% } %>>
+			<span class="led">Mở rèm</span>
+			<input id="button3" data-on="ON" name="Device3" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device3== 1) { %>checked<% } %>>
 
 			<span class="led">Quạt</span>
-			<input id="button3" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="large"
-				<% if (data.fan == 1) { %>checked<% } %>>
+			<input id="butto4" data-on="ON" name="Device4" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device4 == 1) { %>checked<% } %>>
+
+			<span class="led">Device6</span>
+			<input id="button5" data-on="ON" name="Device5" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device5 == 1) { %>checked<% } %>>
 		</div>
 	</div>
 	<div id="auto">
 		<h1 style="text-align: center;">Bảng thiết lập chế độ auto</h1>
+		<img src="/image/settings.svg" alt="" width="32px" height="32px" style="position: absolute; top: 15px; left: 700px; cursor: -webkit-grab; cursor: grab;">
 		<h2 id="line1" style="text-align: center;">
 			<--------------------------------------------------------------------------------------------->
 		</h2>
 		<div class="timeSpeak" style="text-align: center;">
-			<h3>Thiết lập thời gian loa</h3>
-			<input class="checkBoxDay" type="checkbox" id="0" value="thứ hai">
-			<label class="labelCheckBoxDay" for="0">Thứ hai</label>
-			<input class="checkBoxDay" type="checkbox" id="1" value="thứ ba">
-			<label class="labelCheckBoxDay" for="1">Thứ ba</label>
-			<input class="checkBoxDay" type="checkbox" id="2" value="thứ tư">
-			<label class="labelCheckBoxDay" for="2">Thứ tư</label>
-			<input class="checkBoxDay" type="checkbox" id="3" value="thứ năm">
-			<label class="labelCheckBoxDay" for="3">Thứ năm</label>
-			<input class="checkBoxDay" type="checkbox" id="4" value="thứ sáu">
-			<label class="labelCheckBoxDay" for="4">Thứ sáu</label>
-			<input class="checkBoxDay" type="checkbox" id="5" value="thứ bảy">
-			<label class="labelCheckBoxDay" for="5">Thứ bảy</label>
-			<input class="checkBoxDay" type="checkbox" id="6" value="chủ nhật">
-			<label class="labelCheckBoxDay" for="6">Chủ nhật</label>
-			<div id="TS">
-				<input type="time" id="timeStart">
-				<label for="timeStart">Thời gian bắt đầu</label>
-			</div>
-			<div id="TE">
-				<label for="timeStart">Thời gian kết thúc</label>
-				<input type="time" id="timeStop">
-			</div>
+			<h3>Thiết lập thời gian bơm</h3>
+			<input type="checkbox" id="checkbox">
+			<input type="number" name="" id="setTimePump" style="margin-top: 10px" <% if (dataAuto) { %>
+				value=<%=dataAuto.setTimePump %> <% } %>>
 		</div>
 		<div id="line2">
 			<h2 style="text-align: center;">
@@ -151,49 +167,57 @@
 			<div>
 				<span>Max</span>
 				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number"
-					placeholder="nhập giá trị">
+					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[0]%> <% } %>>
+				<input type="checkbox" id="checkbox">
 			</div>
 			<div>
 				<span>Min</span>
 				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number"
-					placeholder="nhập giá trị">
+					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[1]%> <% } %>>
 			</div>
 		</div>
 		<div id="MMH">
-			<h3>Thiết lập giá trị độ ẩm</h3>
+			<h3>Thiết lập giá trị ánh sáng</h3>
 			<div>
+				<input type="checkbox" id="checkbox">
+				<input id="setLuxMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
+					<% if (dataAuto) { %> value=<%=dataAuto.setLux[0] %> <% } %>>
 				<span>Max</span>
-				<input id="setHumiMax" style="margin: 10px; text-align: center;" type="number"
-					placeholder="nhập giá trị" value="0">
 			</div>
 			<div>
+				<input id="setLuxMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
+					<% if (dataAuto) { %> value=<%=dataAuto.setLux[1] %> <% } %>>
 				<span>Min</span>
-				<input id="setHumiMin" style="margin: 10px; text-align: center;" type="number"
-					placeholder="nhập giá trị" value="0">
 			</div>
+
 		</div>
 		<div>
 			<h3>Thiết lập thời gian cập nhật(s)</h3>
 			<input id="setUpload" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
-				value="0">
+				<% if (dataAuto) { %> value=<%=dataAuto.setTemp[0] %> <% } %>>
 		</div>
 		<div class="container2">
 			<div class="status-right">
-				<span>Loa:</span>
-				<span id="speaker"></span> <br>
+				<span>Máy bơm:</span>
+				<span id="maybom"></span> <br>
 				<span>Phun sương:</span>
-				<span id="fanHumi"></span>
+				<span id="phunsuong"></span> <br>
+				<span>Đóng rèm:</span>
+				<span id="dongrem"></span>
 			</div>
 			<div class="status-left">
-				<span>Sưởi:</span>
-				<span id="fanTemp"></span> <br>
+				<span>Mở rèm:</span>
+				<span id="morem"></span> <br>
 				<span>Quạt:</span>
-				<span id="fan"></span>
+				<span id="quat"></span> <br>
+				<span>Thiết bị:</span>
+				<span id="thietbi"></span>
 			</div>
 		</div>
 		<input style="margin-top: 0px" id="submit" class="btn btn-primary" type="button" value="Gửi">
 	</div>
 	<div style="height: 51px;"></div>
+	<script src="/js/xuly.js"></script>
 </body>
 
 </html>
