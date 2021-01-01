@@ -115,6 +115,24 @@ function loopSync() {
           webapp.emit("onMa1", getAll().statusDevice.Device);
         }
         //------------------------------------------------------//
+        if (
+          getAll().autoData.setTemp[0] < array.espSensor[0] &&
+          array.espControll[1] != 1 && array.espControll[4] != 1
+        ) {
+          setDevice("Device1", 1);
+          setDevice("Device4", 1);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
+        }
+        if (
+          getAll().autoData.setTemp[0] >= array.espSensor[0] &&
+          array.espControll[1] != 0 && array.espControll[4] != 0
+        ) {
+          setDevice("Device1", 0);
+          setDevice("Device4", 0);
+          espControll.emit("LED", getAll().statusDevice.Device);
+          webapp.emit("onMa1", getAll().statusDevice.Device);
+        }
       }
 
       if (timeConnect === 2) {
@@ -225,7 +243,11 @@ espSensor.on("connection", function (socket) {
   socket.on("JSON1", (data) => {
     array = {
       espControll: [...array.espControll],
-      espSensor: [Math.round(data.temp), Math.round(data.humi), Math.round(data.light)],
+      espSensor: [
+        Math.round(data.temp),
+        Math.round(data.humi),
+        Math.round(data.light),
+      ],
     };
     statusEsp(
       "espSensor",
@@ -244,7 +266,7 @@ webapp.on("connection", function (socket) {
   //("webapp đã connected");
   socket.on("disconnect", function () {});
   socket.on("activeDevice", (item) => {
-    console.log(item)
+    console.log(item);
     setDevice(item[0], item[1]);
     espControll.emit("LED", getAll().statusDevice.Device);
   });
