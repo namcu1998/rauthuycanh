@@ -267,14 +267,14 @@ webapp.on("connection", function (socket) {
   socket.on("disconnect", function () {});
   socket.on("activeDevice", (item) => {
     console.log(item);
-    if(item[0] === "device2" && item[1] === 1) {
-      setDevice(device2, 1);
-      setDevice(device3, 0);
+    if(item[0] === "Device2" && item[1] === 1) {
+      setDevice("Device2", 1);
+      setDevice("Device3", 0);
       espControll.emit("LED", getAll().statusDevice.Device);
     }
-    else if(item[0] === "device3" && item[1] === 1) {
-      setDevice(device3, 1);
-      setDevice(device2, 0);
+    else if(item[0] === "Device3" && item[1] === 1) {
+      setDevice("Device3", 1);
+      setDevice("Device2", 0);
       espControll.emit("LED", getAll().statusDevice.Device);
     }
     else {

@@ -1,4 +1,5 @@
-const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
+const socket = io("http://localhost:3484/nam2351998");
+//https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
 function xulyden(item1, item2) {
   if (item1 == 1) {
@@ -11,10 +12,9 @@ function xulyData(item1, item2) {
   } else document.getElementById(item1).innerHTML = "OFF";
 }
 function activeDevice(item) {
-  if(item.checked === true){
-    socket.emit("activeDevice", [item.name, 1])
-  }
-  else socket.emit("activeDevice", [item.name, 0])
+  if (item.checked === true) {
+    socket.emit("activeDevice", [item.name, 1]);
+  } else socket.emit("activeDevice", [item.name, 0]);
 }
 $(document).ready(function () {
   socket.emit("getMa");
@@ -28,14 +28,9 @@ $(document).ready(function () {
       parseInt($("#setTempMin")[0].value) == 0
     ) {
       alert("chưa nhập đủ dữ liệu");
-    } else if ($("#setLuxMax")[0].value > 95 || $("#setLuxMin")[0].value < 40)
-      alert("độ ẩm quá lớn hoặc quá nhỏ");
-    else if ($("#setTempMax")[0].value > 60 || $("#setTempMin")[0].value < 0)
+    } else if ($("#setTempMax")[0].value > 60 || $("#setTempMin")[0].value < 0)
       alert("nhiệt độ quá lớn hoặc quá nhỏ");
-    else if (
-      $("#setLuxMax")[0].value < $("#setLuxMin")[0].value ||
-      $("#setTempMax")[0].value < $("#setTempMin")[0].value
-    )
+    else if ($("#setTempMax")[0].value < $("#setTempMin")[0].value)
       alert("độ ẩm và nhiệt độ không được min lớn hơn max");
     else if ($("#setUpload")[0].value > 60 || $("#setUpload")[0].value < 0)
       alert("Thời gian phải trong khoảng từ 0 đến 60");
