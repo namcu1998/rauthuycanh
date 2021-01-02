@@ -195,14 +195,16 @@ function loopSync() {
       }
       //Kiểm tra esp kết nối lại
       if (
-        (getAll().statusDevice.Device.Device === array.espControll[0] ||
-          getAll().statusDevice.Device.Device1 === array.espControll[1] ||
-          getAll().statusDevice.Device.Device2 === array.espControll[2] ||
-          getAll().statusDevice.Device.Device3 === array.espControll[3] ||
-          getAll().statusDevice.Device.Device4 === array.espControll[4] ||
-          getAll().statusDevice.Device.Device5 === array.espControll[5]) &&
+        (getAll().statusDevice.Device.Device != array.espControll[0] ||
+          getAll().statusDevice.Device.Device1 != array.espControll[1] ||
+          getAll().statusDevice.Device.Device2 != array.espControll[2] ||
+          getAll().statusDevice.Device.Device3 != array.espControll[3] ||
+          getAll().statusDevice.Device.Device4 != array.espControll[4] ||
+          getAll().statusDevice.Device.Device5 != array.espControll[5]) &&
         array.espControll.length > 0
       ) {
+      }
+      else {
         espControll.emit("LED", getAll().statusDevice.Device);
         console.log("kiểm tra device");
       }
