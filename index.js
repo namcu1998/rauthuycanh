@@ -18,7 +18,7 @@ const {
   saveAuto,
   statusEsp,
   setDevice,
-  getAll
+  getAll,
 } = require("./modeAndDataAuto/create.mode");
 const bodyParser = require("body-parser");
 const app = express();
@@ -57,6 +57,10 @@ function xulyData(second, temp, humi, light) {
   };
   return x;
 }
+const sendWebApp = () => {
+  espControll.emit("LED", getAll().statusDevice.Device);
+  webapp.emit("onMa1", getAll().statusDevice.Device);
+}
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
 });
@@ -73,16 +77,14 @@ function loopSync() {
           array.espControll[0] != 1
         ) {
           setDevice("Device", 1);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         } else if (
           timeUp > getAll().autoData.setTimePump * 60 &&
           timeUp <= getAll().autoData.setTimePump * 120 &&
           array.espControll[0] != 0
         ) {
           setDevice("Device", 0);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         }
         //-------------------------------------------------------//
         if (
@@ -91,8 +93,7 @@ function loopSync() {
         ) {
           setDevice("Device2", 1);
           setDevice("Device3", 0);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         }
         if (
           getAll().autoData.setLux[1] > array.espSensor[2] &&
@@ -100,8 +101,7 @@ function loopSync() {
         ) {
           setDevice("Device2", 0);
           setDevice("Device3", 1);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         }
         if (
           getAll().autoData.setLux[0] > array.espSensor[2] &&
@@ -110,27 +110,26 @@ function loopSync() {
         ) {
           setDevice("Device2", 0);
           setDevice("Device3", 0);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         }
         //------------------------------------------------------//
         if (
           getAll().autoData.setTemp[0] < array.espSensor[0] &&
-          array.espControll[1] != 1 && array.espControll[4] != 1
+          array.espControll[1] != 1 &&
+          array.espControll[4] != 1
         ) {
           setDevice("Device1", 1);
           setDevice("Device4", 1);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         }
         if (
           getAll().autoData.setTemp[0] >= array.espSensor[0] &&
-          array.espControll[1] != 0 && array.espControll[4] != 0
+          array.espControll[1] != 0 &&
+          array.espControll[4] != 0
         ) {
           setDevice("Device1", 0);
           setDevice("Device4", 0);
-          espControll.emit("LED", getAll().statusDevice.Device);
-          webapp.emit("onMa1", getAll().statusDevice.Device);
+          sendWebApp();
         }
       }
 
@@ -196,17 +195,17 @@ function loopSync() {
       }
       //Kiểm tra esp kết nối lại
       if (
-        (getAll().statusDevice.Device.Device != array.espControll[0] ||
-        getAll().statusDevice.Device.Device1 != array.espControll[1] ||
-        getAll().statusDevice.Device.Device2 != array.espControll[2] ||
-        getAll().statusDevice.Device.Device3 != array.espControll[3] ||
-        getAll().statusDevice.Device.Device4 != array.espControll[4] ||
-        getAll().statusDevice.Device.Device5 != array.espControll[5]) &&
+        (getAll().statusDevice.Device.Device === array.espControll[0] ||
+          getAll().statusDevice.Device.Device1 === array.espControll[1] ||
+          getAll().statusDevice.Device.Device2 === array.espControll[2] ||
+          getAll().statusDevice.Device.Device3 === array.espControll[3] ||
+          getAll().statusDevice.Device.Device4 === array.espControll[4] ||
+          getAll().statusDevice.Device.Device5 === array.espControll[5]) &&
         array.espControll.length > 0
       ) {
         espControll.emit("LED", getAll().statusDevice.Device);
-        console.log("kiểm tra device")
-      } 
+        console.log("kiểm tra device");
+      }
     }, 1000);
   });
 }
@@ -268,8 +267,20 @@ webapp.on("connection", function (socket) {
   socket.on("disconnect", function () {});
   socket.on("activeDevice", (item) => {
     console.log(item);
-    setDevice(item[0], item[1]);
-    espControll.emit("LED", getAll().statusDevice.Device);
+    if(item[0] === "device2" && item[1] === 1) {
+      setDevice(device2, 1);
+      setDevice(device3, 0);
+      sendWebApp();
+    }
+    else if(item[0] === "device3" && item[1] === 1) {
+      setDevice(device3, 1);
+      setDevice(device2, 0);
+      sendWebApp();
+    }
+    else {
+      setDevice(item[0], item[1]);
+      sendWebApp();
+    }
   });
   socket.on("getData", () => {
     webapp.emit("hmm", rd());
