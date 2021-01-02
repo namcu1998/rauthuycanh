@@ -280,6 +280,7 @@ webapp.on("connection", function (socket) {
     else {
       setDevice(item[0], item[1]);
       sendWebApp();
+      console.log(item[0], item[1])
     }
   });
   socket.on("getData", () => {
