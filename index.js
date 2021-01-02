@@ -270,16 +270,16 @@ webapp.on("connection", function (socket) {
     if(item[0] === "device2" && item[1] === 1) {
       setDevice(device2, 1);
       setDevice(device3, 0);
-      sendWebApp();
+      espControll.emit("LED", getAll().statusDevice.Device);
     }
     else if(item[0] === "device3" && item[1] === 1) {
       setDevice(device3, 1);
       setDevice(device2, 0);
-      sendWebApp();
+      espControll.emit("LED", getAll().statusDevice.Device);
     }
     else {
       setDevice(item[0], item[1]);
-      sendWebApp();
+      espControll.emit("LED", getAll().statusDevice.Device);
       console.log(item[0], item[1])
     }
   });
