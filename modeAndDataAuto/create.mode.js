@@ -37,15 +37,10 @@ function getAll(){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     return data;
 }
-function getModeAutoDriver(){
-    let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
-    return [data[0], data[1], data[2]];
-}
 module.exports = {
     saveMode,
     saveAuto,
     statusEsp,
     setDevice,
     getAll,
-    getModeAutoDriver,
 }
