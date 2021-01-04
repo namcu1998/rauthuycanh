@@ -71,10 +71,11 @@ AwakeHeroku.add({
 });
 function loopSync() {
   var timeConnect = 0,
-    timeUp = 0;
+    timeUp = 0, timePushDb = 0;
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
+      timePushDb++;
       if (getAll().mode === 0) {
         timeUp++;
         if (
@@ -150,12 +151,8 @@ function loopSync() {
         espSensor.emit("ping", "nam");
         timeConnect = 0;
       } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
-      if (
-        (rd()[0].nhietdo !== array.espSensor[0] ||
-          rd()[0].doam !== array.espSensor[1] ||
-          rd()[0].light !== array.espSensor[2]) &&
-        array.espSensor.length > 0
-      ) {
+
+      if(timePushDb > 30) {
         dulieuDb.push([
           array.espSensor[0],
           array.espSensor[1],
@@ -168,6 +165,15 @@ function loopSync() {
           getAll().statusDevice.Device.Device4,
           getAll().statusDevice.Device.Device5,
         ]);
+        timePushDb = 0;
+      }
+
+      if (
+        (rd()[0].nhietdo !== array.espSensor[0] ||
+          rd()[0].doam !== array.espSensor[1] ||
+          rd()[0].light !== array.espSensor[2]) &&
+        array.espSensor.length > 0
+      ) {
         wd(
           time.timeDay()[1][2],
           time.timeDay()[1][1],
