@@ -21,7 +21,7 @@ const {
   getAll,
   saveAll,
 } = require("./modeAndDataAuto/create.mode");
-const { dulieuDb, data1 } = require("./database/firebase"); 
+const { dulieuDb, data1 } = require("./database/firebase");
 const bodyParser = require("body-parser");
 const app = express();
 const server = http.Server(app);
@@ -161,13 +161,13 @@ function loopSync() {
           array.espSensor[1],
           array.espSensor[2],
           time.getTime(),
-          array.espControll[0],
-          array.espControll[1],
-          array.espControll[2],
-          array.espControll[3],
-          array.espControll[4],
-          array.espControll[5]
-        ])
+          getAll().statusDevice.Device.Device,
+          getAll().statusDevice.Device.Device1,
+          getAll().statusDevice.Device.Device2,
+          getAll().statusDevice.Device.Device3,
+          getAll().statusDevice.Device.Device4,
+          getAll().statusDevice.Device.Device5,
+        ]);
         wd(
           time.timeDay()[1][2],
           time.timeDay()[1][1],
@@ -176,12 +176,12 @@ function loopSync() {
           time.timeDay()[2][0],
           time.timeDay()[2][1],
           time.timeDay()[2][2],
-          array.espControll[0],
-          array.espControll[1],
-          array.espControll[2],
-          array.espControll[3],
-          array.espControll[4],
-          array.espControll[5]
+          getAll().statusDevice.Device.Device,
+          getAll().statusDevice.Device.Device1,
+          getAll().statusDevice.Device.Device2,
+          getAll().statusDevice.Device.Device3,
+          getAll().statusDevice.Device.Device4,
+          getAll().statusDevice.Device.Device5
         );
         webapp.emit("hmm", rd());
       }
