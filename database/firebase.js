@@ -8,7 +8,7 @@ admin.initializeApp({
 });
 var number = 0;
 var db = admin.database();
-const data = db.ref("data");
+const dulieuDb = db.ref("data");
 const data1 = db.ref("dulieudieukhien")
 // ref.remove()
 //   .then(function() {
@@ -18,6 +18,6 @@ const data1 = db.ref("dulieudieukhien")
 //    console.log("Remove failed: " + error.message)
 //  });
 module.exports = {
-    data,
+    dulieuDb,
     data1
 }
