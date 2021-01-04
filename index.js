@@ -21,7 +21,7 @@ const {
   getAll,
   saveAll,
 } = require("./modeAndDataAuto/create.mode");
-const { data, data1 } = require("./database/firebase");
+const { data, dulieuDb } = require("./database/firebase"); 
 const bodyParser = require("body-parser");
 const app = express();
 const server = http.Server(app);
