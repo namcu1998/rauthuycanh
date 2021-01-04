@@ -207,7 +207,7 @@
     line-height: 40px;
   }
   #header ul li a {
-    color: black;
+    color: rgb(255, 255, 255);
     display: block;
     text-decoration: none;
   }

@@ -1,16 +1,21 @@
 const fs  = require('fs')
-const db = require('../database/firebase')
+const { data1 } = require('../database/firebase');
+const db = require('../database/firebase');
 function saveMode(mode){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     data.mode = mode;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
+    data1.set(data);
+    console.log("1")
 }
 function saveAuto(auto){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     data.autoData = auto;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
+    data1.set(data);
+    console.log("2")
 }
 function statusEsp(esp, status, ip, SS, cpu, ram){
     var obj = {};
@@ -26,16 +31,24 @@ function statusEsp(esp, status, ip, SS, cpu, ram){
     data.statusEsp[esp] = obj;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
+    data1.set(data);
+    console.log("3")
 }
-function setDevice (nameDevice, statusDevice){
+function setDevice(nameDevice, statusDevice){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     data.statusDevice.Device[nameDevice] = statusDevice;
     var array1 = JSON.stringify(data);
     fs.writeFileSync('./JSON/mode.auto.json',array1);
+    data1.set(data);
+    console.log("4")
 }
 function getAll(){
     let data = JSON.parse(fs.readFileSync('./JSON/mode.auto.json','utf8'))
     return data;
+}
+function saveAll(dataDB){
+    var array1 = JSON.stringify(dataDB);
+    fs.writeFileSync('./JSON/mode.auto.json',array1);
 }
 module.exports = {
     saveMode,
@@ -43,4 +56,5 @@ module.exports = {
     statusEsp,
     setDevice,
     getAll,
+    saveAll
 }

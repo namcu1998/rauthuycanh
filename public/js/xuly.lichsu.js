@@ -24,16 +24,22 @@ function xulyData(getid, array) {
       x.thoigian +
       "</td>" +
       "<td>" +
-      convert(x.fanHumi) +
+      convert(x.device) +
       "</td>" +
       "<td>" +
-      convert(x.speaker) +
+      convert(x.device1) +
       "</td>" +
       "<td>" +
-      convert(x.fanTemp) +
+      convert(x.device2) +
       "</td>" +
       "<td>" +
-      convert(x.fan) +
+      convert(x.device3) +
+      "</td>" +
+      "<td>" +
+      convert(x.device4) +
+      "</td>" +
+      "<td>" +
+      convert(x.device5) +
       "</td>" +
       "</tr>"
     );

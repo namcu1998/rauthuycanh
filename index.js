@@ -19,7 +19,9 @@ const {
   statusEsp,
   setDevice,
   getAll,
+  saveAll,
 } = require("./modeAndDataAuto/create.mode");
+const { data, data1 } = require("./database/firebase");
 const bodyParser = require("body-parser");
 const app = express();
 const server = http.Server(app);
@@ -48,6 +50,9 @@ espSensor.use(middleware);
 app.use(cookieParser());
 webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
+data1.once("value", function (dataSnapshot) {
+  saveAll(dataSnapshot.val());
+});
 function xulyData(second, temp, humi, light) {
   let x = {
     thoigian: second,
@@ -60,7 +65,7 @@ function xulyData(second, temp, humi, light) {
 const sendWebApp = () => {
   espControll.emit("LED", getAll().statusDevice.Device);
   webapp.emit("onMa1", getAll().statusDevice.Device);
-}
+};
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
 });
@@ -74,14 +79,16 @@ function loopSync() {
         timeUp++;
         if (
           timeUp <= getAll().autoData.setTimePump * 30 &&
-          array.espControll[0] != 1
+          array.espControll[0] != 1 &&
+          array.espControll.length > 0
         ) {
           setDevice("Device", 1);
           sendWebApp();
         } else if (
           timeUp > getAll().autoData.setTimePump * 60 &&
           timeUp <= getAll().autoData.setTimePump * 120 &&
-          array.espControll[0] != 0
+          array.espControll[0] != 0 &&
+          array.espControll.length > 0
         ) {
           setDevice("Device", 0);
           sendWebApp();
@@ -89,7 +96,8 @@ function loopSync() {
         //-------------------------------------------------------//
         if (
           getAll().autoData.setLux[0] < array.espSensor[2] &&
-          array.espControll[2] != 1
+          array.espControll[2] != 1 &&
+          array.espControll.length > 0
         ) {
           setDevice("Device2", 1);
           setDevice("Device3", 0);
@@ -97,7 +105,8 @@ function loopSync() {
         }
         if (
           getAll().autoData.setLux[1] > array.espSensor[2] &&
-          array.espControll[3] != 1
+          array.espControll[3] != 1 &&
+          array.espControll.length > 0
         ) {
           setDevice("Device2", 0);
           setDevice("Device3", 1);
@@ -106,7 +115,8 @@ function loopSync() {
         if (
           getAll().autoData.setLux[0] > array.espSensor[2] &&
           getAll().autoData.setLux[1] < array.espSensor[2] &&
-          (array.espControll[2] != 0 || array.espControll[3] != 0)
+          (array.espControll[2] != 0 || array.espControll[3] != 0) &&
+          array.espControll.length > 0
         ) {
           setDevice("Device2", 0);
           setDevice("Device3", 0);
@@ -116,7 +126,8 @@ function loopSync() {
         if (
           getAll().autoData.setTemp[0] < array.espSensor[0] &&
           array.espControll[1] != 1 &&
-          array.espControll[4] != 1
+          array.espControll[4] != 1 &&
+          array.espControll.length > 0
         ) {
           setDevice("Device1", 1);
           setDevice("Device4", 1);
@@ -125,7 +136,8 @@ function loopSync() {
         if (
           getAll().autoData.setTemp[0] >= array.espSensor[0] &&
           array.espControll[1] != 0 &&
-          array.espControll[4] != 0
+          array.espControll[4] != 0 &&
+          array.espControll.length > 0
         ) {
           setDevice("Device1", 0);
           setDevice("Device4", 0);
@@ -142,8 +154,7 @@ function loopSync() {
         (rd()[0].nhietdo !== array.espSensor[0] ||
           rd()[0].doam !== array.espSensor[1] ||
           rd()[0].light !== array.espSensor[2]) &&
-        array.espSensor.length > 0 &&
-        array.espControll.length > 0
+        array.espSensor.length > 0
       ) {
         wd(
           array.espSensor[0],
@@ -203,8 +214,7 @@ function loopSync() {
           getAll().statusDevice.Device.Device5 != array.espControll[5]) &&
         array.espControll.length > 0
       ) {
-      }
-      else {
+      } else {
         espControll.emit("LED", getAll().statusDevice.Device);
         console.log("kiểm tra device");
       }
@@ -269,20 +279,18 @@ webapp.on("connection", function (socket) {
   socket.on("disconnect", function () {});
   socket.on("activeDevice", (item) => {
     console.log(item);
-    if(item[0] === "Device2" && item[1] === 1) {
+    if (item[0] === "Device2" && item[1] === 1) {
       setDevice("Device2", 1);
       setDevice("Device3", 0);
       espControll.emit("LED", getAll().statusDevice.Device);
-    }
-    else if(item[0] === "Device3" && item[1] === 1) {
+    } else if (item[0] === "Device3" && item[1] === 1) {
       setDevice("Device3", 1);
       setDevice("Device2", 0);
       espControll.emit("LED", getAll().statusDevice.Device);
-    }
-    else {
+    } else {
       setDevice(item[0], item[1]);
       espControll.emit("LED", getAll().statusDevice.Device);
-      console.log(item[0], item[1])
+      console.log(item[0], item[1]);
     }
   });
   socket.on("getData", () => {
