@@ -152,7 +152,7 @@ function loopSync() {
         timeConnect = 0;
       } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
 
-      if(timePushDb > 30) {
+      if(timePushDb > 30 && array.espSensor.length > 0) {
         dulieuDb.push([
           array.espSensor[0],
           array.espSensor[1],
