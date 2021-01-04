@@ -156,10 +156,19 @@ function loopSync() {
           rd()[0].light !== array.espSensor[2]) &&
         array.espSensor.length > 0
       ) {
-        wd(
+        dulieuDb.push([
           array.espSensor[0],
           array.espSensor[1],
           array.espSensor[2],
+          time.getTime(),
+          array.espControll[0],
+          array.espControll[1],
+          array.espControll[2],
+          array.espControll[3],
+          array.espControll[4],
+          array.espControll[5]
+        ])
+        wd(
           time.timeDay()[1][2],
           time.timeDay()[1][1],
           time.timeDay()[1][0],
