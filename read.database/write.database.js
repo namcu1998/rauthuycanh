@@ -14,7 +14,6 @@ function Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, y
   this.device5 = device5;
 }
 function fileSave(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, device, device1, device2, device3){
-  dulieuDb.push(new Object(nhietdo, doam, light, second, minute, hour, thing, day, mouth, year, device, device1, device2, device3));
   if(fs.readFileSync('./JSON/data.json','utf8')) {
     var data = JSON.parse(fs.readFileSync('./JSON/data.json','utf8'))
     if(data.length > 100){
