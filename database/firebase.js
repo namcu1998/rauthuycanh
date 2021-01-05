@@ -9,7 +9,8 @@ admin.initializeApp({
 var number = 0;
 var db = admin.database();
 const dulieuDb = db.ref("data");
-const data1 = db.ref("dulieudieukhien")
+const data1 = db.ref("dulieudieukhien");
+const dulieubieudo = db.ref("dulieudieukhien");
 // ref.remove()
 //   .then(function() {
 //    console.log("Remove succeeded.")
@@ -19,5 +20,6 @@ const data1 = db.ref("dulieudieukhien")
 //  });
 module.exports = {
     dulieuDb,
-    data1
+    data1,
+    dulieubieudo
 }

@@ -1,1 +1,24 @@
-{"dataTemp":[{"nhietdo":364,"thoigian":"51"},{"nhietdo":423,"thoigian":"02"},{"nhietdo":482,"thoigian":"13"},{"nhietdo":52,"thoigian":"49"},{"nhietdo":104,"thoigian":"00"},{"nhietdo":156,"thoigian":"11"},{"nhietdo":39,"thoigian":"09"},{"nhietdo":84,"thoigian":"20"},{"nhietdo":132,"thoigian":"31"},{"nhietdo":171,"thoigian":"42"},{"nhietdo":212,"thoigian":"53"},{"nhietdo":254,"thoigian":"04"},{"nhietdo":295,"thoigian":"15"},{"nhietdo":38,"thoigian":"33"},{"nhietdo":73,"thoigian":"44"},{"nhietdo":36,"thoigian":"35"},{"nhietdo":37,"thoigian":"46"},{"nhietdo":36,"thoigian":"57"},{"nhietdo":35,"thoigian":"52"},{"nhietdo":36,"thoigian":"03"},{"nhietdo":30,"thoigian":"06"}],"dataHumi":[{"doam":59,"thoigian":"07"},{"doam":88,"thoigian":"18"},{"doam":117,"thoigian":"29"},{"doam":147,"thoigian":"40"},{"doam":176,"thoigian":"51"},{"doam":205,"thoigian":"02"},{"doam":234,"thoigian":"13"},{"doam":30,"thoigian":"49"},{"doam":59,"thoigian":"00"},{"doam":88,"thoigian":"11"},{"doam":30,"thoigian":"09"},{"doam":60,"thoigian":"20"},{"doam":90,"thoigian":"31"},{"doam":120,"thoigian":"42"},{"doam":150,"thoigian":"53"},{"doam":180,"thoigian":"04"},{"doam":210,"thoigian":"15"},{"doam":30,"thoigian":"33"},{"doam":60,"thoigian":"44"},{"doam":30,"thoigian":"35"},{"doam":95,"thoigian":"06"}],"dataLux":[{"anhsang":475,"thoigian":"40"},{"anhsang":570,"thoigian":"51"},{"anhsang":665,"thoigian":"02"},{"anhsang":760,"thoigian":"13"},{"anhsang":95,"thoigian":"49"},{"anhsang":190,"thoigian":"00"},{"anhsang":285,"thoigian":"11"},{"anhsang":95,"thoigian":"09"},{"anhsang":190,"thoigian":"20"},{"anhsang":285,"thoigian":"31"},{"anhsang":380,"thoigian":"42"},{"anhsang":475,"thoigian":"53"},{"anhsang":570,"thoigian":"04"},{"anhsang":665,"thoigian":"15"},{"anhsang":95,"thoigian":"33"},{"anhsang":190,"thoigian":"44"},{"anhsang":95,"thoigian":"35"},{"anhsang":29,"thoigian":"06"},{"anhsang":28,"thoigian":"28"},{"anhsang":26,"thoigian":"37"},{"anhsang":28,"thoigian":"48"}]}
+{
+    "dataTemp": [
+        {
+            "nhietdo": 30,
+            "thoigian": "06"
+        }
+    ],
+    "dataHumi": [
+        {
+            "doam": 95,
+            "thoigian": "06"
+        }
+    ],
+    "dataLux": [
+        {
+            "anhsang": 26,
+            "thoigian": "37"
+        },
+        {
+            "anhsang": 28,
+            "thoigian": "48"
+        }
+    ]
+}

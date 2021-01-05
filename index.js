@@ -10,6 +10,7 @@ const {
   pushHumi,
   pushLux,
   getDataChart,
+  saveDb
 } = require("./createDataCharts/create.charts");
 const Auth = require("./controllers/auth.controller");
 const time = require("./time/time");
@@ -21,7 +22,7 @@ const {
   getAll,
   saveAll,
 } = require("./modeAndDataAuto/create.mode");
-const { dulieuDb, data1 } = require("./database/firebase");
+const { dulieuDb, data1, dulieubieudo } = require("./database/firebase");
 const bodyParser = require("body-parser");
 const app = express();
 const server = http.Server(app);
@@ -58,6 +59,9 @@ webapp.use(middleware);
 server.listen(process.env.PORT || 3484);
 data1.once("value", function (dataSnapshot) {
   saveAll(dataSnapshot.val());
+});
+dulieubieudo.once("value", function (dataSnapshot) {
+  saveDb(dataSnapshot.val());
 });
 function xulyData(second, temp, humi, light) {
   let x = {
@@ -214,6 +218,7 @@ function loopSync() {
           "pushTemp",
           pushTemp(array.espSensor[0], time.timeSecond())
         );
+        dulieubieudo(saveDb());
       }
       if (
         getDataChart().dataHumi[getDataChart().dataHumi.length - 1].doam !==
@@ -224,6 +229,7 @@ function loopSync() {
           "pushHumi",
           pushHumi(array.espSensor[1], time.timeSecond())
         );
+        dulieubieudo(saveDb());
       }
       if (
         getDataChart().dataLux[getDataChart().dataLux.length - 1].anhsang !==
@@ -232,6 +238,7 @@ function loopSync() {
       ) {
         console.log("om");
         webapp.emit("pushLux", pushLux(array.espSensor[2], time.timeSecond()));
+        dulieubieudo(saveDb());
       }
       //-----------------------------------------------------------------------//
       //Kiểm tra esp kết nối lại

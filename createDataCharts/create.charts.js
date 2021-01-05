@@ -44,9 +44,16 @@ function pushLux(item, item1) {
 function getDataChart() {
 	return JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
 }
+
+function saveDb(item) {
+  let data2 = JSON.stringify(item);
+  fs.writeFileSync("./JSON/dataCharts.json", data2);
+  return JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+}
 module.exports = {
 	pushTemp,
 	pushHumi,
 	pushLux,
-	getDataChart
+  getDataChart,
+  saveDb
 }
