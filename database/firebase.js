@@ -10,7 +10,7 @@ var number = 0;
 var db = admin.database();
 const dulieuDb = db.ref("data");
 const data1 = db.ref("dulieudieukhien");
-const dulieubieudo = db.ref("dulieudieukhien");
+const dulieubieudo = db.ref("dulieubieudo");
 // ref.remove()
 //   .then(function() {
 //    console.log("Remove succeeded.")

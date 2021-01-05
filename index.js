@@ -61,7 +61,7 @@ data1.once("value", function (dataSnapshot) {
   saveAll(dataSnapshot.val());
 });
 dulieubieudo.once("value", function (dataSnapshot) {
-  saveDb(dataSnapshot.val());
+  if(dataSnapshot.val())   saveDb(dataSnapshot.val());
 });
 function xulyData(second, temp, humi, light) {
   let x = {
