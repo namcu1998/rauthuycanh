@@ -1,1 +1,88 @@
-var _0xfd34=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x61\x75\x74\x68\x75\x79\x63\x61\x6E\x68\x2E\x68\x65\x72\x6F\x6B\x75\x61\x70\x70\x2E\x63\x6F\x6D\x2F\x6E\x61\x6D\x32\x33\x35\x31\x39\x39\x38","\x6F\x6E","\x62\x6F\x6F\x74\x73\x74\x72\x61\x70\x54\x6F\x67\x67\x6C\x65","\x6F\x66\x66","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x4F\x4E","\x4F\x46\x46","\x63\x68\x65\x63\x6B\x65\x64","\x61\x63\x74\x69\x76\x65\x44\x65\x76\x69\x63\x65","\x6E\x61\x6D\x65","\x65\x6D\x69\x74","\x67\x65\x74\x4D\x61","\x76\x61\x6C\x75\x65","\x23\x73\x65\x74\x54\x69\x6D\x65\x50\x75\x6D\x70","\x23\x73\x65\x74\x4C\x75\x78\x4D\x61\x78","\x23\x73\x65\x74\x4C\x75\x78\x4D\x69\x6E","\x23\x73\x65\x74\x54\x65\x6D\x70\x4D\x61\x78","\x23\x73\x65\x74\x54\x65\x6D\x70\x4D\x69\x6E","\x63\x68\u01B0\x61\x20\x6E\x68\u1EAD\x70\x20\u0111\u1EE7\x20\x64\u1EEF\x20\x6C\x69\u1EC7\x75","\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9\x20\x71\x75\xE1\x20\x6C\u1EDB\x6E\x20\x68\x6F\u1EB7\x63\x20\x71\x75\xE1\x20\x6E\x68\u1ECF","\u0111\u1ED9\x20\u1EA9\x6D\x20\x76\xE0\x20\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9\x20\x6B\x68\xF4\x6E\x67\x20\u0111\u01B0\u1EE3\x63\x20\x6D\x69\x6E\x20\x6C\u1EDB\x6E\x20\x68\u01A1\x6E\x20\x6D\x61\x78","\x23\x73\x65\x74\x55\x70\x6C\x6F\x61\x64","\x54\x68\u1EDD\x69\x20\x67\x69\x61\x6E\x20\x70\x68\u1EA3\x69\x20\x74\x72\x6F\x6E\x67\x20\x6B\x68\x6F\u1EA3\x6E\x67\x20\x74\u1EEB\x20\x30\x20\u0111\u1EBF\x6E\x20\x36\x30","\x73\x65\x74\x54\x69\x6D\x65\x50\x75\x6D\x70","\x73\x65\x74\x4C\x75\x78","\x73\x65\x74\x54\x65\x6D\x70","\x73\x65\x74\x55\x70\x6C\x6F\x61\x64","\x73\x65\x74\x41\x63\x74\x69\x76\x65\x41\x75\x74\x6F\x43\x68\x69\x6C\x64","\x6F\x6B","\x63\x6C\x69\x63\x6B","\x23\x73\x75\x62\x6D\x69\x74","\x6F\x6E\x4D\x61\x31","\x6D\x61\x79\x62\x6F\x6D","\x70\x68\x75\x6E\x73\x75\x6F\x6E\x67","\x64\x6F\x6E\x67\x72\x65\x6D","\x6D\x6F\x72\x65\x6D","\x71\x75\x61\x74","\x74\x68\x69\x65\x74\x62\x69","\x23\x62\x75\x74\x74\x6F\x6E","\x23\x62\x75\x74\x74\x6F\x6E\x31","\x23\x62\x75\x74\x74\x6F\x6E\x32","\x23\x62\x75\x74\x74\x6F\x6E\x33","\x23\x62\x75\x74\x74\x6F\x6E\x34","\x23\x62\x75\x74\x74\x6F\x6E\x35","\x73\x74\x61\x74\x75\x73\x45\x73\x70","\x70\x72\x6F\x70","\x23\x74\x6F\x67\x67\x6C\x65\x2D\x65\x76\x65\x6E\x74\x2D\x6D\x6F\x64\x65","\x73\x68\x6F\x77","\x23\x63\x6F\x6E\x74\x72\x6F\x6C\x6C","\x68\x69\x64\x65","\x23\x61\x75\x74\x6F","\x6D\x6F\x64\x65","\x63\x68\x61\x6E\x67\x65","\x72\x65\x61\x64\x79"];const socket=io(_0xfd34[0]);let test=0;function xulyden(_0xe923x4,_0xe923x5){if(_0xe923x4== 1){_0xe923x5[_0xfd34[2]](_0xfd34[1])}else {_0xe923x5[_0xfd34[2]](_0xfd34[3])}}function xulyData(_0xe923x4,_0xe923x5){if(_0xe923x5== 1){document[_0xfd34[5]](_0xe923x4)[_0xfd34[4]]= _0xfd34[6]}else {document[_0xfd34[5]](_0xe923x4)[_0xfd34[4]]= _0xfd34[7]}}function activeDevice(_0xe923x8){if(_0xe923x8[_0xfd34[8]]=== true){socket[_0xfd34[11]](_0xfd34[9],[_0xe923x8[_0xfd34[10]],1])}else {socket[_0xfd34[11]](_0xfd34[9],[_0xe923x8[_0xfd34[10]],0])}}$(document)[_0xfd34[54]](function(){socket[_0xfd34[11]](_0xfd34[12]);function _0xe923x9(){let _0xe923xa={};if(parseInt($(_0xfd34[14])[0][_0xfd34[13]])== 0|| parseInt($(_0xfd34[15])[0][_0xfd34[13]])== 0|| parseInt($(_0xfd34[16])[0][_0xfd34[13]])== 0|| parseInt($(_0xfd34[17])[0][_0xfd34[13]])== 0|| parseInt($(_0xfd34[18])[0][_0xfd34[13]])== 0){alert(_0xfd34[19])}else {if($(_0xfd34[17])[0][_0xfd34[13]]> 60|| $(_0xfd34[18])[0][_0xfd34[13]]< 0){alert(_0xfd34[20])}else {if($(_0xfd34[17])[0][_0xfd34[13]]< $(_0xfd34[18])[0][_0xfd34[13]]){alert(_0xfd34[21])}else {if($(_0xfd34[22])[0][_0xfd34[13]]> 60|| $(_0xfd34[22])[0][_0xfd34[13]]< 0){alert(_0xfd34[23])}else {_0xe923xa[_0xfd34[24]]= parseInt($(_0xfd34[14])[0][_0xfd34[13]]);_0xe923xa[_0xfd34[25]]= [$(_0xfd34[15])[0][_0xfd34[13]],$(_0xfd34[16])[0][_0xfd34[13]]];_0xe923xa[_0xfd34[26]]= [$(_0xfd34[17])[0][_0xfd34[13]],$(_0xfd34[18])[0][_0xfd34[13]]];_0xe923xa[_0xfd34[27]]= $(_0xfd34[22])[0][_0xfd34[13]];_0xe923xa[_0xfd34[28]]= {MMLux:false,MMTemp:false,thoigianbom:false};socket[_0xfd34[11]](_0xfd34[29],_0xe923xa)}}}}}$(_0xfd34[31])[_0xfd34[30]](()=>{_0xe923x9()});socket[_0xfd34[1]](_0xfd34[32],(_0xe923xa)=>{xulyData(_0xfd34[33],_0xe923xa.Device);xulyData(_0xfd34[34],_0xe923xa.Device1);xulyData(_0xfd34[35],_0xe923xa.Device2);xulyData(_0xfd34[36],_0xe923xa.Device3);xulyData(_0xfd34[37],_0xe923xa.Device4);xulyData(_0xfd34[38],_0xe923xa.Device5);xulyden(_0xe923xa.Device,$(_0xfd34[39]));xulyden(_0xe923xa.Device1,$(_0xfd34[40]));xulyden(_0xe923xa.Device2,$(_0xfd34[41]));xulyden(_0xe923xa.Device3,$(_0xfd34[42]));xulyden(_0xe923xa.Device4,$(_0xfd34[43]));xulyden(_0xe923xa.Device5,$(_0xfd34[44]))});socket[_0xfd34[1]](_0xfd34[45],(_0xe923xa)=>{document[_0xfd34[5]](_0xfd34[45])[_0xfd34[4]]= _0xe923xa});if($(_0xfd34[47])[_0xfd34[46]](_0xfd34[8])== true){$(_0xfd34[49])[_0xfd34[48]]();$(_0xfd34[51])[_0xfd34[50]]()}else {$(_0xfd34[49])[_0xfd34[50]]();$(_0xfd34[51])[_0xfd34[48]]()};$(_0xfd34[47])[_0xfd34[53]](function(){if($(this)[_0xfd34[46]](_0xfd34[8])== true){$(_0xfd34[49])[_0xfd34[48]]();$(_0xfd34[51])[_0xfd34[50]]();socket[_0xfd34[11]](_0xfd34[52],1)}else {$(_0xfd34[49])[_0xfd34[50]]();$(_0xfd34[51])[_0xfd34[48]]();socket[_0xfd34[11]](_0xfd34[52],0)}})})
+const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
+//https://rauthuycanh.herokuapp.com/nam2351998
+let test = 0;
+function xulyden(item1, item2) {
+  if (item1 == 1) {
+    item2.bootstrapToggle("on");
+  } else item2.bootstrapToggle("off");
+}
+function xulyData(item1, item2) {
+  if (item2 == 1) {
+    document.getElementById(item1).innerHTML = "ON";
+  } else document.getElementById(item1).innerHTML = "OFF";
+}
+function activeDevice(item) {
+  if (item.checked === true) {
+    socket.emit("activeDevice", [item.name, 1]);
+  } else socket.emit("activeDevice", [item.name, 0]);
+}
+$(document).ready(function () {
+  socket.emit("getMa");
+  function run() {
+    let data = {};
+    if (
+      parseInt($("#setTimePump")[0].value) == 0 ||
+      parseInt($("#setLuxMax")[0].value) == 0 ||
+      parseInt($("#setLuxMin")[0].value) == 0 ||
+      parseInt($("#setTempMax")[0].value) == 0 ||
+      parseInt($("#setTempMin")[0].value) == 0
+    ) {
+      alert("chưa nhập đủ dữ liệu");
+    } else if ($("#setTempMax")[0].value > 60 || $("#setTempMin")[0].value < 0)
+      alert("nhiệt độ quá lớn hoặc quá nhỏ");
+    else if ($("#setTempMax")[0].value < $("#setTempMin")[0].value)
+      alert("độ ẩm và nhiệt độ không được min lớn hơn max");
+    else if ($("#setUpload")[0].value > 60 || $("#setUpload")[0].value < 0)
+      alert("Thời gian phải trong khoảng từ 0 đến 60");
+    else {
+      data.setTimePump = parseInt($("#setTimePump")[0].value);
+      data.setLux = [$("#setLuxMax")[0].value, $("#setLuxMin")[0].value];
+      data.setTemp = [$("#setTempMax")[0].value, $("#setTempMin")[0].value];
+      data.setUpload = $("#setUpload")[0].value;
+      data.setActiveAutoChild = {
+        MMLux: document.querySelectorAll(".changeOO")[1].checked,
+        MMTemp: document.querySelectorAll(".changeOO")[2].checked,
+        thoigianbom: document.querySelectorAll(".changeOO")[0].checked,
+      };
+      socket.emit("ok", data);
+    }
+  }
+  $("#submit").click(() => {
+    run();
+  });
+  socket.on("onMa1", (data) => {
+    xulyData("maybom", data.Device);
+    xulyData("phunsuong", data.Device1);
+    xulyData("dongrem", data.Device2);
+    xulyData("morem", data.Device3);
+    xulyData("quat", data.Device4);
+    xulyData("thietbi", data.Device5);
+    xulyden(data.Device, $("#button"));
+    xulyden(data.Device1, $("#button1"));
+    xulyden(data.Device2, $("#button2"));
+    xulyden(data.Device3, $("#button3"));
+    xulyden(data.Device4, $("#button4"));
+    xulyden(data.Device5, $("#button5"));
+  });
+  socket.on("statusEsp", (data) => {
+    document.getElementById("statusEsp").innerHTML = data;
+  });
+  if ($("#toggle-event-mode").prop("checked") == true) {
+    $("#controll").show();
+    $("#auto").hide();
+  } else {
+    $("#controll").hide();
+    $("#auto").show();
+  }
+  $("#toggle-event-mode").change(function () {
+    if ($(this).prop("checked") == true) {
+      $("#controll").show();
+      $("#auto").hide();
+      socket.emit("mode", 1);
+    } else {
+      $("#controll").hide();
+      $("#auto").show();
+      socket.emit("mode", 0);
+    }
+  });
+}); //document
