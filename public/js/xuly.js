@@ -40,8 +40,8 @@ $(document).ready(function () {
       data.setTemp = [$("#setTempMax")[0].value, $("#setTempMin")[0].value];
       data.setUpload = $("#setUpload")[0].value;
       data.setActiveAutoChild = {
-        MMLux: document.querySelectorAll(".changeOO")[1].checked,
-        MMTemp: document.querySelectorAll(".changeOO")[2].checked,
+        MMLux: document.querySelectorAll(".changeOO")[2].checked,
+        MMTemp: document.querySelectorAll(".changeOO")[1].checked,
         thoigianbom: document.querySelectorAll(".changeOO")[0].checked,
       };
       socket.emit("ok", data);
