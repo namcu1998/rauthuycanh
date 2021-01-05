@@ -37,6 +37,12 @@ let array = {
   espControll: [],
   espSensor: [],
 };
+var arrayDataLux = [];
+var arrayDataTemp = [];
+var arrayDataHumi = [];
+var ketquatblux = 0;
+var ketquatbnhietdo = 0;
+var ketquatbdoam = 0;
 app.use(express.static("./public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -79,7 +85,7 @@ function loopSync() {
       timePushDb++;
       if (getAll().mode === 0) {
         timeUp++;
-        if(getAll().autoData.setActiveAutoChild.thoigianbom === true) {
+        if (getAll().autoData.setActiveAutoChild.thoigianbom === true) {
           if (
             timeUp <= getAll().autoData.setTimePump * 30 &&
             array.espControll[0] != 1 &&
@@ -98,7 +104,7 @@ function loopSync() {
           }
         }
         //-------------------------------------------------------//
-        if(getAll().autoData.setActiveAutoChild.MMLux === true) {
+        if (getAll().autoData.setActiveAutoChild.MMLux === true) {
           if (
             getAll().autoData.setLux[0] < array.espSensor[2] &&
             array.espControll[2] != 1 &&
@@ -129,7 +135,7 @@ function loopSync() {
           }
         }
         //------------------------------------------------------//
-        if(getAll().autoData.setActiveAutoChild.MMTemp === true) {
+        if (getAll().autoData.setActiveAutoChild.MMTemp === true) {
           if (
             getAll().autoData.setTemp[0] < array.espSensor[0] &&
             array.espControll[4] != 1 &&
@@ -151,8 +157,8 @@ function loopSync() {
             sendWebApp();
           }
         }
-        }
-      //------------------------------------------------------------//  
+      }
+      //------------------------------------------------------------//
       if (timeConnect === 2) {
         espControll.emit("ping", "nam");
         espSensor.emit("ping", "nam");
@@ -277,22 +283,13 @@ espControll.on("connection", function (socket) {
 });
 espSensor.on("connection", function (socket) {
   console.log("espSensor Connection");
-  let arrayDataLux = [];
-  let arrayDataTemp = [];
-  let arrayDataHumi = [];
-  let ketquatblux = 0;
-  let ketquatbnhietdo = 0;
-  let ketquatbdoam = 0;
   socket.on("JSON1", (data) => {
-    arrayDataLux.push(data.light);
-    arrayDataTemp.push(data.temp);
-    arrayDataHumi.push(data.humi);
-    if (
-      arrayDataLux.length === 10 &&
-      arrayDataTemp.length === 10 &&
-      arrayDataHumi.length === 10
-    ) {
-      for (let i = 0; i < arrayDataLux.length; i++) {
+    if (arrayDataLux.length < 10) {
+      arrayDataLux.push(Math.ceil(data.light));
+      arrayDataTemp.push(Math.ceil(data.temp));
+      arrayDataHumi.push(Math.ceil(data.humi));
+    } else {
+      for (var i = 0; i < arrayDataLux.length; i++) {
         ketquatblux += arrayDataLux[i];
         ketquatbnhietdo += arrayDataTemp[i];
         ketquatbdoam += arrayDataHumi[i];
@@ -300,14 +297,17 @@ espSensor.on("connection", function (socket) {
       array = {
         espControll: [...array.espControll],
         espSensor: [
-          Math.ceil(ketquatblux / 10),
           Math.ceil(ketquatbnhietdo / 10),
           Math.ceil(ketquatbdoam / 10),
+          Math.ceil(ketquatblux / 10),
         ],
       };
-      let arrayDataLux = [];
-      let arrayDataTemp = [];
-      let arrayDataHumi = [];
+      arrayDataLux = [];
+      arrayDataTemp = [];
+      arrayDataHumi = [];
+      ketquatblux = 0;
+      ketquatbnhietdo = 0;
+      ketquatbdoam = 0;
     }
     statusEsp(
       "espSensor",
