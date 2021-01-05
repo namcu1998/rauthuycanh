@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
+const socket = io("http://localhost:3484/nam2351998");
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
 function xulyden(item1, item2) {
@@ -39,6 +39,11 @@ $(document).ready(function () {
       data.setLux = [$("#setLuxMax")[0].value, $("#setLuxMin")[0].value];
       data.setTemp = [$("#setTempMax")[0].value, $("#setTempMin")[0].value];
       data.setUpload = $("#setUpload")[0].value;
+      data.setActiveAutoChild = {
+        thoigianbom: document.querySelectorAll(".changeOO")[0].checked,
+        MMTemp: document.querySelectorAll(".changeOO")[1].checked,
+        MMLux: document.querySelectorAll(".changeOO")[2].checked
+      }
       socket.emit("ok", data);
     }
   }

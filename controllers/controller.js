@@ -7,6 +7,7 @@ module.exports.trangtru = function (req, res, next) {
     data: getAll().statusDevice.Device,
     dataAuto: getAll().autoData,
     data1: getAll().mode,
+    dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
     user: req.cookies.user,
     statusEsp1: getAll().statusEsp.espControll,
     statusEsp2: getAll().statusEsp.espSensor,

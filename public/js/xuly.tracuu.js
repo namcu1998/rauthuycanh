@@ -27,7 +27,7 @@ $(document).ready(function(){
 	function page(item) {
 		newArray = [];
 		long = $("#start").val().split("-").reverse().join("-");
-		$.getJSON("https://nhayen-4b731.firebaseio.com/data.json", function(result){
+		$.getJSON("https://rauthuycanh-d1aca-default-rtdb.firebaseio.com/data.json", function(result){
 			$.each(result, function(i, field){
 			var newData = field[3].split(" ")
 			if(newData[2] == long){

@@ -141,7 +141,7 @@
 			<input id="butto4" data-on="ON" name="Device4" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
 				data-toggle="toggle" data-size="large" <% if (data.Device4 == 1) { %>checked<% } %>>
 
-			<span class="led">Device6</span>
+			<span class="led">Két nước</span>
 			<input id="button5" data-on="ON" name="Device5" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
 				data-toggle="toggle" data-size="large" <% if (data.Device5 == 1) { %>checked<% } %>>
 		</div>
@@ -153,9 +153,10 @@
 		</h2>
 		<div class="timeSpeak" style="text-align: center;">
 			<h3>Thiết lập thời gian bơm</h3>
-			<input type="checkbox" id="checkbox">
-			<input type="number" name="" id="setTimePump" style="margin-top: 10px" <% if (dataAuto) { %>
-				value=<%=dataAuto.setTimePump %> <% } %>>
+			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox"
+				data-toggle="toggle" data-size="mini" <% if (dataStatusActiveChild.thoigianbom == true) { %>checked<% } %>>
+			<input type="number" name=""  id="setTimePump" style="margin-top: 10px; text-align: center;"
+				<% if (dataAuto) { %> value=<%=dataAuto.setTimePump %> <% } %>>
 		</div>
 		<div id="line2">
 			<h2 style="text-align: center;">
@@ -163,11 +164,13 @@
 		</div>
 		<div id="MMT">
 			<h3>Thiết lập giá trị nhiệt độ</h3>
+			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox"
+				data-toggle="toggle" data-size="mini" <% if (dataStatusActiveChild.MMTemp == true) { %>checked<% } %>>
 			<div>
 				<span>Max</span>
 				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number"
 					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[0]%> <% } %>>
-				<input type="checkbox" id="checkbox">
+
 			</div>
 			<div>
 				<span>Min</span>
@@ -177,8 +180,10 @@
 		</div>
 		<div id="MMH">
 			<h3>Thiết lập giá trị ánh sáng</h3>
+			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox"
+				data-toggle="toggle" data-size="mini" <% if (dataStatusActiveChild.MMLux == true) { %>checked<% } %>>
 			<div>
-				<input type="checkbox" id="checkbox">
+
 				<input id="setLuxMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
 					<% if (dataAuto) { %> value=<%=dataAuto.setLux[0] %> <% } %>>
 				<span>Max</span>
@@ -209,7 +214,7 @@
 				<span id="morem"></span> <br>
 				<span>Quạt:</span>
 				<span id="quat"></span> <br>
-				<span>Thiết bị:</span>
+				<span>Két nước:</span>
 				<span id="thietbi"></span>
 			</div>
 		</div>
