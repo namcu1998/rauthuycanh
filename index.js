@@ -218,7 +218,7 @@ function loopSync() {
           "pushTemp",
           pushTemp(array.espSensor[0], time.timeSecond())
         );
-        dulieubieudo(saveDb());
+        dulieubieudo.set(getDataChart());
       }
       if (
         getDataChart().dataHumi[getDataChart().dataHumi.length - 1].doam !==
@@ -229,7 +229,7 @@ function loopSync() {
           "pushHumi",
           pushHumi(array.espSensor[1], time.timeSecond())
         );
-        dulieubieudo(saveDb());
+        dulieubieudo.set(getDataChart());
       }
       if (
         getDataChart().dataLux[getDataChart().dataLux.length - 1].anhsang !==
@@ -238,7 +238,7 @@ function loopSync() {
       ) {
         console.log("om");
         webapp.emit("pushLux", pushLux(array.espSensor[2], time.timeSecond()));
-        dulieubieudo(saveDb());
+        dulieubieudo.set(getDataChart());
       }
       //-----------------------------------------------------------------------//
       //Kiểm tra esp kết nối lại
