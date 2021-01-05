@@ -1,1 +1,48 @@
-{"dataHumi":[{"doam":95,"thoigian":"06"}],"dataLux":[{"anhsang":26,"thoigian":"37"},{"anhsang":28,"thoigian":"48"},{"anhsang":14,"thoigian":"47"},{"anhsang":13,"thoigian":"31"},{"anhsang":7,"thoigian":"41"},{"anhsang":40,"thoigian":"30"},{"anhsang":48,"thoigian":"41"}],"dataTemp":[{"nhietdo":30,"thoigian":"06"},{"nhietdo":31,"thoigian":"19"}]}
+{
+    "dataHumi": [
+        {
+            "doam": 95,
+            "thoigian": "06"
+        }
+    ],
+    "dataLux": [
+        {
+            "anhsang": 26,
+            "thoigian": "37"
+        },
+        {
+            "anhsang": 28,
+            "thoigian": "48"
+        },
+        {
+            "anhsang": 14,
+            "thoigian": "47"
+        },
+        {
+            "anhsang": 13,
+            "thoigian": "31"
+        },
+        {
+            "anhsang": 7,
+            "thoigian": "41"
+        },
+        {
+            "anhsang": 40,
+            "thoigian": "30"
+        },
+        {
+            "anhsang": 48,
+            "thoigian": "41"
+        }
+    ],
+    "dataTemp": [
+        {
+            "nhietdo": 30,
+            "thoigian": "06"
+        },
+        {
+            "nhietdo": 31,
+            "thoigian": "19"
+        }
+    ]
+}

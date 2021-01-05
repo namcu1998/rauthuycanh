@@ -216,7 +216,7 @@ function loopSync() {
       ) {
         webapp.emit(
           "pushTemp",
-          pushTemp(array.espSensor[0], time.timeSecond())
+          pushTemp(array.espSensor[0], time.time())
         );
         dulieubieudo.set(getDataChart());
       }
@@ -227,7 +227,7 @@ function loopSync() {
       ) {
         webapp.emit(
           "pushHumi",
-          pushHumi(array.espSensor[1], time.timeSecond())
+          pushHumi(array.espSensor[1], time.time())
         );
         dulieubieudo.set(getDataChart());
       }
@@ -237,7 +237,7 @@ function loopSync() {
         array.espSensor.length > 0
       ) {
         console.log("om");
-        webapp.emit("pushLux", pushLux(array.espSensor[2], time.timeSecond()));
+        webapp.emit("pushLux", pushLux(array.espSensor[2], time.time()));
         dulieubieudo.set(getDataChart());
       }
       //-----------------------------------------------------------------------//

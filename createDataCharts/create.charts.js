@@ -2,9 +2,9 @@ const fs = require("fs");
 const { loopback } = require("ip");
 function pushTemp(item, item1) {
   let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
-  if(data1.dataTemp.length > 20) {
+  if(data1.dataTemp.length > 10) {
 	  data1.dataTemp.shift();
-  }if(data1.dataTemp.length > 20) {
+  }if(data1.dataTemp.length > 10) {
 	  data1.dataTemp.shift();
   }
   data1.dataTemp.push({
@@ -17,7 +17,7 @@ function pushTemp(item, item1) {
 }
 function pushHumi(item, item1) {
   let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
-  if(data1.dataHumi.length > 20) {
+  if(data1.dataHumi.length > 10) {
 	data1.dataHumi.shift();
 }
   data1.dataHumi.push({
@@ -30,7 +30,7 @@ function pushHumi(item, item1) {
 }
 function pushLux(item, item1) {
   let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
-  if(data1.dataLux.length > 20) {
+  if(data1.dataLux.length > 10) {
 	data1.dataLux.shift();
 }
   data1.dataLux.push({
