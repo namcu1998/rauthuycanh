@@ -1,6 +1,50 @@
 const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
+const table = $(".lichsu");
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
+function xulyData(getid, array) {
+  var html = array.map(function (x) {
+    return (
+      "<tr>" +
+      "<td>" +
+      x.light +
+      "lx" +
+      "</td>" +
+      "<td>" +
+      x.nhietdo +
+      "*C" +
+      "</td>" +
+      "<td>" +
+      x.doam +
+      "%" +
+      "</td>" +
+      "<td>" +
+      x.thoigian +
+      "</td>" +
+      "<td>" +
+      convert(x.device) +
+      "</td>" +
+      "<td>" +
+      convert(x.device1) +
+      "</td>" +
+      "<td>" +
+      convert(x.device2) +
+      "</td>" +
+      "<td>" +
+      convert(x.device3) +
+      "</td>" +
+      "<td>" +
+      convert(x.device4) +
+      "</td>" +
+      "<td>" +
+      convert(x.device5) +
+      "</td>" +
+      "</tr>"
+    );
+  });
+  var htmljoin = html.join("");
+  table.html(htmljoin);
+}
 function xulyden(item1, item2) {
   if (item1 == 1) {
     item2.bootstrapToggle("on");
@@ -16,6 +60,7 @@ function activeDevice(item) {
     socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
 }
+socket.emit("getData");
 $(document).ready(function () {
   socket.emit("getMa");
   function run() {
@@ -84,5 +129,8 @@ $(document).ready(function () {
       $("#auto").show();
       socket.emit("mode", 0);
     }
+  });
+socket.on("sendDataLichsu", function (data) {
+    xulyData(table, data);
   });
 }); //document

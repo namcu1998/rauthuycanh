@@ -192,13 +192,10 @@ function loopSync() {
         array.espSensor.length > 0
       ) {
         wd(
-          time.timeDay()[1][2],
-          time.timeDay()[1][1],
-          time.timeDay()[1][0],
-          time.timeDay()[0],
-          time.timeDay()[2][0],
-          time.timeDay()[2][1],
-          time.timeDay()[2][2],
+          getAll().espSensor[0],
+          getAll().espSensor[1],
+          getAll().espSensor[2],
+          time.getTime(),
           getAll().statusDevice.Device.Device,
           getAll().statusDevice.Device.Device1,
           getAll().statusDevice.Device.Device2,
@@ -206,7 +203,7 @@ function loopSync() {
           getAll().statusDevice.Device.Device4,
           getAll().statusDevice.Device.Device5
         );
-        webapp.emit("hmm", rd());
+        webapp.emit("sendDataLichsu", rd());
       }
       //---------------------------------------------//
       if (

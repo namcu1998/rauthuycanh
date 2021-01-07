@@ -347,4 +347,8 @@
   .container2 .row {
     display: flex;
   }
+  .lichsu {
+    border-radius: 10px;
+    background-color: white;
+  }
 }
