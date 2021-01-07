@@ -346,7 +346,7 @@ webapp.on("connection", function (socket) {
     }
   });
   socket.on("getData", () => {
-    webapp.emit("hmm", rd());
+    webapp.emit("sendDataLichsu", rd());
   });
   socket.on("getDataCharts", () => {
     webapp.emit("onCharts", getDataChart());
