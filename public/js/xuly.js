@@ -1,5 +1,5 @@
 const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
-const table = $(".lichsu");
+const table = $("#lich");
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
 function xulyData(getid, array) {
@@ -110,8 +110,8 @@ $(document).ready(function () {
     xulyden(data.Device5, $("#button5"));
   });
   socket.on("statusEsp", (data) => {
-    document.getElementById("statusEsp").innerHTML = data;
   });
+    document.getElementById("statusEsp").innerHTML = data;
   if ($("#toggle-event-mode").prop("checked") == true) {
     $("#controll").show();
     $("#auto").hide();
