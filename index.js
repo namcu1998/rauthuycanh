@@ -192,9 +192,9 @@ function loopSync() {
         array.espSensor.length > 0
       ) {
         wd(
-          getAll().espSensor[0],
-          getAll().espSensor[1],
-          getAll().espSensor[2],
+          array.espSensor[0],
+          array.espSensor[1],
+          array.espSensor[2],
           time.getTime(),
           getAll().statusDevice.Device.Device,
           getAll().statusDevice.Device.Device1,
