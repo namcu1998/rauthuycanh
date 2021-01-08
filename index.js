@@ -91,17 +91,9 @@ async function getDataApiAsync() {
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
 });
-function loopSync() {
-  var timeConnect = 0,
-    timeUp = 0,
-    timePushDb = 0;
-  return new Promise((resolve, reject) => {
-    setInterval(() => {
-      timeConnect++;
-      timePushDb++;
-      if (getAll().mode === 0) {
-        timeUp++;
-        if (getAll().autoData.setActiveAutoChild.thoigianbom === true) {
+
+function controllAutoDeviceByTemp() {
+  if (getAll().autoData.setActiveAutoChild.thoigianbom === true) {
           if (
             timeUp <= getAll().autoData.setTimePump * 30 &&
             array.espControll[0] != 1 &&
@@ -118,8 +110,21 @@ function loopSync() {
             setDevice("Device", 0);
             sendWebApp();
           }
-        }
-        //-------------------------------------------------------//
+  }
+}
+
+function loopSync() {
+  var timeConnect = 0,
+    timeUp = 0,
+    timePushDb = 0;
+  return new Promise((resolve, reject) => {
+    setInterval(() => {
+      timeConnect++;
+      timePushDb++;
+      if (getAll().mode === 0) {
+        timeUp++;
+        controllAutoDeviceByTemp();
+         //-------------------------------------------------------//
         if (getAll().autoData.setActiveAutoChild.MMLux === true) {
           if (
             getAll().autoData.setLux[0] < array.espSensor[2] &&
@@ -262,7 +267,6 @@ function loopSync() {
       ) {
       } else {
         espControll.emit("LED", getAll().statusDevice.Device);
-        console.log("kiểm tra device");
       }
       //------------------------------------------------------------------------//
      if(array.api.temp === undefined) {
