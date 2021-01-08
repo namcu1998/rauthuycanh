@@ -47,6 +47,9 @@ var arrayDataHumi = [];
 var ketquatblux = 0;
 var ketquatbnhietdo = 0;
 var ketquatbdoam = 0;
+let timeConnect = 0,
+    timeUp = 0,
+    timePushDb = 0;
 const key = process.env.API_KEY;
 app.use(express.static("./public"));
 app.set("view engine", "ejs");
@@ -94,29 +97,92 @@ AwakeHeroku.add({
 
 function controllAutoDeviceByTemp() {
   if (getAll().autoData.setActiveAutoChild.thoigianbom === true) {
-          if (
-            timeUp <= getAll().autoData.setTimePump * 30 &&
-            array.espControll[0] != 1 &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device", 1);
-            sendWebApp();
-          } else if (
-            timeUp > getAll().autoData.setTimePump * 60 &&
-            timeUp <= getAll().autoData.setTimePump * 120 &&
-            array.espControll[0] != 0 &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device", 0);
-            sendWebApp();
-          }
+    if (
+      timeUp <= getAll().autoData.setTimePump * 30 &&
+      array.espControll[0] != 1 &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device", 1);
+      sendWebApp();
+    } else if (
+      timeUp > getAll().autoData.setTimePump * 60 &&
+      timeUp <= getAll().autoData.setTimePump * 120 &&
+      array.espControll[0] != 0 &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device", 0);
+      sendWebApp();
+    }
+  }
+}
+
+function controllAutoDeviceByLux() {
+  if (getAll().autoData.setActiveAutoChild.MMLux === true) {
+    if (
+      getAll().autoData.setLux[0] < array.espSensor[2] &&
+      array.espControll[2] != 1 &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device2", 1);
+      setDevice("Device3", 0);
+      sendWebApp();
+    }
+    if (
+      getAll().autoData.setLux[1] > array.espSensor[2] &&
+      array.espControll[3] != 1 &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device2", 0);
+      setDevice("Device3", 1);
+      sendWebApp();
+    }
+    if (
+      getAll().autoData.setLux[0] > array.espSensor[2] &&
+      getAll().autoData.setLux[1] < array.espSensor[2] &&
+      (array.espControll[2] != 0 || array.espControll[3] != 0) &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device2", 0);
+      setDevice("Device3", 0);
+      sendWebApp();
+    }
+  }
+}
+
+function pingEsp() {
+  if (timeConnect === 2) {
+    espControll.emit("ping", "nam");
+    espSensor.emit("ping", "nam");
+    timeConnect = 0;
+  } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
+}
+
+function controllAutoDeviceByTime() {
+if (getAll().autoData.setActiveAutoChild.MMTemp === true) {
+    if (
+      getAll().autoData.setTemp[0] < array.espSensor[0] &&
+      array.espControll[4] != 1 &&
+      array.espControll[5] != 1 &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device4", 1);
+      setDevice("Device5", 1);
+      sendWebApp();
+    }
+    if (
+      getAll().autoData.setTemp[0] >= array.espSensor[0] &&
+      array.espControll[4] != 0 &&
+      array.espControll[5] != 0 &&
+      array.espControll.length > 0
+    ) {
+      setDevice("Device4", 0);
+      setDevice("Device5", 0);
+      sendWebApp();
+    }
   }
 }
 
 function loopSync() {
-  var timeConnect = 0,
-    timeUp = 0,
-    timePushDb = 0;
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
@@ -125,66 +191,12 @@ function loopSync() {
         timeUp++;
         controllAutoDeviceByTemp();
          //-------------------------------------------------------//
-        if (getAll().autoData.setActiveAutoChild.MMLux === true) {
-          if (
-            getAll().autoData.setLux[0] < array.espSensor[2] &&
-            array.espControll[2] != 1 &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device2", 1);
-            setDevice("Device3", 0);
-            sendWebApp();
-          }
-          if (
-            getAll().autoData.setLux[1] > array.espSensor[2] &&
-            array.espControll[3] != 1 &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device2", 0);
-            setDevice("Device3", 1);
-            sendWebApp();
-          }
-          if (
-            getAll().autoData.setLux[0] > array.espSensor[2] &&
-            getAll().autoData.setLux[1] < array.espSensor[2] &&
-            (array.espControll[2] != 0 || array.espControll[3] != 0) &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device2", 0);
-            setDevice("Device3", 0);
-            sendWebApp();
-          }
-        }
+        controllAutoDeviceByLux();
         //------------------------------------------------------//
-        if (getAll().autoData.setActiveAutoChild.MMTemp === true) {
-          if (
-            getAll().autoData.setTemp[0] < array.espSensor[0] &&
-            array.espControll[4] != 1 &&
-            array.espControll[5] != 1 &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device4", 1);
-            setDevice("Device5", 1);
-            sendWebApp();
-          }
-          if (
-            getAll().autoData.setTemp[0] >= array.espSensor[0] &&
-            array.espControll[4] != 0 &&
-            array.espControll[5] != 0 &&
-            array.espControll.length > 0
-          ) {
-            setDevice("Device4", 0);
-            setDevice("Device5", 0);
-            sendWebApp();
-          }
-        }
+        controllAutoDeviceByTime();
       }
       //------------------------------------------------------------//
-      if (timeConnect === 2) {
-        espControll.emit("ping", "nam");
-        espSensor.emit("ping", "nam");
-        timeConnect = 0;
-      } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
+      pingEsp();
       //-------------------------------------------------------------//
       if (timePushDb > 30 && array.espSensor.length > 0) {
         dulieuDb.push([
