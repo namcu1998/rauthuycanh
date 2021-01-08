@@ -1,6 +1,8 @@
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
+const axios = require('axios');
+require('dotenv').config();
 const router = require("./router/home.router");
 const authRouter = require("./router/auth.router");
 const wd = require("./read.database/write.database");
@@ -37,6 +39,7 @@ const { use } = require("./router/home.router");
 let array = {
   espControll: [],
   espSensor: [],
+  api: {}
 };
 var arrayDataLux = [];
 var arrayDataTemp = [];
@@ -44,6 +47,7 @@ var arrayDataHumi = [];
 var ketquatblux = 0;
 var ketquatbnhietdo = 0;
 var ketquatbdoam = 0;
+const key = process.env.API_KEY;
 app.use(express.static("./public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -76,6 +80,14 @@ const sendWebApp = () => {
   espControll.emit("LED", getAll().statusDevice.Device);
   webapp.emit("onMa1", getAll().statusDevice.Device);
 };
+async function getDataApiAsync() {
+  const data = await axios.get(`http://api.openweathermap.org/data/2.5/weather?id=1587923&appid=${key}`);
+  array = {
+    espControll: [...array.espControll],
+    espSensor: [...array.espSensor],
+    api: {...data.data.main}
+  }
+}
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
 });
@@ -213,7 +225,7 @@ function loopSync() {
       ) {
         webapp.emit(
           "pushTemp",
-          pushTemp(array.espSensor[0], time.time())
+          pushTemp(array.espSensor[0], time.time(), array.api.temp)
         );
         dulieubieudo.set(getDataChart());
       }
@@ -224,7 +236,7 @@ function loopSync() {
       ) {
         webapp.emit(
           "pushHumi",
-          pushHumi(array.espSensor[1], time.time())
+          pushHumi(array.espSensor[1], time.time(), array.api.humidity)
         );
         dulieubieudo.set(getDataChart());
       }
@@ -253,12 +265,17 @@ function loopSync() {
         console.log("kiểm tra device");
       }
       //------------------------------------------------------------------------//
+     if(array.api.temp === undefined) {
+        getDataApiAsync();
+     }
+     if(time.timeDay()[1][1] === 0 || time.timeDay()[1][1] % 10 === 0) {
+        getDataApiAsync(); 
+     }
     }, 1000);
   });
 }
 
 loopSync();
-
 espControll.on("connection", function (socket) {
   socket.on("disconnect", function () {
     statusEsp("espSensor", 0, "none", "none", "none", "none");
@@ -274,6 +291,7 @@ espControll.on("connection", function (socket) {
         data.device5,
       ],
       espSensor: [...array.espSensor],
+      api: {...array.api}
     };
     statusEsp(
       "espControll",
@@ -305,6 +323,7 @@ espSensor.on("connection", function (socket) {
           Math.ceil(ketquatbdoam / 10),
           Math.ceil(ketquatblux / 10),
         ],
+        api: {...array.api}
       };
       arrayDataLux = [];
       arrayDataTemp = [];

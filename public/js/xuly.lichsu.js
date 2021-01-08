@@ -49,7 +49,7 @@ function xulyData(getid, array) {
 }
 $(document).ready(function () {
   socket.emit("getData");
-  socket.on("hmm", function (data) {
+  socket.on("sendDataLichsu", function (data) {
     xulyData(table, data);
   });
 }); //document

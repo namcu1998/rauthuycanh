@@ -1,8 +1,8 @@
 const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
-const table = $("#lich");
+const table = $("#testLichsu");
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
-function xulyData(getid, array) {
+function xulyDataLichsu(getid, array) {
   var html = array.map(function (x) {
     return (
       "<tr>" +
@@ -43,7 +43,11 @@ function xulyData(getid, array) {
     );
   });
   var htmljoin = html.join("");
-  table.html(htmljoin);
+  $("#lich").html(htmljoin);
+}
+function convert(data) {
+  if (data == 1) return "Bật";
+  else return "Tắt";
 }
 function xulyden(item1, item2) {
   if (item1 == 1) {
@@ -60,9 +64,9 @@ function activeDevice(item) {
     socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
 }
-socket.emit("getData");
 $(document).ready(function () {
   socket.emit("getMa");
+  socket.emit("getData");
   function run() {
     let data = {};
     if (
@@ -95,6 +99,7 @@ $(document).ready(function () {
   $("#submit").click(() => {
     run();
   });
+  
   socket.on("onMa1", (data) => {
     xulyData("maybom", data.Device);
     xulyData("phunsuong", data.Device1);
@@ -110,8 +115,11 @@ $(document).ready(function () {
     xulyden(data.Device5, $("#button5"));
   });
   socket.on("statusEsp", (data) => {
-  });
     document.getElementById("statusEsp").innerHTML = data;
+  });
+socket.on("sendDataLichsu", function (data){ 
+    xulyDataLichsu(table, data);
+  });
   if ($("#toggle-event-mode").prop("checked") == true) {
     $("#controll").show();
     $("#auto").hide();
@@ -129,8 +137,5 @@ $(document).ready(function () {
       $("#auto").show();
       socket.emit("mode", 0);
     }
-  });
-socket.on("sendDataLichsu", function (data) {
-    xulyData(table, data);
   });
 }); //document
