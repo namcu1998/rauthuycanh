@@ -1,6 +1,5 @@
-const { getAll, setDevice} = require('../modeAndDataAuto/create.mode');
-
-function controllAutoDeviceByLux(array, nameDevice, nameDevice1, sendWebApp) {
+import { getAll, setDevice} from ('../modeAndDataAuto/create.mode');
+function controllAutoDeviceByLux(array, indexLux, indexDevice,  nameDevice, nameDevice1, sendWebApp) {
   if (getAll().autoData.setActiveAutoChild.MMLux === true) {
     if (
       getAll().autoData.setLux[0] < array.espSensor[2] &&
@@ -33,6 +32,32 @@ function controllAutoDeviceByLux(array, nameDevice, nameDevice1, sendWebApp) {
   }
 }
 
+function controllAutoDeviceByTime(array, nameDevice, nameDevice1, sendWebApp) {
+  if (getAll().autoData.setActiveAutoChild.MMTemp === true) {
+      if (
+        getAll().autoData.setTemp[0] < array.espSensor[0] &&
+        array.espControll[4] != 1 &&
+        array.espControll[5] != 1 &&
+        array.espControll.length > 0
+      ) {
+        setDevice(nameDevice, 1);
+        setDevice(nameDevice1, 1);
+        sendWebApp();
+      }
+      if (
+        getAll().autoData.setTemp[0] >= array.espSensor[0] &&
+        array.espControll[4] != 0 &&
+        array.espControll[5] != 0 &&
+        array.espControll.length > 0
+      ) {
+        setDevice(nameDevice, 0);
+        setDevice(nameDevice1, 0);
+        sendWebApp();
+      }
+    }
+  }
+
 module.export = {
-  controllAutoDeviceByLux
+  controllAutoDeviceByLux,
+  controllAutoDeviceByTime
 }

@@ -1,1 +1,202 @@
-var _0xb6fc=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x61\x75\x74\x68\x75\x79\x63\x61\x6E\x68\x2E\x68\x65\x72\x6F\x6B\x75\x61\x70\x70\x2E\x63\x6F\x6D\x2F\x6E\x61\x6D\x32\x33\x35\x31\x39\x39\x38","\x32\x64","\x67\x65\x74\x43\x6F\x6E\x74\x65\x78\x74","\x6D\x79\x43\x68\x61\x72\x74","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x6D\x79\x43\x68\x61\x72\x74\x31","\x6D\x79\x43\x68\x61\x72\x74\x32","\x64\x61\x74\x61\x6C\x61\x62\x65\x6C\x73","\x70\x6C\x75\x67\x69\x6E\x73","\x67\x6C\x6F\x62\x61\x6C","\x64\x65\x66\x61\x75\x6C\x74\x73","\x23\x33\x36\x31\x64\x64\x62","\x63\x65\x6E\x74\x65\x72","\x74\x6F\x70","\x6D\x65\x72\x67\x65","\x68\x65\x6C\x70\x65\x72\x73","\x70\x75\x73\x68","\x6C\x61\x62\x65\x6C\x73","\x64\x61\x74\x61","\x64\x61\x74\x61\x73\x65\x74\x73","\x75\x70\x64\x61\x74\x65","\x6C\x65\x6E\x67\x74\x68","\x73\x68\x69\x66\x74","\x67\x65\x74\x44\x61\x74\x61\x43\x68\x61\x72\x74\x73","\x65\x6D\x69\x74","\x6F\x6E\x43\x68\x61\x72\x74\x73","\x74\x68\x6F\x69\x67\x69\x61\x6E","\x6E\x68\x69\x65\x74\x64\x6F","\x6D\x61\x70","\x64\x61\x74\x61\x54\x65\x6D\x70","\x64\x6F\x61\x6D","\x64\x61\x74\x61\x48\x75\x6D\x69","\x61\x6E\x68\x73\x61\x6E\x67","\x64\x61\x74\x61\x4C\x75\x78","\x6F\x6E","\x70\x75\x73\x68\x54\x65\x6D\x70","\x70\x75\x73\x68\x48\x75\x6D\x69","\x70\x75\x73\x68\x4C\x75\x78","\x72\x65\x61\x64\x79","\x62\x61\x72","\x6C\x69\x67\x68\x74","\x72\x67\x62\x61\x28\x31\x39\x36\x2C\x20\x32\x34\x35\x2C\x20\x30\x2C\x20\x30\x2E\x38\x29","\x72\x67\x62\x61\x28\x31\x39\x36\x2C\x20\x32\x34\x35\x2C\x20\x30\x2C\x20\x32\x29","\x4C\x55\x58","\x4C\x75\x78","\x6C\x69\x6E\x65","\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9","\x72\x67\x62\x61\x28\x32\x35\x35\x2C\x30\x2C\x30\x2C\x20\x30\x2E\x35\x29","\x72\x67\x62\x61\x28\x32\x35\x35\x2C\x30\x2C\x30\x2C\x20\x32\x29","\xB0\x43","\x72\x67\x62\x28\x32\x35\x35\x2C\x20\x39\x39\x2C\x20\x31\x33\x32\x29","\u0111\u1ED9\x20\u1EA9\x6D","\x72\x67\x62\x61\x28\x31\x33\x39\x2C\x20\x39\x37\x2C\x20\x32\x35\x35\x2C\x20\x30\x2E\x38\x29","\x72\x67\x62\x61\x28\x31\x33\x39\x2C\x20\x39\x37\x2C\x20\x32\x35\x35\x2C\x20\x32\x29","\x25"];const socket=io(_0xb6fc[0]);const ctx=document[_0xb6fc[4]](_0xb6fc[3])[_0xb6fc[2]](_0xb6fc[1]);const ctx1=document[_0xb6fc[4]](_0xb6fc[5])[_0xb6fc[2]](_0xb6fc[1]);const ctx2=document[_0xb6fc[4]](_0xb6fc[6])[_0xb6fc[2]](_0xb6fc[1]);Chart[_0xb6fc[15]][_0xb6fc[14]](Chart[_0xb6fc[10]][_0xb6fc[9]][_0xb6fc[8]][_0xb6fc[7]],{color:_0xb6fc[11],anchor:_0xb6fc[12],align:_0xb6fc[13]});function addData(_0x87e5x6,_0x87e5x7,_0x87e5x8){_0x87e5x6[_0xb6fc[18]][_0xb6fc[17]][_0xb6fc[16]](_0x87e5x7);_0x87e5x6[_0xb6fc[18]][_0xb6fc[19]][0][_0xb6fc[18]][_0xb6fc[16]](_0x87e5x8);_0x87e5x6[_0xb6fc[20]]()}function removeData(_0x87e5x6){if(_0x87e5x6[_0xb6fc[18]][_0xb6fc[17]][_0xb6fc[21]]> 20){_0x87e5x6[_0xb6fc[18]][_0xb6fc[17]][_0xb6fc[22]]();_0x87e5x6[_0xb6fc[18]][_0xb6fc[19]][0][_0xb6fc[18]][_0xb6fc[22]]()};_0x87e5x6[_0xb6fc[20]]()}$(document)[_0xb6fc[38]](function(){socket[_0xb6fc[24]](_0xb6fc[23]);socket[_0xb6fc[34]](_0xb6fc[25],function(_0x87e5x8){_0x87e5x8[_0xb6fc[29]][_0xb6fc[28]]((_0x87e5xa)=>{addData(myChart1,_0x87e5xa[_0xb6fc[26]],_0x87e5xa[_0xb6fc[27]]);removeData(myChart1)});_0x87e5x8[_0xb6fc[31]][_0xb6fc[28]]((_0x87e5xa)=>{addData(myChart2,_0x87e5xa[_0xb6fc[26]],_0x87e5xa[_0xb6fc[30]]);removeData(myChart2)});_0x87e5x8[_0xb6fc[33]][_0xb6fc[28]]((_0x87e5xa)=>{addData(myChart,_0x87e5xa[_0xb6fc[26]],_0x87e5xa[_0xb6fc[32]]);removeData(myChart)})});socket[_0xb6fc[34]](_0xb6fc[35],function(_0x87e5x8){addData(myChart1,_0x87e5x8[1],_0x87e5x8[0]);removeData(myChart1)});socket[_0xb6fc[34]](_0xb6fc[36],function(_0x87e5x8){addData(myChart2,_0x87e5x8[1],_0x87e5x8[0]);removeData(myChart2)});socket[_0xb6fc[34]](_0xb6fc[37],function(_0x87e5x8){addData(myChart,_0x87e5x8[1],_0x87e5x8[0]);removeData(myChart)})});var myChart= new Chart(ctx,{type:_0xb6fc[39],data:{labels:[],datasets:[{label:_0xb6fc[40],data:[],backgroundColor:_0xb6fc[41],borderColor:[_0xb6fc[42]],borderWidth:1}]},options:{scales:{yAxes:[{ticks:{callback:function(_0x87e5xc,_0x87e5xd,_0x87e5xe){return _0x87e5xc+ _0xb6fc[43]}}}]},animation:{duration:2000},plugins:{datalabels:{formatter:function(_0x87e5xc,_0x87e5xf){return _0x87e5xc+ _0xb6fc[44]}}}}});var myChart1= new Chart(ctx1,{type:_0xb6fc[45],data:{labels:[],datasets:[{label:_0xb6fc[46],data:[],backgroundColor:_0xb6fc[47],borderColor:[_0xb6fc[48]],borderWidth:3}]},options:{plugins:{datalabels:{formatter:function(_0x87e5xc,_0x87e5xf){return _0x87e5xc+ _0xb6fc[49]}}},legend:{display:true,labels:{fontColor:_0xb6fc[50]}},scales:{yAxes:[{ticks:{callback:function(_0x87e5xc,_0x87e5xd,_0x87e5xe){return _0x87e5xc+ _0xb6fc[49]},suggestedMin:25,suggestedMax:40}}]}}});var myChart2= new Chart(ctx2,{type:_0xb6fc[45],data:{labels:[],datasets:[{label:_0xb6fc[51],data:[],backgroundColor:_0xb6fc[52],borderColor:[_0xb6fc[53]],borderWidth:3}]},options:{scales:{yAxes:[{ticks:{callback:function(_0x87e5xc,_0x87e5xd,_0x87e5xe){return _0x87e5xc+ _0xb6fc[54]},suggestedMin:20,suggestedMax:100}}]},plugins:{datalabels:{formatter:function(_0x87e5xc,_0x87e5xf){return _0x87e5xc+ _0xb6fc[54]}}}}})
+const socket = io("https://rauthuycanh.herokuapp.com/nam2351998"); //http://localhost:3484/nam2351998
+//https://rauthuycanh.herokuapp.com/nam2351998
+const ctx = document.getElementById("myChart").getContext("2d");
+const ctx1 = document.getElementById("myChart1").getContext("2d");
+const ctx2 = document.getElementById("myChart2").getContext("2d");
+Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
+  color: "#361ddb",
+  anchor: "center",
+  align: "top",
+});
+function addData(chart, label, data, data1) {
+  chart.data.labels.push(label);
+  chart.data.datasets[0].data.push(data);
+  if(chart.data.datasets[1]) {
+    chart.data.datasets[1].data.push(data1);
+  }
+  chart.update();
+}
+function removeData(chart) {
+  if (chart.data.labels.length > 20) {
+    chart.data.labels.shift();
+    chart.data.datasets[0].data.shift();
+  }
+  chart.update();
+}
+$(document).ready(function () {
+  socket.emit("getDataCharts");
+  socket.on("onCharts", function (data) {
+    data.dataTemp.map((item) => {
+      addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
+      removeData(myChart1)
+    });
+    data.dataHumi.map((item) => {
+      addData(myChart2, item.thoigian, item.doam, item.doamApi);
+      removeData(myChart2)
+    });
+    data.dataLux.map((item) => {
+      addData(myChart, item.thoigian, item.anhsang);
+      removeData(myChart)
+    });
+  });
+  socket.on("pushTemp", function (data) {
+    addData(myChart1, data[1], data[0]);
+    removeData(myChart1);
+  });
+  socket.on("pushHumi", function (data) {
+    addData(myChart2, data[1], data[0]);
+    removeData(myChart2);
+  });
+  socket.on("pushLux", function (data) {
+    addData(myChart, data[1], data[0]);
+    removeData(myChart);
+  });
+}); //document
+var myChart = new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "light",
+        data: [],
+        backgroundColor: "rgba(196, 245, 0, 0.8)",
+        borderColor: [
+          "rgba(196, 245, 0, 2)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "LUX";
+            },
+          },
+        },
+      ],
+    },
+    animation: {
+      duration: 2000,
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "Lux";
+        },
+      },
+    },
+  },
+});
+var myChart1 = new Chart(ctx1, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "nhiệt độ",
+        data: [],
+        backgroundColor: "rgba(255,0,0, 0.5)",
+        borderColor: [
+          "rgba(255,0,0, 2)",
+        ],
+        borderWidth: 3,
+      },
+      {
+        label: "nhiệt độ",
+        data: [],
+        backgroundColor: "rgba(255,0,0, 0.5)",
+        borderColor: [
+          "rgba(255,0,0, 2)",
+        ],
+        borderWidth: 3,
+      }
+    ],
+  },
+  options: {
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "°C";
+        },
+      },
+    },
+    legend: {
+      display: true,
+      labels: {
+        fontColor: "rgb(255, 99, 132)",
+      },
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "°C";
+            },
+            suggestedMin: 25,
+            suggestedMax: 40,
+          },
+        },
+      ],
+    },
+  },
+});
+var myChart2 = new Chart(ctx2, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "độ ẩm",
+        data: [],
+        backgroundColor: "rgba(139, 97, 255, 0.8)",
+        borderColor: [
+          "rgba(139, 97, 255, 2)",
+        ],
+        borderWidth: 3,
+      },
+      {
+        label: "độ ẩm",
+        data: [],
+        backgroundColor: "rgba(139, 97, 255, 0.8)",
+        borderColor: [
+          "rgba(139, 97, 255, 2)",
+        ],
+        borderWidth: 3,
+      }
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "%";
+            },
+            suggestedMin: 20,
+            suggestedMax: 100,
+          },
+        },
+      ],
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "%";
+        },
+      },
+    },
+  },
+});

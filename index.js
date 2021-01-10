@@ -7,6 +7,7 @@ const router = require("./router/home.router");
 const authRouter = require("./router/auth.router");
 const wd = require("./read.database/write.database");
 const rd = require("./read.database/read.database");
+//const { controllAutoDeviceByLux } = require('./autoFunction/auto');
 const {
   pushTemp,
   pushHumi,
