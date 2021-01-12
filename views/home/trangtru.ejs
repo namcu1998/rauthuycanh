@@ -30,6 +30,18 @@
 			<li><a href="/home/charts">Biểu đồ</a></li>
 		</ul>
 	</div>
+	<!-- <div class="form-add">
+		<form action="/home/add" method="POST">
+			<button type="button" class="close" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Tên thiết bị</label>
+				<input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+			</div>
+			<button type="submit" class="btn btn-primary mb-2">Submit</button>
+		</form>
+	</div> -->
 	<div id="controller">
 		<div class="row">
 			<div class="col-sm" id="thongtin">
@@ -102,11 +114,13 @@
 			</div>
 			<div class="col-sm">
 				<div style="float: left;">
-					<div class="statusEsp">
+					<!-- <div class="statusEsp">
 						<% if (user) { %>
 						<span>Chào <%= user %></span>
 						<% } %>
-					</div>
+					</div> -->
+					<!-- <input type="button" value="Thêm" class="btn btn-primary" onclick="onlick()" id="btn-add"> -->
+					<!-- <input type="button" value="Xóa" class="btn btn-primary" onclick="onlick1()" id="btn-add"> -->
 				</div>
 				<div style="float: right;">
 				</div>
@@ -115,6 +129,17 @@
 	</div>
 	<div id="line"></div>
 	<div class="container1" id="controll">
+		<!-- <% for(item in data) { %>
+		<div style="margin: 20px; text-align: center;">
+			<span class="led"><%= data[item].name %></span> <br>
+			<input id="button" data-on="ON" name=<%= item  %> data-off="OFF" onchange="activeDevice(this)"
+				type="checkbox" data-toggle="toggle" data-size="large"
+				<% if (data[item].status == 1) { %>checked<% } %>>
+			<form class="delete">
+				<button type="submit" name="id" value=<%= data[item].id  %>  class="btn btn-primary mb-2">xóa</button>
+			</form>
+		</div>
+		<% }; %> -->
 		<div class="btn-right">
 			<span class="led">Máy bơm</span>
 			<input id="button" data-on="ON" name="Device" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
@@ -149,9 +174,9 @@
 		</h2>
 		<div class="timeSpeak" style="text-align: center;">
 			<h3>Thiết lập thời gian bơm</h3>
-			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox"
-				data-toggle="toggle" data-size="mini" <% if (dataStatusActiveChild.thoigianbom == true) { %>checked<% } %>>
-			<input type="number" name=""  id="setTimePump" style="margin-top: 10px; text-align: center;"
+			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
+				<% if (dataStatusActiveChild.thoigianbom == true) { %>checked<% } %>>
+			<input type="number" name="" id="setTimePump" style="margin-top: 10px; text-align: center;"
 				<% if (dataAuto) { %> value=<%=dataAuto.setTimePump %> <% } %>>
 		</div>
 		<div id="line2">
@@ -160,8 +185,8 @@
 		</div>
 		<div id="MMT">
 			<h3>Thiết lập giá trị nhiệt độ</h3>
-			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox"
-				data-toggle="toggle" data-size="mini" <% if (dataStatusActiveChild.MMTemp == true) { %>checked<% } %>>
+			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
+				<% if (dataStatusActiveChild.MMTemp == true) { %>checked<% } %>>
 			<div>
 				<span>Max</span>
 				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number"
@@ -176,8 +201,8 @@
 		</div>
 		<div id="MMH">
 			<h3>Thiết lập giá trị ánh sáng</h3>
-			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox"
-				data-toggle="toggle" data-size="mini" <% if (dataStatusActiveChild.MMLux == true) { %>checked<% } %>>
+			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
+				<% if (dataStatusActiveChild.MMLux == true) { %>checked<% } %>>
 			<div>
 
 				<input id="setLuxMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
@@ -216,30 +241,32 @@
 		</div>
 		<input style="margin-top: 0px" id="submit" class="btn btn-primary" type="button" value="Gửi">
 	</div>
-<div class="lichsu">
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="1">Ánh sáng</th>
-                    <th colspan="1">Nhiệt độ</th>
-                    <th colspan="1">Độ ẩm</th>
-                    <th colspan="1">Thời gian</th>
-                    <th colspan="1">Bơm</th>
-                    <th colspan="1">PS</th>
-                    <th colspan="1">ĐR</th>
-                    <th colspan="1">MR</th>
-                    <th colspan="1">Quạt</th>
-                    <th colspan="1">Dve6</th>
-                    <!-- <th colspan="1">Sưởi</th> -->
-                </tr>
-            </thead>
-            <div style="scroll-behavior: auto;">
-                <tbody id="lich">
-                </tbody>    
-            </div>
-        </table>
-    </div>
-    <div style="height: 51px;"></div>
+	<div class="lichsu">
+		<table>
+			<thead>
+				<tr>
+					<th colspan="1">Ánh sáng</th>
+					<th colspan="1">Nhiệt độ</th>
+					<th colspan="1">Độ ẩm</th>
+					<th colspan="1">Nhiệt độ1</th>
+					<th colspan="1">Độ ẩm1</th>
+					<th colspan="1">Thời gian</th>
+					<th colspan="1">Bơm</th>
+					<th colspan="1">PS</th>
+					<th colspan="1">ĐR</th>
+					<th colspan="1">MR</th>
+					<th colspan="1">Quạt</th>
+					<th colspan="1">Dve6</th>
+					<!-- <th colspan="1">Sưởi</th> -->
+				</tr>
+			</thead>
+			<div style="scroll-behavior: auto;">
+				<tbody id="lich">
+				</tbody>
+			</div>
+		</table>
+	</div>
+	<div style="height: 51px;"></div>
 	<script src="/js/xuly.js"></script>
 </body>
 

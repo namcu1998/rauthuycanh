@@ -1,63 +1,91 @@
-import { getAll, setDevice} from ('../modeAndDataAuto/create.mode');
-function controllAutoDeviceByLux(array, indexLux, indexDevice,  nameDevice, nameDevice1, sendWebApp) {
+const { saveMode,
+  saveAuto,
+  statusEsp,
+  setDevice,
+  getAll,
+  saveAll, } = require("../saveData/modeAndDataAuto/create.mode");
+const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
+
+const sendWebApp = (nameSpaceEspControll, nameSpaceWebapp) => {
+  nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
+  nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
+};
+
+function controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, nameDevice, nameDevice1) {
   if (getAll().autoData.setActiveAutoChild.MMLux === true) {
     if (
-      getAll().autoData.setLux[0] < array.espSensor[2] &&
-      array.espControll[2] != 1 &&
-      array.espControll.length > 0
+      getAll().autoData.setLux[0] < getDataEsp().espSensor.statusDevice.light &&
+      getDataEsp().espControll.statusDevice.Device[nameDevice] != 1
     ) {
       setDevice(nameDevice, 1); //2
       setDevice(nameDevice1, 0); //3
-      sendWebApp();
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
     if (
-      getAll().autoData.setLux[1] > array.espSensor[2] &&
-      array.espControll[3] != 1 &&
-      array.espControll.length > 0
+      getAll().autoData.setLux[1] > getDataEsp().espSensor.statusDevice.light &&
+      getDataEsp().espControll.statusDevice.Device[nameDevice] != 1
     ) {
       setDevice(nameDevice, 0);
       setDevice(nameDevice1, 1);
-      sendWebApp();
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
     if (
-      getAll().autoData.setLux[0] > array.espSensor[2] &&
-      getAll().autoData.setLux[1] < array.espSensor[2] &&
-      (array.espControll[2] != 0 || array.espControll[3] != 0) &&
-      array.espControll.length > 0
+      getAll().autoData.setLux[0] > getDataEsp().espSensor.statusDevice.light &&
+      getAll().autoData.setLux[1] < getDataEsp().espSensor.statusDevice.light &&
+      (getDataEsp().espControll.statusDevice.Device[nameDevice] != 0 ||
+        getDataEsp().espControll.statusDevice.Device[nameDevice] != 0)
     ) {
       setDevice(nameDevice, 0);
       setDevice(nameDevice1, 0);
-      sendWebApp();
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
   }
 }
 
-function controllAutoDeviceByTime(array, nameDevice, nameDevice1, sendWebApp) {
+function controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, nameDevice, nameDevice1) {
   if (getAll().autoData.setActiveAutoChild.MMTemp === true) {
-      if (
-        getAll().autoData.setTemp[0] < array.espSensor[0] &&
-        array.espControll[4] != 1 &&
-        array.espControll[5] != 1 &&
-        array.espControll.length > 0
-      ) {
-        setDevice(nameDevice, 1);
-        setDevice(nameDevice1, 1);
-        sendWebApp();
-      }
-      if (
-        getAll().autoData.setTemp[0] >= array.espSensor[0] &&
-        array.espControll[4] != 0 &&
-        array.espControll[5] != 0 &&
-        array.espControll.length > 0
-      ) {
-        setDevice(nameDevice, 0);
-        setDevice(nameDevice1, 0);
-        sendWebApp();
-      }
+    if (
+      getAll().autoData.setTemp[0] < getDataEsp().espSensor.statusDevice.temp &&
+      getDataEsp().espControll.statusDevice.Device[nameDevice] != 1 && //4
+      getDataEsp().espControll.statusDevice.Device[nameDevice1] != 1
+    ) {
+      setDevice(nameDevice, 1);
+      setDevice(nameDevice1, 1);
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
+    }
+    if (
+      getAll().autoData.setTemp[0] >= getDataEsp().espSensor.statusDevice.temp &&
+      getDataEsp().espControll.statusDevice.Device[nameDevice] != 0 && //4
+      getDataEsp().espControll.statusDevice.Device[nameDevice1] != 0
+    ) {
+      setDevice(nameDevice, 0);
+      setDevice(nameDevice1, 0);
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
   }
-
-module.export = {
-  controllAutoDeviceByLux,
-  controllAutoDeviceByTime
 }
+
+function controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, nameDevice) {
+  if (getAll().autoData.setActiveAutoChild.thoigianbom === true) {
+    if (
+      timeUp <= getAll().autoData.setTimePump * 30 &&
+      getDataEsp().espControll.statusDevice.Device[nameDevice] != 1
+    ) {
+      setDevice(nameDevice, 1);
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
+    } else if (
+      timeUp > getAll().autoData.setTimePump * 60 &&
+      timeUp <= getAll().autoData.setTimePump * 120 &&
+      getDataEsp().espControll.statusDevice.Device[nameDevice] != 0
+    ) {
+      setDevice(nameDevice, 0);
+      sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
+    }
+  }
+}
+
+module.exports = {
+  controllAutoDeviceByLux,
+  controllAutoDeviceByTime,
+  controllAutoDeviceByTemp
+};

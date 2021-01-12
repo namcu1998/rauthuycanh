@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
+const socket = io("http://localhost:3484/nam2351998");
 const table = $("#testLichsu");
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
@@ -16,6 +16,14 @@ function xulyDataLichsu(getid, array) {
       "</td>" +
       "<td>" +
       x.doam +
+      "%" +
+      "</td>" +
+      "<td>" +
+      x.nhietdo1 +
+      "*C" +
+      "</td>" +
+      "<td>" +
+      x.doam1 +
       "%" +
       "</td>" +
       "<td>" +
@@ -64,6 +72,17 @@ function activeDevice(item) {
     socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
 }
+// function onlick() {
+//   document.getElementsByClassName("form-add")[0].style.display = "block";
+// }
+// function onlick1() {
+//   for(item of document.getElementsByClassName("delete")) {
+//     item.style.display = "block";
+//   }
+// }
+// document.getElementsByClassName("close")[0].addEventListener("click", function() {
+//   document.getElementsByClassName("form-add")[0].style.display = "none";
+// })
 $(document).ready(function () {
   socket.emit("getMa");
   socket.emit("getData");

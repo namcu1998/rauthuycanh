@@ -1,7 +1,8 @@
 const fs = require("fs");
-const { loopback } = require("ip");
+const path = require("path");
+const dataChart = path.resolve(__dirname, "../createDataCharts/dataCharts.json");
 function pushTemp(item, item1, item2) {
-  let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+  let data1 = JSON.parse(fs.readFileSync(dataChart, "utf8"));
   if(data1.dataTemp.length > 10) {
 	  data1.dataTemp.shift();
   }if(data1.dataTemp.length > 10) {
@@ -13,11 +14,11 @@ function pushTemp(item, item1, item2) {
     nhietdoApi: item2 - 273.15,
   });
   let data2 = JSON.stringify(data1);
-  fs.writeFileSync("./JSON/dataCharts.json", data2);
+  fs.writeFileSync(dataChart, data2);
   return [item, item1, item2 - 273.15];
 }
 function pushHumi(item, item1, item2) {
-  let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+  let data1 = JSON.parse(fs.readFileSync(dataChart, "utf8"));
   if(data1.dataHumi.length > 10) {
 	data1.dataHumi.shift();
 }
@@ -27,11 +28,11 @@ function pushHumi(item, item1, item2) {
     doamApi: item2
   });
   let data2 = JSON.stringify(data1);
-  fs.writeFileSync("./JSON/dataCharts.json", data2);
+  fs.writeFileSync(dataChart, data2);
   return [item, item1, item2];
 }
 function pushLux(item, item1) {
-  let data1 = JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+  let data1 = JSON.parse(fs.readFileSync(dataChart, "utf8"));
   if(data1.dataLux.length > 10) {
 	data1.dataLux.shift();
 }
@@ -40,16 +41,16 @@ function pushLux(item, item1) {
     thoigian: item1,
   });
   let data2 = JSON.stringify(data1);
-  fs.writeFileSync("./JSON/dataCharts.json", data2);
+  fs.writeFileSync(dataChart, data2);
   return [item, item1];
 }
 function getDataChart() {
-	return JSON.parse(fs.readFileSync("./JSON/dataCharts.json", "utf8"));
+	return JSON.parse(fs.readFileSync(dataChart, "utf8"));
 }
 
 function saveDb(item) {
   let data2 = JSON.stringify(item);
-  fs.writeFileSync("./JSON/dataCharts.json", data2);
+  fs.writeFileSync(dataChart, data2);
 }
 module.exports = {
 	pushTemp,
@@ -57,4 +58,4 @@ module.exports = {
 	pushLux,
   getDataChart,
   saveDb
-}
+};

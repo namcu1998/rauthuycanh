@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/nam2351998"); //http://localhost:3484/nam2351998
+const socket = io("http://localhost:3484/nam2351998"); //http://localhost:3484/nam2351998
 //https://rauthuycanh.herokuapp.com/nam2351998
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
@@ -40,11 +40,11 @@ $(document).ready(function () {
     });
   });
   socket.on("pushTemp", function (data) {
-    addData(myChart1, data[1], data[0]);
+    addData(myChart1, data[1], data[0], data[2]);
     removeData(myChart1);
   });
   socket.on("pushHumi", function (data) {
-    addData(myChart2, data[1], data[0]);
+    addData(myChart2, data[1], data[0], data[2]);
     removeData(myChart2);
   });
   socket.on("pushLux", function (data) {
@@ -100,7 +100,7 @@ var myChart1 = new Chart(ctx1, {
     labels: [],
     datasets: [
       {
-        label: "nhiệt độ",
+        label: "nhiệt độ bên trong",
         data: [],
         backgroundColor: "rgba(255,0,0, 0.5)",
         borderColor: [
@@ -109,7 +109,7 @@ var myChart1 = new Chart(ctx1, {
         borderWidth: 3,
       },
       {
-        label: "nhiệt độ",
+        label: "nhiệt độ bên ngoài",
         data: [],
         backgroundColor: "rgba(255,0,0, 0.5)",
         borderColor: [
@@ -156,7 +156,7 @@ var myChart2 = new Chart(ctx2, {
     labels: [],
     datasets: [
       {
-        label: "độ ẩm",
+        label: "độ ẩm bên ngoài",
         data: [],
         backgroundColor: "rgba(139, 97, 255, 0.8)",
         borderColor: [
@@ -165,7 +165,7 @@ var myChart2 = new Chart(ctx2, {
         borderWidth: 3,
       },
       {
-        label: "độ ẩm",
+        label: "độ ẩm bên trong",
         data: [],
         backgroundColor: "rgba(139, 97, 255, 0.8)",
         borderColor: [

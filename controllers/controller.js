@@ -1,23 +1,23 @@
 // module.exports.gioithieu = function(req, res, next){
 //     res.render('home/gioithieu');
 // };
-const { getAll } = require("../modeAndDataAuto/create.mode");
+const { getAll } = require("../saveData/modeAndDataAuto/create.mode");
 module.exports.trangtru = function (req, res, next) {
   res.render("home/trangtru", {
-    data: getAll().statusDevice.Device,
-    dataAuto: getAll().autoData,
-    data1: getAll().mode,
-    dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
-    user: req.cookies.user,
-    statusEsp1: getAll().statusEsp.espControll,
-    statusEsp2: getAll().statusEsp.espSensor,
-    signal: "ma.getAll()[5].SignalStrength",
-    ip: "ma.getAll()[5].ip",
-    statusDHT: "ma.getAll()[5].statusDHT",
-    statusLux: "ma.getAll()[5].statusLux",
-    CPU: "ma.getAll()[5].CPU",
-    RAM: "ma.getAll()[5].RAM",
-  });
+      data: getAll().statusDevice.Device,
+      dataAuto: getAll().autoData,
+      data1: getAll().mode,
+      dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
+      user: req.cookies.user,
+      statusEsp1: getAll().statusEsp.espControll,
+      statusEsp2: getAll().statusEsp.espSensor,
+      signal: "ma.getAll()[5].SignalStrength",
+      ip: "ma.getAll()[5].ip",
+      statusDHT: "ma.getAll()[5].statusDHT",
+      statusLux: "ma.getAll()[5].statusLux",
+      CPU: "ma.getAll()[5].CPU",
+      RAM: "ma.getAll()[5].RAM",
+    });
 };
 
 // signal: 'ma.getAll()[5].SignalStrength',

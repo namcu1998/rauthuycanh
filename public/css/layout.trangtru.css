@@ -186,6 +186,34 @@
     align-items: center;
     justify-content: left;
   }
+  .lichsu {
+    background-color: white;
+    padding: 20px;
+    margin: 0 30px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    box-shadow: 5px 5px 5px #000000;
+}
+
+  .lichsu table {
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+    font-weight: 300;
+  }
+
+  .lichsu table thead tr th {
+    text-align: center;
+    border: 2px solid black;
+  }
+
+  td {
+    text-align: center;
+    border: 2px solid black;
+  }
 }
 
 @media only screen and (max-width: 600px) {

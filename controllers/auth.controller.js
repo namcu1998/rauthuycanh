@@ -1,4 +1,4 @@
-const { getAll } = require("../modeAndDataAuto/create.mode")
+// const { getAll } = require("../modeAndDataAuto/create.mode")
 module.exports.SetCookie = function(req, res, next){
     // if(!req.cookies) res.render('auth/login');
     // if(req.cookies.login === 'ASDDDASASD'){
