@@ -1,87 +1,76 @@
 @media only screen and (min-width: 1300px) {
-  * {
-    margin: 0;
-    padding: 0;
-  }
   body {
-    margin: 0 auto;
-    font-family: "Times New Roman", Times, serif;
-  }
-  #header ul {
-    padding: 0;
-    margin: 0 0 0 0;
-    text-align: center;
-    background-color: #442424;
-  }
-  #header ul li {
-    width: 100px;
-    height: 40px;
-    display: inline-table;
-    line-height: 40px;
-  }
-  #header ul li a {
-    color: #ffffff;
-    display: block;
-    text-decoration: none;
-    font-size: 1.2em;
-  }
-  #header ul li :hover {
-    background-color: black;
-  }
-  img {
-    min-height: 100vh;
     margin: 0;
-    width: 100%;
-    overflow: hidden;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
   }
-  #none {
-    display: none;
+  /* navi */
+ .navi {
+   margin: 0 150px;
+   text-align: center;
+   background-color: #4E4E94;
+   border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+}
+
+ .navi ul {
+   height: 40px;
+   margin: 0;
+   padding: 0;
+ }
+
+ .navi ul li {
+   margin: 0 50px;
+   display: inline-block;
+ }
+
+ .navi ul li a {
+   font-size: 1.5em;
+   color: white;
+   width: 200px;
+   height: 40px;
+   line-height: 40px;
+   display: block;
+   text-decoration: none;
+ }
+
+  .navi ul li a:hover {
+    color: pink;
   }
+
+  /* header */
+
+  .header {
+    margin: 0 150px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #logo {
+    flex: 50%;
+  }
+
+  #logo img {
+    background-size: inherit;
+  }
+
+  #imformation-student {
+    flex: 50%;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: left;
+    padding: 20px;
+  }
+
+  #name-project {
+  }
+
+ 
 }
 @media only screen and (max-width: 1100px) {
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-weight: 300;
-    font-family: "Times New Roman", Times, serif;
-  }
-
-  img {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  #header {
-    background-color: rgb(235, 235, 235);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #header ul {
-    display: flex;
-  }
-
-  #header ul li {
-    list-style: none;
-    display: block;
-    width: 150px;
-    height: 100px;
-    text-align: center;
-    line-height: 100px;
-  }
-
-  #header ul li a {
-    font-size: 2em;
-    color: #000000;
-    text-decoration: none;
-    transition: 1s;
-  }
-
-  #header ul li:hover {
-    background-color: rgb(179, 93, 93);
-  }
+  
 }
