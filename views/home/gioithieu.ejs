@@ -10,11 +10,23 @@
 
 <body>
 	<div class="navi">
-		<ul>
+	  <div>
+	    <img src="/image/cancel.png"></img>
+	    <ul>
 			<li><a href="/">Giới thiệu</a></li>
 			<li><a href="/home/">Điều khiển</a></li>
 			<li><a href="/home/charts">Biều đồ</a></li>
 		</ul>
+	  </div>
+	</div>
+	<div class="navi-phone">
+	  <div>
+	    <a id="gohome" href="/home/"></a>
+	    <img id="home" onclick="gohome()" src="/image/home.png"></img>
+	  </div>
+	  <div>
+	    <img id="menu" src="/image/menu.png"></img>
+	  </div>
 	</div>
 	<div class="header">
 		<div id="logo">
@@ -30,7 +42,21 @@
 	</div>
 	<div class="content">
 	</div>
-</body>
+	<script>
+	  const menu = document.getElementById("menu")
+	  
+	  menu.addEventListener("click", function(){
+      document.getElementsByClassName("navi")[0].style.display = "block"
+    });
+    
+    const close = document.getElementsByClassName("navi")
+	  close[0].addEventListener("click", function(){
+      document.getElementsByClassName("navi")[0].style.display = "none"
+    });
+    function gohome() {
+      document.getElementById("gohome").click()
+    }
+	</script>
 </body>
 
 </html>

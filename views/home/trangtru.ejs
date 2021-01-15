@@ -23,13 +23,29 @@
 </head>
 
 <body style="background-color: #442424">
-	<div id="header">
-		<ul>
+	<div class="navi">
+	  <div>
+	    <img src="/image/cancel.png"></img>
+	    <ul>
 			<li><a href="/">Giới thiệu</a></li>
 			<li><a href="/home/">Điều khiển</a></li>
-			<li><a href="/home/charts">Biểu đồ</a></li>
+			<li><a href="/home/charts">Biều đồ</a></li>
 		</ul>
+	  </div>
 	</div>
+	<div class="navi-phone">
+	  <div>
+	    <a id="gohome" href="/home/"></a>
+	    <img id="home" onclick="gohome()" src="/image/home.png"></img>
+	  </div>
+	  <div>
+	    <img id="modeTheme" onclick="changeMode()" src="/image/sun.png"></img>
+	  </div>
+	  <div>
+	    <img id="menu" src="/image/menu.png"></img>
+	  </div>
+	</div>
+	
 	<!-- <div class="form-add">
 		<form action="/home/add" method="POST">
 			<button type="button" class="close" aria-label="Close">
@@ -188,13 +204,11 @@
 			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
 				<% if (dataStatusActiveChild.MMTemp == true) { %>checked<% } %>>
 			<div>
-				<span>Max</span>
 				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number"
 					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[0]%> <% } %>>
 
 			</div>
 			<div>
-				<span>Min</span>
 				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number"
 					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[1]%> <% } %>>
 			</div>
@@ -207,12 +221,10 @@
 
 				<input id="setLuxMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
 					<% if (dataAuto) { %> value=<%=dataAuto.setLux[0] %> <% } %>>
-				<span>Max</span>
 			</div>
 			<div>
 				<input id="setLuxMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
 					<% if (dataAuto) { %> value=<%=dataAuto.setLux[1] %> <% } %>>
-				<span>Min</span>
 			</div>
 
 		</div>
@@ -222,24 +234,36 @@
 				<% if (dataAuto) { %> value=<%=dataAuto.setTemp[0] %> <% } %>>
 		</div>
 		<div class="container2">
-			<div class="status-right">
-				<span>Máy bơm:</span>
-				<span id="maybom"></span> <br>
-				<span>Phun sương:</span>
-				<span id="phunsuong"></span> <br>
-				<span>Đóng rèm:</span>
-				<span id="dongrem"></span>
+			<div>
+			  <div>
+			    <span>Máy bơm:</span>
+				  <span id="maybom"></span>
+			  </div>
+				<div>
+				  <span>Phun sương:</span>
+				  <span id="phunsuong"></span>
+				</div>
+				<div>
+				  <span>Đóng rèm:</span>
+				  <span id="dongrem"></span>
+				</div>
 			</div>
-			<div class="status-left">
-				<span>Mở rèm:</span>
-				<span id="morem"></span> <br>
-				<span>Quạt:</span>
-				<span id="quat"></span> <br>
-				<span>Két nước:</span>
+			<div>
+			  <div>
+			    <span>Mở rèm:</span>
+				  <span id="morem"></span>
+			  </div>
+			  <div>
+			    <span>Quạt:</span>
+				  <span id="quat"></span>
+			  </div>
+				<div>
+				  <span>Két nước:</span>
 				<span id="thietbi"></span>
+				</div>
 			</div>
 		</div>
-		<input style="margin-top: 0px" id="submit" class="btn btn-primary" type="button" value="Gửi">
+		<input id="submit" type="button" value="Gửi">
 	</div>
 	<div class="lichsu">
 		<table>
@@ -266,7 +290,7 @@
 			</div>
 		</table>
 	</div>
-	<div style="height: 51px;"></div>
+	<div style="height: 102px;"></div>
 	<script src="/js/xuly.js"></script>
 </body>
 

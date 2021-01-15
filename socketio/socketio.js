@@ -87,7 +87,7 @@ module.exports = function deviceIO(
         nameSpaceWebapp.emit("onCharts", getDataChart());
       });
       socket.on("getMa", () => {
-        nameSpaceWebapp.emit("onMa", getAll().autoData);
+        nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
       });
       // dữ liệu cảm biến
       socket.on("ok", (data) => {
@@ -95,6 +95,9 @@ module.exports = function deviceIO(
       });
       socket.on("mode", (data) => {
         saveMode(data);
+        if(getAll().mode === 0) {
+          nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
+        }
       });
     });
   }

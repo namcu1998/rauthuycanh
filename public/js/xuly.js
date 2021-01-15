@@ -1,5 +1,10 @@
-const socket = io("https://rauthuycanh.herokuapp.com/nam2351998");
+const socket = io("http://localhost:3484/webapp");
 const table = $("#testLichsu");
+const modeTheme = document.getElementById("modeTheme");
+const dataMode = document.documentElement;
+const statusMode = localStorage.getItem('theme');
+let bool = true;
+
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
 function xulyDataLichsu(getid, array) {
@@ -53,6 +58,51 @@ function xulyDataLichsu(getid, array) {
   var htmljoin = html.join("");
   $("#lich").html(htmljoin);
 }
+
+if(statusMode) {
+  dataMode.setAttribute("data-theme", statusMode);
+  if(statusMode === "light") {
+    modeTheme.src = "/image/sun.png";
+    bool = true;
+  }
+  else {
+    bool = false;
+    modeTheme.src = "/image/moon.png"
+  }
+}
+
+function changeMode() {
+  bool = !bool;
+  document.getElementsByClassName("navi")[0].style.left = "-100%"
+  if(bool === true) {
+    modeTheme.src = "/image/sun.png"
+    localStorage.setItem("theme", "light");
+    dataMode.setAttribute("data-theme", "light")
+  }
+  else {
+    modeTheme.src = "/image/moon.png"
+    dataMode.setAttribute("data-theme", "dark")
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+const menu = document.getElementById("menu")
+	  
+	  menu.addEventListener("click", function(){
+      document.getElementsByClassName("navi")[0].style.left = "0"
+      setTimeout(() => {
+        document.getElementsByClassName("navi")[0].style.background = "rgba(51,0,255,0.3)"
+      }, 1000)
+      });
+    
+    const close = document.getElementsByClassName("navi")
+	  close[0].addEventListener("click", function(){
+      document.getElementsByClassName("navi")[0].style.left = "-100%"
+      document.getElementsByClassName("navi")[0].style.background = "none"
+    });
+    function gohome() {
+      document.getElementById("gohome").click()
+    }
 function convert(data) {
   if (data == 1) return "Bật";
   else return "Tắt";
