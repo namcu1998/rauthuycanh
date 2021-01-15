@@ -19,26 +19,35 @@
     color: black;
     position: absolute;
   }
-  #header ul {
+  .navi div ul {
     padding: 0;
     text-align: center;
     background-color: #442424;
   }
-  #header ul li {
+
+  .navi-phone {
+    display: none;
+  }
+
+  .navi div img {
+    display: none;
+  }
+
+  .navi div ul li {
     width: 200px;
     height: 40px;
     display: inline-table;
     line-height: 40px;
   }
-  #header ul li a {
+  .navi div ul li a {
     color: #ffffff;
     display: block;
     text-decoration: none;
   }
-  #header ul li :hover {
+  .navi div ul li :hover {
     background-color: black;
   }
-  #header {
+  .navi div {
     color: #ffffff;
     text-align: center;
   }

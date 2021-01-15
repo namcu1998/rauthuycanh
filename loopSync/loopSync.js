@@ -156,7 +156,7 @@ module.exports = function loopSync(
       writeDataChart(nameSpaceWebapp);
       writeDataHistory(nameSpaceWebapp);
       timeGetApi();
-      pingEsp(nameSpaceEspControll, nameSpaceWebapp);
+      pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
       checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp);
     }, 1000);
   });
