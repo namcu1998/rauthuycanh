@@ -4,7 +4,7 @@ const modeTheme = document.getElementById("modeTheme");
 const dataMode = document.documentElement;
 const statusMode = localStorage.getItem('theme');
 let bool = true;
-
+document.getElementsByClassName("noti")[0].setAttribute("noti-mess", true)
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
 function xulyDataLichsu(getid, array) {
