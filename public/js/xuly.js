@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/webapp");
+const socket = io("http://localhost:3484/webapp");
 const table = $("#testLichsu");
 const modeTheme = document.getElementById("modeTheme");
 const dataMode = document.documentElement;

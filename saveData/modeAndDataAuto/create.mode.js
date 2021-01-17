@@ -1,20 +1,24 @@
 const fs = require("fs");
 var path = require("path");
+let saveDb;
 const dataModeAuto = path.resolve(
   __dirname,
   "../modeAndDataAuto/mode.auto.json"
 );
+
 function saveMode(mode) {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
   data.mode = mode;
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
+  saveDb.set(data);
 }
 function saveAuto(auto) {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
   data.autoData = auto;
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
+  saveDb.set(data);
 }
 function statusEsp(esp, status, ip, SS, cpu, ram) {
   var obj = {};
@@ -29,12 +33,14 @@ function statusEsp(esp, status, ip, SS, cpu, ram) {
   data.statusEsp[esp] = obj;
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
+  saveDb.set(data);
 }
 function setDevice(nameDevice, statusDevice){
   let data = JSON.parse(fs.readFileSync(dataModeAuto,'utf8'))
   data.statusDevice.Device[nameDevice] = statusDevice;
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto,array1);
+  saveDb.set(data);
 }
 
 function addDevice(name) {
@@ -120,6 +126,11 @@ function saveAll(dataDB) {
   var array1 = JSON.stringify(dataDB);
   fs.writeFileSync(dataModeAuto, array1);
 }
+
+function pushDb(item) {
+  saveDb = item;
+}
+
 module.exports = {
   saveMode,
   saveAuto,
@@ -129,4 +140,5 @@ module.exports = {
   saveAll,
   addDevice,
   remoteDevice,
+  pushDb
 };
