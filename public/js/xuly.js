@@ -17,7 +17,7 @@ function xulyDataLichsu(getid, array) {
       "</td>" +
       "<td>" +
       x.nhietdo +
-      "*C" +
+      "ºC" +
       "</td>" +
       "<td>" +
       x.doam +
@@ -25,7 +25,7 @@ function xulyDataLichsu(getid, array) {
       "</td>" +
       "<td>" +
       x.nhietdo1 +
-      "*C" +
+      "ºC" +
       "</td>" +
       "<td>" +
       x.doam1 +
