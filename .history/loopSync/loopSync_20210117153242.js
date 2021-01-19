@@ -27,13 +27,11 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
 }
 
 function pushDataBase() {
-  if (timePushDb > 3600 && getAll().statusEsp.espSensor.status === true) {
+  if (timePushDb > 30 && array.espSensor.length > 0) {
     dulieuDb.push([
-      getDataEsp().espSensor.statusDevice.temp,
-      getDataEsp().espSensor.statusDevice.humi,
-      getDataEsp().api.temp - 273.15,
-      getDataEsp().api.humidity,
-      getDataEsp().espSensor.statusDevice.light,
+      array.espSensor[0],
+      array.espSensor[1],
+      array.espSensor[2],
       time.getTime(),
       getAll().statusDevice.Device.Device,
       getAll().statusDevice.Device.Device1,
@@ -155,7 +153,6 @@ module.exports = function loopSync(
         controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
         controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
       }
-      pushDataBase();
       writeDataChart(nameSpaceWebapp);
       writeDataHistory(nameSpaceWebapp);
       timeGetApi();

@@ -27,7 +27,7 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
 }
 
 function pushDataBase() {
-  if (timePushDb > 3600 && getAll().statusEsp.espSensor.status === true) {
+  if (timePushDb > 3600 && getAll().statusEsp.espSensor) {
     dulieuDb.push([
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,

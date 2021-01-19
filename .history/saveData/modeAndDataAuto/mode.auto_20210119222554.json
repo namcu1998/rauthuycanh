@@ -47,7 +47,7 @@
             "statusLux": true
         }
     },
-    "statusEsp": {
+    "array.length": {
         "espControll": {
             "SignalStrength": -53,
             "cpu": 240,
