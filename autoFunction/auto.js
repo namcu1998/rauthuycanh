@@ -13,7 +13,6 @@ const sendWebApp = (nameSpaceEspControll, nameSpaceWebapp) => {
 
 function controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, nameDevice, nameDevice1) {
   if (getAll().autoData.setActiveAutoChild.MMLux === true) {
-    console.log(getAll().statusDevice.Device)
     if (
       getAll().autoData.setLux[0] < getDataEsp().espSensor.statusDevice.light &&
       getAll().statusDevice.Device[nameDevice] != 1

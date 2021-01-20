@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tra cứu database</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/js/xuly.tracuu.js"></script>
-    <link rel="stylesheet" type = "text/css" href="/css/normalize.css"/>
-    <link rel="stylesheet" type = "text/css" href="/css/layout.tracuu.css"/>
-    <link rel="shortcut icon" type="image/png" href="/image/tracuu.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/layout.tracuu.css" />
+    <link rel="shortcut icon" type="image/png" href="/image/tracuu.png" />
 </head>
+
 <body>
     <div id="header">
         <ul>
             <li><a href="/">Giới thiệu</a></li>
             <li><a href="/home/">Điều khiển</a></li>
-            <li><a href="/home/cambien">Cảm biến</a></li>
-            <li><a href="/home/lichsu">Lịch Sử</a></li>
             <li><a href="/home/tracuu">Tra cứu</a></li>
             <li><a href="/home/charts">Biểu đồ</a></li>
         </ul>
     </div>
     <div style="background: rgb(60, 68, 55);" id="bottom">
         <div style="text-align: center; padding: 10px auto;">
-            <input style="border-radius: 5px;" type="date" id="start" name="trip-start">
+            <input style="border-radius: 5px;" type="date" id="input" name="trip-start">
             <div>
                 <span id="thongbao"></span>
             </div>
@@ -34,6 +34,8 @@
                     <th colspan="1">Ánh sáng</th>
                     <th colspan="1">Nhiệt độ</th>
                     <th colspan="1">Độ ẩm</th>
+                    <th colspan="1">Nhiệt độ1</th>
+                    <th colspan="1">Độ ẩm1</th>
                     <th colspan="1">Thời gian</th>
                     <th colspan="1">MPS</th>
                     <th colspan="1">Loa</th>
@@ -44,16 +46,11 @@
             </thead>
             <div style="scroll-behavior: auto;">
                 <tbody id="lich">
-                </tbody>    
+                </tbody>
             </div>
         </table>
-        <div style="float: left;">
-            
-            <input type="button" id="butonPrevious" value="Previous">
-        </div>
-        <div style="float: right;">
-            <input type="button" id="butonNext" value="next">
-        </div> 
     </div>
+    <script src="/js/xuly.tracuu.js"></script>
 </body>
+
 </html>

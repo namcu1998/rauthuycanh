@@ -58,7 +58,6 @@ module.exports = function deviceIO(
       socket.on("error", function (data) {
         nameSpaceEspSensor.emit("stopSendError", "stop");
         error(data);
-        console.log(data);
       });
     });
   }

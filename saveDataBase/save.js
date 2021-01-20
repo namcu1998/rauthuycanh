@@ -24,4 +24,11 @@ function saveData(array) {
     fs.writeFileSync(path.resolve(__dirname, "../saveDataBase/db.json"), data1);
 }
 
-module.exports.saveData = saveData;
+function checkData() {
+    return JSON.parse(fs.readFileSync(path.resolve(__dirname, "../saveDataBase/db.json"),'utf8'));
+}
+
+module.exports = {
+    saveData,
+    checkData
+}

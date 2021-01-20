@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 const fs  = require('fs');
-const saveData = require("../saveDataBase/save").saveData;
+const {saveData} = require("../saveDataBase/save");
 var data2 = [];
 const { saveAll } = require("../saveData/modeAndDataAuto/create.mode");
 const { saveDb } = require("../saveData/createDataCharts/create.charts");
