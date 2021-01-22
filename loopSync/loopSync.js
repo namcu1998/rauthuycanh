@@ -25,7 +25,7 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
 }
 
 function pushDataBase() {
-  if (parseInt(time.time().split(":")[1]) === 0 && time.timeSecond() === 0 && getAll().statusEsp.espSensor.status === true) {
+  if ((parseInt(time.time().split(":")[1]) === 0 || parseInt(time.time().split(":")[1]) % 15 === 0) && time.timeSecond() === 0 && getAll().statusEsp.espSensor.status === true) {
     dulieuDb.push([
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,
