@@ -25,22 +25,22 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
 }
 
 function pushDataBase() {
-  if ((parseInt(time.time().split(":")[1]) === 0 || parseInt(time.time().split(":")[1]) % 2 === 0) && time.timeSecond() == 00 && getAll().statusEsp.espSensor.status === true) {
+  if ((parseInt(time.time().split(":")[1]) === 0 || parseInt(time.time().split(":")[1]) % 15 === 0) && time.timeSecond() == 00 && getAll().statusEsp.espSensor.status === true) {
     console.log("push")
-    // dulieuDb.push([
-    //   getDataEsp().espSensor.statusDevice.temp,
-    //   getDataEsp().espSensor.statusDevice.humi,
-    //   getDataEsp().api.temp - 273.15,
-    //   getDataEsp().api.humidity,
-    //   getDataEsp().espSensor.statusDevice.light,
-    //   time.getTime(),
-    //   getAll().statusDevice.Device.Device,
-    //   getAll().statusDevice.Device.Device1,
-    //   getAll().statusDevice.Device.Device2,
-    //   getAll().statusDevice.Device.Device3,
-    //   getAll().statusDevice.Device.Device4,
-    //   getAll().statusDevice.Device.Device5,
-    // ]);
+    dulieuDb.push([
+      getDataEsp().espSensor.statusDevice.temp,
+      getDataEsp().espSensor.statusDevice.humi,
+      getDataEsp().api.temp - 273.15,
+      getDataEsp().api.humidity,
+      getDataEsp().espSensor.statusDevice.light,
+      time.getTime(),
+      getAll().statusDevice.Device.Device,
+      getAll().statusDevice.Device.Device1,
+      getAll().statusDevice.Device.Device2,
+      getAll().statusDevice.Device.Device3,
+      getAll().statusDevice.Device.Device4,
+      getAll().statusDevice.Device.Device5,
+    ]);
   }
 }
 
