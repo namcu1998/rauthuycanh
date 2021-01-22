@@ -1,6 +1,7 @@
 @media only screen and (min-width: 600px) {
-    body {
-
+    * {
+        margin: 0;
+        padding: 0;
     }
     #header{
         background-position: center;
@@ -27,29 +28,27 @@
     #header ul li :hover{
         background-color: black;
     }
-    #bot{
-        font-family: arial;
-        text-align: left;
-        height: 400px;
-        overflow-y: auto;
+    .hitstory {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
-    table{
+    .hitstory div:nth-child(2) {
+        width: 100%;
+    }
+
+    .hitstory div:nth-child(2) table {
+        width: 100%;
+        border: 2px solid black;
+    }
+
+    tr, th, td {
         text-align: center;
-        width: 99%;
-        font-size: 2em;
-        color: white;
-    }
-    #lichsu{
-        border: 1px solid;
-        text-align: left;
-    }
-    tbody tr th{
-        border: 1px solid;
-        padding: 10px;
-    }
-    #thongbao {
-        color: white;
-        font-size: 2em;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.2em;
+        font-weight: 300;
+        border: 1px solid black;
     }
 }
 @media only screen and (max-width: 600px) {
@@ -75,25 +74,29 @@
 	}
 	#header ul li :hover{
 		background-color: black;
-	}
-    #bot{
-        font-family: arial;
-        text-align: left;
-        height: 400px;
-        overflow-y: auto;
     }
-    table{
+    
+    .hitstory {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .hitstory div:nth-child(2) {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .hitstory div:nth-child(2) table {
+        width: 1000px;
+    }
+
+    tr, th, td {
         text-align: center;
-        width: 99%;
-        font-size: 1em;
-        color: white;
-    }
-    #lichsu{
-        border: 1px solid;
-        text-align: left;
-    }
-    tbody tr td{
-        border: 1px solid;
-        padding: 10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.2em;
+        font-weight: 300;
+        border: 1px solid black;
     }
 }

@@ -2,7 +2,8 @@ const fs = require("fs");
 const path = require("path")
 function saveData(array) {
     let data = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../saveDataBase/db.json"),'utf8'));
-    data.length = 0;
+    data.splice(0, data.length);
+    console.log(data)
     for(let i = 0  ; i < array.length ; i++) {
         data.push({
             id: i,

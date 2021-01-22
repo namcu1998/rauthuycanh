@@ -14,9 +14,7 @@ const {
   controllAutoDeviceByTemp
 } = require("../autoFunction/auto");
 let timeConnect = 0,
-  timePushDb = 0,
-  timeUp = 0,
-  dataApi = {};
+  timeUp = 0;
 
 function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
   if (timeConnect === 2) {
@@ -27,7 +25,7 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
 }
 
 function pushDataBase() {
-  if (timePushDb > 3600 && getAll().statusEsp.espSensor.status === true) {
+  if (parseInt(time.time().split(":")[1]) === 0 && getAll().statusEsp.espSensor.status === true) {
     dulieuDb.push([
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,
@@ -42,7 +40,6 @@ function pushDataBase() {
       getAll().statusDevice.Device.Device4,
       getAll().statusDevice.Device.Device5,
     ]);
-    timePushDb = 0;
   }
 }
 
@@ -148,13 +145,13 @@ module.exports = function loopSync(
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
-      timePushDb++;
       if (getAll().mode === 0) {
         timeUp++;
         controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
         controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
         controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
       }
+      console.log(parseInt(time.time().split(":")[1]))
       pushDataBase();
       writeDataChart(nameSpaceWebapp);
       writeDataHistory(nameSpaceWebapp);
