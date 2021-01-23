@@ -1,11 +1,9 @@
 const fs = require("fs");
 const path = require("path")
 function saveData(array) {
-    let data = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../saveDataBase/db.json"),'utf8'));
-    data.splice(0, data.length);
-    console.log(data)
+    let arrayData = [];
     for(let i = 0  ; i < array.length ; i++) {
-        data.push({
+        arrayData.push({
             id: i,
             nhietdo: array[i][0],
             doam: array[i][1],
@@ -21,7 +19,7 @@ function saveData(array) {
             Device5: array[i][11],
         })
     }
-    let data1 = JSON.stringify(data);
+    let data1 = JSON.stringify(arrayData);
     fs.writeFileSync(path.resolve(__dirname, "../saveDataBase/db.json"), data1);
 }
 
