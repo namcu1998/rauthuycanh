@@ -1,6 +1,7 @@
 // module.exports.gioithieu = function(req, res, next){
 //     res.render('home/gioithieu');
 // };
+const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
 const { getAll } = require("../saveData/modeAndDataAuto/create.mode");
 module.exports.trangtru = function (req, res, next) {
   res.render("home/trangtru", {
@@ -11,12 +12,8 @@ module.exports.trangtru = function (req, res, next) {
       user: req.cookies.user,
       statusEsp1: getAll().statusEsp.espControll,
       statusEsp2: getAll().statusEsp.espSensor,
-      signal: "ma.getAll()[5].SignalStrength",
-      ip: "ma.getAll()[5].ip",
-      statusDHT: "ma.getAll()[5].statusDHT",
-      statusLux: "ma.getAll()[5].statusLux",
-      CPU: "ma.getAll()[5].CPU",
-      RAM: "ma.getAll()[5].RAM",
+      statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
+      statusLux: getDataEsp().espSensor.statusSensor.statusLux
     });
 };
 
