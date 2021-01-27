@@ -23,31 +23,30 @@
 
 <body style="background-color: #442424">
 	<div class="navi">
-	  <div>
-	    <img src="/image/cancel.png"></img>
-	    <ul>
-			<li><a href="/">Giới thiệu</a></li>
-			<li><a href="/home/tracuu">Tra cứu</a></li>
-			<li><a href="/home/charts">Biều đồ</a></li>
-		</ul>
-	  </div>
+		<div>
+			<img src="/image/cancel.png"></img>
+			<ul>
+				<li><a href="/">Giới thiệu</a></li>
+				<li><a href="/home/tracuu">Tra cứu</a></li>
+				<li><a href="/home/charts">Biều đồ</a></li>
+			</ul>
+		</div>
 	</div>
 	<div class="navi-phone">
-	  <div>
-	    <a id="gohome" href="/home/"></a>
-	    <img id="home" onclick="gohome()" src="/image/home.png"></img>
-	  </div>
-	  <div>
-	    <img id="modeTheme" onclick="changeMode()" src="/image/sun.png"></img>
-	  </div>
-	  <div class="noti">
-	    <img src="/image/bell.png"></img>
-	  </div>
-	  <div>
-	    <img id="menu" src="/image/menu.png"></img>
-	  </div>
+		<div>
+			<a id="gohome" href="/home/"></a>
+			<img id="home" onclick="gohome()" src="/image/home.png"></img>
+		</div>
+		<div>
+			<img id="modeTheme" onclick="changeMode()" src="/image/sun.png"></img>
+		</div>
+		<div class="noti">
+			<img src="/image/bell.png"></img>
+		</div>
+		<div>
+			<img id="menu" src="/image/menu.png"></img>
+		</div>
 	</div>
-	
 	<!-- <div class="form-add">
 		<form action="/home/add" method="POST">
 			<button type="button" class="close" aria-label="Close">
@@ -93,14 +92,6 @@
 							<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
 							<% if (statusEsp1.ram) { %>
 							<span><%= statusEsp1.ram %></span>
-							<% } %> <br>
-							<img src="/image/humidity.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusDHT) { %>
-							<span><%= statusDHT %></span>
-							<% } %> <br>
-							<img src="/image/hot.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusLux) { %>
-							<span><%= statusLux %></span>
 							<% } %> <br>
 						</div>
 						<div style="text-align: center;">
@@ -170,6 +161,10 @@
 			<span class="led">Đóng rèm</span>
 			<input id="button2" data-on="ON" name="Device2" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
 				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
+
+			<span class="led">Đèn</span>
+			<input id="button6" data-on="ON" name="Device2" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
 		</div>
 		<div class="btn-left">
 			<span class="led">Mở rèm</span>
@@ -183,6 +178,10 @@
 			<span class="led">Két nước</span>
 			<input id="button5" data-on="ON" name="Device5" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
 				data-toggle="toggle" data-size="large" <% if (data.Device5 == 1) { %>checked<% } %>>
+
+			<span class="Device7">Đóng rèm</span>
+			<input id="button7" data-on="ON" name="Device2" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
+				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
 		</div>
 	</div>
 	<div id="auto">
@@ -237,31 +236,31 @@
 		</div>
 		<div class="container2">
 			<div>
-			  <div>
-			    <span>Máy bơm:</span>
-				  <span id="maybom"></span>
-			  </div>
 				<div>
-				  <span>Phun sương:</span>
-				  <span id="phunsuong"></span>
+					<span>Máy bơm:</span>
+					<span id="maybom"></span>
 				</div>
 				<div>
-				  <span>Đóng rèm:</span>
-				  <span id="dongrem"></span>
+					<span>Phun sương:</span>
+					<span id="phunsuong"></span>
+				</div>
+				<div>
+					<span>Đóng rèm:</span>
+					<span id="dongrem"></span>
 				</div>
 			</div>
 			<div>
-			  <div>
-			    <span>Mở rèm:</span>
-				  <span id="morem"></span>
-			  </div>
-			  <div>
-			    <span>Quạt:</span>
-				  <span id="quat"></span>
-			  </div>
 				<div>
-				  <span>Két nước:</span>
-				<span id="thietbi"></span>
+					<span>Mở rèm:</span>
+					<span id="morem"></span>
+				</div>
+				<div>
+					<span>Quạt:</span>
+					<span id="quat"></span>
+				</div>
+				<div>
+					<span>Két nước:</span>
+					<span id="thietbi"></span>
 				</div>
 			</div>
 		</div>

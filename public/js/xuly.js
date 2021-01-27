@@ -2,9 +2,9 @@ const socket = io("https://rauthuycanh.herokuapp.com/webapp");
 const table = $("#testLichsu");
 const modeTheme = document.getElementById("modeTheme");
 const dataMode = document.documentElement;
-const statusMode = localStorage.getItem('theme');
+const statusMode = localStorage.getItem("theme");
 let bool = true;
-document.getElementsByClassName("noti")[0].setAttribute("noti-mess", true)
+document.getElementsByClassName("noti")[0].setAttribute("noti-mess", true);
 //https://rauthuycanh.herokuapp.com/nam2351998
 let test = 0;
 function xulyDataLichsu(getid, array) {
@@ -59,50 +59,49 @@ function xulyDataLichsu(getid, array) {
   $("#lich").html(htmljoin);
 }
 
-if(statusMode) {
+if (statusMode) {
   dataMode.setAttribute("data-theme", statusMode);
-  if(statusMode === "light") {
+  if (statusMode === "light") {
     modeTheme.src = "/image/sun.png";
     bool = true;
-  }
-  else {
+  } else {
     bool = false;
-    modeTheme.src = "/image/moon.png"
+    modeTheme.src = "/image/moon.png";
   }
 }
 
 function changeMode() {
   bool = !bool;
-  document.getElementsByClassName("navi")[0].style.left = "-100%"
-  if(bool === true) {
-    modeTheme.src = "/image/sun.png"
+  document.getElementsByClassName("navi")[0].style.left = "-100%";
+  if (bool === true) {
+    modeTheme.src = "/image/sun.png";
     localStorage.setItem("theme", "light");
-    dataMode.setAttribute("data-theme", "light")
-  }
-  else {
-    modeTheme.src = "/image/moon.png"
-    dataMode.setAttribute("data-theme", "dark")
+    dataMode.setAttribute("data-theme", "light");
+  } else {
+    modeTheme.src = "/image/moon.png";
+    dataMode.setAttribute("data-theme", "dark");
     localStorage.setItem("theme", "dark");
   }
 }
 
-const menu = document.getElementById("menu")
-	  
-	  menu.addEventListener("click", function(){
-      document.getElementsByClassName("navi")[0].style.left = "0"
-      setTimeout(() => {
-        document.getElementsByClassName("navi")[0].style.background = "rgba(51,0,255,0.3)"
-      }, 1000)
-      });
-    
-    const close = document.getElementsByClassName("navi")
-	  close[0].addEventListener("click", function(){
-      document.getElementsByClassName("navi")[0].style.left = "-100%"
-      document.getElementsByClassName("navi")[0].style.background = "none"
-    });
-    function gohome() {
-      document.getElementById("gohome").click()
-    }
+const menu = document.getElementById("menu");
+
+menu.addEventListener("click", function () {
+  document.getElementsByClassName("navi")[0].style.left = "0";
+  setTimeout(() => {
+    document.getElementsByClassName("navi")[0].style.background =
+      "rgba(51,0,255,0.3)";
+  }, 1000);
+});
+
+const close = document.getElementsByClassName("navi");
+close[0].addEventListener("click", function () {
+  document.getElementsByClassName("navi")[0].style.left = "-100%";
+  document.getElementsByClassName("navi")[0].style.background = "none";
+});
+function gohome() {
+  document.getElementById("gohome").click();
+}
 function convert(data) {
   if (data == 1) return "Bật";
   else return "Tắt";
@@ -122,6 +121,20 @@ function activeDevice(item) {
     socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
 }
+
+socket.on("sendArraySensorError", item => {
+  let string = '';
+  if(item.length === 1) {
+    string = item[0] + " " + "error";
+  }
+  else {
+    string = item[0] + " " + "error";
+    for(let i = 1; i < item.length; i++) {
+      string = string + "\n" + item[i] + " " + "error";
+    }
+  }
+  alert(string)
+})
 // function onlick() {
 //   document.getElementsByClassName("form-add")[0].style.display = "block";
 // }
@@ -168,7 +181,7 @@ $(document).ready(function () {
   $("#submit").click(() => {
     run();
   });
-  
+
   socket.on("onMa1", (data) => {
     xulyData("maybom", data.Device);
     xulyData("phunsuong", data.Device1);
@@ -186,7 +199,7 @@ $(document).ready(function () {
   socket.on("statusEsp", (data) => {
     document.getElementById("statusEsp").innerHTML = data;
   });
-socket.on("sendDataLichsu", function (data){ 
+  socket.on("sendDataLichsu", function (data) {
     xulyDataLichsu(table, data);
   });
   if ($("#toggle-event-mode").prop("checked") == true) {

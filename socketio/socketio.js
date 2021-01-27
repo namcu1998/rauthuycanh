@@ -86,6 +86,15 @@ module.exports = function deviceIO(
         nameSpaceWebapp.emit("onCharts", getDataChart());
       });
       socket.on("getMa", () => {
+        let arraySensorError = [];
+        for(let i in getDataEsp().espSensor.statusSensor) {
+          if(getDataEsp().espSensor.statusSensor[i] === false) {
+            arraySensorError.push(i);
+          }
+        }
+        if(arraySensorError.length > 0) {
+          nameSpaceWebapp.emit("sendArraySensorError", arraySensorError);
+        }
         nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
       });
       // dữ liệu cảm biến
