@@ -34,4 +34,6 @@ router.get("/getData", function(req, res, next) {
     res.json(array);
 })
 
+
+
 module.exports = router

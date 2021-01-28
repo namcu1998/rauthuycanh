@@ -5,6 +5,7 @@ const middleware = require("socketio-wildcard")();
 const cookieParser = require("cookie-parser");
 const dotenv = require('dotenv').config();
 const bodyParser = require("body-parser");
+const { dialogflow } = require("actions-on-google");
 const { AwakeHeroku } = require("awake-heroku");
 const router = require("../router/home.router");
 const authRouter = require("../router/auth.router");
@@ -26,5 +27,6 @@ module.exports = {
     Auth,
     io,
     server,
-    middleware
+    middleware,
+    dialogflow
 }

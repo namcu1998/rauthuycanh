@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "actions-on-google": "^2.13.0",
     "awake-heroku": "^1.0.17",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",

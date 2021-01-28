@@ -66,8 +66,8 @@ function saveDataEspControll(item) {
 function error(item) {
   let data = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
   data.espSensor.statusSensor = {
-    statusWater: data.espSensor.statusSensor.statusWater,
-    statusWater1: data.espSensor.statusSensor.statusWater1,
+    statusWater: item.statusWater,
+    statusWater1: item.statusWater1,
     statusDHT: item.statusDHT,
     statusLux: item.statusLux,
   };
