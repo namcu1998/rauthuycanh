@@ -7,7 +7,7 @@ const { saveDb } = require("../saveData/createDataCharts/create.charts");
 var serviceAccount = require("../serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://rauthuycanh-d1aca-default-rtdb.firebaseio.com/"
+  databaseURL: "https://rauthuycanh-data-default-rtdb.firebaseio.com/"
 });
 var db = admin.database();
 const dulieuDb = db.ref("data");
