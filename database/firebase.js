@@ -15,6 +15,7 @@ const data1 = db.ref("dulieudieukhien");
 const dulieubieudo = db.ref("dulieubieudo");
 const dulieuLichsu = db.ref("dulieuLichsu");
 const dulieuEsp = db.ref("dulieuEsp");
+
 dulieuDb.on("value", item => {
   let number = [];
   for(let data in item.val()) {
