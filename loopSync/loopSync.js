@@ -48,7 +48,7 @@ function writeDataHistory(nameSpaceWebapp) {
   if (
     readFile()[0].nhietdo !== getDataEsp().espSensor.statusDevice.temp ||
     readFile()[0].doam !== getDataEsp().espSensor.statusDevice.humi ||
-    readFile()[0].light !== getDataEsp().espSensor.statusDevice.light
+    readFile()[0].anhsang !== getDataEsp().espSensor.statusDevice.light
   ) {
     fileSave(
       getDataEsp().espSensor.statusDevice.temp,
