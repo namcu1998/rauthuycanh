@@ -1,0 +1,33 @@
+<input type="checkbox" name="mode" onchange="onChangeAuto(this)" id="active-auto" id="" toggle-size="mini"
+    <% if (data1 === 0) { %>checked<% } %>>
+<div class="block timeSpeak">
+    <h3>Thiết lập thời gian bơm</h3>
+    <div class="block-input">
+        <input class="changeOO" type="checkbox" toggle-size="mini"
+            <% if (dataAuto.setTimePump.active == true) { %>checked<% } %>>
+        <input type="number" name="" id="setTimePump" <% if (dataAuto) { %> value=<%=dataAuto.setTimePump.time %> <% } %>>
+    </div>
+</div>
+<div class="block setMaxMinTemp">
+    <h3>Thiết lập nhiệt độ</h3>
+    <div class="block-input">
+        <input class="changeOO" type="checkbox" toggle-size="mini"
+            <% if (dataAuto.setTemp.active == true) { %>checked<% } %>>
+        <input id="setTempMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
+            value=<%=dataAuto.setTemp.max%> <% } %>>
+        <input id="setTempMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
+            value=<%=dataAuto.setTemp.min%> <% } %>>
+    </div>
+</div>
+<div class="block setMaxMinLux">
+    <h3>Thiết lập độ ẩm</h3>
+    <div class="block-input">
+        <input class="changeOO" type="checkbox" toggle-size="mini"
+            <% if (dataAuto.setLux.active == true) { %>checked<% } %>>
+        <input id="setLuxMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
+            value=<%=dataAuto.setLux.max %> <% } %>>
+        <input id="setLuxMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
+            value=<%=dataAuto.setLux.min %> <% } %>>
+    </div>
+</div>
+<button id="submit">Submit</button>

@@ -1,0 +1,84 @@
+[toggle-size="large"] {
+  --width-input: 100px;
+  --height-input: 50px;
+  --margin-input: 5px;
+  --border-radius: 50px;
+  --translateX-input: 50px;
+  --width-after: 40px;
+  --height-after: 40px;
+}
+
+[toggle-active="yes"] {
+    --appearance-active: none;
+}
+
+[toggle-active="no"] {
+    --appearance-active: auto;
+    --display-active: none;
+}
+
+[toggle-size="mini"] {
+  --width-input: 60px;
+  --height-input: 30px;
+  --margin-input: 5px;
+  --border-radius: 50px;
+  --translateX-input: 30px;
+  --width-after: 20px;
+  --height-after: 20px;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  position: relative;
+  appearance: var(--appearance-active);
+  width: var(--width-input);
+  height: var(--height-input);
+  border-radius: var(--border-radius);
+  background-color: #ccc;
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+  outline: none;
+  transition: 1s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #2196f3;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--width-after);
+  height: var(--height-after);
+  background-color: white;
+  margin: var(--margin-input) 0 0 var(--margin-input);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  display: var(--display-active);
+}
+
+input[type="checkbox"]:checked::after {
+  transform: translateX(var(--translateX-input));
+  -webkit-transform: translateX(var(--translateX-input));
+  -moz-transform: translateX(var(--translateX-input));
+  -ms-transform: translateX(var(--translateX-input));
+  -o-transform: translateX(var(--translateX-input));
+}
