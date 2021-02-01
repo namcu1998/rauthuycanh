@@ -5,294 +5,38 @@
 	<title>Trang chủ</title>
 	<script src="/js/jquery.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="/css/layout.trangtru.css" />
-	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-		integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<link rel="canonical" href="http://www.bootstraptoggle.com">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="/image/browser.png" />
-	<link href="/cssToggle/bootstrap-toggle.css" rel="stylesheet">
-	<script src="/jsToggle/bootstrap-toggle.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/btn-toggle.css" />
+	<link rel="stylesheet" type="text/css" href="/css/navi-bar.css" />
 </head>
 
-<body style="background-color: #442424">
-	<div class="navi">
-		<div>
-			<img src="/image/cancel.png"></img>
-			<ul>
-				<li><a href="/">Giới thiệu</a></li>
-				<li><a href="/home/tracuu">Tra cứu</a></li>
-				<li><a href="/home/charts">Biều đồ</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="navi-phone">
-		<div>
-			<a id="gohome" href="/home/"></a>
-			<img id="home" onclick="gohome()" src="/image/home.png"></img>
-		</div>
-		<div>
-			<img id="modeTheme" onclick="changeMode()" src="/image/sun.png"></img>
-		</div>
-		<div class="noti">
-			<img src="/image/bell.png"></img>
-		</div>
-		<div>
-			<img id="menu" src="/image/menu.png"></img>
-		</div>
-	</div>
-	<!-- <div class="form-add">
-		<form action="/home/add" method="POST">
-			<button type="button" class="close" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="form-group">
-				<label for="exampleFormControlInput1">Tên thiết bị</label>
-				<input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+<body>
+	<%- include('navi-bar'); -%>
+	<div class="content-container">
+		<div class="content">
+			<div class="page controll">
+				<%- include('controll-page'); -%>
 			</div>
-			<button type="submit" class="btn btn-primary mb-2">Submit</button>
-		</form>
-	</div> -->
-	<div id="controller">
-		<div class="row">
-			<div class="col-sm" id="thongtin">
-				<div class="statusEsp">
-					<span>Trạng thái ESP1: </span>
-					<% if (statusEsp1.status === true) { %>
-					<span>connected</span>
-					<% } %>
-					<% if (statusEsp2.status === true) { %>
-					<span>Trạng thái ESP2: </span>
-					<span>connected</span>
-					<% } %>
-				</div>
-				<div class="information">
-					<div style="display: flex; justify-content: space-around;">
-						<div style="text-align: center;">
-							<img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp1.ip) { %>
-							<span><%= statusEsp1.ip %></span>
-							<% } %> <br>
-							<img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp1.SignalStrength) { %>
-							<span><%= statusEsp1.SignalStrength %></span>
-							<% } %>
-							<span>dBm</span> <br>
-							<img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp1.ram) { %>
-							<span><%= statusEsp1.cpu %></span>
-							<% } %>
-							<span>Mhz</span> <br>
-							<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp1.ram) { %>
-							<span><%= statusEsp1.ram %></span>
-							<% } %> <br>
-						</div>
-						<div style="text-align: center;">
-							<img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp2.ip) { %>
-							<span><%= statusEsp2.ip %></span>
-							<% } %> <br>
-							<img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp2.SignalStrength) { %>
-							<span><%= statusEsp2.SignalStrength %></span>
-							<% } %>
-							<span>dBm</span> <br>
-							<img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp2.cpu) { %>
-							<span><%= statusEsp2.cpu %></span>
-							<% } %>
-							<span>Mhz</span> <br>
-							<img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-							<% if (statusEsp2.ram) { %>
-							<span><%= statusEsp2.ram %></span>
-							<% } %>
-						</div>
-					</div>
-				</div>
+			<div class="page automatic">
+				<%- include('automatic-page'); -%>
 			</div>
-			<div class="col-sm">
-				<input id="toggle-event-mode" data-on="CONTROL" data-off="AUTO" type="checkbox" data-toggle="toggle"
-					<% if (data1 == 1) { %>checked<% } %>>
+			<div class="page history">
+				<%- include('history-page'); -%>
 			</div>
-			<div class="col-sm">
-				<div style="float: left;">
-					<!-- <div class="statusEsp">
-						<% if (user) { %>
-						<span>Chào <%= user %></span>
-						<% } %>
-					</div> -->
-					<!-- <input type="button" value="Thêm" class="btn btn-primary" onclick="onlick()" id="btn-add"> -->
-					<!-- <input type="button" value="Xóa" class="btn btn-primary" onclick="onlick1()" id="btn-add"> -->
-				</div>
-				<div style="float: right;">
-				</div>
+			<div class="page search">
+				<%- include('search-page'); -%>
+			</div>
+			<div class="page chart">
+				<%- include('chart-page'); -%>
 			</div>
 		</div>
 	</div>
-	<div id="line"></div>
-	<div class="container1" id="controll">
-		<!-- <% for(item in data) { %>
-		<div style="margin: 20px; text-align: center;">
-			<span class="led"><%= data[item].name %></span> <br>
-			<input id="button" data-on="ON" name=<%= item  %> data-off="OFF" onchange="activeDevice(this)"
-				type="checkbox" data-toggle="toggle" data-size="large"
-				<% if (data[item].status == 1) { %>checked<% } %>>
-			<form class="delete">
-				<button type="submit" name="id" value=<%= data[item].id  %>  class="btn btn-primary mb-2">xóa</button>
-			</form>
-		</div>
-		<% }; %> -->
-		<div class="btn-right">
-			<span class="led">Máy bơm</span>
-			<input id="button" data-on="ON" name="Device" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device == 1) { %>checked<% } %>>
-
-			<span class="led">Phun sương</span>
-			<input id="button1" data-on="ON" name="Device1" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				onchange="" data-toggle="toggle" data-size="large" <% if (data.Device1 == 1) { %>checked<% } %>>
-
-			<span class="led">Đóng rèm</span>
-			<input id="button2" data-on="ON" name="Device2" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
-
-			<span class="led">Đèn</span>
-			<input id="button6" data-on="ON" name="Device6" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
-		</div>
-		<div class="btn-left">
-			<span class="led">Mở rèm</span>
-			<input id="button3" data-on="ON" name="Device3" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device3== 1) { %>checked<% } %>>
-
-			<span class="led">Quạt</span>
-			<input id="button4" data-on="ON" name="Device4" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device4 == 1) { %>checked<% } %>>
-
-			<span class="led">Két nước</span>
-			<input id="button5" data-on="ON" name="Device5" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device5 == 1) { %>checked<% } %>>
-
-			<span class="led">Bơm nước</span>
-			<input id="button7" data-on="ON" name="Device7" data-off="OFF" onchange="activeDevice(this)" type="checkbox"
-				data-toggle="toggle" data-size="large" <% if (data.Device2 == 1) { %>checked<% } %>>
-		</div>
-	</div>
-	<div id="auto">
-		<h1 style="text-align: center;">Bảng thiết lập chế độ auto</h1>
-		<h2 id="line1" style="text-align: center;">
-			<--------------------------------------------------------------------------------------------->
-		</h2>
-		<div class="timeSpeak" style="text-align: center;">
-			<h3>Thiết lập thời gian bơm</h3>
-			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
-				<% if (dataStatusActiveChild.thoigianbom == true) { %>checked<% } %>>
-			<input type="number" name="" id="setTimePump" style="margin-top: 10px; text-align: center;"
-				<% if (dataAuto) { %> value=<%=dataAuto.setTimePump %> <% } %>>
-		</div>
-		<div id="line2">
-			<h2 style="text-align: center;">
-				---------------------------------------------------------------------------------------------</h2>
-		</div>
-		<div id="MMT">
-			<h3>Thiết lập giá trị nhiệt độ</h3>
-			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
-				<% if (dataStatusActiveChild.MMTemp == true) { %>checked<% } %>>
-			<div>
-				<input id="setTempMax" style="margin: 10px; text-align: center;" type="number"
-					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[0]%> <% } %>>
-
-			</div>
-			<div>
-				<input id="setTempMin" style="margin: 10px; text-align: center;" type="number"
-					placeholder="nhập giá trị" <% if (dataAuto) { %> value=<%=dataAuto.setTemp[1]%> <% } %>>
-			</div>
-		</div>
-		<div id="MMH">
-			<h3>Thiết lập giá trị ánh sáng</h3>
-			<input class="changeOO" data-on="ON" data-off="OFF" type="checkbox" data-toggle="toggle" data-size="mini"
-				<% if (dataStatusActiveChild.MMLux == true) { %>checked<% } %>>
-			<div>
-
-				<input id="setLuxMax" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
-					<% if (dataAuto) { %> value=<%=dataAuto.setLux[0] %> <% } %>>
-			</div>
-			<div>
-				<input id="setLuxMin" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
-					<% if (dataAuto) { %> value=<%=dataAuto.setLux[1] %> <% } %>>
-			</div>
-
-		</div>
-		<div>
-			<h3>Thiết lập thời gian cập nhật(s)</h3>
-			<input id="setUpload" style="margin: 10px; text-align: center;" type="number" placeholder="nhập giá trị"
-				<% if (dataAuto) { %> value=<%=dataAuto.setTemp[0] %> <% } %>>
-		</div>
-		<div class="container2">
-			<div>
-				<div>
-					<span>Máy bơm:</span>
-					<span id="maybom"></span>
-				</div>
-				<div>
-					<span>Phun sương:</span>
-					<span id="phunsuong"></span>
-				</div>
-				<div>
-					<span>Đóng rèm:</span>
-					<span id="dongrem"></span>
-				</div>
-			</div>
-			<div>
-				<div>
-					<span>Mở rèm:</span>
-					<span id="morem"></span>
-				</div>
-				<div>
-					<span>Quạt:</span>
-					<span id="quat"></span>
-				</div>
-				<div>
-					<span>Két nước:</span>
-					<span id="thietbi"></span>
-				</div>
-			</div>
-		</div>
-		<input id="submit" type="button" value="Gửi">
-	</div>
-	<div class="lichsu">
-		<table>
-			<thead>
-				<tr>
-					<th colspan="1">Ánh sáng</th>
-					<th colspan="1">Nhiệt độ</th>
-					<th colspan="1">Độ ẩm</th>
-					<th colspan="1">Nhiệt độ1</th>
-					<th colspan="1">Độ ẩm1</th>
-					<th colspan="1">Thời gian</th>
-					<th colspan="1">Bơm</th>
-					<th colspan="1">PS</th>
-					<th colspan="1">ĐR</th>
-					<th colspan="1">MR</th>
-					<th colspan="1">Quạt</th>
-					<th colspan="1">KN</th>
-					<!-- <th colspan="1">Sưởi</th> -->
-				</tr>
-			</thead>
-			<div style="scroll-behavior: auto;">
-				<tbody id="lich">
-				</tbody>
-			</div>
-		</table>
-	</div>
-	<div style="height: 102px;"></div>
-	<script src="/js/xuly.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/xuly-navi.js"></script>
+	<!-- <script src = "/js/xuly.charts.js"></script> -->
 </body>
-
 </html>

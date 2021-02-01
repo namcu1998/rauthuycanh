@@ -3,37 +3,14 @@
         margin: 0;
         padding: 0;
     }
-    #header{
-        background-position: center;
-        background-size: 500px;
-        color: #ffffff;
-        text-align: center;
-    }
-    #header ul{
-        margin: 0px;
-        text-align: center;
-        background-color: #442424;
-    }
-    #header ul li{
-        width: 200px;
-        height: 40px;
-        display: inline-table;
-        line-height: 40px;
-    }
-    #header ul li a{
-        color: #ffffff;
-        display: block;
-        text-decoration: none;
-    }
-    #header ul li :hover{
-        background-color: black;
-    }
+    
     .hitstory {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
+
     .hitstory div:nth-child(2) {
         width: 100%;
     }

@@ -7,7 +7,7 @@ function Object(nhietdo, doam, nhietdo1, doam1, light, time, device, device1, de
   this.doam = doam;
   this.nhietdo1 = nhietdo1;
   this.doam1 = doam1;
-  this.light = light;
+  this.anhsang = light;
   this.thoigian = time;
   this.device1 = device1;
   this.device = device;

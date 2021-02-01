@@ -31,11 +31,31 @@ module.exports.lichsu = function (req, res, next) {
   res.render("home/lichsu");
 };
 module.exports.charts = function (req, res, next) {
-  res.render("home/charts");
+  res.render("home/charts", {
+    data: getAll().statusDevice.Device,
+    dataAuto: getAll().autoData,
+    data1: getAll().mode,
+    dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
+    user: req.cookies.user,
+    statusEsp1: getAll().statusEsp.espControll,
+    statusEsp2: getAll().statusEsp.espSensor,
+    statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
+    statusLux: getDataEsp().espSensor.statusSensor.statusLux
+  });
 };
 module.exports.login = function (req, res, next) {
   res.render("home/login");
 };
 module.exports.tracuu = function (req, res, next) {
-  res.render("home/tracuu");
+  res.render("home/tracuu", {
+    data: getAll().statusDevice.Device,
+    dataAuto: getAll().autoData,
+    data1: getAll().mode,
+    dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
+    user: req.cookies.user,
+    statusEsp1: getAll().statusEsp.espControll,
+    statusEsp2: getAll().statusEsp.espSensor,
+    statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
+    statusLux: getDataEsp().espSensor.statusSensor.statusLux
+  });
 };

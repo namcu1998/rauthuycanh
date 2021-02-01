@@ -78,6 +78,7 @@ module.exports = function deviceIO(
           setDevice(item[0], item[1]);
           nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
         }
+        nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device)
       });
       socket.on("getData", () => {
         nameSpaceWebapp.emit("sendDataLichsu", readFile());
@@ -103,9 +104,6 @@ module.exports = function deviceIO(
       });
       socket.on("mode", (data) => {
         saveMode(data);
-        if(getAll().mode === 0) {
-          nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
-        }
       });
     });
   }
