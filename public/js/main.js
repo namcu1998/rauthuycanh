@@ -1,1 +1,380 @@
-var _0xc06a=["\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x6F\x63\x61\x6C\x68\x6F\x73\x74\x3A\x33\x34\x38\x34\x2F\x77\x65\x62\x61\x70\x70","\x23\x68\x69\x73\x74\x6F\x72\x79","\x23\x73\x65\x61\x72\x63\x68","\x67\x65\x74\x44\x61\x74\x61\x43\x68\x61\x72\x74\x73","\x65\x6D\x69\x74","\x69\x6E\x70\x75\x74\x2D\x73\x65\x61\x72\x63\x68","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x69\x6E\x70\x75\x74","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72\x41\x6C\x6C","\x62\x74\x6E\x2D\x74\x6F\x67\x67\x6C\x65","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x43\x6C\x61\x73\x73\x4E\x61\x6D\x65","\x67\x65\x74\x4D\x61","\x67\x65\x74\x44\x61\x74\x61","\x3C\x74\x72\x3E","\x3C\x74\x64\x3E","\x61\x6E\x68\x73\x61\x6E\x67","\x6C\x78","\x3C\x2F\x74\x64\x3E","\x6E\x68\x69\x65\x74\x64\x6F","\xBA\x43","\x64\x6F\x61\x6D","\x25","\x6E\x68\x69\x65\x74\x64\x6F\x31","\x64\x6F\x61\x6D\x31","\x74\x68\x6F\x69\x67\x69\x61\x6E","\x64\x65\x76\x69\x63\x65","\x64\x65\x76\x69\x63\x65\x31","\x64\x65\x76\x69\x63\x65\x32","\x64\x65\x76\x69\x63\x65\x33","\x64\x65\x76\x69\x63\x65\x34","\x64\x65\x76\x69\x63\x65\x35","\x3C\x2F\x74\x72\x3E","\x6D\x61\x70","","\x6A\x6F\x69\x6E","\x68\x74\x6D\x6C","\x6F\x6E","\x62\x6F\x6F\x74\x73\x74\x72\x61\x70\x54\x6F\x67\x67\x6C\x65","\x6F\x66\x66","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x4F\x4E","\x4F\x46\x46","\x42\u1EAD\x74","\x54\u1EAF\x74","\x73\x65\x6E\x64\x44\x61\x74\x61\x4C\x69\x63\x68\x73\x75","\x32\x64","\x67\x65\x74\x43\x6F\x6E\x74\x65\x78\x74","\x6D\x79\x43\x68\x61\x72\x74","\x6D\x79\x43\x68\x61\x72\x74\x31","\x6D\x79\x43\x68\x61\x72\x74\x32","\x64\x61\x74\x61\x6C\x61\x62\x65\x6C\x73","\x70\x6C\x75\x67\x69\x6E\x73","\x67\x6C\x6F\x62\x61\x6C","\x64\x65\x66\x61\x75\x6C\x74\x73","\x23\x33\x36\x31\x64\x64\x62","\x63\x65\x6E\x74\x65\x72","\x74\x6F\x70","\x6D\x65\x72\x67\x65","\x68\x65\x6C\x70\x65\x72\x73","\x70\x75\x73\x68","\x6C\x61\x62\x65\x6C\x73","\x64\x61\x74\x61","\x64\x61\x74\x61\x73\x65\x74\x73","\x75\x70\x64\x61\x74\x65","\x6C\x65\x6E\x67\x74\x68","\x73\x68\x69\x66\x74","\x6F\x6E\x43\x68\x61\x72\x74\x73","\x6E\x68\x69\x65\x74\x64\x6F\x41\x70\x69","\x64\x61\x74\x61\x54\x65\x6D\x70","\x64\x6F\x61\x6D\x41\x70\x69","\x64\x61\x74\x61\x48\x75\x6D\x69","\x64\x61\x74\x61\x4C\x75\x78","\x70\x75\x73\x68\x54\x65\x6D\x70","\x70\x75\x73\x68\x48\x75\x6D\x69","\x70\x75\x73\x68\x4C\x75\x78","\x62\x61\x72","\x6C\x69\x67\x68\x74","\x72\x67\x62\x61\x28\x31\x39\x36\x2C\x20\x32\x34\x35\x2C\x20\x30\x2C\x20\x30\x2E\x38\x29","\x72\x67\x62\x61\x28\x31\x39\x36\x2C\x20\x32\x34\x35\x2C\x20\x30\x2C\x20\x32\x29","\x4C\x55\x58","\x4C\x75\x78","\x6C\x69\x6E\x65","\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9\x20\x62\xEA\x6E\x20\x74\x72\x6F\x6E\x67","\x72\x67\x62\x61\x28\x32\x35\x35\x2C\x30\x2C\x30\x2C\x20\x30\x2E\x35\x29","\x72\x67\x62\x61\x28\x32\x35\x35\x2C\x30\x2C\x30\x2C\x20\x32\x29","\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9\x20\x62\xEA\x6E\x20\x6E\x67\x6F\xE0\x69","\xB0\x43","\x72\x67\x62\x28\x32\x35\x35\x2C\x20\x39\x39\x2C\x20\x31\x33\x32\x29","\u0111\u1ED9\x20\u1EA9\x6D\x20\x62\xEA\x6E\x20\x6E\x67\x6F\xE0\x69","\x72\x67\x62\x61\x28\x31\x33\x39\x2C\x20\x39\x37\x2C\x20\x32\x35\x35\x2C\x20\x30\x2E\x38\x29","\x72\x67\x62\x61\x28\x31\x33\x39\x2C\x20\x39\x37\x2C\x20\x32\x35\x35\x2C\x20\x32\x29","\u0111\u1ED9\x20\u1EA9\x6D\x20\x62\xEA\x6E\x20\x74\x72\x6F\x6E\x67","\x76\x61\x6C\x75\x65","\x74\x61\x72\x67\x65\x74","\x6C\x6F\x67","\x63\x61\x74\x63\x68","\x74\x68\x65\x6E","\x2F\x68\x6F\x6D\x65\x2F\x67\x65\x74\x44\x61\x74\x61","\x67\x65\x74","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x63\x68\x65\x63\x6B\x65\x64","\x61\x63\x74\x69\x76\x65\x44\x65\x76\x69\x63\x65","\x6E\x61\x6D\x65","\x73\x65\x6E\x64\x41\x72\x72\x61\x79\x53\x65\x6E\x73\x6F\x72\x45\x72\x72\x6F\x72","\x20","\x65\x72\x72\x6F\x72","\x0A","\x45\x72\x72\x6F\x72\x21","\x4F\x4B","\x66\x69\x72\x65","\x6D\x6F\x64\x65","\x23\x73\x65\x74\x54\x69\x6D\x65\x50\x75\x6D\x70","\x23\x73\x65\x74\x4C\x75\x78\x4D\x61\x78","\x23\x73\x65\x74\x4C\x75\x78\x4D\x69\x6E","\x23\x73\x65\x74\x54\x65\x6D\x70\x4D\x61\x78","\x23\x73\x65\x74\x54\x65\x6D\x70\x4D\x69\x6E","\x63\x68\u01B0\x61\x20\x6E\x68\u1EAD\x70\x20\u0111\u1EE7\x20\x64\u1EEF\x20\x6C\x69\u1EC7\x75","\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9\x20\x71\x75\xE1\x20\x6C\u1EDB\x6E\x20\x68\x6F\u1EB7\x63\x20\x71\x75\xE1\x20\x6E\x68\u1ECF","\u0111\u1ED9\x20\u1EA9\x6D\x20\x76\xE0\x20\x6E\x68\x69\u1EC7\x74\x20\u0111\u1ED9\x20\x6B\x68\xF4\x6E\x67\x20\u0111\u01B0\u1EE3\x63\x20\x6D\x69\x6E\x20\x6C\u1EDB\x6E\x20\x68\u01A1\x6E\x20\x6D\x61\x78","\x73\x65\x74\x54\x69\x6D\x65\x50\x75\x6D\x70","\x2E\x63\x68\x61\x6E\x67\x65\x4F\x4F","\x44\x65\x76\x69\x63\x65","\x73\x65\x74\x4C\x75\x78","\x44\x65\x76\x69\x63\x65\x32","\x44\x65\x76\x69\x63\x65\x33","\x73\x65\x74\x54\x65\x6D\x70","\x44\x65\x76\x69\x63\x65\x34","\x44\x65\x76\x69\x63\x65\x35","\x6F\x6B","\x66\x65\x65\x64\x62\x61\x63\x6B\x44\x65\x76\x69\x63\x65","\x64\x61\x20\x6E\x68\x61\x6E","\x63\x6C\x69\x63\x6B","\x23\x73\x75\x62\x6D\x69\x74"];const socket=io(_0xc06a[0]);const history=$(_0xc06a[1]);const search=$(_0xc06a[2]);socket[_0xc06a[4]](_0xc06a[3]);const inputSearch=document[_0xc06a[6]](_0xc06a[5]);const input=document[_0xc06a[8]](_0xc06a[7]);const btnToggle=document[_0xc06a[10]](_0xc06a[9]);socket[_0xc06a[4]](_0xc06a[11]);socket[_0xc06a[4]](_0xc06a[12]);function xulyDataLichsu(_0xfa1dx8,_0xfa1dx9){var _0xfa1dxa=_0xfa1dx9[_0xc06a[32]](function(_0xfa1dxb){return (_0xc06a[13]+ _0xc06a[14]+ _0xfa1dxb[_0xc06a[15]]+ _0xc06a[16]+ _0xc06a[17]+ _0xc06a[14]+ _0xfa1dxb[_0xc06a[18]]+ _0xc06a[19]+ _0xc06a[17]+ _0xc06a[14]+ _0xfa1dxb[_0xc06a[20]]+ _0xc06a[21]+ _0xc06a[17]+ _0xc06a[14]+ _0xfa1dxb[_0xc06a[22]]+ _0xc06a[19]+ _0xc06a[17]+ _0xc06a[14]+ _0xfa1dxb[_0xc06a[23]]+ _0xc06a[21]+ _0xc06a[17]+ _0xc06a[14]+ _0xfa1dxb[_0xc06a[24]]+ _0xc06a[17]+ _0xc06a[14]+ convert(_0xfa1dxb[_0xc06a[25]])+ _0xc06a[17]+ _0xc06a[14]+ convert(_0xfa1dxb[_0xc06a[26]])+ _0xc06a[17]+ _0xc06a[14]+ convert(_0xfa1dxb[_0xc06a[27]])+ _0xc06a[17]+ _0xc06a[14]+ convert(_0xfa1dxb[_0xc06a[28]])+ _0xc06a[17]+ _0xc06a[14]+ convert(_0xfa1dxb[_0xc06a[29]])+ _0xc06a[17]+ _0xc06a[14]+ convert(_0xfa1dxb[_0xc06a[30]])+ _0xc06a[17]+ _0xc06a[31])});var _0xfa1dxc=_0xfa1dxa[_0xc06a[34]](_0xc06a[33]);_0xfa1dx8[_0xc06a[35]](_0xfa1dxc)}function xulyden(_0xfa1dxe,_0xfa1dxf){if(_0xfa1dxe== 1){_0xfa1dxf[_0xc06a[37]](_0xc06a[36])}else {_0xfa1dxf[_0xc06a[37]](_0xc06a[38])}}function xulyData(_0xfa1dxe,_0xfa1dxf){if(_0xfa1dxf== 1){document[_0xc06a[6]](_0xfa1dxe)[_0xc06a[39]]= _0xc06a[40]}else {document[_0xc06a[6]](_0xfa1dxe)[_0xc06a[39]]= _0xc06a[41]}}function convert(_0xfa1dx12){if(_0xfa1dx12== 1){return _0xc06a[42]}else {return _0xc06a[43]}}socket[_0xc06a[36]](_0xc06a[44],function(_0xfa1dx12){xulyDataLichsu(history,_0xfa1dx12)});const ctx=document[_0xc06a[6]](_0xc06a[47])[_0xc06a[46]](_0xc06a[45]);const ctx1=document[_0xc06a[6]](_0xc06a[48])[_0xc06a[46]](_0xc06a[45]);const ctx2=document[_0xc06a[6]](_0xc06a[49])[_0xc06a[46]](_0xc06a[45]);Chart[_0xc06a[58]][_0xc06a[57]](Chart[_0xc06a[53]][_0xc06a[52]][_0xc06a[51]][_0xc06a[50]],{color:_0xc06a[54],anchor:_0xc06a[55],align:_0xc06a[56]});function addData(_0xfa1dx17,_0xfa1dx18,_0xfa1dx12,_0xfa1dx19){_0xfa1dx17[_0xc06a[61]][_0xc06a[60]][_0xc06a[59]](_0xfa1dx18);_0xfa1dx17[_0xc06a[61]][_0xc06a[62]][0][_0xc06a[61]][_0xc06a[59]](_0xfa1dx12);if(_0xfa1dx17[_0xc06a[61]][_0xc06a[62]][1]){_0xfa1dx17[_0xc06a[61]][_0xc06a[62]][1][_0xc06a[61]][_0xc06a[59]](_0xfa1dx19)};_0xfa1dx17[_0xc06a[63]]()}function removeData(_0xfa1dx17){if(_0xfa1dx17[_0xc06a[61]][_0xc06a[60]][_0xc06a[64]]> 20){_0xfa1dx17[_0xc06a[61]][_0xc06a[60]][_0xc06a[65]]();_0xfa1dx17[_0xc06a[61]][_0xc06a[62]][0][_0xc06a[61]][_0xc06a[65]]()};_0xfa1dx17[_0xc06a[63]]()}socket[_0xc06a[36]](_0xc06a[66],function(_0xfa1dx12){_0xfa1dx12[_0xc06a[68]][_0xc06a[32]]((_0xfa1dx1b)=>{addData(myChart1,_0xfa1dx1b[_0xc06a[24]],_0xfa1dx1b[_0xc06a[18]],_0xfa1dx1b[_0xc06a[67]]);removeData(myChart1)});_0xfa1dx12[_0xc06a[70]][_0xc06a[32]]((_0xfa1dx1b)=>{addData(myChart2,_0xfa1dx1b[_0xc06a[24]],_0xfa1dx1b[_0xc06a[20]],_0xfa1dx1b[_0xc06a[69]]);removeData(myChart2)});_0xfa1dx12[_0xc06a[71]][_0xc06a[32]]((_0xfa1dx1b)=>{addData(myChart,_0xfa1dx1b[_0xc06a[24]],_0xfa1dx1b[_0xc06a[15]]);removeData(myChart)})});socket[_0xc06a[36]](_0xc06a[72],function(_0xfa1dx12){addData(myChart1,_0xfa1dx12[1],_0xfa1dx12[0],_0xfa1dx12[2]);removeData(myChart1)});socket[_0xc06a[36]](_0xc06a[73],function(_0xfa1dx12){addData(myChart2,_0xfa1dx12[1],_0xfa1dx12[0],_0xfa1dx12[2]);removeData(myChart2)});socket[_0xc06a[36]](_0xc06a[74],function(_0xfa1dx12){addData(myChart,_0xfa1dx12[1],_0xfa1dx12[0]);removeData(myChart)});var myChart= new Chart(ctx,{type:_0xc06a[75],data:{labels:[],datasets:[{label:_0xc06a[76],data:[],backgroundColor:_0xc06a[77],borderColor:[_0xc06a[78]],borderWidth:1}]},options:{scales:{yAxes:[{ticks:{callback:function(_0xfa1dx1d,_0xfa1dx1e,_0xfa1dx1f){return _0xfa1dx1d+ _0xc06a[79]}}}]},animation:{duration:2000},plugins:{datalabels:{formatter:function(_0xfa1dx1d,_0xfa1dx20){return _0xfa1dx1d+ _0xc06a[80]}}}}});var myChart1= new Chart(ctx1,{type:_0xc06a[81],data:{labels:[],datasets:[{label:_0xc06a[82],data:[],backgroundColor:_0xc06a[83],borderColor:[_0xc06a[84]],borderWidth:3},{label:_0xc06a[85],data:[],backgroundColor:_0xc06a[83],borderColor:[_0xc06a[84]],borderWidth:3}]},options:{plugins:{datalabels:{formatter:function(_0xfa1dx1d,_0xfa1dx20){return _0xfa1dx1d+ _0xc06a[86]}}},legend:{display:true,labels:{fontColor:_0xc06a[87]}},scales:{yAxes:[{ticks:{callback:function(_0xfa1dx1d,_0xfa1dx1e,_0xfa1dx1f){return _0xfa1dx1d+ _0xc06a[86]},suggestedMin:0,suggestedMax:100}}]}}});var myChart2= new Chart(ctx2,{type:_0xc06a[81],data:{labels:[],datasets:[{label:_0xc06a[88],data:[],backgroundColor:_0xc06a[89],borderColor:[_0xc06a[90]],borderWidth:3},{label:_0xc06a[91],data:[],backgroundColor:_0xc06a[89],borderColor:[_0xc06a[90]],borderWidth:3}]},options:{scales:{yAxes:[{ticks:{callback:function(_0xfa1dx1d,_0xfa1dx1e,_0xfa1dx1f){return _0xfa1dx1d+ _0xc06a[21]},suggestedMin:0,suggestedMax:100}}]},plugins:{datalabels:{formatter:function(_0xfa1dx1d,_0xfa1dx20){return _0xfa1dx1d+ _0xc06a[21]}}}}});inputSearch[_0xc06a[99]](_0xc06a[7],(_0xfa1dx1b)=>{console[_0xc06a[94]](_0xfa1dx1b[_0xc06a[93]][_0xc06a[92]]);axios[_0xc06a[98]](_0xc06a[97],{params:{Time:_0xfa1dx1b[_0xc06a[93]][_0xc06a[92]]}})[_0xc06a[96]](function(_0xfa1dx24){let _0xfa1dx12=_0xfa1dx24[_0xc06a[61]];console[_0xc06a[94]](_0xfa1dx12);xulyDataLichsu(search,_0xfa1dx12)})[_0xc06a[95]](function(_0xfa1dx23){console[_0xc06a[94]](_0xfa1dx23)})});function activeDevice(_0xfa1dx1b){if(_0xfa1dx1b[_0xc06a[100]]=== true){socket[_0xc06a[4]](_0xc06a[101],[_0xfa1dx1b[_0xc06a[102]],1])}else {socket[_0xc06a[4]](_0xc06a[101],[_0xfa1dx1b[_0xc06a[102]],0])}}socket[_0xc06a[36]](_0xc06a[103],(_0xfa1dx1b)=>{let _0xfa1dx26=_0xc06a[33];if(_0xfa1dx1b[_0xc06a[64]]=== 1){_0xfa1dx26= _0xfa1dx1b[0]+ _0xc06a[104]+ _0xc06a[105]}else {_0xfa1dx26= _0xfa1dx1b[0]+ _0xc06a[104]+ _0xc06a[105];for(let _0xfa1dx27=1;_0xfa1dx27< _0xfa1dx1b[_0xc06a[64]];_0xfa1dx27++){_0xfa1dx26= _0xfa1dx26+ _0xc06a[106]+ _0xfa1dx1b[_0xfa1dx27]+ _0xc06a[104]+ _0xc06a[105]}};Swal[_0xc06a[109]]({title:_0xc06a[107],text:_0xfa1dx26,icon:_0xc06a[105],confirmButtonText:_0xc06a[108]})});function onChangeAuto(_0xfa1dx1b){console[_0xc06a[94]](_0xfa1dx1b[_0xc06a[100]]);if(_0xfa1dx1b[_0xc06a[100]]== true){socket[_0xc06a[4]](_0xc06a[110],0)}else {socket[_0xc06a[4]](_0xc06a[110],1)}}function run(){let _0xfa1dx12={};if(parseInt($(_0xc06a[111])[0][_0xc06a[92]])== 0|| parseInt($(_0xc06a[112])[0][_0xc06a[92]])== 0|| parseInt($(_0xc06a[113])[0][_0xc06a[92]])== 0|| parseInt($(_0xc06a[114])[0][_0xc06a[92]])== 0|| parseInt($(_0xc06a[115])[0][_0xc06a[92]])== 0){alert(_0xc06a[116])}else {if($(_0xc06a[114])[0][_0xc06a[92]]> 60|| $(_0xc06a[115])[0][_0xc06a[92]]< 0){alert(_0xc06a[117])}else {if($(_0xc06a[114])[0][_0xc06a[92]]< $(_0xc06a[115])[0][_0xc06a[92]]){alert(_0xc06a[118])}else {_0xfa1dx12[_0xc06a[119]]= {active:document[_0xc06a[8]](_0xc06a[120])[0][_0xc06a[100]],time:parseInt($(_0xc06a[111])[0][_0xc06a[92]]),device:[_0xc06a[121]]};_0xfa1dx12[_0xc06a[122]]= {active:document[_0xc06a[8]](_0xc06a[120])[2][_0xc06a[100]],max:$(_0xc06a[112])[0][_0xc06a[92]],min:$(_0xc06a[113])[0][_0xc06a[92]],deviceOnMax:[_0xc06a[123]],deviceOnMin:[_0xc06a[124]]};_0xfa1dx12[_0xc06a[125]]= {active:document[_0xc06a[8]](_0xc06a[120])[1][_0xc06a[100]],max:$(_0xc06a[114])[0][_0xc06a[92]],min:$(_0xc06a[115])[0][_0xc06a[92]],deviceOnMax:[_0xc06a[126]],deviceOnMin:[_0xc06a[127]]};socket[_0xc06a[4]](_0xc06a[128],_0xfa1dx12)}}}}socket[_0xc06a[36]](_0xc06a[129],(_0xfa1dx1b)=>{console[_0xc06a[94]](_0xc06a[130]);for(let _0xfa1dx27 in _0xfa1dx1b){for(let _0xfa1dx2a of btnToggle){if(_0xfa1dx27=== _0xfa1dx2a[_0xc06a[102]]&& _0xfa1dx1b[_0xfa1dx27]=== 1){_0xfa1dx2a[_0xc06a[100]]= true;console[_0xc06a[94]](_0xfa1dx1b[_0xfa1dx27],_0xfa1dx2a)};if(_0xfa1dx27=== _0xfa1dx2a[_0xc06a[102]]&& _0xfa1dx1b[_0xfa1dx27]=== 0){_0xfa1dx2a[_0xc06a[100]]= false;console[_0xc06a[94]](_0xfa1dx1b[_0xfa1dx27],_0xfa1dx2a)}}}});$(_0xc06a[132])[_0xc06a[131]](()=>{run();console[_0xc06a[94]](_0xc06a[130])})
+const socket = io("https://rauthuycanh.herokuapp.com/webapp");
+const history = $("#history");
+const search = $("#search");
+socket.emit("getDataCharts");
+const inputSearch = document.getElementById("input-search");
+const input = document.querySelectorAll("input");
+const btnToggle = document.getElementsByClassName("btn-toggle");
+socket.emit("getMa");
+socket.emit("getData");
+
+function xulyDataLichsu(table, array) {
+  var html = array.map(function (x) {
+    return (
+      "<tr>" +
+      "<td>" +
+      x.anhsang +
+      "lx" +
+      "</td>" +
+      "<td>" +
+      x.nhietdo +
+      "ºC" +
+      "</td>" +
+      "<td>" +
+      x.doam +
+      "%" +
+      "</td>" +
+      "<td>" +
+      x.nhietdo1 +
+      "ºC" +
+      "</td>" +
+      "<td>" +
+      x.doam1 +
+      "%" +
+      "</td>" +
+      "<td>" +
+      x.thoigian +
+      "</td>" +
+      "<td>" +
+      convert(x.device) +
+      "</td>" +
+      "<td>" +
+      convert(x.device1) +
+      "</td>" +
+      "<td>" +
+      convert(x.device2) +
+      "</td>" +
+      "<td>" +
+      convert(x.device3) +
+      "</td>" +
+      "<td>" +
+      convert(x.device4) +
+      "</td>" +
+      "<td>" +
+      convert(x.device5) +
+      "</td>" +
+      "</tr>"
+    );
+  });
+  var htmljoin = html.join("");
+  table.html(htmljoin);
+}
+
+function xulyden(item1, item2) {
+  if (item1 == 1) {
+    item2.bootstrapToggle("on");
+  } else item2.bootstrapToggle("off");
+}
+
+function xulyData(item1, item2) {
+  if (item2 == 1) {
+    document.getElementById(item1).innerHTML = "ON";
+  } else document.getElementById(item1).innerHTML = "OFF";
+}
+
+function convert(data) {
+  if (data == 1) return "Bật";
+  else return "Tắt";
+}
+
+socket.on("sendDataLichsu", function (data) {
+  xulyDataLichsu(history, data);
+});
+
+const ctx = document.getElementById("myChart").getContext("2d");
+const ctx1 = document.getElementById("myChart1").getContext("2d");
+const ctx2 = document.getElementById("myChart2").getContext("2d");
+Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
+  color: "#361ddb",
+  anchor: "center",
+  align: "top",
+});
+function addData(chart, label, data, data1) {
+  chart.data.labels.push(label);
+  chart.data.datasets[0].data.push(data);
+  if (chart.data.datasets[1]) {
+    chart.data.datasets[1].data.push(data1);
+  }
+  chart.update();
+}
+function removeData(chart) {
+  if (chart.data.labels.length > 20) {
+    chart.data.labels.shift();
+    chart.data.datasets[0].data.shift();
+  }
+  chart.update();
+}
+
+socket.on("onCharts", function (data) {
+  data.dataTemp.map((item) => {
+    addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
+    removeData(myChart1);
+  });
+  data.dataHumi.map((item) => {
+    addData(myChart2, item.thoigian, item.doam, item.doamApi);
+    removeData(myChart2);
+  });
+  data.dataLux.map((item) => {
+    addData(myChart, item.thoigian, item.anhsang);
+    removeData(myChart);
+  });
+});
+socket.on("pushTemp", function (data) {
+  addData(myChart1, data[1], data[0], data[2]);
+  removeData(myChart1);
+});
+socket.on("pushHumi", function (data) {
+  addData(myChart2, data[1], data[0], data[2]);
+  removeData(myChart2);
+});
+socket.on("pushLux", function (data) {
+  addData(myChart, data[1], data[0]);
+  removeData(myChart);
+});
+
+var myChart = new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "light",
+        data: [],
+        backgroundColor: "rgba(196, 245, 0, 0.8)",
+        borderColor: ["rgba(196, 245, 0, 2)"],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "LUX";
+            },
+          },
+        },
+      ],
+    },
+    animation: {
+      duration: 2000,
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "Lux";
+        },
+      },
+    },
+  },
+});
+var myChart1 = new Chart(ctx1, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "nhiệt độ bên trong",
+        data: [],
+        backgroundColor: "rgba(255,0,0, 0.5)",
+        borderColor: ["rgba(255,0,0, 2)"],
+        borderWidth: 3,
+      },
+      {
+        label: "nhiệt độ bên ngoài",
+        data: [],
+        backgroundColor: "rgba(255,0,0, 0.5)",
+        borderColor: ["rgba(255,0,0, 2)"],
+        borderWidth: 3,
+      },
+    ],
+  },
+  options: {
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "°C";
+        },
+      },
+    },
+    legend: {
+      display: true,
+      labels: {
+        fontColor: "rgb(255, 99, 132)",
+      },
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "°C";
+            },
+            suggestedMin: 0,
+            suggestedMax: 100,
+          },
+        },
+      ],
+    },
+  },
+});
+var myChart2 = new Chart(ctx2, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "độ ẩm bên ngoài",
+        data: [],
+        backgroundColor: "rgba(139, 97, 255, 0.8)",
+        borderColor: ["rgba(139, 97, 255, 2)"],
+        borderWidth: 3,
+      },
+      {
+        label: "độ ẩm bên trong",
+        data: [],
+        backgroundColor: "rgba(139, 97, 255, 0.8)",
+        borderColor: ["rgba(139, 97, 255, 2)"],
+        borderWidth: 3,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "%";
+            },
+            suggestedMin: 0,
+            suggestedMax: 100,
+          },
+        },
+      ],
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "%";
+        },
+      },
+    },
+  },
+});
+
+inputSearch.addEventListener("input", (item) => {
+  console.log(item.target.value);
+  axios
+    .get("/home/getData", {
+      params: {
+        Time: item.target.value,
+      },
+    })
+    .then(function (response) {
+      let data = response.data;
+      console.log(data);
+      xulyDataLichsu(search, data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
+
+function activeDevice(item) {
+  if (item.checked === true) {
+    socket.emit("activeDevice", [item.name, 1]);
+  } else socket.emit("activeDevice", [item.name, 0]);
+}
+
+socket.on("sendArraySensorError", (item) => {
+  let string = "";
+  if (item.length === 1) {
+    string = item[0] + " " + "error";
+  } else {
+    string = item[0] + " " + "error";
+    for (let i = 1; i < item.length; i++) {
+      string = string + "\n" + item[i] + " " + "error";
+    }
+  }
+  Swal.fire({
+    title: 'Error!',
+    text: string,
+    icon: 'error',
+    confirmButtonText: 'OK'
+  })
+});
+
+function onChangeAuto(item) {
+  console.log(item.checked);
+  if (item.checked == true) {
+    socket.emit("mode", 0);
+  } else socket.emit("mode", 1);
+}
+
+function run() {
+  let data = {};
+  if (
+    parseInt($("#setTimePump")[0].value) == 0 ||
+    parseInt($("#setLuxMax")[0].value) == 0 ||
+    parseInt($("#setLuxMin")[0].value) == 0 ||
+    parseInt($("#setTempMax")[0].value) == 0 ||
+    parseInt($("#setTempMin")[0].value) == 0
+  ) {
+    alert("chưa nhập đủ dữ liệu");
+  } else if ($("#setTempMax")[0].value > 60 || $("#setTempMin")[0].value < 0)
+    alert("nhiệt độ quá lớn hoặc quá nhỏ");
+  else if ($("#setTempMax")[0].value < $("#setTempMin")[0].value)
+    alert("độ ẩm và nhiệt độ không được min lớn hơn max");
+  else {
+    data.setTimePump = {
+      active: document.querySelectorAll(".changeOO")[0].checked,
+      time: parseInt($("#setTimePump")[0].value),
+      device: ["Device"],
+    };
+    data.setLux = {
+      active: document.querySelectorAll(".changeOO")[2].checked,
+      max: $("#setLuxMax")[0].value,
+      min: $("#setLuxMin")[0].value,
+      deviceOnMax: ["Device2"],
+      deviceOnMin: ["Device3"],
+    };
+    data.setTemp = {
+      active: document.querySelectorAll(".changeOO")[1].checked,
+      max: $("#setTempMax")[0].value,
+      min: $("#setTempMin")[0].value,
+      deviceOnMax: ["Device4"],
+      deviceOnMin: ["Device5"],
+    };
+    socket.emit("ok", data);
+  }
+}
+
+socket.on("feedbackDevice", item => {
+  console.log("da nhan")
+  for(let i in item) {
+    for(let i1 of btnToggle) {
+      if(i === i1.name && item[i] === 1) {
+        i1.checked = true;
+        console.log(item[i], i1)
+      }
+      if(i === i1.name && item[i] === 0) {
+        i1.checked = false;
+        console.log(item[i], i1)
+      }
+    }
+  }
+})
+
+$("#submit").click(() => {
+  run();
+  console.log("da nhan");
+});

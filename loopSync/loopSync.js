@@ -1,5 +1,5 @@
 const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
-const { getAll } = require("../saveData/modeAndDataAuto/create.mode");
+const { getAll, statusEsp } = require("../saveData/modeAndDataAuto/create.mode");
 const getDataApiAsync = require("../api/api");
 const time = require("../time/time");
 const { dulieuDb, data1, dulieubieudo } = require("../database/firebase");
@@ -22,6 +22,14 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
     nameSpaceEspSensor.emit("ping", "nam");
     timeConnect = 0;
   } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
+}
+
+function checkEspConnected() {
+  if(time.timeSecond()%10 === 0) {
+    statusEsp("espControll", 0, "none", "none", "none", "none");
+    statusEsp("espSensor", 0, "none", "none", "none", "none");
+    console.log("test")
+  }
 }
 
 function pushDataBase() {
@@ -152,6 +160,7 @@ module.exports = function loopSync(
         controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
         controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
       }
+      checkEspConnected();
       pushDataBase();
       writeDataChart(nameSpaceWebapp);
       writeDataHistory(nameSpaceWebapp);
