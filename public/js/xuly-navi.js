@@ -14,6 +14,11 @@ const btnShowControllPage = document.getElementById("btn-show-controll-page");
 const btnShowHistoryPage = document.getElementById("btn-show-history-page");
 const btnShowSearchPage = document.getElementById("btn-show-search-page");
 const btnShowChartPage = document.getElementById("btn-show-chart-page");
+const btnShowAutomaticPage1 = document.getElementById("btn-show-automatic-page1");
+const btnShowControllPage1 = document.getElementById("btn-show-controll-page1");
+const btnShowHistoryPage1 = document.getElementById("btn-show-history-page1");
+const btnShowSearchPage1 = document.getElementById("btn-show-search-page1");
+const btnShowChartPage1 = document.getElementById("btn-show-chart-page1");
 
 btnShowMenu.addEventListener("click", () => {
   menu[0].style.left = "0";
@@ -34,6 +39,7 @@ btnShowInformation.addEventListener("click", () => {
   informationEsp[0].style.right = "0";
   contentContainer[0].style.background = "rgb(0, 0, 0, 0.2)"
 })
+
 btnCloseInformation.addEventListener("click", () => {
   informationEsp[0].style.right = "-100%";
   contentContainer[0].style.background = "rgb(0, 0, 0, 0)"
@@ -43,16 +49,17 @@ btnShowNotification.addEventListener("click", () => {
   notification[0].style.display = "block";
   contentContainer[0].style.background = "rgb(0, 0, 0, 0.2)"
 })
+
 btnCloseNotification.addEventListener("click", () => {
   notification[0].style.display = "none";
   contentContainer[0].style.background = "rgb(0, 0, 0, 0)"
 })
 
-btnShowAutomaticPage.addEventListener("click", () => {
+btnShowControllPage.addEventListener("click", () => {
   content[0].style.transform = "translateX(0)"
 })
 
-btnShowControllPage.addEventListener("click", () => {
+btnShowAutomaticPage.addEventListener("click", () => {
   content[0].style.transform = "translateX(-20%)"
 })
 
@@ -65,5 +72,25 @@ btnShowSearchPage.addEventListener("click", () => {
 })
 
 btnShowChartPage.addEventListener("click", () => {
+  content[0].style.transform = "translateX(-80%)"
+})
+
+btnShowControllPage1.addEventListener("click", () => {
+  content[0].style.transform = "translateX(0)"
+})
+
+btnShowAutomaticPage1.addEventListener("click", () => {
+  content[0].style.transform = "translateX(-20%)"
+})
+
+btnShowHistoryPage1.addEventListener("click", () => {
+  content[0].style.transform = "translateX(-40%)"
+})
+
+btnShowSearchPage1.addEventListener("click", () => {
+  content[0].style.transform = "translateX(-60%)"
+})
+
+btnShowChartPage1.addEventListener("click", () => {
   content[0].style.transform = "translateX(-80%)"
 })
