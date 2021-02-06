@@ -29,7 +29,8 @@
   --font-size: 1.5em;
 }
 
-@media only screen and (min-width: 600px) {
+/* Màng hình laptop hoặc desktop lớn*/
+@media (min-width: 1200px) {
   * {
     margin: 0;
     padding: 0;
@@ -101,7 +102,7 @@
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
-}
+  }
 
   .chart {
     overflow: scroll;
@@ -126,7 +127,7 @@
     border: 1px black solid;
   }
 
-  .search  {
+  .search {
     overflow: scroll;
   }
 
@@ -158,344 +159,19 @@
   }
 }
 
-/* @media only screen and (max-width: 600px) {
-  :root {
-    --text-color: black;
-    --background-color-navi: #0c2239;
-    --background-content: white;
-    --border: white;
-    --text-input: black;
-    --border-input: black;
-    --font-family: "Poppins";
-    --font-weight: 300;
-    --font-size: 1.5em;
-  }
-  [data-theme="dark"] {
-    --text-color: white;
-    --background-color-navi: #0c2239;
-    --background-content: #0c2239;
-    --border: #0c2239;
-    --text-input: white;
-    --border-input: white;
-    --font-family: "Poppins";
-    --font-weight: 300;
-    --font-size: 1.5em;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: sans-serif;
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-  }
+/* Màng hình máy tính bảng lớn hoặc máy tính màng hình trung bình */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
 
-  .navi {
-    position: fixed;
-    height: 1000vh;
-    width: 100%;
-    background-color: rgba(51, 0, 255, 0);
-    left: -100%;
-    z-index: 100;
-    transition: left 1s;
-  }
+/* Màng hình máy tính bảng nhỏ hoặc máy tính màng hình nhỏ */
+@media (min-width: 768px) and (max-width: 991px) {
+}
 
-  input[type="number"] {
-    -moz-appearance: textfield;
-    border: 1px solid var(--border-input);
-    color: var(--text-input);
-    background-color: var(--background-content);
-  }
+/* Màng hình máy tính bảng rất nhỏ hoặc điện thoại di động */
+@media (max-width: 767px) {
+}
 
-  .navi div {
-    width: 70%;
-    background-color: var(--background-content);
-    height: 1000vh;
-    z-index: 200;
-  }
-
-  #submit {
-    display: relative;
-    width: 150px;
-    height: 50px;
-    color: black;
-    background: white;
-    border-radius: 25px;
-    animation: btn 10s infinite;
-  }
-
-  @keyframes btn {
-    0% {
-      background: red;
-    }
-    25% {
-      background: blue;
-    }
-    50% {
-      background: #0c2239;
-    }
-    75% {
-      background: yellow;
-    }
-    100% {
-      background: pink;
-    }
-  }
-
-  .navi div ul {
-    margin-top: 10px;
-  }
-
-  .navi div ul li {
-    margin-top: 20px;
-    height: 200px;
-    list-style: none;
-    width: 100%;
-    text-align: center;
-  }
-
-  .navi div ul li a {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-size: 2em;
-    text-decoration: none;
-    color: var(--text-color);
-    line-height: 100px;
-    width: 100%;
-    display: block;
-    transition: 0.5s;
-  }
-
-  .navi div ul li a:hover {
-    background-color: rgba(51, 0, 255, 0.3);
-  }
-
-  .navi div img {
-    filter: invert(100%);
-    width: 32px;
-    height: 32px;
-    margin: 34px;
-  }
-
-  .navi-phone {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--background-color-navi);
-    height: 80px;
-    width: 100%;
-  }
-
-  .noti {
-    position: relative;
-  }
-
-  .noti[noti-mess="true"]:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: red;
-    transform: translate(41px, 27px);
-    z-index: 1000;
-  }
-
-  .navi-phone div img {
-    position: relative;
-    width: 32px;
-    height: 32px;
-    filter: invert(100%);
-  }
-
-  .navi-phone img:hover {
-    box-shadow: inset 2px 2px 2px 2px #0c2239, inset -2px -2px 2px 2px #0c2239;
-    padding: 5px;
-    filter: none;
-  }
-
-  .navi-phone div {
-    padding: 24px;
-  }
-
-  #controller {
-    color: var(--text-color);
-    margin: 30px;
-    padding: 10px;
-    border-radius: 15px;
-    position: relative;
-    background-color: var(--background-content);
-    box-shadow: 5px 5px black;
-  }
-
-  .row #thongtin {
-    font-family: var(--font-family);
-    font-weight: 300;
-    text-align: center;
-  }
-
-  .information {
-    margin: 10px auto;
-    text-align: left;
-  }
-
-  .row .col-sm:nth-child(2) {
-    text-align: center;
-  }
-
-  .row .col-sm:nth-child(3) {
-    height: 40px;
-  }
-
-  .row .col-sm:nth-child(3) .statusEsp {
-    line-height: 40px;
-    text-align: center;
-  }
-
-  .container1 {
-    color: var(--text-color);
-    position: relative;
-    margin: 0 30px 0 30px;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: var(--background-content);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .btn-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #auto {
-    position: relative;
-    margin: 0 30px 0 30px;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: var(--background-content);
-    text-align: center;
-    color: var(--text-color);
-  }
-
-  #line1,
-  #line2,
-  #auto h1 {
-    display: none;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  .timeSpeak {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .timeSpeak h3 {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-  }
-
-  #MMT {
-    text-align: center;
-  }
-
-  #MMT h3 {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-  }
-
-  #MMH {
-    text-align: center;
-  }
-
-  #MMH h3 {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-  }
-
-  #auto div:nth-child(7) {
-    text-align: center;
-  }
-
-  #auto div:nth-child(7) h3 {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-  }
-
-  input {
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 15px;
-  }
-
-  input:focus {
-    border: 2px solid rgb(0, 0, 0);
-    outline: none;
-  }
-
-  .container2 {
-    background-color: var(--background-content);
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 0 30px;
-    align-items: center;
-    border-radius: 25px;
-  }
-
-  .container2 div {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .lichsu {
-    color: var(--text-color);
-    border-radius: 15px;
-    background-color: var(--background-content);
-    margin: 25px 30px 0 30px;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    height: 500px;
-    font-weight: 300;
-  }
-  table {
-    border: 10px solid var(--border);
-    width: 500px;
-  }
-  .lichsu table thead tr th {
-    text-align: center;
-  }
-  th,
-  td {
-    border: 1px solid black;
-    text-align: center;
-  }
-} */
+/* Điện thoại di động hoặc màng hình cực nhỏ */
+@media (max-width: 480px) {
+  
+}
