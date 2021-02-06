@@ -49,6 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    outline: none;
   }
   
   .navibar div:nth-child(2) img {
@@ -296,21 +297,25 @@
 }
 
 /* Điện thoại di động hoặc màng hình cực nhỏ */
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
   .navibar {
     width: 100%;
-    height: 100px;
+    height: 200px;
     background-color: #0c2239;
     display: flex;
     align-items: center;
   }
   
   img {
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
     filter: invert(100);
     -webkit-filter: invert(100);
-    cursor: pointer;
     margin: 0 10px 0 10px;
   }
   
@@ -339,8 +344,8 @@
   
   .navibar div:nth-child(1) a {
     font-family: "TitleFont";
-    height: 50px;
-    font-size: 1.5em;
+    height: 100px;
+    font-size: 3em;
     text-decoration: none;
     line-height: 50px;
     color: white;
@@ -355,8 +360,8 @@
   
   .menu {
     position: fixed;
-    width: 300px;
-    height: 1000vh;
+    width: 600px;
+    height: 100vh;
     top: 0;
     left: -100%;
     transition: 1s;
@@ -369,7 +374,7 @@
   
   .menu div:nth-child(1) {
     width: 100%;
-    height: 100px;
+    height: 200px;
     background: #0c2239;
     display: flex;
     justify-content: start;
@@ -383,7 +388,7 @@
   }
   
   .menu div:nth-child(2) {
-    height: 1000vh;
+    height: 100vh;
     background-color: #0c2239;
   }
   
@@ -393,7 +398,7 @@
   }
   
   .menu div:nth-child(2) ul li {
-    height: 50px;
+    height: 200px;
     width: 100%;
     display: block;
     list-style: none;
@@ -402,52 +407,84 @@
   .element {
     position: relative;
     display: block;
-    height: 50px;
+    height: 200px;
     width: 100%;
-    line-height: 50px;
+    line-height: 200px;
     text-decoration: none;
     color: white;
     text-align: center;
+    font-size: 2em;
   }
   
-  .element.a::before {
+  .element a::before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-image: url(/image/document.png);
-    background-size: 32px 32px;
+    top: 50%;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-image: url(/image/setting.png);
+    background-size: 96px 96px;
     background-repeat: no-repeat;
     filter: invert(100);
     -webkit-filter: invert(100);
+    transform: translateY(-25%);
   }
   .element.a1::before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-image: url(/image/loupe.png);
-    background-size: 32px 32px;
+    top: 50%;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-image: url(/image/auto.png);
+    background-size: 96px 96px;
     background-repeat: no-repeat;
     filter: invert(100);
     -webkit-filter: invert(100);
+    transform: translateY(-25%);
   }
   .element.a2::before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-image: url(/image/bar-chart.png);
-    background-size: 32px 32px;
+    top: 50%;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-image: url(/image/history.png);
+    background-size: 96px 96px;
     background-repeat: no-repeat;
     filter: invert(100);
     -webkit-filter: invert(100);
+    transform: translateY(-25%);
+  }
+  .element.a3::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-image: url(/image/loupe.png);
+    background-size: 96px 96px;
+    background-repeat: no-repeat;
+    filter: invert(100);
+    -webkit-filter: invert(100);
+    transform: translateY(-25%);
+  }
+  .element.a4::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-image: url(/image/icon-chart.png);
+    background-size: 96px 96px;
+    background-repeat: no-repeat;
+    filter: invert(100);
+    -webkit-filter: invert(100);
+    transform: translateY(-25%);
   }
   
   .menu div:nth-child(2) ul li a:hover {
@@ -458,7 +495,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 300px;
+    width: 600px;
     height: 100vh;
     background-color: #0c2239;
     transition: 1s;
@@ -472,7 +509,7 @@
   }
   
   .information-esp-content {
-    height: 50px;
+    height: 200px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -481,7 +518,8 @@
   }
   
   .information-esp-content1 {
-    height: 50vh;
+    font-size: 2em;
+    height: 40vh;
     border-bottom: 1px rgba(255, 255, 255, 0.5) solid;
   }
   
@@ -503,8 +541,8 @@
   
   .information-sensor {
     position: fixed;
-    width: 500px;
-    height: 300px;
+    width: 100%;
+    height: 600px;
     background: #0c2239;
     left: 50%;
     top: 50%;
@@ -522,15 +560,16 @@
     text-align: right;
     border-bottom: 1px rgba(255, 255, 255, 0.5) solid;
     position: relative;
-    height: 50px;
+    height: 120px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 20px;
   }
   
   .line div {
     position: absolute;
-    line-height: 50px;
+    line-height: 120px;
     top: 0;
     left: 50%;
     transform: translate(-50%);
@@ -544,6 +583,7 @@
     margin: 0;
     padding: 0;
     color: white;
+    font-size: 2em;
   }
   
   .line1-line {
@@ -579,4 +619,6 @@
     -ms-transform: translateY(2px);
     -o-transform: translateY(2px);
   }
+  
+  
 }

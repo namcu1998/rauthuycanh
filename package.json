@@ -8,7 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "nodemonConfig": {
-    "ignore": ["./saveData/createDataCharts/dataCharts.json", "./saveData/modeAndDataAuto/mode.auto.json","./saveDataBase/db.json"],
+    "ignore": [
+      "./saveData/createDataCharts/dataCharts.json",
+      "./saveData/modeAndDataAuto/mode.auto.json",
+      "./saveDataBase/db.json"
+    ],
     "delay": "2500"
   },
   "author": "",

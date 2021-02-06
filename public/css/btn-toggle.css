@@ -28,9 +28,10 @@
 }
 
 input[type="checkbox"] {
-  cursor: pointer;
   position: relative;
-  appearance: var(--appearance-active);
+  appearance: var(--appearance-active)
+  -moz-appearance: var(--appearance-active);
+  -webkit-appearance: var(--appearance-active);
   width: var(--width-input);
   height: var(--height-input);
   border-radius: var(--border-radius);
@@ -49,6 +50,7 @@ input[type="checkbox"]:checked {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
+  -o-transition: 0.5s;
   -o-transition: 0.5s;
 }
 
