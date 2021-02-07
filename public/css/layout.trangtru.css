@@ -66,7 +66,7 @@
   .controll {
     background-color: #282828;
     color: White;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-weight: 200;
     font-size: 2em;
   }
@@ -165,9 +165,10 @@
 
 /* Màng hình máy tính bảng nhỏ hoặc máy tính màng hình nhỏ */
 @media (min-width: 768px) and (max-width: 991px) {
-   * {
+  * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   .content-container {
@@ -195,12 +196,12 @@
     height: 100vh;
     float: left;
     text-align: center;
+    background-color: #282828;
   }
 
   .controll {
-    background-color: #282828;
     color: White;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Times New Roman", Times, serif;
     font-weight: 200;
     font-size: 2em;
   }
@@ -219,18 +220,80 @@
     text-align: center;
   }
 
-  .automatic {
-    background-color: rgb(red, green, yellow);
+  .container-automatic {
+    width: 100%;
+    height: 500px;
+    font-size: 2em;
+    color: black;
+    padding: 0 100px;
+  }
+
+  .actived-block {
+    height: 50px;
+    display: flex;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background: white;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+  }
+
+  .block {
+    height: 50px;
+    display: flex;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .function-block {
+    background: white;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+  .timeSpeak div {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  input[type="number"] {
+    height: 50px;
+    font-size: 1em;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    border: 2px white solid;
+    outline: none;
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
   }
 
   #submit {
     cursor: pointer;
-    color: white;
+    color: black;
+    margin-top: 20px;
     width: 150px;
     height: 50px;
     border: none;
     outline: none;
-    background-color: blue;
+    background-color: white;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -247,12 +310,23 @@
     width: 100%;
   }
 
+  .chart-block div {
+    width: 2000px;
+  }
+
+  .chart-block{
+    width: 100%;
+    overflow: scroll;
+  }
   .history {
     overflow: scroll;
+    background-color: white;
   }
 
   .history table {
     font-family: "Poppins";
+    font-size: 2em;
+    color: black;
     width: 100%;
     border-collapse: collapse;
   }
@@ -263,27 +337,30 @@
 
   .search {
     overflow: scroll;
+    background-color: white;
   }
+
+  input[type="date"] {
+    width: 200px;
+    height: 50px;
+    font-size: 1em;
+    color: white;
+    border: none;
+    text-align: center;
+    background-color: #2196f3;
+    outline: none;
+}
 
   .search table {
     font-family: "Poppins";
+    font-size: 2em;
+    color: black;
     width: 100%;
     border-collapse: collapse;
   }
 
   .search table td {
     border: 1px black solid;
-  }
-
-  .block-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .block-input input {
-    margin: 10px;
-    text-align: center;
   }
 
   input::-webkit-outer-spin-button,
@@ -299,5 +376,4 @@
 
 /* Điện thoại di động hoặc màng hình cực nhỏ */
 @media (max-width: 480px) {
-  
 }

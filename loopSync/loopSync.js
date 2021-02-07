@@ -25,7 +25,7 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
 }
 
 function checkEspConnected() {
-  if(time.timeSecond()%10 === 0) {
+  if(time.timeSecond()%9 === 0) {
     statusEsp("espControll", 0, "none", "none", "none", "none");
     statusEsp("espSensor", 0, "none", "none", "none", "none");
     console.log("test")
@@ -33,8 +33,9 @@ function checkEspConnected() {
 }
 
 function pushDataBase() {
+  console.log(parseInt(time.time().split(":")[1]), parseInt(time.time().split(":")[1]), time.timeSecond() == 00, getAll().statusEsp.espSensor.status === true)
   if ((parseInt(time.time().split(":")[1]) === 0 || parseInt(time.time().split(":")[1]) % 15 === 0) && time.timeSecond() == 00 && getAll().statusEsp.espSensor.status === true) {
-    console.log("push")
+
     dulieuDb.push([
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,

@@ -29,7 +29,7 @@
 
 input[type="checkbox"] {
   position: relative;
-  appearance: var(--appearance-active)
+  appearance: var(--appearance-active);
   -moz-appearance: var(--appearance-active);
   -webkit-appearance: var(--appearance-active);
   width: var(--width-input);
