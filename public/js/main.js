@@ -206,6 +206,7 @@ var myChart1 = new Chart(ctx1, {
       display: true,
       labels: {
         fontColor: "rgb(255, 99, 132)",
+        defaultFontSize: 100,
       },
     },
     scales: {
@@ -305,12 +306,12 @@ socket.on("sendArraySensorError", (item) => {
       string = string + "\n" + item[i] + " " + "error";
     }
   }
-  // Swal.fire({
-  //   title: 'Error!',
-  //   text: string,
-  //   icon: 'error',
-  //   confirmButtonText: 'OK'
-  // })
+  Swal.fire({
+    title: 'Error!',
+    text: string,
+    icon: 'error',
+    confirmButtonText: 'OK'
+  })
 });
 
 function onChangeAuto(item) {

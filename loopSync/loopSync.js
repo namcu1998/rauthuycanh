@@ -33,7 +33,6 @@ function checkEspConnected() {
 }
 
 function pushDataBase() {
-  console.log(parseInt(time.time().split(":")[1]), parseInt(time.time().split(":")[1]), time.timeSecond() == 00, getAll().statusEsp.espSensor.status === true)
   if ((parseInt(time.time().split(":")[1]) === 0 || parseInt(time.time().split(":")[1]) % 15 === 0) && time.timeSecond() == 00 && getAll().statusEsp.espSensor.status === true) {
 
     dulieuDb.push([
@@ -161,7 +160,7 @@ module.exports = function loopSync(
         controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
         controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
       }
-      checkEspConnected();
+      // checkEspConnected();
       pushDataBase();
       writeDataChart(nameSpaceWebapp);
       writeDataHistory(nameSpaceWebapp);

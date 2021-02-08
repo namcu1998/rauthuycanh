@@ -30,7 +30,7 @@
 }
 
 /* Màng hình laptop hoặc desktop lớn*/
-@media (min-width: 1200px) {
+@media only screen and (min-width: 600px) {
   * {
     margin: 0;
     padding: 0;
@@ -158,13 +158,8 @@
     margin: 0;
   }
 }
-
-/* Màng hình máy tính bảng lớn hoặc máy tính màng hình trung bình */
-@media (min-width: 992px) and (max-width: 1199px) {
-}
-
 /* Màng hình máy tính bảng nhỏ hoặc máy tính màng hình nhỏ */
-@media (min-width: 768px) and (max-width: 991px) {
+@media only screen and (max-width: 600px) {
   * {
     margin: 0;
     padding: 0;
@@ -310,14 +305,14 @@
     width: 100%;
   }
 
-  .chart-block div {
-    width: 2000px;
+  .chart-block {
+    width: 1000px;
   }
 
-  .chart-block{
-    width: 100%;
-    overflow: scroll;
+  .container-block{
+    overflow-x: scroll;
   }
+
   .history {
     overflow: scroll;
     background-color: white;
@@ -370,10 +365,3 @@
   }
 }
 
-/* Màng hình máy tính bảng rất nhỏ hoặc điện thoại di động */
-@media (max-width: 767px) {
-}
-
-/* Điện thoại di động hoặc màng hình cực nhỏ */
-@media (max-width: 480px) {
-}
