@@ -22,37 +22,30 @@ const btnShowChartPage1 = document.getElementById("btn-show-chart-page1");
 
 btnShowMenu.addEventListener("click", () => {
   menu[0].style.left = "0";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0.2)"
 })
 btnCloseMenu.addEventListener("click", () => {
   menu[0].style.left = "-100%";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0)"
 })
 contentContainer[0].addEventListener("click", () => {
   notification[0].style.display = "none";
   informationEsp[0].style.right = "-100%";
   menu[0].style.left = "-100%";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0)"
 })
 
 btnShowInformation.addEventListener("click", () => {
   informationEsp[0].style.right = "0";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0.2)"
 })
 
 btnCloseInformation.addEventListener("click", () => {
   informationEsp[0].style.right = "-100%";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0)"
 })
 
 btnShowNotification.addEventListener("click", () => {
   notification[0].style.display = "block";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0.2)"
 })
 
 btnCloseNotification.addEventListener("click", () => {
   notification[0].style.display = "none";
-  contentContainer[0].style.background = "rgb(0, 0, 0, 0)"
 })
 
 btnShowControllPage.addEventListener("click", () => {

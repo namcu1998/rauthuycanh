@@ -30,7 +30,7 @@
 }
 
 /* Màng hình laptop hoặc desktop lớn*/
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1200px) {
   * {
     margin: 0;
     padding: 0;
@@ -161,7 +161,7 @@
   }
 }
 /* Màng hình máy tính bảng nhỏ hoặc máy tính màng hình nhỏ */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
   * {
     margin: 0;
     padding: 0;
@@ -213,6 +213,7 @@
     width: 100%;
     font-size: 2em;
     color: black;
+    text-align: center;
   }
 
   .actived-block {
