@@ -54,6 +54,8 @@
     -moz-transition: 2s;
     -ms-transition: 2s;
     -o-transition: 2s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .page {
@@ -159,51 +161,43 @@
   }
 }
 /* Màng hình máy tính bảng nhỏ hoặc máy tính màng hình nhỏ */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1100px) {
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box;  */
   }
 
   .content-container {
-    position: relative;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    background: #0c2239;
   }
 
-  .content-container .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 500%;
-    height: calc(100vh - 50px);
-    transition: 2s;
-    -webkit-transition: 2s;
-    -moz-transition: 2s;
-    -ms-transition: 2s;
-    -o-transition: 2s;
+  .content {
+    padding: 20px 100px;
   }
 
   .page {
-    width: 20%;
-    height: 100vh;
-    float: left;
-    text-align: center;
-    background-color: #282828;
+    margin-top: 20px;
   }
 
   .controll {
-    color: White;
+    height: 500px;
+    color: rgb(0, 0, 0);
     font-family: "Times New Roman", Times, serif;
     font-weight: 200;
     font-size: 2em;
+    background: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
   }
 
   .controll table {
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   .controll table td {
@@ -217,10 +211,8 @@
 
   .container-automatic {
     width: 100%;
-    height: 500px;
     font-size: 2em;
     color: black;
-    padding: 0 100px;
   }
 
   .actived-block {
@@ -256,7 +248,7 @@
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-}
+  }
 
   .timeSpeak div {
     height: 50px;
@@ -266,6 +258,21 @@
   }
 
   input[type="number"] {
+    height: 50px;
+    font-size: 1em;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    border: 2px white solid;
+    outline: none;
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+  }
+
+  input[type="date"] {
     height: 50px;
     font-size: 1em;
     border-radius: 25px;
@@ -296,72 +303,59 @@
     -o-border-radius: 25px;
   }
 
-  .chart {
-    overflow: scroll;
-    background-color: white;
-  }
-
-  .scroll-page {
-    width: 100%;
-  }
-
-  .chart-block {
-    width: 1000px;
-  }
-
-  .container-block{
-    overflow-x: scroll;
-  }
-
-  .history {
-    overflow: scroll;
-    background-color: white;
-  }
-
-  .history table {
-    font-family: "Poppins";
-    font-size: 2em;
-    color: black;
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .history table td {
-    border: 1px black solid;
-  }
-
-  .search {
-    overflow: scroll;
-    background-color: white;
-  }
-
-  input[type="date"] {
-    width: 200px;
-    height: 50px;
-    font-size: 1em;
-    color: white;
-    border: none;
-    text-align: center;
-    background-color: #2196f3;
-    outline: none;
-}
-
-  .search table {
-    font-family: "Poppins";
-    font-size: 2em;
-    color: black;
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .search table td {
-    border: 1px black solid;
-  }
-
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-}
 
+  .history {
+    height: 500px;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    font-size: 2em;
+    padding: 20px;
+  }
+
+  .search {
+    height: 500px;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    font-size: 2em;
+    padding: 20px;
+  }
+
+  .container-main {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+
+  .container-main div:nth-child(1) {
+    text-align: center;
+  }
+
+  table {
+    width: 1000px;
+    height: 1000px;
+  }
+
+  .chart {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+}
