@@ -1,12 +1,27 @@
-const socket = io("https://rauthuycanh.herokuapp.com/webapp");
+const socket = io("http://localhost:3484/webapp");
 const history = $("#history");
 const search = $("#search");
 socket.emit("getDataCharts");
 const inputSearch = document.getElementById("input-search");
 const input = document.querySelectorAll("input");
 const btnToggle = document.getElementsByClassName("btn-toggle");
+const propressTemp = document.getElementById("propressTemp");
+const propressHumi = document.getElementById("propressHumi");
+const propressLux = document.getElementById("propressLux");
+const propressBarTempValue = document.getElementById("propress-bar-temp-value");
+const propressBarHumiValue = document.getElementById("propress-bar-humi-value");
+const propressBarLuxValue = document.getElementById("propress-bar-lux-value");
 socket.emit("getMa");
 socket.emit("getData");
+
+socket.on("sendDataSensor", item => {
+  propressTemp.style.strokeDashoffset = 440-(item.dataTemp * 440) / 100;
+  propressBarTempValue.innerHTML = item.dataTemp + "ºC";
+  propressHumi.style.strokeDashoffset = 440-(item.dataHumi * 440) / 100;
+  propressBarHumiValue.innerHTML = item.dataHumi + "%";
+  propressLux.style.strokeDashoffset = 440 - ((item.dataLight * 100) / 65535 * 440) / 100;
+  propressBarLuxValue.innerHTML = item.dataLight + "Lux ";
+})
 
 function xulyDataLichsu(table, array) {
   var html = array.map(function (x) {

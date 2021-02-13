@@ -7,6 +7,7 @@ module.exports.trangtru = function (req, res, next) {
   res.render("home/trangtru", {
       data: getAll().statusDevice.Device,
       dataAuto: getAll().autoData,
+      dataSensor: getDataEsp().espSensor.statusDevice,
       data1: getAll().mode,
       dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
       user: req.cookies.user,

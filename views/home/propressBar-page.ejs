@@ -1,0 +1,39 @@
+<div class="propress">
+    <div class="container-propress">
+        <svg>
+            <circle cx="70" cy="70" r="70"></circle>
+            <circle id="propressTemp" cx="70" cy="70" r="70" <% if (dataSensor) { %>
+                stroke-dashoffset=<% } %><%=440-(dataSensor.temp * 440) / 100%>></circle>
+        </svg>
+            <% if (dataSensor) { %>
+                <span id="propress-bar-temp-value"><%= dataSensor.temp %>ºC</span>
+            <% } %>
+    </div>
+    <h3>Nhiệt độ</h3>
+</div>
+<div class="propress">
+    <div class="container-propress">
+        <svg>
+            <circle cx="70" cy="70" r="70"></circle>
+            <circle id="propressHumi" cx="70" cy="70" r="70" <% if (dataSensor) { %>
+                stroke-dashoffset=<% } %><%=440-(dataSensor.humi * 440) / 100%>></circle>
+        </svg>
+        <% if (dataSensor) { %>
+            <span id="propress-bar-humi-value"><%= dataSensor.humi %>%</span>
+        <% } %>
+    </div>
+    <h3>Độ ẩm</h3>
+</div>
+<div class="propress">
+    <div class="container-propress">
+        <svg>
+            <circle cx="70" cy="70" r="70"></circle>
+            <circle id="propressLux" cx="70" cy="70" r="70" <% if (dataSensor) { %>
+                stroke-dashoffset=<% } %><%=440 - ((dataSensor.light * 100) / 65535 * 440) / 100%>></circle>
+        </svg>
+        <% if (dataSensor) { %>
+            <span id="propress-bar-lux-value"><%= dataSensor.light %>Lux</span>
+        <% } %>
+    </div>
+    <h3>Ánh sáng</h3>
+</div>

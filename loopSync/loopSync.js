@@ -21,7 +21,7 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
     nameSpaceEspControll.emit("ping", "nam");
     nameSpaceEspSensor.emit("ping", "nam");
     timeConnect = 0;
-  } else if (timeUp >= getAll().autoData.setTimePump * 120) timeUp = 0;
+  } else if (timeUp >= getAll().autoData.setTimePump.time * 120) timeUp = 0;
 }
 
 function checkEspConnected() {
@@ -73,6 +73,13 @@ function writeDataHistory(nameSpaceWebapp) {
       getAll().statusDevice.Device.Device5
     );
     nameSpaceWebapp.emit("sendDataLichsu", readFile());
+    nameSpaceWebapp.emit("sendDataSensor", {
+      dataTemp: getDataEsp().espSensor.statusDevice.temp,
+      dataTemp1: getDataEsp().api.temp - 273.15,
+      dataHumi: getDataEsp().espSensor.statusDevice.humi,
+      dataHumi1: getDataEsp().api.humidity,
+      dataLight: getDataEsp().espSensor.statusDevice.light,
+    });
   }
 }
 
