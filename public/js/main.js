@@ -11,6 +11,7 @@ const propressLux = document.getElementById("propressLux");
 const propressBarTempValue = document.getElementById("propress-bar-temp-value");
 const propressBarHumiValue = document.getElementById("propress-bar-humi-value");
 const propressBarLuxValue = document.getElementById("propress-bar-lux-value");
+const informationContent = document.getElementById("information-content");
 socket.emit("getMa");
 socket.emit("getData");
 
@@ -318,9 +319,19 @@ socket.on("sendArraySensorError", (item) => {
   } else {
     string = item[0] + " " + "error";
     for (let i = 1; i < item.length; i++) {
-      string = string + "\n" + item[i] + " " + "error";
+      string = string + "<br>" + item[i] + " " + "error";
     }
   }
+  document.getElementsByClassName("information-sensor")[0].style.display = "block";
+  informationContent.innerHTML = string;
+});
+
+window.addEventListener("offline", (event) => {
+  alert("OFFLINE");
+});
+
+window.addEventListener("online", (event) => {
+  location.reload();
 });
 
 function onChangeAuto(item) {
