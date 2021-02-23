@@ -10,7 +10,7 @@ Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
 function addData(chart, label, data, data1) {
   chart.data.labels.push(label);
   chart.data.datasets[0].data.push(data);
-  if(chart.data.datasets[1]) {
+  if (chart.data.datasets[1]) {
     chart.data.datasets[1].data.push(data1);
   }
   chart.update();
@@ -27,15 +27,15 @@ $(document).ready(function () {
   socket.on("onCharts", function (data) {
     data.dataTemp.map((item) => {
       addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
-      removeData(myChart1)
+      removeData(myChart1);
     });
     data.dataHumi.map((item) => {
       addData(myChart2, item.thoigian, item.doam, item.doamApi);
-      removeData(myChart2)
+      removeData(myChart2);
     });
     data.dataLux.map((item) => {
       addData(myChart, item.thoigian, item.anhsang);
-      removeData(myChart)
+      removeData(myChart);
     });
   });
   socket.on("pushTemp", function (data) {
@@ -60,14 +60,22 @@ var myChart = new Chart(ctx, {
         label: "light",
         data: [],
         backgroundColor: "rgba(196, 245, 0, 0.8)",
-        borderColor: [
-          "rgba(196, 245, 0, 2)",
-        ],
+        borderColor: ["rgba(196, 245, 0, 2)"],
         borderWidth: 1,
       },
     ],
   },
   options: {
+    responsive: true,
+    tooltips: {
+      mode: "index",
+      intersect: false,
+    },
+
+    hover: {
+      mode: "nearest",
+      intersect: true,
+    },
     scales: {
       yAxes: [
         {
@@ -101,24 +109,36 @@ var myChart1 = new Chart(ctx1, {
       {
         label: "nhiệt độ bên trong",
         data: [],
-        backgroundColor: "rgba(255,0,0, 0.5)",
-        borderColor: [
-          "rgba(255,0,0, 2)",
-        ],
+        backgroundColor: "rgba(255,0,0, 0)",
+        borderColor: ["red"],
         borderWidth: 3,
+        pointStyle: "circle",
+        pointRadius: 2,
+        pointBorderColor: "red",
       },
       {
         label: "nhiệt độ bên ngoài",
         data: [],
-        backgroundColor: "rgba(255,0,0, 0.5)",
-        borderColor: [
-          "rgba(255,0,0, 2)",
-        ],
+        backgroundColor: "rgba(255,0,0, 0)",
+        borderColor: ["yellow"],
         borderWidth: 3,
-      }
+        pointStyle: "circle",
+        pointRadius: 2,
+        pointBorderColor: "yellow",
+      },
     ],
   },
   options: {
+    responsive: true,
+    tooltips: {
+      mode: "index",
+      intersect: false,
+    },
+
+    hover: {
+      mode: "nearest",
+      intersect: true,
+    },
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
@@ -157,24 +177,36 @@ var myChart2 = new Chart(ctx2, {
       {
         label: "độ ẩm bên ngoài",
         data: [],
-        backgroundColor: "rgba(139, 97, 255, 0.8)",
-        borderColor: [
-          "rgba(139, 97, 255, 2)",
-        ],
+        backgroundColor: "rgba(139, 97, 255,0)",
+        borderColor: ["yellow"],
         borderWidth: 3,
+        pointStyle: "circle",
+        pointRadius: 2,
+        pointBorderColor: "yellow",
       },
       {
         label: "độ ẩm bên trong",
         data: [],
-        backgroundColor: "rgba(139, 97, 255, 0.8)",
-        borderColor: [
-          "rgba(139, 97, 255, 2)",
-        ],
+        backgroundColor: "rgba(139, 97, 255, 0)",
+        borderColor: ["rgba(139, 97, 255, 1)"],
         borderWidth: 3,
-      }
+        pointStyle: "circle",
+        pointRadius: 2,
+        pointBorderColor: "red",
+      },
     ],
   },
   options: {
+    responsive: true,
+    tooltips: {
+      mode: "index",
+      intersect: false,
+    },
+
+    hover: {
+      mode: "nearest",
+      intersect: true,
+    },
     scales: {
       yAxes: [
         {
