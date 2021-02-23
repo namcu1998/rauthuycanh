@@ -1,14 +1,14 @@
 <div class="container-automatic">
     <div class="actived-block">
         <span>Bật tắt chế độ auto</span>
-        <input type="checkbox" name="mode" onchange="onChangeAuto(this)" id="active-auto" id="" toggle-size="mini"
-            <% if (data1 === 0) { %>checked<% } %>>
+        <input type="checkbox" name="mode" onchange="onChangeAuto(this)" id="active-auto" id="" toggle-size="mini" <% if
+            (data1===0) { %>checked<% } %>>
     </div>
     <div class="function-block">
         <div class="block">
             <span>Bật tắt tự động bật bơm</span>
-            <input class="changeOO" type="checkbox" toggle-size="mini"
-                <% if (dataAuto.setTimePump.active == true) { %>checked<% } %>>
+            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setTimePump.active==true) {
+                %>checked<% } %>>
         </div>
         <div class="block">
             <span>Chu kì thời gian bơm</span>
@@ -19,36 +19,42 @@
     <div class="function-block">
         <div class="block">
             <span>Bật tắt tự động điều chỉnh nhiệt độ</span>
-            <input class="changeOO" type="checkbox" toggle-size="mini"
-                <% if (dataAuto.setTemp.active == true) { %>checked<% } %>>
+            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setTemp.active==true) { %>checked
+            <% } %>>
         </div>
         <div class="block">
             <span>Nhiệt độ lớn nhất</span>
             <input id="setTempMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
-                value=<%=dataAuto.setTemp.max%> <% } %>>
+            value=<%=dataAuto.setTemp.max%>
+                <% } %>>
         </div>
         <div class="block">
             <span>Nhiệt độ nhỏ nhất</span>
             <input id="setTempMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
-                value=<%=dataAuto.setTemp.min%> <% } %>>
+            value=<%=dataAuto.setTemp.min%>
+                <% } %>>
         </div>
     </div>
     <div class="function-block">
         <div class="block">
             <span>Bật tắt tự động điều chỉnh ánh sáng</span>
-            <input class="changeOO" type="checkbox" toggle-size="mini"
-                <% if (dataAuto.setLux.active == true) { %>checked<% } %>>
+            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setLux.active==true) { %>checked
+            <% } %>>
         </div>
         <div class="block">
             <span>Ánh sáng lớn nhất</span>
             <input id="setLuxMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
-                value=<%=dataAuto.setLux.max %> <% } %>>
+            value=<%=dataAuto.setLux.max %>
+                <% } %>>
         </div>
         <div class="block">
             <span>Ánh sáng nhỏ nhất</span>
             <input id="setLuxMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
-                value=<%=dataAuto.setLux.min %> <% } %>>
+            value=<%=dataAuto.setLux.min %>
+                <% } %>>
         </div>
     </div>
-    <button id="submit">Submit</button>
+    <div class="button-submit" id="submit">
+        <span>submit</span>
+    </div>
 </div>

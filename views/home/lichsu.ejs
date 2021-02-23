@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch sử</title>
     <script src="/js/jquery.js"></script>
-	<script src ="/socket.io/socket.io.js"></script>
-    <link rel="stylesheet" type = "text/css" href="/css/normalize.css"/>
-    <link rel="stylesheet" type = "text/css" href="/css/layout.lichsu.css"/>
-    <link rel="shortcut icon" type="image/png" href="/image/favicon.png"/>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/layout.lichsu.css" />
+    <link rel="shortcut icon" type="image/png" href="/image/favicon.png" />
 </head>
+
 <body>
     <div id="header">
         <ul>
             <li><a href="/">Giới thiệu</a></li>
             <li><a href="/home/">Điều khiển</a></li>
-            <li><a href="/home/lichsu">Lịch Sử</a></li>
+            <li><a href="/home/lichsu">Lịch sử</a></li>
+            <li><a href="/home/tracuu">Tra cứu</a></li>
             <li><a href="/home/charts">Biểu đồ</a></li>
         </ul>
     </div>
@@ -38,10 +41,11 @@
             </thead>
             <div style="scroll-behavior: auto;">
                 <tbody id="lich">
-                </tbody>    
+                </tbody>
             </div>
         </table>
     </div>
-    <script src = "/js/xuly.lichsu.js"></script>
+    <script src="/js/xuly.lichsu.js"></script>
 </body>
+
 </html>

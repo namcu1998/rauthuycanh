@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/nam2351998"); //https://bonghoaxinh.herokuapp.com/nam2351998
+const socket = io("https://rauthuycanh.herokuapp.com/webapp"); //https://bonghoaxinh.herokuapp.com/nam2351998
 const table = $("#lich");
 function convert(data) {
   if (data == 1) return "Bật";
@@ -9,7 +9,7 @@ function xulyData(getid, array) {
     return (
       "<tr>" +
       "<td>" +
-      x.light +
+      x.anhsang +
       "lx" +
       "</td>" +
       "<td>" +
