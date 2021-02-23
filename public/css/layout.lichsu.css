@@ -71,10 +71,7 @@
   }
 
   .lichsu {
-    font-family: arial;
-    text-align: left;
-    height: 400px;
-    overflow-x: auto;
+    overflow-x: scroll;
   }
 
   .lichsu table {
