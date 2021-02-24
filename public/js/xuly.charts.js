@@ -84,6 +84,9 @@ var myChart = new Chart(ctx, {
             callback: function (value, index, values) {
               return value + "LUX";
             },
+            suggestedMin: 1,
+            suggestedMax: 65535,
+            stepSize: 5000,
           },
         },
       ],
@@ -161,8 +164,9 @@ var myChart1 = new Chart(ctx1, {
             callback: function (value, index, values) {
               return value + "°C";
             },
-            suggestedMin: 25,
-            suggestedMax: 40,
+            // suggestedMin: 20,
+            // suggestedMax: 50,
+            stepSize: 5,
           },
         },
       ],
@@ -178,21 +182,21 @@ var myChart2 = new Chart(ctx2, {
         label: "độ ẩm bên ngoài",
         data: [],
         backgroundColor: "rgba(139, 97, 255,0)",
-        borderColor: ["yellow"],
+        borderColor: ["blue"],
         borderWidth: 3,
         pointStyle: "circle",
         pointRadius: 2,
-        pointBorderColor: "yellow",
+        pointBorderColor: "blue",
       },
       {
         label: "độ ẩm bên trong",
         data: [],
         backgroundColor: "rgba(139, 97, 255, 0)",
-        borderColor: ["rgba(139, 97, 255, 1)"],
+        borderColor: ["yellow"],
         borderWidth: 3,
         pointStyle: "circle",
         pointRadius: 2,
-        pointBorderColor: "red",
+        pointBorderColor: "yellow",
       },
     ],
   },
@@ -215,7 +219,7 @@ var myChart2 = new Chart(ctx2, {
             callback: function (value, index, values) {
               return value + "%";
             },
-            suggestedMin: 20,
+            suggestedMin: 0,
             suggestedMax: 100,
           },
         },

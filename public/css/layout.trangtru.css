@@ -419,30 +419,63 @@
     -o-transform: translateX(-50%) translateY(-50%);
   }
 
+  .sensor-circle {
+    stroke-dasharray: 440px;
+  }
+
   #propressTemp {
     stroke: red;
-    stroke-dasharray: 440px;
+  }
+
+  #propressTemp1 {
+    stroke: yellow;
   }
 
   #propressHumi {
     stroke: blue;
-    stroke-dasharray: 440px;
+  }
+
+  #propressHumi1 {
+    stroke: yellow;
   }
 
   #propressLux {
     stroke: yellow;
-    stroke-dasharray: 440px;
   }
 
-  .propress-bar {
-    background-color: white;
+  .propress-bar .temperature {
     display: flex;
     justify-content: space-around;
+    background-color: white;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+  }
+
+  .propress-bar .humidity {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  .propress-bar .light {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 20px;
   }
 
   .propress {

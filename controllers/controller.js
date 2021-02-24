@@ -5,17 +5,18 @@ const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
 const { getAll } = require("../saveData/modeAndDataAuto/create.mode");
 module.exports.trangtru = function (req, res, next) {
   res.render("home/trangtru", {
-      data: getAll().statusDevice.Device,
-      dataAuto: getAll().autoData,
-      dataSensor: getDataEsp().espSensor.statusDevice,
-      data1: getAll().mode,
-      dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
-      user: req.cookies.user,
-      statusEsp1: getAll().statusEsp.espControll,
-      statusEsp2: getAll().statusEsp.espSensor,
-      statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
-      statusLux: getDataEsp().espSensor.statusSensor.statusLux
-    });
+    data: getAll().statusDevice.Device,
+    dataAuto: getAll().autoData,
+    dataSensor: getDataEsp().espSensor.statusDevice,
+    dataApi: getDataEsp().api,
+    data1: getAll().mode,
+    dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
+    user: req.cookies.user,
+    statusEsp1: getAll().statusEsp.espControll,
+    statusEsp2: getAll().statusEsp.espSensor,
+    statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
+    statusLux: getDataEsp().espSensor.statusSensor.statusLux,
+  });
 };
 
 // signal: 'ma.getAll()[5].SignalStrength',
@@ -41,7 +42,7 @@ module.exports.charts = function (req, res, next) {
     statusEsp1: getAll().statusEsp.espControll,
     statusEsp2: getAll().statusEsp.espSensor,
     statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
-    statusLux: getDataEsp().espSensor.statusSensor.statusLux
+    statusLux: getDataEsp().espSensor.statusSensor.statusLux,
   });
 };
 module.exports.login = function (req, res, next) {
@@ -57,6 +58,6 @@ module.exports.tracuu = function (req, res, next) {
     statusEsp1: getAll().statusEsp.espControll,
     statusEsp2: getAll().statusEsp.espSensor,
     statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
-    statusLux: getDataEsp().espSensor.statusSensor.statusLux
+    statusLux: getDataEsp().espSensor.statusSensor.statusLux,
   });
 };
