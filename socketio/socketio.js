@@ -78,7 +78,7 @@ module.exports = function deviceIO(
           setDevice(item[0], item[1]);
           nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
         }
-        nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device)
+        nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device);
       });
       socket.on("getData", () => {
         nameSpaceWebapp.emit("sendDataLichsu", readFile());
@@ -88,14 +88,25 @@ module.exports = function deviceIO(
       });
       socket.on("getMa", () => {
         let arraySensorError = [];
-        for(let i in getDataEsp().espSensor.statusSensor) {
-          if(getDataEsp().espSensor.statusSensor[i] === false) {
+
+        for (let i in getDataEsp().espSensor.statusSensor) {
+          if (getDataEsp().espSensor.statusSensor[i] === false) {
             arraySensorError.push(i);
           }
         }
-        if(arraySensorError.length > 0) {
+
+        if (getAll().statusEsp.espControll.status === false) {
+          arraySensorError.push("ESPCONTROLL");
+        }
+
+        if (getAll().statusEsp.espSensor.status === false) {
+          arraySensorError.push("ESPCONTROLL");
+        }
+
+        if (arraySensorError.length > 0) {
           nameSpaceWebapp.emit("sendArraySensorError", arraySensorError);
         }
+
         nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
       });
       // dữ liệu cảm biến
