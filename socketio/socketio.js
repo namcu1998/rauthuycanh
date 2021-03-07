@@ -21,6 +21,7 @@ module.exports = function deviceIO(
 ) {
   function espControll(nameSpaceEspControll) {
     nameSpaceEspControll.on("connection", function (socket) {
+      nameSpaceEspControll.emit("status", "connected");
       socket.on("disconnect", function () {
         statusEsp("espSensor", 0, "none", "none", "none", "none");
       });
@@ -40,6 +41,7 @@ module.exports = function deviceIO(
 
   function espSensor(nameSpaceEspSensor) {
     nameSpaceEspSensor.on("connection", function (socket) {
+      nameSpaceEspSensor.emit("status", "connected");
       console.log("espSensor Connection");
       socket.on("JSON1", (data) => {
         saveDataEspSensor(data);
@@ -100,7 +102,7 @@ module.exports = function deviceIO(
         }
 
         if (getAll().statusEsp.espSensor.status === false) {
-          arraySensorError.push("ESPCONTROLL");
+          arraySensorError.push("ESPSENSOR");
         }
 
         if (arraySensorError.length > 0) {
