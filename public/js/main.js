@@ -371,15 +371,23 @@ function activeDevice(item) {
 }
 
 socket.on("sendArraySensorError", (item) => {
+  let array = ["esspcontroll", "esspsenssor"];
   let string = "";
-  if (item.length === 1) {
-    string = item[0].toUpperCase() + " " + "OFFLINE";
-  } else {
-    string = item[0].toUpperCase() + " " + "OFFLINE";
-    for (let i = 1; i < item.length; i++) {
-      string = string + "<br>" + item[i].toUpperCase() + " " + "OFFLINE";
-    }
-  }
+  // if (item.length === 1) {
+  //   string = item[0].toUpperCase() + " " + "OFFLINE";
+  // } else {
+  //   string = item[0].toUpperCase() + " " + "OFFLINE";
+  //   for (let i = 1; i < item.length; i++) {
+  //     string = string + "<br>" + item[i].toUpperCase() + " " + "OFFLINE";
+  //   }
+  // }
+
+  item.map((data) => {
+    string = string + "<div class='informationContent'>" + data + " OFFLINE" + "</div>";
+  });
+
+  console.log(string);
+
   document.getElementsByClassName("information-sensor")[0].style.display =
     "block";
   informationContent.innerHTML = string;
