@@ -1,6 +1,6 @@
 const fs = require("fs");
 var path = require("path");
-let saveDb;
+let saveDb, nameSpaceWebapp;
 const dataModeAuto = path.resolve(
   __dirname,
   "../modeAndDataAuto/mode.auto.json"
@@ -35,12 +35,13 @@ function statusEsp(esp, status, ip, SS, cpu, ram) {
   fs.writeFileSync(dataModeAuto, array1);
   saveDb.set(data);
 }
-function setDevice(nameDevice, statusDevice){
-  let data = JSON.parse(fs.readFileSync(dataModeAuto,'utf8'))
+function setDevice(nameDevice, statusDevice) {
+  let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
   data.statusDevice.Device[nameDevice] = statusDevice;
   var array1 = JSON.stringify(data);
-  fs.writeFileSync(dataModeAuto,array1);
+  fs.writeFileSync(dataModeAuto, array1);
   saveDb.set(data);
+  nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
 }
 
 function addDevice(name) {
@@ -131,6 +132,10 @@ function pushDb(item) {
   saveDb = item;
 }
 
+function getnameSpaceWebapp(NameSpace) {
+  nameSpaceWebapp = NameSpace;
+}
+
 module.exports = {
   saveMode,
   saveAuto,
@@ -140,5 +145,6 @@ module.exports = {
   saveAll,
   addDevice,
   remoteDevice,
-  pushDb
+  pushDb,
+  getnameSpaceWebapp,
 };

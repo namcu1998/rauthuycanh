@@ -22,9 +22,14 @@
   }
 
   .navibar div:nth-child(2) {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .active {
+    border-bottom: 5px solid black;
   }
 
   .navibar div:nth-child(3) {

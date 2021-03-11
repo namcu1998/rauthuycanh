@@ -11,7 +11,7 @@ const {
   io,
   server,
   middleware,
-  dialogflow
+  dialogflow,
 } = require("./requireLibary/lib");
 
 const appdialogflow = dialogflow();
@@ -22,9 +22,12 @@ const webapp = io.of("/webapp");
 const appUse = require("./use/appUse");
 require("./socketio/socketio")(esp, esp1, webapp);
 require("./loopSync/loopSync")(esp, esp1, webapp);
-require("./saveData/modeAndDataAuto/create.mode").pushDb(require("./database/firebase").data1)
+require("./saveData/modeAndDataAuto/create.mode").pushDb(
+  require("./database/firebase").data1
+);
 appUse(app, express, bodyParser, middleware, esp, esp1, webapp, cookieParser);
-require("./dialogflow/dialogflow")(appdialogflow);
+require("./dialogflow/dialogflow")(appdialogflow, webapp);
+require("./saveData/modeAndDataAuto/create.mode").getnameSpaceWebapp(webapp);
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
 });

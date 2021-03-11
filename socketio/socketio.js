@@ -80,7 +80,6 @@ module.exports = function deviceIO(
           setDevice(item[0], item[1]);
           nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
         }
-        nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device);
       });
       socket.on("getData", () => {
         nameSpaceWebapp.emit("sendDataLichsu", readFile());
