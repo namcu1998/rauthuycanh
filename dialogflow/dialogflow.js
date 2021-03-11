@@ -1,6 +1,6 @@
 const { setDevice } = require("../saveData/modeAndDataAuto/create.mode");
 const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
-module.exports = function (appdialogflow, nameSpaceWebapp) {
+module.exports = function (appdialogflow) {
   appdialogflow.intent("myIntent", (conv, { devicesname, statusdevice }) => {
     console.log(devicesname, statusdevice);
     if (devicesname == "đèn" && statusdevice == "bật") {

@@ -26,7 +26,7 @@ require("./saveData/modeAndDataAuto/create.mode").pushDb(
   require("./database/firebase").data1
 );
 appUse(app, express, bodyParser, middleware, esp, esp1, webapp, cookieParser);
-require("./dialogflow/dialogflow")(appdialogflow, webapp);
+require("./dialogflow/dialogflow")(appdialogflow);
 require("./saveData/modeAndDataAuto/create.mode").getnameSpaceWebapp(webapp);
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
