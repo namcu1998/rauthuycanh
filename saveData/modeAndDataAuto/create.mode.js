@@ -41,7 +41,7 @@ function setDevice(nameDevice, statusDevice) {
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
   saveDb.set(data);
-  nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
+  nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device);
 }
 
 function addDevice(name) {
