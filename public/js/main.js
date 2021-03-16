@@ -85,6 +85,9 @@ function xulyDataLichsu(table, array) {
       "</tr>"
     );
   });
+  document.getElementById(
+    "thongbao"
+  ).innerHTML = `Đã thấy ${array.length} kết quả`;
   var htmljoin = html.join("");
   table.html(htmljoin);
 }
@@ -356,7 +359,6 @@ inputSearch.addEventListener("input", (item) => {
     })
     .then(function (response) {
       let data = response.data;
-      console.log(data);
       xulyDataLichsu(search, data);
     })
     .catch(function (error) {
@@ -383,10 +385,13 @@ socket.on("sendArraySensorError", (item) => {
   // }
 
   item.map((data) => {
-    string = string + "<div class='informationContent'>" + data + " OFFLINE" + "</div>";
+    string =
+      string +
+      "<div class='informationContent'>" +
+      data +
+      " OFFLINE" +
+      "</div>";
   });
-
-  console.log(string);
 
   document.getElementsByClassName("information-sensor")[0].style.display =
     "block";
@@ -402,7 +407,6 @@ window.addEventListener("online", (event) => {
 });
 
 function onChangeAuto(item) {
-  console.log(item.checked);
   if (item.checked == true) {
     socket.emit("mode", 0);
   } else socket.emit("mode", 1);
@@ -447,16 +451,13 @@ function run() {
 }
 
 socket.on("feedbackDevice", (item) => {
-  console.log("da nhan");
   for (let i in item) {
     for (let i1 of btnToggle) {
       if (i === i1.name && item[i] === 1) {
         i1.checked = true;
-        console.log(item[i], i1);
       }
       if (i === i1.name && item[i] === 0) {
         i1.checked = false;
-        console.log(item[i], i1);
       }
     }
   }
@@ -464,5 +465,4 @@ socket.on("feedbackDevice", (item) => {
 
 $("#submit").click(() => {
   run();
-  console.log("da nhan");
 });

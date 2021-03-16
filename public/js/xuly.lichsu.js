@@ -8,40 +8,48 @@ function xulyData(getid, array) {
   var html = array.map(function (x) {
     return (
       "<tr>" +
-      "<td>" +
-      x.anhsang +
-      "lx" +
-      "</td>" +
-      "<td>" +
-      x.nhietdo +
-      "*C" +
-      "</td>" +
-      "<td>" +
-      x.doam +
-      "%" +
-      "</td>" +
-      "<td>" +
-      x.thoigian +
-      "</td>" +
-      "<td>" +
-      convert(x.device) +
-      "</td>" +
-      "<td>" +
-      convert(x.device1) +
-      "</td>" +
-      "<td>" +
-      convert(x.device2) +
-      "</td>" +
-      "<td>" +
-      convert(x.device3) +
-      "</td>" +
-      "<td>" +
-      convert(x.device4) +
-      "</td>" +
-      "<td>" +
-      convert(x.device5) +
-      "</td>" +
-      "</tr>"
+          "<td>" +
+          x.anhsang +
+          "lx" +
+          "</td>" +
+          "<td>" +
+          x.nhietdo +
+          "ºC" +
+          "</td>" +
+          "<td>" +
+          x.doam +
+          "%" +
+          "</td>" +
+          "<td>" +
+          x.nhietdo1 +
+          "ºC" +
+          "</td>" +
+          "<td>" +
+          x.doam1 +
+          "%" +
+          "</td>" +
+          "<td>" +
+          x.thoigian +
+          "</td>" +
+          "<td>" +
+          convert(x.device) +
+          "</td>" +
+          "<td>" +
+          convert(x.device1) +
+          "</td>" +
+          "<td>" +
+          convert(x.device2) +
+          "</td>" +
+          "<td>" +
+          convert(x.device3) +
+          "</td>" +
+          "<td>" +
+          convert(x.device4) +
+          "</td>" +
+          "<td>" +
+          convert(x.device5) +
+          "</td>" +
+          "</tr>"
     );
   });
   var htmljoin = html.join("");

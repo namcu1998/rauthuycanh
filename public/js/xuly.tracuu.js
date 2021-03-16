@@ -72,6 +72,8 @@ input[0].addEventListener("input", (item) => {
         " " +
         data[0].thoigian.split(" ")[2];
       chart.render();
+      chart.data[0].dataPoints.splice(0, 100);
+      chart.data[1].dataPoints.splice(0, 100);
 
       var html = data.map(function (x) {
         let time = x.thoigian.split(" ").splice(3, 1).join("");
@@ -125,9 +127,13 @@ input[0].addEventListener("input", (item) => {
         );
       });
 
+      document.getElementById(
+        "thongbao"
+      ).innerHTML = `Đã thấy ${data.length} kết quả`;
       var htmljoin = html.join("");
       $("#lich").html(htmljoin);
       chart.render();
+      console.log(chart.data[0].dataPoints.length);
     })
     .catch(function (error) {
       console.log(error);

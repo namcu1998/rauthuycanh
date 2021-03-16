@@ -162,6 +162,34 @@
     -webkit-filter: invert(100);
   }
 
+  .element.a3::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url(/image/loupe.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    filter: invert(100);
+    -webkit-filter: invert(100);
+  }
+
+  .element.a4::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url(/image/icon-chart.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    filter: invert(100);
+    -webkit-filter: invert(100);
+  }
+
   .menu div:nth-child(2) ul li a:hover {
     background-color: rgb(0, 0, 0, 0.2);
   }
