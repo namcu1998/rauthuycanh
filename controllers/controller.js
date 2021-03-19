@@ -3,8 +3,10 @@
 // };
 const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
 const { getAll } = require("../saveData/modeAndDataAuto/create.mode");
+const time = require("../time/time");
 module.exports.trangtru = function (req, res, next) {
   res.render("home/trangtru", {
+    dataTime: time.getTime(),
     data: getAll().statusDevice.Device,
     dataAuto: getAll().autoData,
     dataSensor: getDataEsp().espSensor.statusDevice,
