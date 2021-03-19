@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/webapp");
+const socket = io("http://localhost:3484/webapp");
 const history = $("#history");
 const search = $("#search");
 socket.emit("getDataCharts");
@@ -466,3 +466,10 @@ socket.on("feedbackDevice", (item) => {
 $("#submit").click(() => {
   run();
 });
+
+var interval = setInterval(() => {
+  socket.connect();
+  socket.emit("reloadDataSensor");
+  socket.emit("reloadDataDevice");
+  console.log("doneReload");
+}, 30000);

@@ -117,6 +117,21 @@ module.exports = function deviceIO(
       socket.on("mode", (data) => {
         saveMode(data);
       });
+
+      socket.on("reloadDataSensor", (item) => {
+        nameSpaceWebapp.emit("sendDataSensor", {
+          dataTemp: getDataEsp().espSensor.statusDevice.temp,
+          dataTemp1: getDataEsp().api.temp - 273.15,
+          dataHumi: getDataEsp().espSensor.statusDevice.humi,
+          dataHumi1: getDataEsp().api.humidity,
+          dataLight: getDataEsp().espSensor.statusDevice.light,
+        });
+
+        socket.on("reloadDataDevice", () => {
+          nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device);
+        });
+        console.log("reload");
+      });
     });
   }
 
