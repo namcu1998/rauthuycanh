@@ -478,9 +478,22 @@
     margin-top: 20px;
   }
 
-  .propress {
+  .propress-bar .propress {
     text-align: center;
     padding: 20px;
+  }
+
+  .propress-bar .timeBlock {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-bottom: 20px;
   }
 
   .automatic .container-automatic .button-submit {

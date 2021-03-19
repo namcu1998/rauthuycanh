@@ -14,6 +14,8 @@ const {
 } = require("../saveData/modeAndDataAuto/create.mode");
 const { getDataChart } = require("../saveData/createDataCharts/create.charts");
 const { readFile } = require("../saveData/read.database/write.database");
+const time = require("../time/time");
+
 module.exports = function deviceIO(
   nameSpaceEspControll,
   nameSpaceEspSensor,
@@ -120,6 +122,7 @@ module.exports = function deviceIO(
 
       socket.on("reloadDataSensor", (item) => {
         nameSpaceWebapp.emit("sendDataSensor", {
+          dataTime: time.getTime(),
           dataTemp: getDataEsp().espSensor.statusDevice.temp,
           dataTemp1: getDataEsp().api.temp - 273.15,
           dataHumi: getDataEsp().espSensor.statusDevice.humi,

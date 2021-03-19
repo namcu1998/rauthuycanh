@@ -20,10 +20,12 @@ const propressBarHumiValue1 = document.getElementById(
 );
 const propressBarLuxValue = document.getElementById("propress-bar-lux-value");
 const informationContent = document.getElementById("information-content");
+const propressBarTimeValue = document.getElementById("propress-bar-time-value");
 socket.emit("getMa");
 socket.emit("getData");
 
 socket.on("sendDataSensor", (item) => {
+  propressBarTimeValue.innerHTML = item.dataTime;
   propressTemp.style.strokeDashoffset = 440 - (item.dataTemp * 440) / 100;
   propressBarTempValue.innerHTML = item.dataTemp + "ºC";
   propressTemp1.style.strokeDashoffset = 440 - (item.dataTemp1 * 440) / 100;
