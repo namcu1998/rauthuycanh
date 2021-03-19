@@ -1,5 +1,9 @@
 <div class="timeBlock">
-    <h1 id="propress-bar-time-value">Nam</h1>
+    <% if (dataSensor) { %>
+        <span id="propress-bar-time-value">
+            <%= dataSensor.temp %>ºC
+        </span>
+        <% } %>
 </div>
 <div class="temperature">
     <div class="propress">
