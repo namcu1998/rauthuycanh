@@ -122,7 +122,7 @@ module.exports = function deviceIO(
 
       socket.on("reloadDataSensor", (item) => {
         nameSpaceWebapp.emit("sendDataSensor", {
-          dataTime: time.getTime(),
+          dataTime: readFile()[0].thoigian,
           dataTemp: getDataEsp().espSensor.statusDevice.temp,
           dataTemp1: getDataEsp().api.temp - 273.15,
           dataHumi: getDataEsp().espSensor.statusDevice.humi,

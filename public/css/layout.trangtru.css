@@ -494,6 +494,9 @@
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
     margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 2em;
   }
 
   .automatic .container-automatic .button-submit {

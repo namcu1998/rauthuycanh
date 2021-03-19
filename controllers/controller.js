@@ -4,9 +4,10 @@
 const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
 const { getAll } = require("../saveData/modeAndDataAuto/create.mode");
 const time = require("../time/time");
+const { readFile } = require("../saveData/read.database/write.database");
 module.exports.trangtru = function (req, res, next) {
   res.render("home/trangtru", {
-    dataTime: time.getTime(),
+    dataTime: readFile()[0],
     data: getAll().statusDevice.Device,
     dataAuto: getAll().autoData,
     dataSensor: getDataEsp().espSensor.statusDevice,
@@ -19,6 +20,7 @@ module.exports.trangtru = function (req, res, next) {
     statusDHT: getDataEsp().espSensor.statusSensor.statusDHT,
     statusLux: getDataEsp().espSensor.statusSensor.statusLux,
   });
+  console.log(readFile()[0]);
 };
 
 // signal: 'ma.getAll()[5].SignalStrength',
