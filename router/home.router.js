@@ -29,15 +29,15 @@ router.post("/del", function (req, res, next) {
   res.redirect("/home/");
 });
 
-dulieuDb.on("value", (item) => {
-  arrayData = [];
+// dulieuDb.on("value", (item) => {
+//   arrayData = [];
 
-  for (let data in item.val()) {
-    arrayData.push(item.val()[data]);
-  }
+//   for (let data in item.val()) {
+//     arrayData.push(item.val()[data]);
+//   }
 
-  console.log(arrayData);
-});
+//   console.log(arrayData);
+// });
 
 router.get("/getData", function (req, res, next) {
   console.log(req.query.Time);
