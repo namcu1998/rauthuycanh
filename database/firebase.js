@@ -1,13 +1,13 @@
 var admin = require("firebase-admin");
-const fs  = require('fs');
-const {saveData} = require("../saveDataBase/save");
+const fs = require("fs");
+const { saveData } = require("../saveDataBase/save");
 var data2 = [];
 const { saveAll } = require("../saveData/modeAndDataAuto/create.mode");
 const { saveDb } = require("../saveData/createDataCharts/create.charts");
 var serviceAccount = require("../serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://rauthuycanh-data-default-rtdb.firebaseio.com/"
+  databaseURL: "https://rauthuycanh-data-default-rtdb.firebaseio.com/",
 });
 var db = admin.database();
 const dulieuDb = db.ref("data");
@@ -16,24 +16,16 @@ const dulieubieudo = db.ref("dulieubieudo");
 const dulieuLichsu = db.ref("dulieuLichsu");
 const dulieuEsp = db.ref("dulieuEsp");
 
-dulieuDb.on("value", item => {
-  let number = [];
-  for(let data in item.val()) {
-    number.push(item.val()[data])
-  }
-  saveData(number);
-  number = [];
-})
 data1.once("value", function (dataSnapshot) {
   saveAll(dataSnapshot.val());
 });
 dulieubieudo.once("value", function (dataSnapshot) {
-  if(dataSnapshot.val())   saveDb(dataSnapshot.val());
+  if (dataSnapshot.val()) saveDb(dataSnapshot.val());
 });
 module.exports = {
-    dulieuDb,
-    data1,
-    dulieubieudo,
-    dulieuLichsu,
-    dulieuEsp
-}
+  dulieuDb,
+  data1,
+  dulieubieudo,
+  dulieuLichsu,
+  dulieuEsp,
+};

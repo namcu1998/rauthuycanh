@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/webapp");
+const socket = io("https://nhanong.herokuapp.com/webapp");
 const history = $("#history");
 const search = $("#search");
 socket.emit("getDataCharts");
