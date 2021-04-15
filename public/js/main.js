@@ -373,7 +373,7 @@ var myChart3 = new Chart(ctx3, {
         pointStyle: "circle",
         pointRadius: 2,
         pointBorderColor: "red",
-      }
+      },
     ],
   },
   options: {
@@ -409,8 +409,8 @@ var myChart3 = new Chart(ctx3, {
             callback: function (value, index, values) {
               return value + "°C";
             },
-            // suggestedMin: 20,
-            // suggestedMax: 50,
+            suggestedMin: 20,
+            suggestedMax: 100,
             stepSize: 5,
           },
         },

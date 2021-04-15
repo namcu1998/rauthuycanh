@@ -60,7 +60,6 @@ router.get("/getData", function (req, res, next) {
 router.post("/getDataPost", function (req, res) {
   console.log(req.body);
   webapp.emit("DataTempPhone", req.body);
-  res.send("ok");
 });
 
 module.exports = {
