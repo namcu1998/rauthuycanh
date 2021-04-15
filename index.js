@@ -28,6 +28,7 @@ require("./saveData/modeAndDataAuto/create.mode").pushDb(
 appUse(app, express, bodyParser, middleware, esp, esp1, webapp, cookieParser);
 require("./dialogflow/dialogflow")(appdialogflow);
 require("./saveData/modeAndDataAuto/create.mode").getnameSpaceWebapp(webapp);
+require("./router/home.router").getSocket(webapp);
 AwakeHeroku.add({
   url: "https://rauthuycanh.herokuapp.com",
 });

@@ -8,6 +8,11 @@ const {
 } = require("../saveData/modeAndDataAuto/create.mode");
 const { dulieuDb } = require("../database/firebase");
 let arrayData = [];
+let webapp;
+
+function getSocket(item) {
+  webapp = item;
+}
 
 router.get("/", controller.trangtru);
 
@@ -52,4 +57,13 @@ router.get("/getData", function (req, res, next) {
   res.json(array);
 });
 
-module.exports = router;
+router.post("/getDataPost", function (req, res) {
+  console.log(req.body);
+  webapp.emit("DataTempPhone", req.body);
+  res.send("ok");
+});
+
+module.exports = {
+  router,
+  getSocket,
+};

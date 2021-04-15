@@ -118,6 +118,7 @@ socket.on("sendDataLichsu", function (data) {
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
 const ctx2 = document.getElementById("myChart2").getContext("2d");
+const ctx3 = document.getElementById("myChart3").getContext("2d");
 Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
   color: "#361ddb",
   anchor: "center",
@@ -164,6 +165,14 @@ socket.on("pushHumi", function (data) {
 socket.on("pushLux", function (data) {
   addData(myChart, data[1], data[0]);
   removeData(myChart);
+});
+
+socket.on("DataTempPhone", function (data) {
+  let date = new Date();
+  let time = date.getSeconds();
+  addData(myChart3, time, data.nam);
+  removeData(myChart3);
+  console.log(data.nam, time);
 });
 
 var myChart = new Chart(ctx, {
@@ -347,6 +356,65 @@ var myChart2 = new Chart(ctx2, {
           return value + "%";
         },
       },
+    },
+  },
+});
+var myChart3 = new Chart(ctx3, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "nhiệt độ bên trong",
+        data: [],
+        backgroundColor: "rgba(255,0,0, 0)",
+        borderColor: ["red"],
+        borderWidth: 3,
+        pointStyle: "circle",
+        pointRadius: 2,
+        pointBorderColor: "red",
+      }
+    ],
+  },
+  options: {
+    responsive: true,
+    tooltips: {
+      mode: "index",
+      intersect: false,
+    },
+
+    hover: {
+      mode: "nearest",
+      intersect: true,
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        formatter: function (value, context) {
+          return value + "°C";
+        },
+      },
+    },
+    legend: {
+      display: true,
+      labels: {
+        fontColor: "rgb(255, 99, 132)",
+      },
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, values) {
+              return value + "°C";
+            },
+            // suggestedMin: 20,
+            // suggestedMax: 50,
+            stepSize: 5,
+          },
+        },
+      ],
     },
   },
 });
