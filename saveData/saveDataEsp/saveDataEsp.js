@@ -6,6 +6,11 @@ var arrayDataHumi = [];
 var ketquatblight = 0;
 var ketquatbnhietdo = 0;
 var ketquatbdoam = 0;
+
+function roundToTwo(num) {    
+  return +(Math.round(num + "e+2")  + "e-2");
+}
+
 const dataEsp = path.resolve(__dirname, "../saveDataEsp/dataEsp.json");
 function saveDataEspSensor(item) {
   let data = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
@@ -19,13 +24,13 @@ function saveDataEspSensor(item) {
       ketquatbnhietdo += arrayDataTemp[i];
       ketquatbdoam += arrayDataHumi[i];
     }
-    data.espSensor.statusDevice.temp = Math.ceil(
+    data.espSensor.statusDevice.temp = roundToTwo(
       ketquatbnhietdo / arrayDataLux.length
     );
-    data.espSensor.statusDevice.humi = Math.ceil(
+    data.espSensor.statusDevice.humi = roundToTwo(
       ketquatbdoam / arrayDataHumi.length
     );
-    data.espSensor.statusDevice.light = Math.ceil(
+    data.espSensor.statusDevice.light = roundToTwo(
       ketquatblight / arrayDataLux.length
     );
     arrayDataLux = [];
