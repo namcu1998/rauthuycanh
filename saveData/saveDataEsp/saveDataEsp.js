@@ -10,9 +10,9 @@ const dataEsp = path.resolve(__dirname, "../saveDataEsp/dataEsp.json");
 function saveDataEspSensor(item) {
   let data = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
   if (arrayDataLux.length < 1) {
-    arrayDataLux.push(Math.ceil(item.light));
-    arrayDataTemp.push(Math.ceil(item.temp));
-    arrayDataHumi.push(Math.ceil(item.humi));
+    arrayDataLux.push(item.light);
+    arrayDataTemp.push(item.temp);
+    arrayDataHumi.push(item.humi);
   } else {
     for (var i = 0; i < arrayDataLux.length; i++) {
       ketquatblight += arrayDataLux[i];
