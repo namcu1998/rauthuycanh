@@ -19,9 +19,15 @@ function saveDataEspSensor(item) {
       ketquatbnhietdo += arrayDataTemp[i];
       ketquatbdoam += arrayDataHumi[i];
     }
-    data.espSensor.statusDevice.temp = ketquatbnhietdo / arrayDataLux.length;
-    data.espSensor.statusDevice.humi = ketquatbdoam / arrayDataHumi.length;
-    data.espSensor.statusDevice.light = ketquatblight / arrayDataLux.length;
+    data.espSensor.statusDevice.temp = Math.ceil(
+      ketquatbnhietdo / arrayDataLux.length
+    );
+    data.espSensor.statusDevice.humi = Math.ceil(
+      ketquatbdoam / arrayDataHumi.length
+    );
+    data.espSensor.statusDevice.light = Math.ceil(
+      ketquatblight / arrayDataLux.length
+    );
     arrayDataLux = [];
     arrayDataTemp = [];
     arrayDataHumi = [];
