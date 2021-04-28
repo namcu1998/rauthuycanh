@@ -149,7 +149,7 @@ function timeGetApi() {
   if (getDataEsp().api.temp === undefined) {
     getDataApiAsync();
   }
-  if (time.timeDay()[1][1] === 0 || time.timeDay()[1][1] % 10 === 0) {
+  if (time.timeDay()[1][1] === 0 || time.timeDay()[1][1] % 2 === 0) {
     getDataApiAsync();
   }
 }
