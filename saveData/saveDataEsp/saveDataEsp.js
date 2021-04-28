@@ -7,13 +7,14 @@ var ketquatblight = 0;
 var ketquatbnhietdo = 0;
 var ketquatbdoam = 0;
 
-function roundToTwo(num) {    
-  return +(Math.round(num + "e+2")  + "e-2");
+function roundToTwo(num) {
+  return +(Math.round(num + "e+2") + "e-2");
 }
 
 const dataEsp = path.resolve(__dirname, "../saveDataEsp/dataEsp.json");
 function saveDataEspSensor(item) {
   let data = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
+  console.log(item.temp, item.humi);
   if (arrayDataLux.length < 5) {
     arrayDataLux.push(item.light);
     arrayDataTemp.push(item.temp);
