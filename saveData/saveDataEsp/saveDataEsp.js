@@ -15,7 +15,7 @@ const dataEsp = path.resolve(__dirname, "../saveDataEsp/dataEsp.json");
 function saveDataEspSensor(item) {
   let data = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
   console.log(item.temp, item.humi);
-  if (arrayDataLux.length < 5) {
+  if (arrayDataLux.length < 1) {
     arrayDataLux.push(item.light);
     arrayDataTemp.push(item.temp);
     arrayDataHumi.push(item.humi);
