@@ -1,13 +1,13 @@
-const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
-const { getAll, statusEsp } = require("../saveData/modeAndDataAuto/create.mode");
+const { getDataEsp } = require("../data/espData/saveDataEsp");
+const { getAll, statusEsp } = require("../data/clientData/clientData");
 const getDataApiAsync = require("../api/api");
 const time = require("../time/time");
 const { dulieuDb, data1, dulieubieudo } = require("../database/firebase");
-const { pushTemp, pushHumi, pushLux, getDataChart, saveDb } = require("../saveData/createDataCharts/create.charts");
+const { pushTemp, pushHumi, pushLux, getDataChart, saveDb } = require("../data/chartData/create.charts");
 const {
   fileSave,
   readFile,
-} = require("../saveData/read.database/write.database");
+} = require("../data/historyData/historyData");
 const {
   controllAutoDeviceByLux,
   controllAutoDeviceByTime,
@@ -21,7 +21,8 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
     nameSpaceEspControll.emit("ping", "nam");
     nameSpaceEspSensor.emit("ping", "nam");
     timeConnect = 0;
-  } else if (timeUp >= getAll().autoData.setTimePump.time * 120) timeUp = 0;
+  } 
+  // else if (timeUp >= getAll().autoData.setTimePump.time * 120) timeUp = 0;
 }
 
 function checkEspConnected() {
@@ -162,19 +163,19 @@ module.exports = function loopSync(
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
-      if (getAll().mode === 0) {
-        timeUp++;
-        controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
-        controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
-        controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
-      }
-      // checkEspConnected();
-      pushDataBase();
-      writeDataChart(nameSpaceWebapp);
-      writeDataHistory(nameSpaceWebapp);
-      timeGetApi();
+      // if (getAll().mode === 0) {
+      //   timeUp++;
+      //   controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
+      //   controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
+      //   controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
+      // }
+      // // checkEspConnected();
+      // pushDataBase();
+      // writeDataChart(nameSpaceWebapp);
+      // writeDataHistory(nameSpaceWebapp);
+      // timeGetApi();
       pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
-      checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp);
+      // checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp);
     }, 1000);
   });
 };

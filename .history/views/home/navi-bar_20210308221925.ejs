@@ -1,0 +1,145 @@
+<div class="navibar">
+    <div>
+        <img id="btn-show-menu" src="/image/menu.png" alt="">
+        <a href="/"><img src="/image/home.png" alt="">Rauthuycanh</a>
+    </div>
+    <div>
+        <img id="btn-show-controll-page" src="/image/settings.png" alt="">
+        <img id="btn-show-automatic-page" src="/image/auto.png" alt="">
+        <img id="btn-show-history-page" src="/image/history.png" alt="">
+        <img id="btn-show-search-page" src="/image/loupe.png" alt="">
+        <img id="btn-show-chart-page" src="/image/icon-chart.png" alt="">
+    </div>
+    <div>
+        <img id="btn-show-information-esp" src="/image/wifi.png" alt="">
+        <img id="btn-show-notification" src="/image/information.png" alt="">
+    </div>
+</div>
+<div class="menu">
+    <div>
+        <img id="btn-close-menu" src="/image/menu.png" alt="">
+        <img src="/image/home.png" alt="">
+    </div>
+    <div>
+        <ul>
+            <li>
+                <a href="/home/" class="element a">Controll</a>
+            </li>
+            <li>
+                <a href="/home/" class="element a1">Automatic</a>
+            </li>
+            <li>
+                <a href="/home/lichsu" class="element a2">Lịch sử</a>
+            </li>
+            <li>
+                <a href="/home/tracuu" class="element a3">Tra cứu</a>
+            </li>
+            <li>
+                <a href="/home/charts" class="element a4">Biểu đồ</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="information-esp">
+    <div class="information-esp-content">
+        <img id="btn-close-information-esp" src="/image/wifi.png" alt="">
+        <img src="/image/information.png" alt="">
+    </div>
+    <div class="information-esp-content1 element">
+        <div>
+            <span>Trạng thái ESP1: </span>
+            <% if (statusEsp1.status===true) { %>
+                <span>connected</span>
+                <% } %>
+        </div>
+        <div>
+            <img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp1.ip) { %>
+                <span>
+                    <%= statusEsp1.ip %>
+                </span>
+                <% } %> <br>
+        </div>
+        <div>
+            <img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp1.SignalStrength) { %>
+                <span>
+                    <%= statusEsp1.SignalStrength %>
+                </span>
+                <% } %>
+                    <span>dBm</span> <br>
+        </div>
+        <div>
+            <img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp1.ram) { %>
+                <span>
+                    <%= statusEsp1.cpu %>
+                </span>
+                <% } %>
+                    <span>Mhz</span> <br>
+        </div>
+        <div>
+            <img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp1.ram) { %>
+                <span>
+                    <%= statusEsp1.ram %>
+                </span>
+                <% } %> <br>
+        </div>
+    </div>
+    <div class="information-esp-content1 element1">
+        <div>
+            <% if (statusEsp2.status===true) { %>
+                <span>Trạng thái ESP2: </span>
+                <span>connected</span>
+                <% } %>
+        </div>
+        <div>
+            <img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp2.ip) { %>
+                <span>
+                    <%= statusEsp2.ip %>
+                </span>
+                <% } %>
+        </div>
+        <div>
+            <img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp2.SignalStrength) { %>
+                <span>
+                    <%= statusEsp2.SignalStrength %>
+                </span>
+                <% } %>
+                    <span>dBm</span> <br>
+        </div>
+        <div>
+            <img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp2.cpu) { %>
+                <span>
+                    <%= statusEsp2.cpu %>
+                </span>
+                <% } %>
+                    <span>Mhz</span> <br>
+        </div>
+        <div>
+            <img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+            <% if (statusEsp2.ram) { %>
+                <span>
+                    <%= statusEsp2.ram %>
+                </span>
+                <% } %>
+        </div>
+    </div>
+</div>
+<div class="information-sensor">
+    <div class="line">
+        <img id="btn-close-notification" src="/image/cancel.png" alt="">
+        <div>
+            <h2>Tình trạng cảm biến</h2>
+        </div>
+    </div>
+    <div class="line1">
+        <div class="line1-line1">
+            <span id="information-content"></span>
+        </div>
+    </div>
+</div>

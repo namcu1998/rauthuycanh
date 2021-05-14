@@ -3,18 +3,25 @@ const {
   saveDataEspControll,
   getDataEsp,
   error,
-} = require("../saveData/saveDataEsp/saveDataEsp");
+} = require("../data/espData/saveDataEsp");
 const {
   saveMode,
   saveAuto,
-  statusEsp,
   setDevice,
   getAll,
   saveAll,
-} = require("../saveData/modeAndDataAuto/create.mode");
-const { getDataChart } = require("../saveData/createDataCharts/create.charts");
-const { readFile } = require("../saveData/read.database/write.database");
+} = require("../data/clientData/clientData");
+const { getDataChart } = require("../data/chartData/create.charts");
+const { readFile } = require("../data/historyData/historyData");
 const time = require("../time/time");
+const { 
+        pushEspInformationDataIntoJson,
+        pushEspConnectStatusIntoJson,
+        pushEspSensorDataIntoJson,
+        pushSensorStatusIntoJson,
+        getErrorDevicesList,
+        getDataAll
+      } = require("../data/espData/saveDataEsp");
 
 module.exports = function deviceIO(
   nameSpaceEspControll,
@@ -23,46 +30,65 @@ module.exports = function deviceIO(
 ) {
   function espControll(nameSpaceEspControll) {
     nameSpaceEspControll.on("connection", function (socket) {
-      nameSpaceEspControll.emit("status", "connected");
-      socket.on("disconnect", function () {
-        statusEsp("espSensor", 0, "none", "none", "none", "none");
-      });
-      socket.on("JSON1", function (data) {
-        saveDataEspControll(data);
-        statusEsp(
-          "espControll",
-          data.statusEsp,
-          data.ip,
-          data.signal,
-          data.clockCPU,
-          data.ramLeft
-        );
-      });
+      // nameSpaceEspControll.emit("status", "connected");
+      // socket.on("disconnect", function () {
+      //   statusEsp("espSensor", 0, "none", "none", "none", "none");
+      // });
+      // socket.on("JSON1", function (data) {
+      //   saveDataEspControll(data);
+      //   statusEsp(
+      //     "espControll",
+      //     data.statusEsp,
+      //     data.ip,
+      //     data.signal,
+      //     data.clockCPU,
+      //     data.ramLeft
+      //   );
+      // });
     });
   }
 
   function espSensor(nameSpaceEspSensor) {
     nameSpaceEspSensor.on("connection", function (socket) {
+      pushEspConnectStatusIntoJson("espSensorData", true);
+      nameSpaceEspSensor.emit("getEspInformation", "getEspInformation");
       nameSpaceEspSensor.emit("status", "connected");
       console.log("espSensor Connection");
-      socket.on("JSON1", (data) => {
-        saveDataEspSensor(data);
-        statusEsp(
-          "espSensor",
-          data.statusEsp,
-          data.ip,
-          data.signal,
-          data.clockCPU,
-          data.ramLeft
-        );
-      });
-      socket.on("disconnect", function () {
-        statusEsp("espControll", 0, "none", "none", "none", "none");
-      });
-      socket.on("error", function (data) {
-        nameSpaceEspSensor.emit("stopSendError", "stop");
-        error(data);
-      });
+      socket.on ("disconnect", () => {
+        pushEspConnectStatusIntoJson("espSensorData", true);
+      })
+
+      socket.on ("espInformation", data => {
+        pushEspInformationDataIntoJson("espSensorData", data);
+      })
+
+      socket.on ("temparetureData", data => {
+        pushEspSensorDataIntoJson("temparetureData", data);
+      })
+
+      socket.on ("humidityData", data => {
+        pushEspSensorDataIntoJson("humidityData", data);
+      })
+
+      socket.on ("lightData", data => {
+        pushEspSensorDataIntoJson("lightData", data);
+      })
+
+      socket.on ("waterSensorStatusOne", data => {
+        pushSensorStatusIntoJson("waterSensorStatus", data);
+      })
+
+      socket.on ("waterSensorStatusTwo", data => {
+        pushSensorStatusIntoJson("waterSensorStatus1", data);
+      })
+      
+      socket.on ("temparetureSensorStatus", data => {
+        pushSensorStatusIntoJson("dht11Status", data);
+      })
+
+      socket.on ("LightSensorStatus", data => {
+        pushSensorStatusIntoJson("bh1750Status", data);
+      })
     });
   }
 
@@ -73,65 +99,43 @@ module.exports = function deviceIO(
         if (item[0] === "Device2" && item[1] === 1) {
           setDevice("Device2", 1);
           setDevice("Device3", 0);
-          nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
+          nameSpaceEspControll.emit("LED", getAll().statusDevice);
         } else if (item[0] === "Device3" && item[1] === 1) {
           setDevice("Device3", 1);
           setDevice("Device2", 0);
-          nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
+          nameSpaceEspControll.emit("LED", getAll().statusDevice);
         } else {
           setDevice(item[0], item[1]);
-          nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
+          nameSpaceEspControll.emit("LED", getAll().statusDevice);
         }
       });
-      socket.on("getData", () => {
-        nameSpaceWebapp.emit("sendDataLichsu", readFile());
-      });
-      socket.on("getDataCharts", () => {
+
+      socket.on("getChartData", () => {
         nameSpaceWebapp.emit("onCharts", getDataChart());
       });
-      socket.on("getMa", () => {
-        let arraySensorError = [];
 
-        for (let i in getDataEsp().espSensor.statusSensor) {
-          if (getDataEsp().espSensor.statusSensor[i] === false) {
-            arraySensorError.push(i);
-          }
-        }
+      socket.on("getHistoryData", () => {
+        nameSpaceWebapp.emit("sendDataLichsu", readFile());
+      })
 
-        if (getAll().statusEsp.espControll.status === false) {
-          arraySensorError.push("ESPCONTROLL");
-        }
+      socket.on("clientData", data => saveAuto(data))
 
-        if (getAll().statusEsp.espSensor.status === false) {
-          arraySensorError.push("ESPSENSOR");
-        }
-
-        if (arraySensorError.length > 0) {
-          nameSpaceWebapp.emit("sendArraySensorError", arraySensorError);
-        }
-
-        nameSpaceWebapp.emit("onMa1", getAll().statusDevice.Device);
-      });
-      // dữ liệu cảm biến
-      socket.on("ok", (data) => {
-        saveAuto(data);
-      });
-      socket.on("mode", (data) => {
-        saveMode(data);
+      socket.on("getDevicesStatus", () => {
+        getErrorDevicesList();
       });
 
       socket.on("reloadDataSensor", (item) => {
-        nameSpaceWebapp.emit("sendDataSensor", {
-          dataTime: readFile()[0].thoigian,
-          dataTemp: getDataEsp().espSensor.statusDevice.temp,
-          dataTemp1: getDataEsp().api.temp - 273.15,
-          dataHumi: getDataEsp().espSensor.statusDevice.humi,
-          dataHumi1: getDataEsp().api.humidity,
-          dataLight: getDataEsp().espSensor.statusDevice.light,
-        });
+        // nameSpaceWebapp.emit("sendDataSensor", {
+        //   dataTime: readFile()[0].thoigian,
+        //   dataTemp: getDataEsp().espSensor.statusDevice.temp,
+        //   dataTemp1: getDataEsp().api.temp - 273.15,
+        //   dataHumi: getDataEsp().espSensor.statusDevice.humi,
+        //   dataHumi1: getDataEsp().api.humidity,
+        //   dataLight: getDataEsp().espSensor.statusDevice.light,
+        // });
 
         socket.on("reloadDataDevice", () => {
-          nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice.Device);
+          nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice);
         });
         console.log("reload");
       });

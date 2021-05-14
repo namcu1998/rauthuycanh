@@ -1,0 +1,162 @@
+{
+    "dataHumi": [
+        {
+            "doam": 90,
+            "doamApi": 78,
+            "thoigian": "21:39"
+        },
+        {
+            "doam": 91,
+            "doamApi": 78,
+            "thoigian": "21:43"
+        },
+        {
+            "doam": 92.1,
+            "doamApi": 78,
+            "thoigian": "21:50"
+        },
+        {
+            "doam": 92.3,
+            "doamApi": 78,
+            "thoigian": "21:52"
+        },
+        {
+            "doam": 93,
+            "doamApi": 78,
+            "thoigian": "21:54"
+        },
+        {
+            "doam": 92.8,
+            "doamApi": 78,
+            "thoigian": "22:04"
+        },
+        {
+            "doam": 94.5,
+            "doamApi": 78,
+            "thoigian": "22:06"
+        },
+        {
+            "doam": 94,
+            "doamApi": 78,
+            "thoigian": "22:08"
+        },
+        {
+            "doam": 94.4,
+            "doamApi": 78,
+            "thoigian": "22:09"
+        },
+        {
+            "doam": 95,
+            "doamApi": 78,
+            "thoigian": "22:11"
+        },
+        {
+            "doam": 76,
+            "thoigian": "22:22",
+            "doamApi": 78
+        }
+    ],
+    "dataLux": [
+        {
+            "anhsang": 66,
+            "thoigian": "21:39"
+        },
+        {
+            "anhsang": 67,
+            "thoigian": "21:50"
+        },
+        {
+            "anhsang": 66.6,
+            "thoigian": "21:54"
+        },
+        {
+            "anhsang": 66.8,
+            "thoigian": "21:58"
+        },
+        {
+            "anhsang": 66.7,
+            "thoigian": "22:04"
+        },
+        {
+            "anhsang": 66.8,
+            "thoigian": "22:06"
+        },
+        {
+            "anhsang": 66.6,
+            "thoigian": "22:08"
+        },
+        {
+            "anhsang": 66.7,
+            "thoigian": "22:13"
+        },
+        {
+            "anhsang": 82.2,
+            "thoigian": "22:19"
+        },
+        {
+            "anhsang": 66,
+            "thoigian": "22:21"
+        },
+        {
+            "anhsang": 12,
+            "thoigian": "22:22"
+        }
+    ],
+    "dataTemp": [
+        {
+            "nhietdo": 31,
+            "nhietdoApi": 28,
+            "thoigian": "19:41"
+        },
+        {
+            "nhietdo": 34,
+            "nhietdoApi": 28,
+            "thoigian": "19:43"
+        },
+        {
+            "nhietdo": 31,
+            "nhietdoApi": 28,
+            "thoigian": "21:09"
+        },
+        {
+            "nhietdo": 34,
+            "nhietdoApi": 28,
+            "thoigian": "21:11"
+        },
+        {
+            "nhietdo": 31,
+            "nhietdoApi": 28,
+            "thoigian": "21:15"
+        },
+        {
+            "nhietdo": 34,
+            "nhietdoApi": 28,
+            "thoigian": "21:16"
+        },
+        {
+            "nhietdo": 31,
+            "nhietdoApi": 28,
+            "thoigian": "21:22"
+        },
+        {
+            "nhietdo": 34,
+            "nhietdoApi": 28,
+            "thoigian": "21:24"
+        },
+        {
+            "nhietdo": 33.5,
+            "nhietdoApi": 28,
+            "thoigian": "22:19"
+        },
+        {
+            "nhietdo": 33.9,
+            "nhietdoApi": 28,
+            "thoigian": "22:21"
+        },
+        {
+            "nhietdo": 31,
+            "thoigian": "22:22",
+            "nhietdoApi": 28
+        }
+    ]
+}

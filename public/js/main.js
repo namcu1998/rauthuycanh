@@ -1,7 +1,10 @@
-const socket = io("https://nhanong.herokuapp.com/webapp");
+const socket = io("https://nhanongfix.herokuapp.com/webapp");// 
 const history = $("#history");
 const search = $("#search");
-socket.emit("getDataCharts");
+const ctx = document.getElementById("myChart").getContext("2d");
+const ctx1 = document.getElementById("myChart1").getContext("2d");
+const ctx2 = document.getElementById("myChart2").getContext("2d");
+const ctx3 = document.getElementById("myChart3").getContext("2d");
 const inputSearch = document.getElementById("input-search");
 const input = document.querySelectorAll("input");
 const btnToggle = document.getElementsByClassName("btn-toggle");
@@ -20,23 +23,104 @@ const propressBarHumiValue1 = document.getElementById(
 );
 const propressBarLuxValue = document.getElementById("propress-bar-lux-value");
 const informationContent = document.getElementById("information-content");
-const propressBarTimeValue = document.getElementById("propress-bar-time-value");
-socket.emit("getMa");
-socket.emit("getData");
+const timeTakeTemparetureData = document.getElementById("time-take-tempareture-data");
+const timeTakeHumidityData = document.getElementById("time-take-humidity-data");
+const timeTakeLightData = document.getElementById("time-take-light-data");
+socket.emit("getErrorData");
+socket.emit("getChartData");
+socket.emit("getHistoryData");
+socket.emit("getDevicesStatus");
 
 socket.on("sendDataSensor", (item) => {
-  propressBarTimeValue.innerHTML = item.dataTime;
-  propressTemp.style.strokeDashoffset = 440 - (item.dataTemp * 440) / 100;
-  propressBarTempValue.innerHTML = item.dataTemp + "ºC";
+  timeTakeTemparetureData.innerHTML = item.dataTemp.time;
+  timeTakeHumidityData.innerHTML = item.dataHumi.time;
+  timeTakeLightData.innerHTML = item.dataLight.time;
+  propressTemp.style.strokeDashoffset = 440 - (item.dataTemp.data * 440) / 100;
+  propressBarTempValue.innerHTML = item.dataTemp.data + "ºC";
   propressTemp1.style.strokeDashoffset = 440 - (item.dataTemp1 * 440) / 100;
   propressBarTempValue1.innerHTML = item.dataTemp1 + "ºC";
-  propressHumi.style.strokeDashoffset = 440 - (item.dataHumi * 440) / 100;
-  propressBarHumiValue.innerHTML = item.dataHumi + "%";
+  propressHumi.style.strokeDashoffset = 440 - (item.dataHumi.data * 440) / 100;
+  propressBarHumiValue.innerHTML = item.dataHumi.data + "%";
   propressHumi1.style.strokeDashoffset = 440 - (item.dataHumi1 * 440) / 100;
   propressBarHumiValue1.innerHTML = item.dataHumi1 + "%";
   propressLux.style.strokeDashoffset =
-    440 - (((item.dataLight * 100) / 65535) * 440) / 100;
-  propressBarLuxValue.innerHTML = item.dataLight + "Lux ";
+    440 - (((item.dataLight.data * 100) / 65535) * 440) / 100;
+  propressBarLuxValue.innerHTML = item.dataLight.data + "Lux ";
+});
+
+socket.on("feedbackDevice", (item) => {
+  for (let i in item) {
+    for (let i1 of btnToggle) {
+      if (i === i1.name && item[i] === 1) {
+        i1.checked = true;
+      }
+      if (i === i1.name && item[i] === 0) {
+        i1.checked = false;
+      }
+    }
+  }
+});
+
+socket.on("sendDataLichsu", function (data) {
+  xulyDataLichsu(history, data);
+});
+
+socket.on("onCharts", function (data) {
+  data.dataTemp.map((item) => {
+    addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
+    removeData(myChart1);
+  });
+  data.dataHumi.map((item) => {
+    addData(myChart2, item.thoigian, item.doam, item.doamApi);
+    removeData(myChart2);
+  });
+  data.dataLux.map((item) => {
+    addData(myChart, item.thoigian, item.anhsang);
+    removeData(myChart);
+  });
+});
+
+socket.on("pushTemp", function (data) {
+  addData(myChart1, data[1], data[0], data[2]);
+  removeData(myChart1);
+});
+
+socket.on("pushHumi", function (data) {
+  addData(myChart2, data[1], data[0], data[2]);
+  removeData(myChart2);
+});
+
+socket.on("pushLux", function (data) {
+  addData(myChart, data[1], data[0]);
+  removeData(myChart);
+});
+
+socket.on("sendArraySensorError", (item) => {
+  let array = ["esspcontroll", "esspsenssor"];
+  let string = "";
+
+  console.log(item)
+
+  item.map((data) => {
+    string =
+      string +
+      "<div class='informationContent'>" +
+      data +
+      " OFFLINE" +
+      "</div>";
+  });
+
+  document.getElementsByClassName("information-sensor")[0].style.display =
+    "block";
+  informationContent.innerHTML = string;
+});
+
+socket.on("DataTempPhone", function (data) {
+  let date = new Date();
+  let time = date.getSeconds();
+  addData(myChart3, time, data.nam);
+  removeData(myChart3);
+  console.log(data.nam, time);
 });
 
 function xulyDataLichsu(table, array) {
@@ -111,14 +195,6 @@ function convert(data) {
   else return "Tắt";
 }
 
-socket.on("sendDataLichsu", function (data) {
-  xulyDataLichsu(history, data);
-});
-
-const ctx = document.getElementById("myChart").getContext("2d");
-const ctx1 = document.getElementById("myChart1").getContext("2d");
-const ctx2 = document.getElementById("myChart2").getContext("2d");
-const ctx3 = document.getElementById("myChart3").getContext("2d");
 Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
   color: "#361ddb",
   anchor: "center",
@@ -139,41 +215,6 @@ function removeData(chart) {
   }
   chart.update();
 }
-
-socket.on("onCharts", function (data) {
-  data.dataTemp.map((item) => {
-    addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
-    removeData(myChart1);
-  });
-  data.dataHumi.map((item) => {
-    addData(myChart2, item.thoigian, item.doam, item.doamApi);
-    removeData(myChart2);
-  });
-  data.dataLux.map((item) => {
-    addData(myChart, item.thoigian, item.anhsang);
-    removeData(myChart);
-  });
-});
-socket.on("pushTemp", function (data) {
-  addData(myChart1, data[1], data[0], data[2]);
-  removeData(myChart1);
-});
-socket.on("pushHumi", function (data) {
-  addData(myChart2, data[1], data[0], data[2]);
-  removeData(myChart2);
-});
-socket.on("pushLux", function (data) {
-  addData(myChart, data[1], data[0]);
-  removeData(myChart);
-});
-
-socket.on("DataTempPhone", function (data) {
-  let date = new Date();
-  let time = date.getSeconds();
-  addData(myChart3, time, data.nam);
-  removeData(myChart3);
-  console.log(data.nam, time);
-});
 
 var myChart = new Chart(ctx, {
   type: "bar",
@@ -442,32 +483,6 @@ function activeDevice(item) {
   } else socket.emit("activeDevice", [item.name, 0]);
 }
 
-socket.on("sendArraySensorError", (item) => {
-  let array = ["esspcontroll", "esspsenssor"];
-  let string = "";
-  // if (item.length === 1) {
-  //   string = item[0].toUpperCase() + " " + "OFFLINE";
-  // } else {
-  //   string = item[0].toUpperCase() + " " + "OFFLINE";
-  //   for (let i = 1; i < item.length; i++) {
-  //     string = string + "<br>" + item[i].toUpperCase() + " " + "OFFLINE";
-  //   }
-  // }
-
-  item.map((data) => {
-    string =
-      string +
-      "<div class='informationContent'>" +
-      data +
-      " OFFLINE" +
-      "</div>";
-  });
-
-  document.getElementsByClassName("information-sensor")[0].style.display =
-    "block";
-  informationContent.innerHTML = string;
-});
-
 window.addEventListener("offline", (event) => {
   alert("OFFLINE");
 });
@@ -476,13 +491,7 @@ window.addEventListener("online", (event) => {
   location.reload();
 });
 
-function onChangeAuto(item) {
-  if (item.checked == true) {
-    socket.emit("mode", 0);
-  } else socket.emit("mode", 1);
-}
-
-function run() {
+$("#submit").click(() => {
   let data = {};
   if (
     parseInt($("#setTimePump")[0].value) == 0 ||
@@ -516,30 +525,14 @@ function run() {
       deviceOnMax: ["Device4"],
       deviceOnMin: ["Device5"],
     };
-    socket.emit("ok", data);
+    socket.emit("clientData", data);
   }
-}
+})
 
-socket.on("feedbackDevice", (item) => {
-  for (let i in item) {
-    for (let i1 of btnToggle) {
-      if (i === i1.name && item[i] === 1) {
-        i1.checked = true;
-      }
-      if (i === i1.name && item[i] === 0) {
-        i1.checked = false;
-      }
-    }
-  }
-});
 
-$("#submit").click(() => {
-  run();
-});
-
-var interval = setInterval(() => {
-  socket.connect();
-  socket.emit("reloadDataSensor");
-  socket.emit("reloadDataDevice");
-  console.log("doneReload");
-}, 30000);
+// var interval = setInterval(() => {
+//   socket.connect();
+//   socket.emit("reloadDataSensor");
+//   socket.emit("reloadDataDevice");
+//   console.log("doneReload");
+// }, 30000);

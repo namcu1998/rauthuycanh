@@ -1,0 +1,91 @@
+@media only screen and (min-width: 600px) {
+  #header {
+    background-position: center;
+    background-size: 500px;
+    color: #ffffff;
+    text-align: center;
+  }
+  #header ul {
+    margin: 0px;
+    text-align: center;
+    background-color: #442424;
+  }
+  #header ul li {
+    width: 200px;
+    height: 40px;
+    display: inline-table;
+    line-height: 40px;
+  }
+  #header ul li a {
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+  }
+  #header ul li :hover {
+    background-color: black;
+  }
+  #bot {
+    font-family: arial;
+    text-align: left;
+    height: 400px;
+    overflow-y: auto;
+  }
+  table {
+    text-align: center;
+    width: 99%;
+    font-size: 2em;
+    color: black;
+  }
+  #lichsu {
+    border: 1px solid;
+    text-align: left;
+  }
+  tbody tr td {
+    border: 1px solid;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 0 auto;
+  }
+  #header ul {
+    text-align: center;
+    background-color: #442424;
+    margin: 0;
+    padding: 0;
+  }
+  #header ul li {
+    width: 100px;
+    height: 40px;
+    display: inline-table;
+    line-height: 40px;
+  }
+  #header ul li a {
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+  }
+  #header ul li :hover {
+    background-color: black;
+  }
+
+  .lichsu {
+    overflow-x: scroll;
+  }
+ 
+  .lichsu table {
+    width: 1000px;
+    border-collapse: collapse;
+  }
+
+  tr,
+  th,
+  td {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    border: 1px solid black;
+  }
+}

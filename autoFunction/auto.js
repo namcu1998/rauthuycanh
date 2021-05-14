@@ -3,8 +3,8 @@ const { saveMode,
   statusEsp,
   setDevice,
   getAll,
-  saveAll, } = require("../saveData/modeAndDataAuto/create.mode");
-const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
+  saveAll, } = require("../data/clientData/clientData");
+const { getDataEsp } = require("../data/espData/saveDataEsp");
 
 const sendWebApp = (nameSpaceEspControll, nameSpaceWebapp) => {
   nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);

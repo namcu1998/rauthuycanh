@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Trang chủ</title>
+	<script src="/js/jquery.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<link rel="shortcut icon" type="image/home.png" href="/image/tracuu.png" />
+	<link rel="stylesheet" type="text/css" href="/css/layout.trangtru.css" />
+	<link rel="stylesheet" type="text/css" href="/css/btn-toggle.css" />
+	<link rel="stylesheet" type="text/css" href="/css/navi-bar.css" />
+</head>
+
+<body>
+	<%- include('navi-bar'); -%>
+		<div class="content-container">
+			<div class="content">
+				<div class="page controll">
+					<%- include('controll-page'); -%>
+				</div>
+				<div class="page automatic">
+					<%- include('automatic-page'); -%>
+				</div>
+				<div class="page propress-bar">
+					<%- include('propressBar-page'); -%>
+				</div>
+				<div class="page history">
+					<%- include('history-page'); -%>
+				</div>
+				<div class="page search">
+					<%- include('search-page'); -%>
+				</div>
+				<div class="page chart">
+					<%- include('chart-page'); -%>
+				</div>
+			</div>
+		</div>
+		<script src="/js/main.js"></script>
+		<script src="/js/xuly-navi.js"></script>
+</body>
+
+</html>

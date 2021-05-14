@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { saveDataApi } = require("../saveData/saveDataEsp/saveDataEsp");
+const { saveDataApi } = require("../data/espData/saveDataEsp");
 const key = process.env.API_KEY;
 
 async function getDataApiAsync() {

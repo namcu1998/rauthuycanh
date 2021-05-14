@@ -1,0 +1,89 @@
+<div class="temperature">
+    <h1>N</h1>
+</div>
+<div class="temperature">
+    <div class="propress">
+        <div class="container-propress">
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle class="sensor-circle" id="propressTemp" cx="70" cy="70" r="70" <% if (dataSensor) { %>
+                    stroke-dashoffset=<% } %>
+                        <%=440-(dataSensor.temp * 440) / 100%>></circle>
+            </svg>
+            <% if (dataSensor) { %>
+                <span id="propress-bar-temp-value">
+                    <%= dataSensor.temp %>ºC
+                </span>
+                <% } %>
+        </div>
+        <h3>Nhiệt độ bên trong nhà rau</h3>
+    </div>
+    <div class="propress">
+        <div class="container-propress">
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle class="sensor-circle" id="propressTemp1" cx="70" cy="70" r="70" <% if (dataApi) { %>
+                    stroke-dashoffset=<% } %>
+                        <%=440-((dataApi.temp - 273.15) * 440) / 100%>></circle>
+            </svg>
+            <% if (dataApi) { %>
+                <span id="propress-bar-temp1-value">
+                    <%= dataApi.temp - 273.15 %>ºC
+                </span>
+                <% } %>
+        </div>
+        <h3>Nhiệt độ bên ngoài trời</h3>
+    </div>
+</div>
+<div class="humidity">
+    <div class="propress">
+        <div class="container-propress">
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle class="sensor-circle" id="propressHumi" cx="70" cy="70" r="70" <% if (dataSensor) { %>
+                    stroke-dashoffset=<% } %>
+                        <%=440-(dataSensor.humi * 440) / 100%>></circle>
+            </svg>
+            <% if (dataSensor) { %>
+                <span id="propress-bar-humi-value">
+                    <%= dataSensor.humi %>%
+                </span>
+                <% } %>
+        </div>
+        <h3>Độ ẩm bên trong nhà rau</h3>
+    </div>
+    <div class="propress">
+        <div class="container-propress">
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle class="sensor-circle" id="propressHumi1" cx="70" cy="70" r="70" <% if (dataApi) { %>
+                    stroke-dashoffset=<% } %>
+                        <%=440-(dataApi.humidity * 440) / 100%>></circle>
+            </svg>
+            <% if (dataApi) { %>
+                <span id="propress-bar-humi1-value">
+                    <%= dataApi.humidity %>%
+                </span>
+                <% } %>
+        </div>
+        <h3>Độ ẩm bên ngoài nhà rau</h3>
+    </div>
+</div>
+<div class="light">
+    <div class="propress">
+        <div class="container-propress">
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle class="sensor-circle" id="propressLux" cx="70" cy="70" r="70" <% if (dataSensor) { %>
+                    stroke-dashoffset=<% } %>
+                        <%=440 - ((dataSensor.light * 100) / 65535 * 440) / 100%>></circle>
+            </svg>
+            <% if (dataSensor) { %>
+                <span id="propress-bar-lux-value">
+                    <%= dataSensor.light %>Lux
+                </span>
+                <% } %>
+        </div>
+        <h3>Ánh sáng</h3>
+    </div>
+</div>

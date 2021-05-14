@@ -1,5 +1,3 @@
-const { setDevice } = require("../saveData/modeAndDataAuto/create.mode");
-const { getDataEsp } = require("../saveData/saveDataEsp/saveDataEsp");
 module.exports = function (appdialogflow) {
   appdialogflow.intent("myIntent", (conv, { devicesname, statusdevice }) => {
     console.log(devicesname, statusdevice);

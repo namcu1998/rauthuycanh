@@ -1,11 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var controller = require("../controllers/controller");
-const { checkData } = require("../saveDataBase/save");
-const {
-  addDevice,
-  remoteDevice,
-} = require("../saveData/modeAndDataAuto/create.mode");
+
 const { dulieuDb } = require("../database/firebase");
 let arrayData = [];
 let webapp;

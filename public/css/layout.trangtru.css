@@ -443,10 +443,9 @@
     stroke: yellow;
   }
 
-  .propress-bar .temperature {
+  .propress-bar .temperature .container {
     display: flex;
     justify-content: space-around;
-    background-color: white;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -454,28 +453,42 @@
     -o-border-radius: 20px;
   }
 
-  .propress-bar .humidity {
+  .propress-bar .humidity .container {
     display: flex;
     justify-content: space-around;
-    background-color: white;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-    margin-top: 20px;
   }
 
-  .propress-bar .light {
+  .propress-bar .light .container {
     display: flex;
     justify-content: space-around;
-    background-color: white;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+  }
+
+  .propress-bar .temperature, .propress-bar .humidity, .propress-bar .light {
+    text-align: center;
+    background-color: white;
     margin-top: 20px;
+    padding-top: 10px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  } 
+
+  .propress-bar div span {
+    font-size: 1.4em;
+    font-weight: 300;
+    text-transform: uppercase;
   }
 
   .propress-bar .propress {
