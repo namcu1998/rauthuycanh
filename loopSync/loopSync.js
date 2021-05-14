@@ -1,4 +1,4 @@
-const { getDataEsp } = require("../data/espData/saveDataEsp");
+const { getDataEsp, getDataAll } = require("../data/espData/saveDataEsp");
 const { getAll, statusEsp } = require("../data/clientData/clientData");
 const getDataApiAsync = require("../api/api");
 const time = require("../time/time");
@@ -147,7 +147,7 @@ function checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp) {
 }
 
 function timeGetApi() {
-  if (getDataEsp().api.temp === undefined) {
+  if (getDataAll().api.temp === undefined) {
     getDataApiAsync();
   }
   if (time.timeDay()[1][1] === 0 || time.timeDay()[1][1] % 2 === 0) {
@@ -173,7 +173,7 @@ module.exports = function loopSync(
       // pushDataBase();
       // writeDataChart(nameSpaceWebapp);
       // writeDataHistory(nameSpaceWebapp);
-      // timeGetApi();
+      timeGetApi();
       pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
       // checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp);
     }, 1000);
