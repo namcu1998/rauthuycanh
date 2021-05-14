@@ -121,7 +121,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
 
   webapp.emit("sendDataSensor", {
     dataTemp: oldData.espData.espSensorData.sensorData.temparetureData,
-    dataTemp1: oldData.api.temp - 273,
+    dataTemp1: oldData.api.temp - 273.15,
     dataHumi: oldData.espData.espSensorData.sensorData.humidityData,
     dataHumi1: oldData.api.humidity,
     dataLight: oldData.espData.espSensorData.sensorData.lightData
