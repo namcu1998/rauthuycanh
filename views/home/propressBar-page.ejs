@@ -27,11 +27,11 @@
                     <circle cx="70" cy="70" r="70"></circle>
                     <circle class="sensor-circle" id="propressTemp1" cx="70" cy="70" r="70" <% if (dataApi) { %>
                         stroke-dashoffset=<% } %>
-                            <%=440-((dataApi.temp - 273) * 440) / 100%>></circle>
+                            <%=440-((dataApi.temp - 273.15) * 440) / 100%>></circle>
                 </svg>
                 <% if (dataApi) { %>
                     <span id="propress-bar-temp1-value">
-                        <%= dataApi.temp - 273 %>ºC
+                        <%= dataApi.temp - 273.15 %>ºC
                     </span>
                     <% } %>
             </div>
