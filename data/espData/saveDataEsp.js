@@ -103,7 +103,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
   switch (dataName) {
     case "temparetureData":
       pushTemp(data, time.time(), oldData.api.temp);
-      webapp.emit("pushTemp", [data, time.time(), oldData.api.temp - 273]);
+      webapp.emit("pushTemp", [data, time.time(), oldData.api.temp - 273.15]);
     break;
     case "humidityData": 
       pushHumi(data, time.time(), oldData.api.humidity);
