@@ -39,7 +39,7 @@ function pushDataBase() {
     dulieuDb.push([
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,
-      getDataEsp().api.temp - 273.15,
+      getDataEsp().api.temp,
       getDataEsp().api.humidity,
       getDataEsp().espSensor.statusDevice.light,
       time.getTime(),
@@ -62,7 +62,7 @@ function writeDataHistory(nameSpaceWebapp) {
     fileSave(
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,
-      getDataEsp().api.temp - 273.15,
+      getDataEsp().api.temp,
       getDataEsp().api.humidity,
       getDataEsp().espSensor.statusDevice.light,
       time.getTime(),
@@ -77,7 +77,7 @@ function writeDataHistory(nameSpaceWebapp) {
     nameSpaceWebapp.emit("sendDataSensor", {
       dataTime: time.getTime(),
       dataTemp: getDataEsp().espSensor.statusDevice.temp,
-      dataTemp1: getDataEsp().api.temp - 273.15,
+      dataTemp1: getDataEsp().api.temp,
       dataHumi: getDataEsp().espSensor.statusDevice.humi,
       dataHumi1: getDataEsp().api.humidity,
       dataLight: getDataEsp().espSensor.statusDevice.light,

@@ -17,14 +17,14 @@ function pushTemp(item, item1, item2) {
   data1.dataTemp.push({
     nhietdo: item,
     thoigian: item1,
-    nhietdoApi: item2 - 273.15,
+    nhietdoApi: item2,
   });
 
   pushDataChartOnDatabase(data1);
 
   let data2 = JSON.stringify(data1);
   fs.writeFileSync(dataChart, data2);
-  return [item, item1, item2 - 273.15];
+  return [item, item1, item2];
 }
 
 function pushHumi(item, item1, item2) {

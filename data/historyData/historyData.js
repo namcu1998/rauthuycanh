@@ -43,7 +43,7 @@ function fileSave(sensorData, apiData, devicesStatusData) {
       new Object(
         sensorData.temparetureData.data,
         sensorData.humidityData.data,
-        apiData.temp - 273.15,
+        apiData.temp,
         apiData.humidity,
         sensorData.lightData.data,
         time.getTime(),
@@ -66,7 +66,7 @@ function fileSave(sensorData, apiData, devicesStatusData) {
       new Object(
         sensorData.temparetureData.data,
         sensorData.humidityData.data,
-        apiData.temp - 273.15,
+        apiData.temp,
         apiData.humidity,
         sensorData.lightData.data,
         time.getTime(),
