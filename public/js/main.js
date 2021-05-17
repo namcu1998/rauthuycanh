@@ -200,6 +200,7 @@ Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
   anchor: "center",
   align: "top",
 });
+
 function addData(chart, label, data, data1) {
   chart.data.labels.push(label);
   chart.data.datasets[0].data.push(data);
@@ -208,6 +209,7 @@ function addData(chart, label, data, data1) {
   }
   chart.update();
 }
+
 function removeData(chart) {
   // if (chart.data.labels.length > ) {
   //   chart.data.labels.shift();
@@ -255,6 +257,12 @@ var myChart = new Chart(ctx, {
           },
         },
       ],
+      xAxes: [
+        {
+          display: false
+        }
+      ]
+      
     },
     animation: {
       duration: 2000,
@@ -262,6 +270,7 @@ var myChart = new Chart(ctx, {
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
+        display: false,
         formatter: function (value, context) {
           return value + "Lux";
         },
@@ -310,6 +319,7 @@ var myChart1 = new Chart(ctx1, {
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
+        display: false,
         formatter: function (value, context) {
           return value + "°C";
         },
@@ -329,12 +339,17 @@ var myChart1 = new Chart(ctx1, {
             callback: function (value, index, values) {
               return value + "°C";
             },
-            // suggestedMin: 20,
-            // suggestedMax: 50,
+            suggestedMin: 20,
+            suggestedMax: 100,
             stepSize: 5,
           },
         },
       ],
+      xAxes: [
+        {
+          display: false
+        }
+      ]
     },
   },
 });
@@ -389,10 +404,16 @@ var myChart2 = new Chart(ctx2, {
           },
         },
       ],
+      xAxes: [
+        {
+          display: false
+        }
+      ]
     },
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
+        display: false,
         formatter: function (value, context) {
           return value + "%";
         },
