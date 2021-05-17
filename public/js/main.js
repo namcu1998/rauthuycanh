@@ -209,10 +209,10 @@ function addData(chart, label, data, data1) {
   chart.update();
 }
 function removeData(chart) {
-  if (chart.data.labels.length > 20) {
-    chart.data.labels.shift();
-    chart.data.datasets[0].data.shift();
-  }
+  // if (chart.data.labels.length > ) {
+  //   chart.data.labels.shift();
+  //   chart.data.datasets[0].data.shift();
+  // }
   chart.update();
 }
 
