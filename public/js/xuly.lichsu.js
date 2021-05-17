@@ -1,9 +1,12 @@
-const socket = io("https://nhanong.herokuapp.com/webapp"); //https://bonghoaxinh.herokuapp.com/nam2351998
+const socket = io("https://nhanongfix.herokuapp.com/webapp"); //https://bonghoaxinh.herokuapp.com/nam2351998
 const table = $("#lich");
+socket.emit("getHistoryData");
+
 function convert(data) {
   if (data == 1) return "Bật";
   else return "Tắt";
 }
+
 function xulyData(getid, array) {
   var html = array.map(function (x) {
     return (
@@ -55,9 +58,7 @@ function xulyData(getid, array) {
   var htmljoin = html.join("");
   $("#lich").html(htmljoin);
 }
-$(document).ready(function () {
-  socket.emit("getData");
-  socket.on("sendDataLichsu", function (data) {
-    xulyData(table, data);
-  });
-}); //document
+
+socket.on("sendDataLichsu", function (data) {
+  xulyData(table, data);
+});

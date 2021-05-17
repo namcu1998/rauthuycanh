@@ -1,4 +1,4 @@
-const socket = io("https://nhanong.herokuapp.com/webapp");
+const socket = io("https://nhanongfix.herokuapp.com/webapp");
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
 const ctx2 = document.getElementById("myChart2").getContext("2d");
@@ -16,41 +16,39 @@ function addData(chart, label, data, data1) {
   chart.update();
 }
 function removeData(chart) {
-  if (chart.data.labels.length > 20) {
-    chart.data.labels.shift();
-    chart.data.datasets[0].data.shift();
-  }
+  // if (chart.data.labels.length > 20) {
+  //   chart.data.labels.shift();
+  //   chart.data.datasets[0].data.shift();
+  // }
   chart.update();
 }
-$(document).ready(function () {
-  socket.emit("getDataCharts");
-  socket.on("onCharts", function (data) {
-    data.dataTemp.map((item) => {
-      addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
-      removeData(myChart1);
-    });
-    data.dataHumi.map((item) => {
-      addData(myChart2, item.thoigian, item.doam, item.doamApi);
-      removeData(myChart2);
-    });
-    data.dataLux.map((item) => {
-      addData(myChart, item.thoigian, item.anhsang);
-      removeData(myChart);
-    });
-  });
-  socket.on("pushTemp", function (data) {
-    addData(myChart1, data[1], data[0], data[2]);
+socket.emit("getChartData");
+socket.on("onCharts", function (data) {
+  data.dataTemp.map((item) => {
+    addData(myChart1, item.thoigian, item.nhietdo, item.nhietdoApi);
     removeData(myChart1);
   });
-  socket.on("pushHumi", function (data) {
-    addData(myChart2, data[1], data[0], data[2]);
+  data.dataHumi.map((item) => {
+    addData(myChart2, item.thoigian, item.doam, item.doamApi);
     removeData(myChart2);
   });
-  socket.on("pushLux", function (data) {
-    addData(myChart, data[1], data[0]);
+  data.dataLux.map((item) => {
+    addData(myChart, item.thoigian, item.anhsang);
     removeData(myChart);
   });
-}); //document
+});
+socket.on("pushTemp", function (data) {
+  addData(myChart1, data[1], data[0], data[2]);
+  removeData(myChart1);
+});
+socket.on("pushHumi", function (data) {
+  addData(myChart2, data[1], data[0], data[2]);
+  removeData(myChart2);
+});
+socket.on("pushLux", function (data) {
+  addData(myChart, data[1], data[0]);
+  removeData(myChart);
+});
 var myChart = new Chart(ctx, {
   type: "bar",
   data: {
@@ -90,6 +88,12 @@ var myChart = new Chart(ctx, {
           },
         },
       ],
+      xAxes: [
+        {
+          display: false
+        }
+      ]
+      
     },
     animation: {
       duration: 2000,
@@ -97,6 +101,7 @@ var myChart = new Chart(ctx, {
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
+        display: false,
         formatter: function (value, context) {
           return value + "Lux";
         },
@@ -145,6 +150,7 @@ var myChart1 = new Chart(ctx1, {
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
+        display: false,
         formatter: function (value, context) {
           return value + "°C";
         },
@@ -164,12 +170,17 @@ var myChart1 = new Chart(ctx1, {
             callback: function (value, index, values) {
               return value + "°C";
             },
-            // suggestedMin: 20,
-            // suggestedMax: 50,
+            suggestedMin: 20,
+            suggestedMax: 100,
             stepSize: 5,
           },
         },
       ],
+      xAxes: [
+        {
+          display: false
+        }
+      ]
     },
   },
 });
@@ -224,10 +235,16 @@ var myChart2 = new Chart(ctx2, {
           },
         },
       ],
+      xAxes: [
+        {
+          display: false
+        }
+      ]
     },
     plugins: {
       // Change options for ALL labels of THIS CHART
       datalabels: {
+        display: false,
         formatter: function (value, context) {
           return value + "%";
         },
