@@ -197,7 +197,7 @@ function convert(data) {
 
 Chart.helpers.merge(Chart.defaults.global.plugins.datalabels, {
   color: "#361ddb",
-  anchor: "center",
+  anchor: "top",
   align: "top",
 });
 
@@ -290,7 +290,7 @@ var myChart1 = new Chart(ctx1, {
         borderColor: ["red"],
         borderWidth: 3,
         pointStyle: "circle",
-        pointRadius: 2,
+        pointRadius: 0,
         pointBorderColor: "red",
       },
       {
@@ -300,7 +300,7 @@ var myChart1 = new Chart(ctx1, {
         borderColor: ["yellow"],
         borderWidth: 3,
         pointStyle: "circle",
-        pointRadius: 2,
+        pointRadius: 0,
         pointBorderColor: "yellow",
       },
     ],
@@ -365,7 +365,7 @@ var myChart2 = new Chart(ctx2, {
         borderColor: ["blue"],
         borderWidth: 3,
         pointStyle: "circle",
-        pointRadius: 2,
+        pointRadius: 0,
         pointBorderColor: "blue",
       },
       {
@@ -375,7 +375,7 @@ var myChart2 = new Chart(ctx2, {
         borderColor: ["yellow"],
         borderWidth: 3,
         pointStyle: "circle",
-        pointRadius: 2,
+        pointRadius: 0,
         pointBorderColor: "yellow",
       },
     ],

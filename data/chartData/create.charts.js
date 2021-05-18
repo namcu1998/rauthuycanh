@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const dataChart = path.resolve(__dirname, "../chartData/dataCharts.json");
 const { chartData } = require("../../database/firebase");
-const numberOfElement = 100;
+const numberOfElement = 200;
 
 function pushDataChartOnDatabase(data) {
   chartData.set(data);
