@@ -7,7 +7,7 @@ async function getDataApiAsync() {
     `http://api.openweathermap.org/data/2.5/weather?id=1587923&appid=${key}`
   );
   saveDataApi({
-    temp: Math.abs(data.data.main.temp - 273.15),
+    temp: Math.round(data.data.main.temp - 273.15),
     feels_like: data.data.main.feels_like,
     temp_min: data.data.main.temp_min,
     temp_max: data.data.main.temp_max,

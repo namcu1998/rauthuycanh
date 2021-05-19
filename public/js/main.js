@@ -1,4 +1,4 @@
-const socket = io("https://nhanongfix.herokuapp.com/webapp");// 
+const socket = io("https://nhanongfix.herokuapp.com/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
@@ -23,7 +23,9 @@ const propressBarHumiValue1 = document.getElementById(
 );
 const propressBarLuxValue = document.getElementById("propress-bar-lux-value");
 const informationContent = document.getElementById("information-content");
-const timeTakeTemparetureData = document.getElementById("time-take-tempareture-data");
+const timeTakeTemparetureData = document.getElementById(
+  "time-take-tempareture-data"
+);
 const timeTakeHumidityData = document.getElementById("time-take-humidity-data");
 const timeTakeLightData = document.getElementById("time-take-light-data");
 socket.emit("getErrorData");
@@ -99,7 +101,7 @@ socket.on("sendArraySensorError", (item) => {
   let array = ["esspcontroll", "esspsenssor"];
   let string = "";
 
-  console.log(item)
+  console.log(item);
 
   item.map((data) => {
     string =
@@ -259,10 +261,9 @@ var myChart = new Chart(ctx, {
       ],
       xAxes: [
         {
-          display: false
-        }
-      ]
-      
+          display: false,
+        },
+      ],
     },
     animation: {
       duration: 2000,
@@ -347,9 +348,9 @@ var myChart1 = new Chart(ctx1, {
       ],
       xAxes: [
         {
-          display: false
-        }
-      ]
+          display: false,
+        },
+      ],
     },
   },
 });
@@ -406,9 +407,9 @@ var myChart2 = new Chart(ctx2, {
       ],
       xAxes: [
         {
-          display: false
-        }
-      ]
+          display: false,
+        },
+      ],
     },
     plugins: {
       // Change options for ALL labels of THIS CHART
@@ -548,8 +549,7 @@ $("#submit").click(() => {
     };
     socket.emit("clientData", data);
   }
-})
-
+});
 
 // var interval = setInterval(() => {
 //   socket.connect();

@@ -128,7 +128,7 @@ module.exports = function deviceIO(
         // nameSpaceWebapp.emit("sendDataSensor", {
         //   dataTime: readFile()[0].thoigian,
         //   dataTemp: getDataEsp().espSensor.statusDevice.temp,
-        //   dataTemp1: getDataEsp().api.temp - 273.15,
+        //   dataTemp1: getDataEsp().api.temp,
         //   dataHumi: getDataEsp().espSensor.statusDevice.humi,
         //   dataHumi1: getDataEsp().api.humidity,
         //   dataLight: getDataEsp().espSensor.statusDevice.light,
