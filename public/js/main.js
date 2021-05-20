@@ -4,7 +4,6 @@ const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
 const ctx2 = document.getElementById("myChart2").getContext("2d");
-const ctx3 = document.getElementById("myChart3").getContext("2d");
 const inputSearch = document.getElementById("input-search");
 const input = document.querySelectorAll("input");
 const btnToggle = document.getElementsByClassName("btn-toggle");
@@ -115,14 +114,6 @@ socket.on("sendArraySensorError", (item) => {
   document.getElementsByClassName("information-sensor")[0].style.display =
     "block";
   informationContent.innerHTML = string;
-});
-
-socket.on("DataTempPhone", function (data) {
-  let date = new Date();
-  let time = date.getSeconds();
-  addData(myChart3, time, data.nam);
-  removeData(myChart3);
-  console.log(data.nam, time);
 });
 
 function xulyDataLichsu(table, array) {
@@ -289,33 +280,41 @@ var myChart1 = new Chart(ctx1, {
         data: [],
         backgroundColor: "rgba(255,0,0, 0)",
         borderColor: ["red"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "red",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
         label: "nhiệt độ bên ngoài",
         data: [],
         backgroundColor: "rgba(255,0,0, 0)",
         borderColor: ["yellow"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "yellow",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
     ],
   },
   options: {
     responsive: true,
+    title: {
+      display: false,
+      text: "Mode: index, intersect = false",
+    },
     tooltips: {
       mode: "index",
       intersect: false,
+      xAlign: "center",
+      yAlign: "top",
+      caretPadding: 20,
     },
-
     hover: {
-      mode: "nearest",
-      intersect: true,
+      mode: "index",
+      intersect: false,
     },
     plugins: {
       // Change options for ALL labels of THIS CHART
@@ -326,12 +325,6 @@ var myChart1 = new Chart(ctx1, {
         },
       },
     },
-    legend: {
-      display: true,
-      labels: {
-        fontColor: "rgb(255, 99, 132)",
-      },
-    },
     scales: {
       yAxes: [
         {
@@ -340,7 +333,7 @@ var myChart1 = new Chart(ctx1, {
             callback: function (value, index, values) {
               return value + "°C";
             },
-            suggestedMin: 20,
+            suggestedMin: 0,
             suggestedMax: 100,
             stepSize: 5,
           },
@@ -352,6 +345,10 @@ var myChart1 = new Chart(ctx1, {
         },
       ],
     },
+    layout: {
+      padding: 20
+    },
+    spanGaps: true
   },
 });
 var myChart2 = new Chart(ctx2, {
@@ -364,33 +361,50 @@ var myChart2 = new Chart(ctx2, {
         data: [],
         backgroundColor: "rgba(139, 97, 255,0)",
         borderColor: ["blue"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "blue",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
         label: "độ ẩm bên trong",
         data: [],
         backgroundColor: "rgba(139, 97, 255, 0)",
         borderColor: ["yellow"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "yellow",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
     ],
   },
   options: {
     responsive: true,
+    title: {
+      display: false,
+      text: "Mode: index, intersect = false",
+    },
     tooltips: {
       mode: "index",
       intersect: false,
+      xAlign: "center",
+      yAlign: "top",
+      caretPadding: 20,
     },
-
     hover: {
-      mode: "nearest",
-      intersect: true,
+      mode: "index",
+      intersect: false,
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        display: false,
+        formatter: function (value, context) {
+          return value + "%";
+        },
+      },
     },
     scales: {
       yAxes: [
@@ -402,6 +416,7 @@ var myChart2 = new Chart(ctx2, {
             },
             suggestedMin: 0,
             suggestedMax: 100,
+            stepSize: 5,
           },
         },
       ],
@@ -411,73 +426,8 @@ var myChart2 = new Chart(ctx2, {
         },
       ],
     },
-    plugins: {
-      // Change options for ALL labels of THIS CHART
-      datalabels: {
-        display: false,
-        formatter: function (value, context) {
-          return value + "%";
-        },
-      },
-    },
-  },
-});
-var myChart3 = new Chart(ctx3, {
-  type: "line",
-  data: {
-    labels: [],
-    datasets: [
-      {
-        label: "nhiệt độ bên trong",
-        data: [],
-        backgroundColor: "rgba(255,0,0, 0)",
-        borderColor: ["red"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 2,
-        pointBorderColor: "red",
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    tooltips: {
-      mode: "index",
-      intersect: false,
-    },
-
-    hover: {
-      mode: "nearest",
-      intersect: true,
-    },
-    plugins: {
-      // Change options for ALL labels of THIS CHART
-      datalabels: {
-        formatter: function (value, context) {
-          return value + "°C";
-        },
-      },
-    },
-    legend: {
-      display: true,
-      labels: {
-        fontColor: "rgb(255, 99, 132)",
-      },
-    },
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            // Include a dollar sign in the ticks
-            callback: function (value, index, values) {
-              return value + "°C";
-            },
-            suggestedMin: 20,
-            suggestedMax: 100,
-            stepSize: 5,
-          },
-        },
-      ],
+    layout: {
+      padding: 20
     },
   },
 });

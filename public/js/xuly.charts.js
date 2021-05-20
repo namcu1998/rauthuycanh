@@ -90,10 +90,9 @@ var myChart = new Chart(ctx, {
       ],
       xAxes: [
         {
-          display: false
-        }
-      ]
-      
+          display: false,
+        },
+      ],
     },
     animation: {
       duration: 2000,
@@ -119,33 +118,41 @@ var myChart1 = new Chart(ctx1, {
         data: [],
         backgroundColor: "rgba(255,0,0, 0)",
         borderColor: ["red"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "red",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
         label: "nhiệt độ bên ngoài",
         data: [],
         backgroundColor: "rgba(255,0,0, 0)",
         borderColor: ["yellow"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "yellow",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
     ],
   },
   options: {
     responsive: true,
+    title: {
+      display: false,
+      text: "Mode: index, intersect = false",
+    },
     tooltips: {
       mode: "index",
       intersect: false,
+      xAlign: "center",
+      yAlign: "top",
+      caretPadding: 20,
     },
-
     hover: {
-      mode: "nearest",
-      intersect: true,
+      mode: "index",
+      intersect: false,
     },
     plugins: {
       // Change options for ALL labels of THIS CHART
@@ -156,12 +163,6 @@ var myChart1 = new Chart(ctx1, {
         },
       },
     },
-    legend: {
-      display: true,
-      labels: {
-        fontColor: "rgb(255, 99, 132)",
-      },
-    },
     scales: {
       yAxes: [
         {
@@ -170,7 +171,7 @@ var myChart1 = new Chart(ctx1, {
             callback: function (value, index, values) {
               return value + "°C";
             },
-            suggestedMin: 20,
+            suggestedMin: 0,
             suggestedMax: 100,
             stepSize: 5,
           },
@@ -178,10 +179,14 @@ var myChart1 = new Chart(ctx1, {
       ],
       xAxes: [
         {
-          display: false
-        }
-      ]
+          display: false,
+        },
+      ],
     },
+    layout: {
+      padding: 20
+    },
+    spanGaps: true
   },
 });
 var myChart2 = new Chart(ctx2, {
@@ -194,33 +199,50 @@ var myChart2 = new Chart(ctx2, {
         data: [],
         backgroundColor: "rgba(139, 97, 255,0)",
         borderColor: ["blue"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "blue",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
         label: "độ ẩm bên trong",
         data: [],
         backgroundColor: "rgba(139, 97, 255, 0)",
         borderColor: ["yellow"],
-        borderWidth: 3,
-        pointStyle: "circle",
-        pointRadius: 0,
-        pointBorderColor: "yellow",
+        fill: false,
+        pointBorderColor: "rgba(0, 0, 0, 0)",
+        pointBackgroundColor: "rgba(0, 0, 0, 0)",
+        pointHoverBackgroundColor: "rgb(255, 99, 132)",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
       },
     ],
   },
   options: {
     responsive: true,
+    title: {
+      display: false,
+      text: "Mode: index, intersect = false",
+    },
     tooltips: {
       mode: "index",
       intersect: false,
+      xAlign: "center",
+      yAlign: "top",
+      caretPadding: 20,
     },
-
     hover: {
-      mode: "nearest",
-      intersect: true,
+      mode: "index",
+      intersect: false,
+    },
+    plugins: {
+      // Change options for ALL labels of THIS CHART
+      datalabels: {
+        display: false,
+        formatter: function (value, context) {
+          return value + "%";
+        },
+      },
     },
     scales: {
       yAxes: [
@@ -232,23 +254,18 @@ var myChart2 = new Chart(ctx2, {
             },
             suggestedMin: 0,
             suggestedMax: 100,
+            stepSize: 5,
           },
         },
       ],
       xAxes: [
         {
-          display: false
-        }
-      ]
-    },
-    plugins: {
-      // Change options for ALL labels of THIS CHART
-      datalabels: {
-        display: false,
-        formatter: function (value, context) {
-          return value + "%";
+          display: false,
         },
-      },
+      ],
+    },
+    layout: {
+      padding: 20
     },
   },
 });

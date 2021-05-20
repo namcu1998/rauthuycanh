@@ -100,10 +100,6 @@
     background-color: white;
   }
 
-  .scroll-page {
-    width: 100%;
-  }
-
   .history {
     overflow: scroll;
   }
@@ -473,7 +469,9 @@
     -o-border-radius: 20px;
   }
 
-  .propress-bar .temperature, .propress-bar .humidity, .propress-bar .light {
+  .propress-bar .temperature,
+  .propress-bar .humidity,
+  .propress-bar .light {
     text-align: center;
     background-color: white;
     margin-top: 20px;
@@ -483,7 +481,7 @@
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-  } 
+  }
 
   .propress-bar div span {
     font-size: 1.4em;
