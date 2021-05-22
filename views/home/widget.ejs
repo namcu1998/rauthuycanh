@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.widget.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="widget">
+        <div class="sensor">
+            <div class="time">
+                <% if (sensorData) { %>
+                    <span id="time-take-tempareture-data">
+                        <%= sensorData.temparetureData.time %>
+                    </span>
+                    <% } %>
+            </div>
+            <div class="container">
+                <div class="block">
+                    <div class="title">
+                        <h5>In</h5>
+                    </div>
+                    <div id="line-row"></div>
+                    <div class="content">
+                        <img src="/image/temperature.svg" alt="">
+                        <% if (sensorData) { %>
+                            <span id="propress-bar-temp-value">
+                                <%= sensorData.temparetureData.data %>ºC
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+                <div id="line-column"></div>
+                <div class="block">
+                    <div class="title">
+                        <h5>Out</h5>
+                    </div>
+                    <div id="line-row"></div>
+                    <div class="content">
+                        <img src="/image/temperature.svg" alt="">
+                        <% if (dataApi) { %>
+                            <span id="propress-bar-temp1-value">
+                                <%= dataApi.temp %>ºC
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sensor">
+            <div class="time">
+                <% if (sensorData) { %>
+                    <span id="time-take-humidity-data">
+                        <%= sensorData.humidityData.time %>
+                    </span>
+                    <% } %>
+            </div>
+            <div class="container">
+                <div class="block">
+                    <div class="title">
+                        <h5>In</h5>
+                    </div>
+                    <div id="line-row"></div>
+                    <div class="content">
+                        <img src="/image/humidity.svg" alt="">
+                        <% if (sensorData) { %>
+                            <span id="propress-bar-humi-value">
+                                <%= sensorData.humidityData.data %>%
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+                <div id="line-column"></div>
+                <div class="block">
+                    <div class="title">
+                        <h5>Out</h5>
+                    </div>
+                    <div id="line-row"></div>
+                    <div class="content">
+                        <img src="/image/humidity.svg" alt="">
+                        <% if (dataApi) { %>
+                            <span id="propress-bar-humi1-value">
+                                <%= dataApi.humidity %>%
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sensor">
+            <div class="time">
+                <% if (sensorData) { %>
+                    <span id="time-take-light-data">
+                        <%= sensorData.lightData.time %>
+                    </span>
+                    <% } %>
+            </div>
+            <div class="container">
+                <div class="block">
+                    <div class="title">
+                        <h5>In</h5>
+                    </div>
+                    <div id="line-row"></div>
+                    <div class="content">
+                        <img src="/image/sun.svg" alt="">
+                        <% if (sensorData) { %>
+                            <span id="propress-bar-lux-value">
+                                <%= sensorData.lightData.data %>L
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+                <div id="line-column"></div>
+                <div class="block">
+                    <div class="title">
+                        <h5>Out</h5>
+                    </div>
+                    <div id="line-row"></div>
+                    <div class="content">
+                        <img src="/image/sun.svg" alt="">
+                        <% if (sensorData) { %>
+                            <span id="propress-bar-lux-value">
+                                <%= sensorData.lightData.data %>L
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
