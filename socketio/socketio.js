@@ -62,12 +62,20 @@ module.exports = function deviceIO(
         pushEspInformationDataIntoJson("espSensorData", data);
       })
 
-      socket.on ("temparetureData", data => {
-        pushEspSensorDataIntoJson("temparetureData", data);
+      socket.on ("temparetureInDoorData", data => {
+        pushEspSensorDataIntoJson("temparetureInDoorData", data);
       })
 
-      socket.on ("humidityData", data => {
-        pushEspSensorDataIntoJson("humidityData", data);
+      socket.on ("humidityInDoorData", data => {
+        pushEspSensorDataIntoJson("humidityInDoorData", data);
+      })
+
+      socket.on ("temparetureOutDoorData", data => {
+        pushEspSensorDataIntoJson("temparetureOutDoorData", data);
+      })
+
+      socket.on ("humidityOutDoorData", data => {
+        pushEspSensorDataIntoJson("humidityOutDoorData", data);
       })
 
       socket.on ("lightData", data => {

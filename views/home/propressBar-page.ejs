@@ -1,7 +1,7 @@
 <div class="temperature">
     <% if (sensorData) { %>
         <span id="time-take-tempareture-data">
-            <%= sensorData.temparetureData.time %>
+            <%= sensorData.temparetureInDoorData.time %>
         </span>
     <% } %>
     <div class="container">
@@ -11,11 +11,11 @@
                     <circle cx="70" cy="70" r="70"></circle>
                     <circle class="sensor-circle" id="propressTemp" cx="70" cy="70" r="70" <% if (sensorData) { %>
                         stroke-dashoffset=<% } %>
-                            <%=440-(sensorData.temparetureData.data * 440) / 100%>></circle>
+                            <%=440-(sensorData.temparetureInDoorData.data * 440) / 100%>></circle>
                 </svg>
                 <% if (sensorData) { %>
                     <span id="propress-bar-temp-value">
-                        <%= sensorData.temparetureData.data %>ºC
+                        <%= sensorData.temparetureInDoorData.data %>ºC
                     </span>
                     <% } %>
             </div>
@@ -42,7 +42,7 @@
 <div class="humidity">
     <% if (sensorData) { %>
         <span id="time-take-humidity-data">
-            <%= sensorData.humidityData.time %>
+            <%= sensorData.humidityInDoorData.time %>
         </span>
     <% } %>
     <div class="container">
@@ -52,11 +52,11 @@
                     <circle cx="70" cy="70" r="70"></circle>
                     <circle class="sensor-circle" id="propressHumi" cx="70" cy="70" r="70" <% if (sensorData) { %>
                         stroke-dashoffset=<% } %>
-                            <%=440-(sensorData.humidityData.data * 440) / 100%>></circle>
+                            <%=440-(sensorData.humidityInDoorData.data * 440) / 100%>></circle>
                 </svg>
                 <% if (sensorData) { %>
                     <span id="propress-bar-humi-value">
-                        <%= sensorData.humidityData.data %>%
+                        <%= sensorData.humidityInDoorData.data %>%
                     </span>
                     <% } %>
             </div>

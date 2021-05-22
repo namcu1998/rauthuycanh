@@ -3,9 +3,7 @@ const path = require("path");
 const time = require("../../time/time");
 const { getAll } = require("../../data/clientData/clientData");
 const { fileSave, readFile } = require("../historyData/historyData");
-const { pushTemp,
-	      pushHumi,
-	      pushLux } = require("../chartData/create.charts");
+const { pushTemp, pushHumi, pushLux } = require("../chartData/create.charts");
 const { espData } = require("../../database/firebase");
 var arrayDataLux = [];
 var arrayDataTemp = [];
@@ -76,11 +74,11 @@ function pushEspInformationDataIntoJson(espName, informationData) {
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
 
   oldData.espData[espName].espInformation = {
-    "ramUsed": informationData.ramLeft,
-    "cpuSpeed": informationData.clockCPU,
-    "IPAddress": informationData.ip,
-    "wifiStrength": informationData.signal
-  }
+    ramUsed: informationData.ramLeft,
+    cpuSpeed: informationData.clockCPU,
+    IPAddress: informationData.ip,
+    wifiStrength: informationData.signal,
+  };
 
   pushDataOnDatabase(oldData);
 
@@ -92,30 +90,50 @@ function pushEspInformationDataIntoJson(espName, informationData) {
 }
 
 function pushEspSensorDataIntoJson(dataName, data) {
-  console.log(dataName, data)
+  console.log(dataName, data);
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
 
   oldData.espData.espSensorData.sensorData[dataName] = {
     data: data,
-    time: time.getTime()
+    time: time.getTime(),
   };
 
   switch (dataName) {
-    case "temparetureData":
-      pushTemp(data, time.getTime(), oldData.api.temp);
-      webapp.emit("pushTemp", [data, time.getTime(), oldData.api.temp]);
-    break;
-    case "humidityData": 
-      pushHumi(data, time.getTime(), oldData.api.humidity);
-      webapp.emit("pushHumi", [data, time.getTime(), oldData.api.humidity]);
-    break;
-    case "lightData": 
+    case "temparetureInDoorData":
+      pushTemp(
+        data,
+        time.getTime(),
+        oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data
+      );
+      webapp.emit("pushTemp", [
+        data,
+        time.getTime(),
+        oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data,
+      ]);
+      break;
+    case "humidityInDoorData":
+      pushHumi(
+        data,
+        time.getTime(),
+        oldData.espData.espSensorData.sensorData.humidityOutDoorData.data
+      );
+      webapp.emit("pushHumi", [
+        data,
+        time.getTime(),
+        oldData.espData.espSensorData.sensorData.humidityOutDoorData.data,
+      ]);
+      break;
+    case "lightData":
       pushLux(data, time.getTime());
       webapp.emit("pushLux", [data, time.getTime()]);
-    break;
-  } 
+      break;
+  }
 
-  fileSave(oldData.espData.espSensorData.sensorData, oldData.api, getAll().statusDevice);
+  fileSave(
+    oldData.espData.espSensorData.sensorData,
+    oldData.espData.espSensorData.sensorData,
+    getAll().statusDevice
+  );
 
   webapp.emit("sendDataLichsu", readFile());
 
@@ -124,8 +142,8 @@ function pushEspSensorDataIntoJson(dataName, data) {
     dataTemp1: oldData.api.temp,
     dataHumi: oldData.espData.espSensorData.sensorData.humidityData,
     dataHumi1: oldData.api.humidity,
-    dataLight: oldData.espData.espSensorData.sensorData.lightData
-  })
+    dataLight: oldData.espData.espSensorData.sensorData.lightData,
+  });
 
   pushDataOnDatabase(oldData);
 
@@ -141,7 +159,7 @@ function pushSensorStatusIntoJson(SensorName, status) {
   pushDataOnDatabase(oldData);
 
   let newData = JSON.stringify(oldData);
-  
+
   fs.writeFileSync(dataEsp, newData);
 
   getErrorDevicesList();
@@ -211,5 +229,5 @@ module.exports = {
   saveDataEspSensor,
   getWebappSocket,
   saveDataApi,
-  getDataAll
+  getDataAll,
 };

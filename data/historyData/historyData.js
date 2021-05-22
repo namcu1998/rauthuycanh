@@ -31,7 +31,7 @@ function Object(
   this.device4 = device4;
   this.device5 = device5;
 }
-function fileSave(sensorData, apiData, devicesStatusData) {
+function fileSave(sensorInDoorData, sensorOutDoorData, devicesStatusData) {
   if (fs.readFileSync(dataHistory, "utf8")) {
     var data = JSON.parse(fs.readFileSync(dataHistory, "utf8"));
 
@@ -41,11 +41,11 @@ function fileSave(sensorData, apiData, devicesStatusData) {
 
     data.unshift(
       new Object(
-        sensorData.temparetureData.data,
-        sensorData.humidityData.data,
-        apiData.temp,
-        apiData.humidity,
-        sensorData.lightData.data,
+        sensorInDoorData.temparetureInDoorData.data,
+        sensorInDoorData.temparetureInDoorData.data,
+        sensorOutDoorData.temparetureOutDoorData.data,
+        sensorOutDoorData.temparetureOutDoorData.data,
+        sensorInDoorData.lightData.data,
         time.getTime(),
         devicesStatusData.Device,
         devicesStatusData.Device1,
@@ -64,11 +64,11 @@ function fileSave(sensorData, apiData, devicesStatusData) {
     let data = [];
     data.push(
       new Object(
-        sensorData.temparetureData.data,
-        sensorData.humidityData.data,
-        apiData.temp,
-        apiData.humidity,
-        sensorData.lightData.data,
+        sensorInDoorData.temparetureData.data,
+        sensorInDoorData.humidityData.data,
+        sensorOutDoorData.temp,
+        sensorOutDoorData.humidity,
+        sensorInDoorData.lightData.data,
         time.getTime(),
         devicesStatusData.Device,
         devicesStatusData.Device1,

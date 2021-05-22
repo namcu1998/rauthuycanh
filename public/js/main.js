@@ -346,9 +346,9 @@ var myChart1 = new Chart(ctx1, {
       ],
     },
     layout: {
-      padding: 20
+      padding: 20,
     },
-    spanGaps: true
+    spanGaps: true,
   },
 });
 var myChart2 = new Chart(ctx2, {
@@ -427,7 +427,7 @@ var myChart2 = new Chart(ctx2, {
       ],
     },
     layout: {
-      padding: 20
+      padding: 20,
     },
   },
 });
