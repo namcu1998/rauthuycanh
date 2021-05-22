@@ -20,6 +20,8 @@ router.get("/charts", controller.charts);
 
 router.get("/tracuu", controller.tracuu);
 
+router.get("/widget", controller.widget);
+
 router.post("/add", function (req, res, next) {
   addDevice(req.body.name);
   res.redirect("/home/");

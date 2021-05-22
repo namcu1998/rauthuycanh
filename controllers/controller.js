@@ -27,6 +27,21 @@ module.exports.trangtru = function (req, res, next) {
   });
 };
 
+module.exports.widget = function (req, res, next) {
+  res.render("home/widget", {
+    dataTime: time.getTime(),
+    data: getAll().statusDevice,
+    dataAuto: getAll().autoData,
+    dataApi: getDataAll().api,
+    dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
+    user: req.cookies.user,
+    sensorData: getDataAll().espData.espSensorData.sensorData,
+    espSensorConnectStatus: espConnectStatus,
+    sensorStatus: getDataAll().espData.espSensorData.sensorStatus,
+    espInformation: espInformation,
+  });
+};
+
 module.exports.cambien = function (req, res, next) {
   res.render("home/cambien");
 };
