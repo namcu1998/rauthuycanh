@@ -15,7 +15,7 @@
             <div class="time">
                 <% if (sensorData) { %>
                     <span id="time-take-tempareture-data">
-                        <%= sensorData.temparetureData.time %>
+                        <%= sensorData.temparetureInDoorData.time %>
                     </span>
                     <% } %>
             </div>
@@ -29,7 +29,7 @@
                         <img src="/image/temperature.svg" alt="">
                         <% if (sensorData) { %>
                             <span id="propress-bar-temp-value">
-                                <%= sensorData.temparetureData.data %>ºC
+                                <%= sensorData.temparetureInDoorData.data %>ºC
                             </span>
                             <% } %>
                     </div>
@@ -55,7 +55,7 @@
             <div class="time">
                 <% if (sensorData) { %>
                     <span id="time-take-humidity-data">
-                        <%= sensorData.humidityData.time %>
+                        <%= sensorData.humidityInDoorData.time %>
                     </span>
                     <% } %>
             </div>
@@ -69,7 +69,7 @@
                         <img src="/image/humidity.svg" alt="">
                         <% if (sensorData) { %>
                             <span id="propress-bar-humi-value">
-                                <%= sensorData.humidityData.data %>%
+                                <%= sensorData.humidityInDoorData.data %>%
                             </span>
                             <% } %>
                     </div>
