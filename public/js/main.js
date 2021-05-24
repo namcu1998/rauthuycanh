@@ -32,6 +32,8 @@ socket.emit("getChartData");
 socket.emit("getHistoryData");
 socket.emit("getDevicesStatus");
 
+let pause = 0;
+
 socket.on("sendDataSensor", (item) => {
   timeTakeTemparetureData.innerHTML = item.dataTemp.time;
   timeTakeHumidityData.innerHTML = item.dataHumi.time;
@@ -50,13 +52,15 @@ socket.on("sendDataSensor", (item) => {
 });
 
 socket.on("feedbackDevice", (item) => {
-  for (let i in item) {
-    for (let i1 of btnToggle) {
-      if (i === i1.name && item[i] === 1) {
-        i1.checked = true;
-      }
-      if (i === i1.name && item[i] === 0) {
-        i1.checked = false;
+  if (pause === 3) {
+    for (let i in item) {
+      for (let i1 of btnToggle) {
+        if (i === i1.name && item[i] === 1) {
+          i1.checked = true;
+        }
+        if (i === i1.name && item[i] === 0) {
+          i1.checked = false;
+        }
       }
     }
   }
@@ -449,10 +453,23 @@ inputSearch.addEventListener("input", (item) => {
     });
 });
 
-function activeDevice(item) {
+const timeOut = () =>
+  new Promise((resolve, reject) => {
+    setInterval(() => {
+      pause++;
+      if (pause > 3) pause = 3;
+      console.log(pause);
+      resolve("done");
+    }, 1000);
+  });
+
+timeOut();
+
+async function activeDevice(item) {
   if (item.checked === true) {
     socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
+  pause = 0;
 }
 
 window.addEventListener("offline", (event) => {

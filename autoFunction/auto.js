@@ -2,7 +2,7 @@ const { setDevice, getAll } = require("../data/clientData/clientData");
 const { getDataAll } = require("../data/espData/saveDataEsp");
 
 const sendWebApp = (nameSpaceEspControll, nameSpaceWebapp) => {
-  nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
+  nameSpaceEspControll.emit("LED", getAll().statusDevice);
 };
 
 function controllAutoDeviceByLux(
