@@ -89,6 +89,17 @@ function pushEspInformationDataIntoJson(espName, informationData) {
   getErrorDevicesList();
 }
 
+function pushDeviceStatusDataIntoJson(espName, data) {
+
+  let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
+
+  oldData.espData[espName].devicesStatus = data;
+
+  let newData = JSON.stringify(oldData);
+  fs.writeFileSync(dataEsp, newData);
+  
+}
+
 function pushEspSensorDataIntoJson(dataName, data) {
   console.log(dataName, data);
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
@@ -221,6 +232,7 @@ function getErrorDevicesList() {
 
 module.exports = {
   pushEspInformationDataIntoJson,
+  pushDeviceStatusDataIntoJson,
   pushEspConnectStatusIntoJson,
   pushEspSensorDataIntoJson,
   pushSensorStatusIntoJson,

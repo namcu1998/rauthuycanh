@@ -16,6 +16,7 @@ const { readFile } = require("../data/historyData/historyData");
 const time = require("../time/time");
 const { 
         pushEspInformationDataIntoJson,
+        pushDeviceStatusDataIntoJson,
         pushEspConnectStatusIntoJson,
         pushEspSensorDataIntoJson,
         pushSensorStatusIntoJson,
@@ -31,11 +32,15 @@ module.exports = function deviceIO(
   function espControll(nameSpaceEspControll) {
     nameSpaceEspControll.on("connection", function (socket) {
 
+      nameSpaceEspControll.emit("LED", getAll().statusDevice);
+
       pushEspConnectStatusIntoJson("espControllData", true);
 
-      nameSpaceEspSensor.emit("getEspInformation", "getEspInformation");
+      nameSpaceEspControll.emit("getEspInformation", "getEspInformation");
 
-      nameSpaceEspSensor.emit("status", "connected");
+      nameSpaceEspControll.emit("status", "connected");
+
+      console.log("connected")
 
       socket.on("disconnect", function () {
         pushEspConnectStatusIntoJson("espControllData", false);
@@ -43,6 +48,10 @@ module.exports = function deviceIO(
       
       socket.on ("espInformation", data => {
         pushEspInformationDataIntoJson("espControllData", data);
+      })
+
+      socket.on ("outputStatus", data => {
+        pushDeviceStatusDataIntoJson("espControllData", data);
       })
 
     });

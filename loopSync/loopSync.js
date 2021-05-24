@@ -1,18 +1,15 @@
 const { getDataEsp, getDataAll } = require("../data/espData/saveDataEsp");
-const { getAll, statusEsp } = require("../data/clientData/clientData");
+
+const { getAll } = require("../data/clientData/clientData");
+
 const getDataApiAsync = require("../api/api");
+
 const time = require("../time/time");
-const { dulieuDb, data1, dulieubieudo } = require("../database/firebase");
-const { pushTemp, pushHumi, pushLux, getDataChart, saveDb } = require("../data/chartData/create.charts");
-const {
-  fileSave,
-  readFile,
-} = require("../data/historyData/historyData");
-const {
-  controllAutoDeviceByLux,
-  controllAutoDeviceByTime,
-  controllAutoDeviceByTemp
-} = require("../autoFunction/auto");
+
+const { controllAutoDeviceByLux,
+        controllAutoDeviceByTime,
+        controllAutoDeviceByTemp } = require("../autoFunction/auto");
+
 let timeConnect = 0,
   timeUp = 0;
 
@@ -22,15 +19,7 @@ function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
     nameSpaceEspSensor.emit("ping", "nam");
     timeConnect = 0;
   } 
-  // else if (timeUp >= getAll().autoData.setTimePump.time * 120) timeUp = 0;
-}
-
-function checkEspConnected() {
-  if(time.timeSecond()%9 === 0) {
-    statusEsp("espControll", 0, "none", "none", "none", "none");
-    statusEsp("espSensor", 0, "none", "none", "none", "none");
-    console.log("test")
-  }
+  else if (timeUp >= getAll().autoData.setTimePump.time * 120) timeUp = 0;
 }
 
 function pushDataBase() {
@@ -53,99 +42,6 @@ function pushDataBase() {
   }
 }
 
-function writeDataHistory(nameSpaceWebapp) {
-  if (
-    readFile()[0].nhietdo !== getDataEsp().espSensor.statusDevice.temp ||
-    readFile()[0].doam !== getDataEsp().espSensor.statusDevice.humi ||
-    readFile()[0].anhsang !== getDataEsp().espSensor.statusDevice.light
-  ) {
-    fileSave(
-      getDataEsp().espSensor.statusDevice.temp,
-      getDataEsp().espSensor.statusDevice.humi,
-      getDataEsp().api.temp,
-      getDataEsp().api.humidity,
-      getDataEsp().espSensor.statusDevice.light,
-      time.getTime(),
-      getAll().statusDevice.Device.Device,
-      getAll().statusDevice.Device.Device1,
-      getAll().statusDevice.Device.Device2,
-      getAll().statusDevice.Device.Device3,
-      getAll().statusDevice.Device.Device4,
-      getAll().statusDevice.Device.Device5
-    );
-    nameSpaceWebapp.emit("sendDataLichsu", readFile());
-    nameSpaceWebapp.emit("sendDataSensor", {
-      dataTime: time.getTime(),
-      dataTemp: getDataEsp().espSensor.statusDevice.temp,
-      dataTemp1: getDataEsp().api.temp,
-      dataHumi: getDataEsp().espSensor.statusDevice.humi,
-      dataHumi1: getDataEsp().api.humidity,
-      dataLight: getDataEsp().espSensor.statusDevice.light,
-    });
-  }
-}
-
-function writeDataChart(nameSpaceWebapp) {
-  if (
-    getDataChart().dataTemp[getDataChart().dataTemp.length - 1].nhietdo !==
-    getDataEsp().espSensor.statusDevice.temp
-  ) {
-    nameSpaceWebapp.emit(
-      "pushTemp",
-      pushTemp(
-        getDataEsp().espSensor.statusDevice.temp,
-        time.time(),
-        getDataEsp().api.temp
-      )
-    );
-    dulieubieudo.set(getDataChart());
-  }
-  if (
-    getDataChart().dataHumi[getDataChart().dataHumi.length - 1].doam !==
-    getDataEsp().espSensor.statusDevice.humi
-  ) {
-    nameSpaceWebapp.emit(
-      "pushHumi",
-      pushHumi(
-        getDataEsp().espSensor.statusDevice.humi,
-        time.time(),
-        getDataEsp().api.humidity
-      )
-    );
-    dulieubieudo.set(getDataChart());
-  }
-  if (
-    getDataChart().dataLux[getDataChart().dataLux.length - 1].anhsang !==
-    getDataEsp().espSensor.statusDevice.light
-  ) {
-    console.log("om");
-    nameSpaceWebapp.emit(
-      "pushLux",
-      pushLux(getDataEsp().espSensor.statusDevice.light, time.time())
-    );
-    dulieubieudo.set(getDataChart());
-  }
-}
-
-function checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp) {
-  if (
-    getAll().statusDevice.Device.Device !=
-      getDataEsp().espControll.statusDevice.Device ||
-    getAll().statusDevice.Device.Device1 !=
-      getDataEsp().espControll.statusDevice.Device1 ||
-    getAll().statusDevice.Device.Device2 !=
-      getDataEsp().espControll.statusDevice.Device2 ||
-    getAll().statusDevice.Device.Device3 !=
-      getDataEsp().espControll.statusDevice.Device3 ||
-    getAll().statusDevice.Device.Device4 !=
-      getDataEsp().espControll.statusDevice.Device4 ||
-    getAll().statusDevice.Device.Device5 !=
-      getDataEsp().espControll.statusDevice.Device5
-  ) {
-    nameSpaceEspControll.emit("LED", getAll().statusDevice.Device);
-  }
-}
-
 function timeGetApi() {
   if (getDataAll().api.temp === undefined) {
     getDataApiAsync();
@@ -163,19 +59,14 @@ module.exports = function loopSync(
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeConnect++;
-      // if (getAll().mode === 0) {
-      //   timeUp++;
-      //   controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
-      //   controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
-      //   controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
-      // }
-      // // checkEspConnected();
+      timeUp++;
+      controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
+      controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
+      controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
       // pushDataBase();
-      // writeDataChart(nameSpaceWebapp);
-      // writeDataHistory(nameSpaceWebapp);
-      timeGetApi();
+  
+      // timeGetApi();
       pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
-      // checkDeviceEspReconnect(nameSpaceEspControll, getAll, getDataEsp);
     }, 1000);
   });
 };
