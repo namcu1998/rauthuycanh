@@ -39,21 +39,21 @@ AwakeHeroku.add({
   url: "https://nhanong.herokuapp.com",
 });
 
-// espData.once("value", function (dataSnapshot) {
-//   if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
-// });
+espData.once("value", function (dataSnapshot) {
+  if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
+});
 
-// clientData.once("value", function (dataSnapshot) {
-//   if (dataSnapshot.val()) getClientDataFromDatabase(dataSnapshot.val());
-// });
+clientData.once("value", function (dataSnapshot) {
+  if (dataSnapshot.val()) getClientDataFromDatabase(dataSnapshot.val());
+});
 
-// historyData.once("value", function (dataSnapshot) {
-//   if (dataSnapshot.val()) getHistoryDataFromDatabase(dataSnapshot.val());
-// });
+historyData.once("value", function (dataSnapshot) {
+  if (dataSnapshot.val()) getHistoryDataFromDatabase(dataSnapshot.val());
+});
 
-// chartData.once("value", function (dataSnapshot) {
-//   if (dataSnapshot.val()) getChartDataFromDatabase(dataSnapshot.val());
-// });
+chartData.once("value", function (dataSnapshot) {
+  if (dataSnapshot.val()) getChartDataFromDatabase(dataSnapshot.val());
+});
 
 server.listen(process.env.PORT || 3484);
 app.use("/home", Auth.SetCookie, router);
