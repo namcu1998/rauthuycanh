@@ -13,6 +13,7 @@ let espInformation = [
 ];
 
 module.exports.trangtru = function (req, res, next) {
+  console.log(espConnectStatus);
   res.render("home/trangtru", {
     dataTime: time.getTime(),
     data: getAll().statusDevice,

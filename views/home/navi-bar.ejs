@@ -45,7 +45,7 @@
         <img id="btn-close-information-esp" src="/image/wifi.png" alt="">
         <img src="/image/information.png" alt="">
     </div>
-    <% if (espConnectStatus[0]===true) { %>
+    <% if (espSensorConnectStatus[0]===true) { %>
         <div class="information-esp-content1 element">
             <div>
                 <span>Trạng thái ESP1: </span>
@@ -89,7 +89,7 @@
             </div>
         </div>
     <% } %>
-    <% if (espConnectStatus[1]===true) { %>
+    <% if (espSensorConnectStatus[1]===true) { %>
         <div class="information-esp-content1 element1">
             <div>
                 <% if (espSensorConnectStatus[1]) { %>
