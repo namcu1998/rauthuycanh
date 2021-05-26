@@ -1,9 +1,6 @@
-const { getDataEsp, getDataAll } = require("../data/espData/saveDataEsp");
-
+const { getDataAll } = require("../data/espData/saveDataEsp");
 const { getAll } = require("../data/clientData/clientData");
-
 const getDataApiAsync = require("../api/api");
-
 const time = require("../time/time");
 
 const { controllAutoDeviceByLux,
@@ -11,7 +8,7 @@ const { controllAutoDeviceByLux,
         controllAutoDeviceByTemp } = require("../autoFunction/auto");
 
 let timeConnect = 0,
-  timeUp = 0;
+    timeUp = 0;
 
 function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
   if (timeConnect === 2) {
@@ -63,10 +60,8 @@ module.exports = function loopSync(
       controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
       controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
       controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
-      // pushDataBase();
-  
-      // timeGetApi();
       pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
+      timeGetApi()
     }, 1000);
   });
 };

@@ -1,28 +1,18 @@
-const {
-  saveDataEspSensor,
-  saveDataEspControll,
-  getDataEsp,
-  error,
-} = require("../data/espData/saveDataEsp");
-const {
-  saveMode,
-  saveAuto,
-  setDevice,
-  getAll,
-  saveAll,
-} = require("../data/clientData/clientData");
+const { saveAuto,
+        setDevice,
+        getAll } = require("../data/clientData/clientData");
+
 const { getDataChart } = require("../data/chartData/create.charts");
 const { readFile } = require("../data/historyData/historyData");
 const time = require("../time/time");
-const { 
-        pushEspInformationDataIntoJson,
+
+const { pushEspInformationDataIntoJson,
         pushDeviceStatusDataIntoJson,
         pushEspConnectStatusIntoJson,
         pushEspSensorDataIntoJson,
         pushSensorStatusIntoJson,
         getErrorDevicesList,
-        getDataAll
-      } = require("../data/espData/saveDataEsp");
+        getDataAll } = require("../data/espData/saveDataEsp");
 
 module.exports = function deviceIO(
   nameSpaceEspControll,

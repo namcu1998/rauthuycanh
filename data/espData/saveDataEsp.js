@@ -5,12 +5,13 @@ const { getAll } = require("../../data/clientData/clientData");
 const { fileSave, readFile } = require("../historyData/historyData");
 const { pushTemp, pushHumi, pushLux } = require("../chartData/create.charts");
 const { espData } = require("../../database/firebase");
-var arrayDataLux = [];
-var arrayDataTemp = [];
-var arrayDataHumi = [];
-var ketquatblight = 0;
-var ketquatbnhietdo = 0;
-var ketquatbdoam = 0;
+const dataEsp = path.resolve(__dirname, "../espData/dataEsp.json");
+let arrayDataLux = [];
+let arrayDataTemp = [];
+let arrayDataHumi = [];
+let ketquatblight = 0;
+let ketquatbnhietdo = 0;
+let ketquatbdoam = 0;
 let webapp;
 
 function roundToTwo(num) {
@@ -20,8 +21,6 @@ function roundToTwo(num) {
 function pushDataOnDatabase(data) {
   espData.set(data);
 }
-
-const dataEsp = path.resolve(__dirname, "../espData/dataEsp.json");
 
 function saveDataEspSensor(item) {
   let data = JSON.parse(fs.readFileSync(dataEsp, "utf8"));

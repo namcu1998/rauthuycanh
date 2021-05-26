@@ -27,6 +27,7 @@ const timeTakeTemparetureData = document.getElementById(
 );
 const timeTakeHumidityData = document.getElementById("time-take-humidity-data");
 const timeTakeLightData = document.getElementById("time-take-light-data");
+const loading = document.getElementsByClassName("loading")[0];
 socket.emit("getErrorData");
 socket.emit("getChartData");
 socket.emit("getHistoryData");
@@ -83,6 +84,7 @@ socket.on("onCharts", function (data) {
     addData(myChart, item.thoigian, item.anhsang);
     removeData(myChart);
   });
+  loading.style.display = "none";
 });
 
 socket.on("pushTemp", function (data) {
@@ -461,7 +463,7 @@ const timeOut = () =>
       console.log(pause);
       resolve("done");
     }, 1000);
-  });
+});
 
 timeOut();
 
