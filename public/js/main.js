@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/webapp"); //
+const socket = io("https://nhanongfix.herokuapp.com/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
