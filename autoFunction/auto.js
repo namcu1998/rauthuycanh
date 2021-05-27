@@ -1,22 +1,6 @@
 const { setDevice, getAll } = require("../data/clientData/clientData");
 const { getDataAll } = require("../data/espData/saveDataEsp");
 
-const lightClientData = [ getAll().autoData.setLux.active,
-                          getAll().autoData.setLux.max,
-                          getAll().autoData.setLux.min ];
-
-const tempClientData = [ getAll().autoData.setTemp.active,
-                         getAll().autoData.setTemp.max,
-                         getAll().autoData.setTemp.min ];
-
-const pumpData = [ getAll().autoData.setTimePump.active,
-                   getAll().autoData.setTimePump.time ];
-
-const tempareture = getDataAll().espData.espSensorData.sensorData.temparetureInDoorData.data;
-const humidity = getDataAll().espData.espSensorData.sensorData.humidityInDoorData.data;
-const light = getDataAll().espData.espSensorData.sensorData.lightData.data;
-const devices = getAll().statusDevice;
-
 const sendWebApp = (nameSpaceEspControll, nameSpaceWebapp) => {
   nameSpaceEspControll.emit("LED", getAll().statusDevice);
 };
@@ -27,6 +11,13 @@ function controllAutoDeviceByLux(
   nameDevice,
   nameDevice1
 ) {
+  const lightClientData = [ getAll().autoData.setLux.active,
+                            getAll().autoData.setLux.max,
+                            getAll().autoData.setLux.min ];
+                            
+  const devices = getAll().statusDevice;
+  const light = getDataAll().espData.espSensorData.sensorData.lightData.data;
+
   if (lightClientData[0] === true) {
 
     if ( lightClientData[1] < light && devices[nameDevice] != 1) {
@@ -56,6 +47,13 @@ function controllAutoDeviceByTemp(
   nameDevice,
   nameDevice1
 ) {
+  const tempClientData = [  getAll().autoData.setTemp.active,
+                            getAll().autoData.setTemp.max,
+                            getAll().autoData.setTemp.min ];
+
+  const devices = getAll().statusDevice;
+  const tempareture = getDataAll().espData.espSensorData.sensorData.temparetureInDoorData.data;
+
   if (tempClientData[0] === true) {
     if (
       tempClientData[1] < tempareture &&
@@ -84,6 +82,11 @@ function controllAutoDeviceByTime(
   timeUp,
   nameDevice
 ) {
+  const pumpData = [  getAll().autoData.setTimePump.active,
+                      getAll().autoData.setTimePump.time ];
+
+  const devices = getAll().statusDevice;
+
   if (pumpData[0] === true) {
     
     if ( timeUp <= pumpData[1] * 30 && devices[nameDevice] != 1 ) {

@@ -61,7 +61,7 @@ module.exports = function loopSync(
       controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
       controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
       pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
-      timeGetApi()
+      timeGetApi(); 
     }, 1000);
   });
 };
