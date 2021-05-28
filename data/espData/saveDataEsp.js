@@ -1,7 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 const time = require("../../time/time");
-const { getAll } = require("../../data/clientData/clientData");
+const {
+  getAll,
+  setDevice,
+  saveAuto,
+  editAuto,
+} = require("../../data/clientData/clientData");
 const { fileSave, readFile } = require("../historyData/historyData");
 const { pushTemp, pushHumi, pushLux } = require("../chartData/create.charts");
 const { espData } = require("../../database/firebase");
@@ -12,7 +17,13 @@ let arrayDataHumi = [];
 let ketquatblight = 0;
 let ketquatbnhietdo = 0;
 let ketquatbdoam = 0;
-let webapp;
+let webapp, controll, sensor;
+
+let waterDevice = ["Device"];
+
+let waterDevice1 = ["Device4", "Device5"];
+
+let lightDevice = ["Device2", "Device3"];
 
 function roundToTwo(num) {
   return +(Math.round(num + "e+2") + "e-2");
@@ -89,14 +100,12 @@ function pushEspInformationDataIntoJson(espName, informationData) {
 }
 
 function pushDeviceStatusDataIntoJson(espName, data) {
-
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
 
   oldData.espData[espName].devicesStatus = data;
 
   let newData = JSON.stringify(oldData);
   fs.writeFileSync(dataEsp, newData);
-  
 }
 
 function pushEspSensorDataIntoJson(dataName, data) {
@@ -168,6 +177,46 @@ function pushSensorStatusIntoJson(SensorName, status) {
 
   pushDataOnDatabase(oldData);
 
+  switch (SensorName) {
+    case "waterSensorStatus":
+      let pumpData = getAll().autoData.setTimePump;
+      if (status === 1) {
+        editAuto("setTimePump", false);
+        for (let i of waterDevice) {
+          setDevice(i, 0);
+        }
+      }
+      controll.emit("LED", getAll().statusDevice);
+      break;
+    case "waterSensorStatus1":
+      if (status === 1) {
+        editAuto("setTemp", false);
+        for (let i of waterDevice1) {
+          setDevice(i, 0);
+        }
+      }
+      controll.emit("LED", getAll().statusDevice);
+      break;
+    case "dht11Status":
+      if (status === 1) {
+        editAuto("setTemp", false);
+        for (let i of waterDevice1) {
+          setDevice(i, 0);
+        }
+      }
+      controll.emit("LED", getAll().statusDevice);
+      break;
+    case "bh1750Status":
+      if (status === 1) {
+        editAuto("setLux", false);
+        for (let i of lightDevice) {
+          setDevice(i, 0);
+        }
+      }
+      controll.emit("LED", getAll().statusDevice);
+      break;
+  }
+
   let newData = JSON.stringify(oldData);
 
   fs.writeFileSync(dataEsp, newData);
@@ -186,8 +235,10 @@ function pushEspConnectStatusIntoJson(espName, status) {
   fs.writeFileSync(dataEsp, newData);
 }
 
-function getWebappSocket(item) {
-  webapp = item;
+function getSocket(web, esp, esp1) {
+  webapp = web;
+  controll = esp;
+  sensor = esp1;
 }
 
 function getDataAll() {
@@ -238,7 +289,7 @@ module.exports = {
   getEspDataFromDatabase,
   getErrorDevicesList,
   saveDataEspSensor,
-  getWebappSocket,
+  getSocket,
   saveDataApi,
   getDataAll,
 };

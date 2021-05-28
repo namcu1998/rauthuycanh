@@ -11,16 +11,16 @@ function controllAutoDeviceByLux(
   nameDevice,
   nameDevice1
 ) {
-  const lightClientData = [ getAll().autoData.setLux.active,
-                            getAll().autoData.setLux.max,
-                            getAll().autoData.setLux.min ];
-                            
+  const lightClientData = [
+    getAll().autoData.setLux.active,
+    getAll().autoData.setLux.max,
+    getAll().autoData.setLux.min,
+  ];
+
   const devices = getAll().statusDevice;
   const light = getDataAll().espData.espSensorData.sensorData.lightData.data;
-
   if (lightClientData[0] === true) {
-
-    if ( lightClientData[1] < light && devices[nameDevice] != 1) {
+    if (lightClientData[1] < light && devices[nameDevice] != 1) {
       setDevice(nameDevice, 1);
       setDevice(nameDevice1, 0);
       sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
@@ -32,12 +32,15 @@ function controllAutoDeviceByLux(
       sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
 
-    if ( lightClientData[1] > light && lightClientData[2] < light && ( devices[nameDevice] != 0 || devices[nameDevice] != 0 )) {
+    if (
+      lightClientData[1] > light &&
+      lightClientData[2] < light &&
+      (devices[nameDevice] != 0 || devices[nameDevice] != 0)
+    ) {
       setDevice(nameDevice, 0);
       setDevice(nameDevice1, 0);
       sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
-
   }
 }
 
@@ -47,12 +50,15 @@ function controllAutoDeviceByTemp(
   nameDevice,
   nameDevice1
 ) {
-  const tempClientData = [  getAll().autoData.setTemp.active,
-                            getAll().autoData.setTemp.max,
-                            getAll().autoData.setTemp.min ];
+  const tempClientData = [
+    getAll().autoData.setTemp.active,
+    getAll().autoData.setTemp.max,
+    getAll().autoData.setTemp.min,
+  ];
 
   const devices = getAll().statusDevice;
-  const tempareture = getDataAll().espData.espSensorData.sensorData.temparetureInDoorData.data;
+  const tempareture =
+    getDataAll().espData.espSensorData.sensorData.temparetureInDoorData.data;
 
   if (tempClientData[0] === true) {
     if (
@@ -82,23 +88,25 @@ function controllAutoDeviceByTime(
   timeUp,
   nameDevice
 ) {
-  const pumpData = [  getAll().autoData.setTimePump.active,
-                      getAll().autoData.setTimePump.time ];
+  const pumpData = [
+    getAll().autoData.setTimePump.active,
+    getAll().autoData.setTimePump.time,
+  ];
 
   const devices = getAll().statusDevice;
 
   if (pumpData[0] === true) {
-    
-    if ( timeUp <= pumpData[1] * 30 && devices[nameDevice] != 1 ) {
+    if (timeUp <= pumpData[1] * 30 && devices[nameDevice] != 1) {
       setDevice(nameDevice, 1);
       sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
-    } 
-
-    else if ( timeUp > pumpData[1] * 60 && timeUp <= pumpData[1] * 120 && devices[nameDevice] != 0 ) {
+    } else if (
+      timeUp > pumpData[1] * 60 &&
+      timeUp <= pumpData[1] * 120 &&
+      devices[nameDevice] != 0
+    ) {
       setDevice(nameDevice, 0);
       sendWebApp(nameSpaceEspControll, nameSpaceWebapp);
     }
-
   }
 }
 

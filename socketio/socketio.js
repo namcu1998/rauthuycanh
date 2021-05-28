@@ -106,19 +106,11 @@ module.exports = function deviceIO(
   function webapp(nameSpaceWebapp) {
     nameSpaceWebapp.on("connection", function (socket) {
       socket.on("disconnect", function () {});
+      
       socket.on("activeDevice", (item) => {
-        if (item[0] === "Device2" && item[1] === 1) {
-          setDevice("Device2", 1);
-          setDevice("Device3", 0);
-          nameSpaceEspControll.emit("LED", getAll().statusDevice);
-        } else if (item[0] === "Device3" && item[1] === 1) {
-          setDevice("Device3", 1);
-          setDevice("Device2", 0);
-          nameSpaceEspControll.emit("LED", getAll().statusDevice);
-        } else {
-          setDevice(item[0], item[1]);
-          nameSpaceEspControll.emit("LED", getAll().statusDevice);
-        }
+        console.log(item)
+        setDevice(item[0], item[1]);
+        nameSpaceEspControll.emit("LED", getAll().statusDevice);
       });
 
       socket.on("getChartData", () => {
@@ -150,6 +142,10 @@ module.exports = function deviceIO(
         });
         console.log("reload");
       });
+
+      socket.on("getDevicesData", data => {
+        nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice);
+      })
     });
   }
 

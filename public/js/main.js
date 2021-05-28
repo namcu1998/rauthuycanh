@@ -36,32 +36,37 @@ socket.emit("getDevicesStatus");
 let pause = 0;
 
 socket.on("sendDataSensor", (item) => {
-  timeTakeTemparetureData.innerHTML = item.dataTemp.time;
-  timeTakeHumidityData.innerHTML = item.dataHumi.time;
-  timeTakeLightData.innerHTML = item.dataLight.time;
-  propressTemp.style.strokeDashoffset = 440 - (item.dataTemp.data * 440) / 100;
-  propressBarTempValue.innerHTML = item.dataTemp.data + "ºC";
-  propressTemp1.style.strokeDashoffset = 440 - (item.dataTemp1 * 440) / 100;
-  propressBarTempValue1.innerHTML = item.dataTemp1 + "ºC";
-  propressHumi.style.strokeDashoffset = 440 - (item.dataHumi.data * 440) / 100;
-  propressBarHumiValue.innerHTML = item.dataHumi.data + "%";
-  propressHumi1.style.strokeDashoffset = 440 - (item.dataHumi1 * 440) / 100;
-  propressBarHumiValue1.innerHTML = item.dataHumi1 + "%";
-  propressLux.style.strokeDashoffset =
-    440 - (((item.dataLight.data * 100) / 65535) * 440) / 100;
-  propressBarLuxValue.innerHTML = item.dataLight.data + "Lux ";
+  if (screen.width < 1200) {
+    timeTakeTemparetureData.innerHTML = item.dataTemp.time;
+    timeTakeHumidityData.innerHTML = item.dataHumi.time;
+    timeTakeLightData.innerHTML = item.dataLight.time;
+    propressTemp.style.strokeDashoffset =
+      440 - (item.dataTemp.data * 440) / 100;
+    propressBarTempValue.innerHTML = item.dataTemp.data + "ºC";
+    propressTemp1.style.strokeDashoffset = 440 - (item.dataTemp1 * 440) / 100;
+    propressBarTempValue1.innerHTML = item.dataTemp1 + "ºC";
+    propressHumi.style.strokeDashoffset =
+      440 - (item.dataHumi.data * 440) / 100;
+    propressBarHumiValue.innerHTML = item.dataHumi.data + "%";
+    propressHumi1.style.strokeDashoffset = 440 - (item.dataHumi1 * 440) / 100;
+    propressBarHumiValue1.innerHTML = item.dataHumi1 + "%";
+    propressLux.style.strokeDashoffset =
+      440 - (((item.dataLight.data * 100) / 65535) * 440) / 100;
+    propressBarLuxValue.innerHTML = item.dataLight.data + "Lux ";
+  }
 });
 
 socket.on("feedbackDevice", (item) => {
   if (pause === 3) {
-    for (let i in item) {
-      for (let i1 of btnToggle) {
-        if (i === i1.name && item[i] === 1) {
-          i1.checked = true;
-        }
-        if (i === i1.name && item[i] === 0) {
-          i1.checked = false;
-        }
+  }
+
+  for (let i in item) {
+    for (let i1 of btnToggle) {
+      if (i === i1.name && item[i] === 1) {
+        i1.checked = true;
+      }
+      if (i === i1.name && item[i] === 0) {
+        i1.checked = false;
       }
     }
   }
@@ -457,21 +462,35 @@ inputSearch.addEventListener("input", (item) => {
 
 const timeOut = () =>
   new Promise((resolve, reject) => {
-    setInterval(() => {
+    var interval = setInterval(() => {
       pause++;
-      if (pause > 3) pause = 3;
+      if (pause > 3) {
+        pause = 3;
+        clearInterval(interval);
+      }
       console.log(pause);
       resolve("done");
     }, 1000);
-});
+  });
 
 timeOut();
 
-async function activeDevice(item) {
+function activeDevice(item) {
+  console.log("done")
   if (item.checked === true) {
-    socket.emit("activeDevice", [item.name, 1]);
+    if (item.name === "Device2") {
+      document.getElementsByClassName("btn-toggle")[3].checked = false;
+      socket.emit("activeDevice", [item.name, 1]);
+      socket.emit("activeDevice", ["Device3", 0]);
+    } else if (item.name === "Device3") {
+      document.getElementsByClassName("btn-toggle")[2].checked = false;
+      socket.emit("activeDevice", [item.name, 1]);
+      socket.emit("activeDevice", ["Device2", 0]);
+    }
+    else socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
   pause = 0;
+  timeOut();
 }
 
 window.addEventListener("offline", (event) => {

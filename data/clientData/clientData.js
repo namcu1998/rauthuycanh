@@ -15,6 +15,14 @@ function saveAuto(auto) {
   clientData.set(data);
 }
 
+function editAuto(name, active) {
+  let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
+  data.autoData[name].active = active;
+  var array1 = JSON.stringify(data);
+  fs.writeFileSync(dataModeAuto, array1);
+  clientData.set(data);
+}
+
 function setDevice(nameDevice, statusDevice) {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
   data.statusDevice[nameDevice] = statusDevice;
@@ -51,6 +59,7 @@ module.exports = {
   getnameSpaceWebapp,
   setDevice,
   saveAuto,
+  editAuto,
   saveAll,
   getAll,
   pushDb,
