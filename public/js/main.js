@@ -465,7 +465,6 @@ const timeOut = () =>
       pause++;
       if (pause >= 2) {
         pause = 2;
-        clearInterval(interval);
       }
       console.log(pause);
       resolve("done");
@@ -489,7 +488,6 @@ function activeDevice(item) {
     else socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
   pause = 0;
-  timeOut();
 }
 
 window.addEventListener("offline", (event) => {
