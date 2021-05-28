@@ -57,16 +57,15 @@ socket.on("sendDataSensor", (item) => {
 });
 
 socket.on("feedbackDevice", (item) => {
-  if (pause === 3) {
-  }
-
-  for (let i in item) {
-    for (let i1 of btnToggle) {
-      if (i === i1.name && item[i] === 1) {
-        i1.checked = true;
-      }
-      if (i === i1.name && item[i] === 0) {
-        i1.checked = false;
+  if (pause === 2) {
+    for (let i in item) {
+      for (let i1 of btnToggle) {
+        if (i === i1.name && item[i] === 1) {
+          i1.checked = true;
+        }
+        if (i === i1.name && item[i] === 0) {
+          i1.checked = false;
+        }
       }
     }
   }
@@ -464,8 +463,8 @@ const timeOut = () =>
   new Promise((resolve, reject) => {
     var interval = setInterval(() => {
       pause++;
-      if (pause > 3) {
-        pause = 3;
+      if (pause >= 2) {
+        pause = 2;
         clearInterval(interval);
       }
       console.log(pause);
