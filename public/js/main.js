@@ -1,4 +1,4 @@
-const socket = io("https://nhanongfix.herokuapp.com/webapp"); //
+const socket = io("http://localhost:3484/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
@@ -57,7 +57,7 @@ socket.on("sendDataSensor", (item) => {
 });
 
 socket.on("feedbackDevice", (item) => {
-  if (pause === 2) {
+  if (pause === 3) {
     for (let i in item) {
       for (let i1 of btnToggle) {
         if (i === i1.name && item[i] === 1) {
@@ -463,8 +463,8 @@ const timeOut = () =>
   new Promise((resolve, reject) => {
     var interval = setInterval(() => {
       pause++;
-      if (pause >= 2) {
-        pause = 2;
+      if (pause >= 3) {
+        pause = 3;
       }
       console.log(pause);
       resolve("done");
@@ -474,18 +474,14 @@ const timeOut = () =>
 timeOut();
 
 function activeDevice(item) {
-  console.log("done")
+  console.log("done");
   if (item.checked === true) {
     if (item.name === "Device2") {
       document.getElementsByClassName("btn-toggle")[3].checked = false;
-      socket.emit("activeDevice", [item.name, 1]);
-      socket.emit("activeDevice", ["Device3", 0]);
     } else if (item.name === "Device3") {
       document.getElementsByClassName("btn-toggle")[2].checked = false;
-      socket.emit("activeDevice", [item.name, 1]);
-      socket.emit("activeDevice", ["Device2", 0]);
     }
-    else socket.emit("activeDevice", [item.name, 1]);
+    socket.emit("activeDevice", [item.name, 1]);
   } else socket.emit("activeDevice", [item.name, 0]);
   pause = 0;
 }

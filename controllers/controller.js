@@ -23,6 +23,8 @@ module.exports.trangtru = function (req, res, next) {
   });
 };
 
+module.exports.data = (req, res, next) => res.json(getDataAll().espData.espSensorData.sensorData);
+
 module.exports.widget = function (req, res, next) {
   res.render("home/widget", {
     dataTime: time.getTime(),

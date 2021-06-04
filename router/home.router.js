@@ -22,6 +22,8 @@ router.get("/tracuu", controller.tracuu);
 
 router.get("/widget", controller.widget);
 
+router.get("/data", controller.data);
+
 router.post("/add", function (req, res, next) {
   addDevice(req.body.name);
   res.redirect("/home/");

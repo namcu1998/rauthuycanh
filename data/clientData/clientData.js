@@ -26,6 +26,13 @@ function editAuto(name, active) {
 function setDevice(nameDevice, statusDevice) {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
   data.statusDevice[nameDevice] = statusDevice;
+  console.log("name" ,nameDevice, statusDevice)
+  if(nameDevice === "Device3") {
+    data.statusDevice.Device2 = 0;
+  }
+  if(nameDevice === "Device2") {
+    data.statusDevice.Device3 = 0;
+  }
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
   clientData.set(data);

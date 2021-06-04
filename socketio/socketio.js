@@ -108,7 +108,6 @@ module.exports = function deviceIO(
       socket.on("disconnect", function () {});
       
       socket.on("activeDevice", (item) => {
-        console.log(item)
         setDevice(item[0], item[1]);
         nameSpaceEspControll.emit("LED", getAll().statusDevice);
       });
