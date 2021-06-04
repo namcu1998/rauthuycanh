@@ -110,8 +110,6 @@ socket.on("sendArraySensorError", (item) => {
   let array = ["esspcontroll", "esspsenssor"];
   let string = "";
 
-  console.log(item);
-
   item.map((data) => {
     string =
       string +
@@ -443,7 +441,6 @@ var myChart2 = new Chart(ctx2, {
 });
 
 inputSearch.addEventListener("input", (item) => {
-  console.log(item.target.value);
   axios
     .get("/home/getData", {
       params: {
@@ -466,7 +463,6 @@ const timeOut = () =>
       if (pause >= 3) {
         pause = 3;
       }
-      console.log(pause);
       resolve("done");
     }, 1000);
   });
@@ -474,7 +470,6 @@ const timeOut = () =>
 timeOut();
 
 function activeDevice(item) {
-  console.log("done");
   if (item.checked === true) {
     if (item.name === "Device2") {
       document.getElementsByClassName("btn-toggle")[3].checked = false;
