@@ -86,18 +86,22 @@ module.exports = function deviceIO(
       })
 
       socket.on ("waterSensorStatusOne", data => {
+        console.log("waterSensorStatusOne", data);
         pushSensorStatusIntoJson("waterSensorStatus", data);
       })
 
       socket.on ("waterSensorStatusTwo", data => {
+        console.log("waterSensorStatusTwo", data);
         pushSensorStatusIntoJson("waterSensorStatus1", data);
       })
       
       socket.on ("temparetureSensorStatus", data => {
+        console.log("temparetureSensorStatus", data);
         pushSensorStatusIntoJson("dht11Status", data);
       })
 
       socket.on ("LightSensorStatus", data => {
+        console.log("LightSensorStatus", data);
         pushSensorStatusIntoJson("bh1750Status", data);
       })
     });

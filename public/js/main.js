@@ -110,14 +110,33 @@ socket.on("sendArraySensorError", (item) => {
   let array = ["esspcontroll", "esspsenssor"];
   let string = "";
 
-  item.map((data) => {
-    string =
-      string +
-      "<div class='informationContent'>" +
-      data +
-      " OFFLINE" +
-      "</div>";
-  });
+  console.log(item);
+
+  for (let i in item) {
+    console.log(item[i]);
+
+    if (item[i] === 1) {
+      string =
+        string + "<div class='informationContent'>" + i + " OFFLINE" + "</div>";
+    }
+    else if (item[i] === false) {
+      string =
+        string + "<div class='informationContent'>" + i + " OFFLINE" + "</div>";
+    }
+    else {
+      string =
+      string + "<div class='informationContent'>" + i + " ONLINE" + "</div>";
+    }
+  }
+
+  // item.map((data) => {
+  //   string =
+  //     string +
+  //     "<div class='informationContent'>" +
+  //     data +
+  //     " OFFLINE" +
+  //     "</div>";
+  // });
 
   document.getElementsByClassName("information-sensor")[0].style.display =
     "block";

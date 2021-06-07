@@ -220,7 +220,6 @@ function pushSensorStatusIntoJson(SensorName, status) {
   let newData = JSON.stringify(oldData);
 
   fs.writeFileSync(dataEsp, newData);
-
   getErrorDevicesList();
 }
 
@@ -257,27 +256,17 @@ function getEspDataFromDatabase(data) {
 }
 
 function getErrorDevicesList() {
-  let arraySensorError = [];
+  let arraySensorError = {
+    bh1750Status: getDataAll().espData.espSensorData.sensorStatus.bh1750Status,
+    dht11Status: getDataAll().espData.espSensorData.sensorStatus.dht11Status,
+    waterSensorStatus: getDataAll().espData.espSensorData.sensorStatus.waterSensorStatus,
+    waterSensorStatus1: getDataAll().espData.espSensorData.sensorStatus.waterSensorStatus1,
+    espControllData: getDataAll().espData.espControllData.espConnectStatus,
+    espSensorData: getDataAll().espData.espSensorData.espConnectStatus};
 
-  for (let i in getDataAll().espData.espSensorData.sensorStatus) {
-    if (getDataAll().espData.espSensorData.sensorStatus[i] === 1) {
-      arraySensorError.push(i);
-    }
-  }
+  console.log("error")
 
-  if (getDataAll().espData.espControllData.espConnectStatus === false) {
-    arraySensorError.push("ESPCONTROLL");
-  }
-
-  if (getDataAll().espData.espSensorData.espConnectStatus === false) {
-    arraySensorError.push("ESPSENSOR");
-  }
-
-  if (arraySensorError.length > 0) {
-    webapp.emit("sendArraySensorError", arraySensorError);
-  }
-
-  webapp.emit("onMa1", getAll().statusDevice);
+  webapp.emit("sendArraySensorError", arraySensorError);
 }
 
 module.exports = {
