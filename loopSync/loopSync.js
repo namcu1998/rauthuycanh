@@ -7,16 +7,20 @@ const { controllAutoDeviceByLux,
         controllAutoDeviceByTime,
         controllAutoDeviceByTemp } = require("../autoFunction/auto");
 
-let timeConnect = 0,
-    timeUp = 0;
+let timeArray = [0, 0, 0];
 
-function pingEsp(nameSpaceEspControll, nameSpaceEspSensor) {
-  if (timeConnect === 2) {
-    nameSpaceEspControll.emit("ping", "nam");
+function pingEspSensor(nameSpaceEspSensor) {
+  if (timeArray[0] === 2) {
     nameSpaceEspSensor.emit("ping", "nam");
-    timeConnect = 0;
+    timeArray[0] = 0;
   } 
-  else if (timeUp >= getAll().autoData.setTimePump.time * 120) timeUp = 0;
+}
+
+function pingEspControll(nameSpaceEspControll) {
+  if (timeArray[1] === 5) {
+    nameSpaceEspControll.emit("ping", "nam");
+    timeArray[1] = 0;
+  } 
 }
 
 function pushDataBase() {
@@ -55,13 +59,16 @@ module.exports = function loopSync(
 ) {
   return new Promise((resolve, reject) => {
     setInterval(() => {
-      timeConnect++;
-      timeUp++;
+      timeArray[0]++;
+      timeArray[1]++;
+      timeArray[2]++;
       controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
       controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
-      controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeUp, "Device")
-      pingEsp(nameSpaceEspControll, nameSpaceEspSensor);
-      timeGetApi(); 
+      controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeArray[2], "Device")
+      pingEspSensor(nameSpaceEspSensor);
+      pingEspControll(nameSpaceEspControll);
+      timeGetApi();
+      if (timeArray[2] >= getAll().autoData.setTimePump.time * 120) timeArray[2] = 0;
     }, 1000);
   });
 };

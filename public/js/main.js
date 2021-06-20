@@ -118,14 +118,12 @@ socket.on("sendArraySensorError", (item) => {
     if (item[i] === 1) {
       string =
         string + "<div class='informationContent'>" + i + " OFFLINE" + "</div>";
-    }
-    else if (item[i] === false) {
+    } else if (item[i] === false) {
       string =
         string + "<div class='informationContent'>" + i + " OFFLINE" + "</div>";
-    }
-    else {
+    } else {
       string =
-      string + "<div class='informationContent'>" + i + " ONLINE" + "</div>";
+        string + "<div class='informationContent'>" + i + " ONLINE" + "</div>";
     }
   }
 
