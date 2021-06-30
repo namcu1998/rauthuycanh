@@ -22,13 +22,11 @@ module.exports = function deviceIO(
   function espControll(nameSpaceEspControll) {
     nameSpaceEspControll.on("connection", function (socket) {
 
-      nameSpaceEspControll.emit("LED", getAll().statusDevice);
-
       pushEspConnectStatusIntoJson("espControllData", true);
 
       nameSpaceEspControll.emit("getEspInformation", "getEspInformation");
 
-      nameSpaceEspControll.emit("status", "connected");
+      nameSpaceEspControll.emit("LED", getAll().statusDevice);
 
       console.log("connected")
 
