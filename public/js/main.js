@@ -1,4 +1,4 @@
-const socket = io("http://192.168.1.10:3484/webapp"); //
+const socket = io("https://f5253cf69b99.ngrok.io/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
@@ -57,6 +57,7 @@ socket.on("sendDataSensor", (item) => {
 });
 
 socket.on("feedbackDevice", (item) => {
+  console.log(item);
   if (pause === 3) {
     for (let i in item) {
       for (let i1 of btnToggle) {

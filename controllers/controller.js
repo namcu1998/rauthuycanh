@@ -3,7 +3,6 @@ const { getDataAll } = require("../data/espData/saveDataEsp");
 const { getAll } = require("../data/clientData/clientData");
 
 module.exports.trangtru = function (req, res, next) {
-  console.log(getAll().autoData);
   res.render("home/trangtru", {
     dataTime: time.getTime(),
     data: getAll().statusDevice,

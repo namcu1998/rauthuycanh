@@ -2,10 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { clientData } = require("../../database/firebase");
 let saveDb, nameSpaceWebapp;
-const dataModeAuto = path.resolve(
-  __dirname,
-  "../clientData/clientData.json"
-);
+const dataModeAuto = path.resolve(__dirname, "../clientData/clientData.json");
 
 function saveAuto(auto) {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
@@ -25,18 +22,17 @@ function editAuto(name, active) {
 
 function setDevice(nameDevice, statusDevice) {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
-  data.statusDevice[nameDevice] = statusDevice;
-  console.log("name" ,nameDevice, statusDevice)
-  if(nameDevice === "Device3") {
+  if (nameDevice === "Device3" && statusDevice === 1) {
     data.statusDevice.Device2 = 0;
   }
-  if(nameDevice === "Device2") {
+  if (nameDevice === "Device2" && statusDevice === 1) {
     data.statusDevice.Device3 = 0;
   }
+  data.statusDevice[nameDevice] = statusDevice;
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
   clientData.set(data);
-  nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice);
+  nameSpaceWebapp.emit("feedbackDevice", data.statusDevice);
 }
 
 function getAll() {
