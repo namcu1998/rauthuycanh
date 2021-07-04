@@ -16,7 +16,9 @@ function Object(
   device2,
   device3,
   device4,
-  device5
+  device5,
+  device6,
+  device7
 ) {
   this.nhietdo = nhietdo;
   this.doam = doam;
@@ -30,8 +32,10 @@ function Object(
   this.device3 = device3;
   this.device4 = device4;
   this.device5 = device5;
+  this.device6 = device6;
+  this.device7 = device7;
 }
-function fileSave(sensorInDoorData, sensorOutDoorData, devicesStatusData) {
+function fileSave(sensorData, devicesStatusData) {
   if (fs.readFileSync(dataHistory, "utf8")) {
     var data = JSON.parse(fs.readFileSync(dataHistory, "utf8"));
 
@@ -41,18 +45,20 @@ function fileSave(sensorInDoorData, sensorOutDoorData, devicesStatusData) {
 
     data.unshift(
       new Object(
-        sensorInDoorData.temparetureInDoorData.data,
-        sensorInDoorData.temparetureInDoorData.data,
-        sensorOutDoorData.temparetureOutDoorData.data,
-        sensorOutDoorData.temparetureOutDoorData.data,
-        sensorInDoorData.lightData.data,
+        sensorData.temparetureInDoorData.data,
+        sensorData.humidityInDoorData.data,
+        sensorData.temparetureOutDoorData.data,
+        sensorData.humidityOutDoorData.data,
+        sensorData.lightData.data,
         time.getTime(),
         devicesStatusData.Device,
         devicesStatusData.Device1,
         devicesStatusData.Device2,
         devicesStatusData.Device3,
         devicesStatusData.Device4,
-        devicesStatusData.Device5
+        devicesStatusData.Device5,
+        devicesStatusData.Device6,
+        devicesStatusData.Device7
       )
     );
 
@@ -64,18 +70,20 @@ function fileSave(sensorInDoorData, sensorOutDoorData, devicesStatusData) {
     let data = [];
     data.push(
       new Object(
-        sensorInDoorData.temparetureData.data,
-        sensorInDoorData.humidityData.data,
-        sensorOutDoorData.temp,
-        sensorOutDoorData.humidity,
-        sensorInDoorData.lightData.data,
+        sensorData.temparetureInDoorData.data,
+        sensorData.humidityInDoorData.data,
+        sensorData.temparetureOutDoorData.data,
+        sensorData.humidityOutDoorData.data,
+        sensorData.lightData.data,
         time.getTime(),
         devicesStatusData.Device,
         devicesStatusData.Device1,
         devicesStatusData.Device2,
         devicesStatusData.Device3,
         devicesStatusData.Device4,
-        devicesStatusData.Device5
+        devicesStatusData.Device5,
+        devicesStatusData.Device6,
+        devicesStatusData.Device7
       )
     );
 

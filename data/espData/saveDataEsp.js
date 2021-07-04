@@ -150,7 +150,6 @@ function pushEspSensorDataIntoJson(dataName, data) {
 
   fileSave(
     oldData.espData.espSensorData.sensorData,
-    oldData.espData.espSensorData.sensorData,
     getAll().statusDevice
   );
 
