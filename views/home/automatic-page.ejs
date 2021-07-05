@@ -1,41 +1,36 @@
 <div class="container-automatic">
     <div class="function-block">
         <div class="block">
-            <span>Bật tắt tự động bật bơm</span>
-            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setTimePump.active==true) {
-                %>checked<% } %>>
-        </div>
-        <div class="block">
             <span>Chu kì thời gian bơm</span>
             <input type="number" name="" id="setTimePump" <% if (dataAuto) { %> value=<%=dataAuto.setTimePump.time %>
                 <% } %>>
         </div>
+        <div class="block">
+            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setTimePump.active==true) {
+                %>checked<% } %>>
+        </div>
     </div>
     <div class="function-block">
-        <div class="block">
-            <span>Bật tắt tự động điều chỉnh nhiệt độ</span>
-            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setTemp.active==true) { %>checked
-            <% } %>>
-        </div>
         <div class="block">
             <span>Nhiệt độ lớn nhất</span>
             <input id="setTempMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
             value=<%=dataAuto.setTemp.max%>
                 <% } %>>
         </div>
+        
         <div class="block">
             <span>Nhiệt độ nhỏ nhất</span>
             <input id="setTempMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
             value=<%=dataAuto.setTemp.min%>
                 <% } %>>
         </div>
-    </div>
-    <div class="function-block">
         <div class="block">
-            <span>Bật tắt tự động điều chỉnh ánh sáng</span>
-            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setLux.active==true) { %>checked
+            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setTemp.active==true) { %>checked
             <% } %>>
         </div>
+    </div>
+    <div class="function-block">
+        
         <div class="block">
             <span>Ánh sáng lớn nhất</span>
             <input id="setLuxMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
@@ -47,6 +42,10 @@
             <input id="setLuxMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
             value=<%=dataAuto.setLux.min %>
                 <% } %>>
+        </div>
+        <div class="block">
+            <input class="changeOO" type="checkbox" toggle-size="mini" <% if (dataAuto.setLux.active==true) { %>checked
+            <% } %>>
         </div>
     </div>
     <div class="button-submit" id="submit">
