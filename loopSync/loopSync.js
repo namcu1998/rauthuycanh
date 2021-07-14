@@ -1,31 +1,46 @@
-const { getDataAll } = require("../data/espData/saveDataEsp");
+const { pushEspConnectStatusIntoJson, getDataAll } = require("../data/espData/saveDataEsp");
 const { getAll } = require("../data/clientData/clientData");
 const getDataApiAsync = require("../api/api");
 const time = require("../time/time");
 
-const { controllAutoDeviceByLux,
-        controllAutoDeviceByTime,
-        controllAutoDeviceByTemp } = require("../autoFunction/auto");
+const {
+  controllAutoDeviceByLux,
+  controllAutoDeviceByTime,
+  controllAutoDeviceByTemp,
+} = require("../autoFunction/auto");
 
 let timeArray = [0, 0, 0];
+let count = [0, 0];
 
 function pingEspSensor(nameSpaceEspSensor) {
   if (timeArray[0] === 2) {
     nameSpaceEspSensor.emit("ping", "nam");
     timeArray[0] = 0;
-  } 
+  }
+
+  if (count[0] === 10) {
+    pushEspConnectStatusIntoJson("espSensorData", false);
+  }
 }
 
 function pingEspControll(nameSpaceEspControll) {
-  if (timeArray[1] === 5) {
+  if (timeArray[1] === 2) {
     nameSpaceEspControll.emit("ping", "nam");
     timeArray[1] = 0;
-  } 
+  }
+
+  if (count[1] === 10) {
+    pushEspConnectStatusIntoJson("espControllData", false);
+  }
 }
 
 function pushDataBase() {
-  if ((parseInt(time.time().split(":")[1]) === 0 || parseInt(time.time().split(":")[1]) % 15 === 0) && time.timeSecond() == 00 && getAll().statusEsp.espSensor.status === true) {
-
+  if (
+    (parseInt(time.time().split(":")[1]) === 0 ||
+      parseInt(time.time().split(":")[1]) % 15 === 0) &&
+    time.timeSecond() == 00 &&
+    getAll().statusEsp.espSensor.status === true
+  ) {
     dulieuDb.push([
       getDataEsp().espSensor.statusDevice.temp,
       getDataEsp().espSensor.statusDevice.humi,
@@ -57,18 +72,50 @@ module.exports = function loopSync(
   nameSpaceEspSensor,
   nameSpaceWebapp
 ) {
+  nameSpaceEspControll.on("connection", (socket) => {
+    socket.on("pong", () => {
+      count[1] = 0;
+      pushEspConnectStatusIntoJson("espControllData", true);
+    })
+  });
+
+  nameSpaceEspSensor.on("connection", (socket) => {
+    socket.on("pong", () => {
+      count[0] = 0;
+      pushEspConnectStatusIntoJson("espSensorData", true);
+    })
+  });
+
   return new Promise((resolve, reject) => {
     setInterval(() => {
       timeArray[0]++;
       timeArray[1]++;
       timeArray[2]++;
-      controllAutoDeviceByTemp(nameSpaceEspControll, nameSpaceWebapp, "Device4", "Device5")
-      controllAutoDeviceByLux(nameSpaceEspControll, nameSpaceWebapp, "Device2", "Device3")
-      controllAutoDeviceByTime(nameSpaceEspControll, nameSpaceWebapp, timeArray[2], "Device")
+      count[0]++;
+      count[1]++;
+      controllAutoDeviceByTemp(
+        nameSpaceEspControll,
+        nameSpaceWebapp,
+        "Device4",
+        "Device5"
+      );
+      controllAutoDeviceByLux(
+        nameSpaceEspControll,
+        nameSpaceWebapp,
+        "Device2",
+        "Device3"
+      );
+      controllAutoDeviceByTime(
+        nameSpaceEspControll,
+        nameSpaceWebapp,
+        timeArray[2],
+        "Device"
+      );
       pingEspSensor(nameSpaceEspSensor);
       pingEspControll(nameSpaceEspControll);
       timeGetApi();
-      if (timeArray[2] >= getAll().autoData.setTimePump.time * 120) timeArray[2] = 0;
+      if (timeArray[2] >= getAll().autoData.setTimePump.time * 120)
+        timeArray[2] = 0;
     }, 1000);
   });
 };

@@ -34,6 +34,13 @@ socket.emit("getHistoryData");
 socket.emit("getDevicesStatus");
 
 let pause = 0;
+let mode = true;
+
+// btnChangeMode.onchange("click", () => {
+//   mode = !mode;
+//   path = mode === true ? "/image/sun.svg" : "/image/moon.svg"
+//   console.log(path)
+// })
 
 socket.on("sendDataSensor", (item) => {
   if (screen.width < 1200) {
@@ -57,7 +64,6 @@ socket.on("sendDataSensor", (item) => {
 });
 
 socket.on("feedbackDevice", (item) => {
-  console.log(item);
   console.time();
   if (pause === 3) {
     for (let i in item) {
@@ -113,10 +119,7 @@ socket.on("sendArraySensorError", (item) => {
   let array = ["esspcontroll", "esspsenssor"];
   let string = "";
 
-  console.log(item);
-
   for (let i in item) {
-    console.log(item[i]);
 
     if (item[i] === 1) {
       string =

@@ -1,7 +1,7 @@
 <div class="container-automatic">
     <div class="function-block">
         <div class="block">
-            <span>Chu kì thời gian bơm</span>
+            <span>Chu kì thời gian bơm</span> <br>
             <input type="number" name="" id="setTimePump" <% if (dataAuto) { %> value=<%=dataAuto.setTimePump.time %>
                 <% } %>>
         </div>
@@ -17,7 +17,7 @@
             value=<%=dataAuto.setTemp.max%>
                 <% } %>>
         </div>
-        
+
         <div class="block">
             <span>Nhiệt độ nhỏ nhất</span>
             <input id="setTempMin" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="function-block">
-        
+
         <div class="block">
             <span>Ánh sáng lớn nhất</span>
             <input id="setLuxMax" type="number" placeholder="nhập giá trị" <% if (dataAuto) { %>

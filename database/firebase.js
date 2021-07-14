@@ -4,7 +4,7 @@ const serviceAccount = require("../serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://nhanam-18510-default-rtdb.firebaseio.com/",
+  databaseURL: "https://quickstart-1600242582049-default-rtdb.firebaseio.com/",
 });
 
 var db = admin.database();

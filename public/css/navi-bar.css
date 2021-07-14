@@ -1,5 +1,11 @@
 /* Màng hình laptop hoặc desktop lớn*/
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @media (min-width: 1200px) {
+  * {
+    font-family: "Roboto", sans-serif;
+  }
+
   .navibar {
     position: absolute;
     top: 0;
@@ -10,6 +16,8 @@
     background-color: #0c2239;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+      0 1px 10px 0 rgb(0 0 0 / 12%);
   }
 
   img {
@@ -23,7 +31,15 @@
 
   .navibar div {
     flex: 1;
+    align-items: center;
   }
+
+  ion-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(1);
+    -webkit-filter: invert(1);
+}
 
   .navibar div:nth-child(2) {
     height: 100%;
@@ -81,6 +97,8 @@
     -ms-transition: 1s;
     -o-transition: 1s;
     z-index: 2000;
+    box-shadow: 2px 0 4px 0 rgb(0 0 0 / 20%), 4px 0 5px 0 rgb(0 0 0 / 14%),
+      1px 0 10px 0 rgb(0 0 0 / 12%);
   }
 
   .menu div:nth-child(1) {
@@ -213,6 +231,8 @@
     color: white;
     z-index: 1000;
     overflow-y: scroll;
+    box-shadow: -2px 0 4px 0 rgb(0 0 0 / 20%), -4px 0 5px 0 rgb(0 0 0 / 14%),
+      -1px 0 10px 0 rgb(0 0 0 / 12%);
   }
 
   .information-esp-content {
@@ -299,10 +319,9 @@
     color: black;
     font-weight: 600;
     font-size: 1.5em;
-    font-family: "Times New Roman", Times, serif;
     background-color: white;
     text-transform: uppercase;
-  }
+}
 }
 
 /* Màng hình máy tính bảng lớn hoặc máy tính màng hình trung bình */
@@ -325,6 +344,8 @@
     background-color: #0c2239;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+      0 1px 10px 0 rgb(0 0 0 / 12%);
   }
 
   img {
@@ -623,5 +644,6 @@
     font-family: "Times New Roman", Times, serif;
     background-color: white;
     text-transform: uppercase;
-  }
+    
+}
 }

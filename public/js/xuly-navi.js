@@ -4,9 +4,11 @@ const contentContainer = document.getElementsByClassName("content-container");
 const content = document.getElementsByClassName("content");
 const menu = document.getElementsByClassName("menu");
 const btnShowInformation = document.getElementById("btn-show-information-esp");
+const currentTheme = localStorage.getItem('theme');
 const btnCloseInformation = document.getElementById(
   "btn-close-information-esp"
 );
+const btnChangeMode = document.getElementById("btn-change-mode");
 const informationEsp = document.getElementsByClassName("information-esp");
 const btnShowNotification = document.getElementById("btn-show-notification");
 const btnCloseNotification = document.getElementById("btn-close-notification");
@@ -16,6 +18,18 @@ const btnShowControllPage = document.getElementById("btn-show-controll-page");
 const btnShowHistoryPage = document.getElementById("btn-show-history-page");
 const btnShowSearchPage = document.getElementById("btn-show-search-page");
 const btnShowChartPage = document.getElementById("btn-show-chart-page");
+let modeDark = currentTheme === "dark" ? true : false;
+document.documentElement.setAttribute("data-theme", currentTheme);
+
+btnChangeMode.addEventListener("click", () => {
+  modeDark = !modeDark;
+  btnChangeMode.src = modeDark === true ? "/image/sun.svg" : "/image/moon.png"
+  document.documentElement.setAttribute("data-theme",  modeDark === true ? "dark" : "light");
+  if(modeDark === true) {
+    localStorage.setItem('theme', 'dark');
+  }
+  else localStorage.setItem('theme', 'light');
+})
 
 btnShowMenu.addEventListener("click", () => {
   menu[0].style.left = "0";
@@ -44,6 +58,21 @@ btnShowNotification.addEventListener("click", () => {
 btnCloseNotification.addEventListener("click", () => {
   notification[0].style.display = "none";
 });
+
+// const list = document.querySelectorAll(".list");
+// console.log(list)
+
+// function acctivePage() {
+//   list.forEach(element => {
+//     element.classList.remove("active");
+//     this.classList.add("active");
+//   })
+// }
+
+// list.forEach(element => {
+//   console.log(element)
+//   element.addEventListener("click", acctivePage);
+// })
 
 btnShowControllPage.addEventListener("click", () => {
   btnShowControllPage.classList.add("active");

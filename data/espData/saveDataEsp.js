@@ -225,12 +225,20 @@ function pushSensorStatusIntoJson(SensorName, status) {
 function pushEspConnectStatusIntoJson(espName, status) {
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
 
-  oldData.espData[espName].espConnectStatus = status;
+  if (oldData.espData[espName].espConnectStatus !== status) {
 
-  pushDataOnDatabase(oldData);
+    console.log(oldData.espData[espName].espConnectStatus, status)
 
-  let newData = JSON.stringify(oldData);
-  fs.writeFileSync(dataEsp, newData);
+    oldData.espData[espName].espConnectStatus = status;
+
+    
+    pushDataOnDatabase(oldData);
+
+    let newData = JSON.stringify(oldData);
+    fs.writeFileSync(dataEsp, newData);
+    getErrorDevicesList();
+
+  }
 }
 
 function getSocket(web, esp, esp1) {

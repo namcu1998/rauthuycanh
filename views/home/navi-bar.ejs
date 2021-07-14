@@ -4,13 +4,14 @@
         <a href="/"><img src="/image/home.png" alt="">Rauthuycanh</a>
     </div>
     <div>
-        <img class="active" id="btn-show-controll-page" src="/image/settings.png" alt="">
-        <img id="btn-show-automatic-page" src="/image/auto.png" alt="">
-        <img id="btn-show-history-page" src="/image/history.png" alt="">
-        <img id="btn-show-search-page" src="/image/loupe.png" alt="">
-        <img id="btn-show-chart-page" src="/image/icon-chart.png" alt="">
+        <img class="list active" id="btn-show-controll-page" src="/image/settings.png" alt="">
+        <img class="list" id="btn-show-automatic-page" src="/image/auto.png" alt="">
+        <img class="list" id="btn-show-history-page" src="/image/history.png" alt="">
+        <img class="list" id="btn-show-search-page" src="/image/loupe.png" alt="">
+        <img class="list" id="btn-show-chart-page" src="/image/icon-chart.png" alt="">
     </div>
     <div>
+        <img id="btn-change-mode" src="/image/sun.svg" alt="">
         <img id="btn-show-information-esp" src="/image/wifi.png" alt="">
         <img id="btn-show-notification" src="/image/information.png" alt="">
     </div>
@@ -88,51 +89,51 @@
                     <% } %> <br>
             </div>
         </div>
-    <% } %>
-    <% if (espSensorConnectStatus[1]===true) { %>
-        <div class="information-esp-content1 element1">
-            <div>
-                <% if (espSensorConnectStatus[1]) { %>
-                    <span>Trạng thái ESP2: </span>
-                    <span>connected</span>
-                    <% } %>
-            </div>
-            <div>
-                <img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-                <% if (espInformation) { %>
-                    <span>
-                        <%= espInformation[1].IPAddress %>
-                    </span>
-                    <% } %>
-            </div>
-            <div>
-                <img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-                <% if (espInformation) { %>
-                    <span>
-                        <%= espInformation[1].wifiStrength %>
-                    </span>
-                    <% } %>
-                        <span>dBm</span> <br>
-            </div>
-            <div>
-                <img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-                <% if (espInformation) { %>
-                    <span>
-                        <%= espInformation[1].cpuSpeed %>
-                    </span>
-                    <% } %>
-                        <span>Mhz</span> <br>
-            </div>
-            <div>
-                <img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
-                <% if (espInformation) { %>
-                    <span>
-                        <%= espInformation[1].ramUsed %>
-                    </span>
-                    <% } %>
-            </div>
-        </div>
-    <% } %>
+        <% } %>
+            <% if (espSensorConnectStatus[1]===true) { %>
+                <div class="information-esp-content1 element1">
+                    <div>
+                        <% if (espSensorConnectStatus[1]) { %>
+                            <span>Trạng thái ESP2: </span>
+                            <span>connected</span>
+                            <% } %>
+                    </div>
+                    <div>
+                        <img src="/image/ip.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+                        <% if (espInformation) { %>
+                            <span>
+                                <%= espInformation[1].IPAddress %>
+                            </span>
+                            <% } %>
+                    </div>
+                    <div>
+                        <img src="/image/wifi.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+                        <% if (espInformation) { %>
+                            <span>
+                                <%= espInformation[1].wifiStrength %>
+                            </span>
+                            <% } %>
+                                <span>dBm</span> <br>
+                    </div>
+                    <div>
+                        <img src="/image/cpu.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+                        <% if (espInformation) { %>
+                            <span>
+                                <%= espInformation[1].cpuSpeed %>
+                            </span>
+                            <% } %>
+                                <span>Mhz</span> <br>
+                    </div>
+                    <div>
+                        <img src="/image/memory.svg" alt="Kiwi standing on oval" width="16px" height="16px">
+                        <% if (espInformation) { %>
+                            <span>
+                                <%= espInformation[1].ramUsed %>
+                            </span>
+                            <% } %>
+                    </div>
+                </div>
+                <% } %>
 </div>
 <div class="information-sensor">
     <div class="line">
