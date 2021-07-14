@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3484/webapp"); //
+const socket = io("https://rauthuycanh.herokuapp.com/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
@@ -120,7 +120,6 @@ socket.on("sendArraySensorError", (item) => {
   let string = "";
 
   for (let i in item) {
-
     if (item[i] === 1) {
       string =
         string + "<div class='informationContent'>" + i + " OFFLINE" + "</div>";
