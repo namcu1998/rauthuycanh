@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { clientData } = require("../../database/firebase");
-let saveDb, nameSpaceWebapp;
+let saveDb, nameSpaceWebapp, nameSpaceEspSensor, nameSpaceEspControll;
 const dataModeAuto = path.resolve(__dirname, "../clientData/clientData.json");
 
 function saveAuto(auto) {
@@ -33,6 +33,7 @@ function setDevice(nameDevice, statusDevice) {
   fs.writeFileSync(dataModeAuto, array1);
   clientData.set(data);
   nameSpaceWebapp.emit("feedbackDevice", data.statusDevice);
+  nameSpaceEspControll.emit("LED", getAll().statusDevice);
 }
 
 function getAll() {
@@ -49,8 +50,10 @@ function pushDb(item) {
   saveDb = item;
 }
 
-function getnameSpaceWebapp(NameSpace) {
-  nameSpaceWebapp = NameSpace;
+function getnameSpace(webapp, esp, esp1) {
+  nameSpaceWebapp = webapp;
+  nameSpaceEspControll = esp;
+  nameSpaceEspConSensor = esp1;
 }
 
 function getClientDataFromDatabase(data) {
@@ -59,7 +62,7 @@ function getClientDataFromDatabase(data) {
 
 module.exports = {
   getClientDataFromDatabase,
-  getnameSpaceWebapp,
+  getnameSpace,
   setDevice,
   saveAuto,
   editAuto,
