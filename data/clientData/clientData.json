@@ -1,1 +1,61 @@
-{"autoData":{"setLux":{"active":false,"deviceOnMax":["Device2"],"deviceOnMin":["Device3"],"max":200,"min":100},"setTemp":{"active":false,"deviceOnMax":["Device4"],"deviceOnMin":["Device5"],"max":29,"min":28},"setTimePump":{"active":false,"time":15}},"vegetableId":"0","vegetable":[{"id":0,"vegetableName":"Mồng tơi","maxLight":200,"minLight":100,"maxTemp":29,"minTemp":28,"TimePump":15},{"id":1,"vegetableName":"Rau cải","maxLight":500,"minLight":400,"maxTemp":31,"minTemp":28,"TimePump":10}],"statusDevice":{"Device":1,"Device1":1,"Device2":1,"Device3":0,"Device4":1,"Device5":1,"Device6":1,"Device7":1}}
+{
+    "autoData": {
+        "setLux": {
+            "active": false,
+            "deviceOnMax": [
+                "Device2"
+            ],
+            "deviceOnMin": [
+                "Device3"
+            ],
+            "max": 200,
+            "min": 100
+        },
+        "setTemp": {
+            "active": false,
+            "deviceOnMax": [
+                "Device4"
+            ],
+            "deviceOnMin": [
+                "Device5"
+            ],
+            "max": 29,
+            "min": 28
+        },
+        "setTimePump": {
+            "active": false,
+            "time": 15
+        }
+    },
+    "vegetableId": "0",
+    "vegetable": [
+        {
+            "id": 0,
+            "vegetableName": "Mồng tơi",
+            "maxLight": 200,
+            "minLight": 100,
+            "maxTemp": 29,
+            "minTemp": 28,
+            "TimePump": 15
+        },
+        {
+            "id": 1,
+            "vegetableName": "Rau cải",
+            "maxLight": 500,
+            "minLight": 400,
+            "maxTemp": 31,
+            "minTemp": 28,
+            "TimePump": 10
+        }
+    ],
+    "statusDevice": {
+        "Device": 1,
+        "Device1": 1,
+        "Device2": 1,
+        "Device3": 0,
+        "Device4": 1,
+        "Device5": 1,
+        "Device6": 1,
+        "Device7": 1
+    }
+}
