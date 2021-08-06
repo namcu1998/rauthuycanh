@@ -36,6 +36,40 @@ function setDevice(nameDevice, statusDevice) {
   nameSpaceEspControll.emit("LED", getAll().statusDevice);
 }
 
+function vegetableData(id) {
+  let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
+
+  data.vegetable.map((item) => {
+    if (parseInt(id) === item.id) {
+      data.vegetableId = id;
+      data.autoData = {
+        setLux: {
+          active: data.autoData.setLux.active,
+          deviceOnMax: data.autoData.setLux.deviceOnMax,
+          deviceOnMin: data.autoData.setLux.deviceOnMin,
+          max: item.maxLight,
+          min: item.minLight,
+        },
+        setTemp: {
+          active: data.autoData.setTemp.active,
+          deviceOnMax: data.autoData.setTemp.deviceOnMax,
+          deviceOnMin: data.autoData.setTemp.deviceOnMin,
+          max: item.maxTemp,
+          min: item.minTemp,
+        },
+        setTimePump: {
+          active: data.autoData.setTimePump.active,
+          deviceOnMax: data.autoData.setTimePump.deviceOnMax,
+          time: item.TimePump,
+        },
+      };
+    }
+  });
+
+  var array1 = JSON.stringify(data);
+  fs.writeFileSync(dataModeAuto, array1);
+}
+
 function getAll() {
   let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
   return data;
@@ -62,6 +96,7 @@ function getClientDataFromDatabase(data) {
 
 module.exports = {
   getClientDataFromDatabase,
+  vegetableData,
   getnameSpace,
   setDevice,
   saveAuto,

@@ -1,4 +1,16 @@
 <div class="container-automatic">
+    <div>
+        <h3>Chọn loại rau:</h3> &nbsp;
+        <select class="option" , id="loairau">
+            <% vegetable.map(function(item){ %>
+                <option value=<%=item.id %> <% if (item.id==vegetableId) { %>selected<% } %>><%=item.vegetableName %>
+                </option>
+                <% }); %>
+        </select>
+        <div class="button-submit" id="submitOption">
+            <span>submit</span>
+        </div>
+    </div>
     <div class="function-block">
         <div class="block">
             <span>Chu kì thời gian bơm</span> <br>

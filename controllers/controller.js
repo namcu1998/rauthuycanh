@@ -7,6 +7,8 @@ module.exports.trangtru = function (req, res, next) {
     dataTime: time.getTime(),
     data: getAll().statusDevice,
     dataAuto: getAll().autoData,
+    vegetable: getAll().vegetable,
+    vegetableId: getAll().vegetableId,
     dataApi: getDataAll().api,
     dataStatusActiveChild: getAll().autoData.setActiveAutoChild,
     sensorData: getDataAll().espData.espSensorData.sensorData,

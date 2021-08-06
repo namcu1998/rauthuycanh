@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/webapp"); //
+const socket = io("http://localhost:3484/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
@@ -509,6 +509,10 @@ window.addEventListener("offline", (event) => {
 
 window.addEventListener("online", (event) => {
   location.reload();
+});
+
+$("#submitOption").click(() => {
+  socket.emit("vegetableId", $("#loairau")[0].value)
 });
 
 $("#submit").click(() => {

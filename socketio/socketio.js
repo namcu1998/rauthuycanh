@@ -1,4 +1,5 @@
 const {
+  vegetableData,
   saveAuto,
   setDevice,
   getAll,
@@ -144,6 +145,10 @@ module.exports = function deviceIO(
         });
         console.log("reload");
       });
+
+      socket.on("vegetableId", item => {
+        vegetableData(item);
+      })
 
       socket.on("getDevicesData", (data) => {
         nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice);
