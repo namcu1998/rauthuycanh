@@ -5,58 +5,58 @@ module.exports = function (appdialogflow) {
   appdialogflow.intent("myIntent", (conv, { devicesname, statusdevice }) => {
     return new Promise((resolve, reject) => {
       console.log(devicesname, statusdevice);
-      if (devicesname == "đèn" && statusdevice == "bật") {
+      if (devicesname == "light" && statusdevice == "turn on") {
         setDevice("Device6", 1);
       }
-      if (devicesname == "đèn" && statusdevice == "tắt") {
+      if (devicesname == "light" && statusdevice == "turn off") {
         setDevice("Device6", 0);
       }
-      if (devicesname == "quạt" && statusdevice == "bật") {
+      if (devicesname == "fan" && statusdevice == "turn on") {
         setDevice("Device4", 1);
       }
-      if (devicesname == "quạt" && statusdevice == "tắt") {
+      if (devicesname == "fan" && statusdevice == "turn off") {
         setDevice("Device4", 0);
       }
-      if (devicesname == "bơm thủy canh" && statusdevice == "bật") {
+      if (devicesname == "pump of hydroponics" && statusdevice == "turn on") {
         setDevice("Device", 1);
       }
-      if (devicesname == "bơm thủy canh" && statusdevice == "tắt") {
+      if (devicesname == "pump of hydroponics" && statusdevice == "turn off") {
         setDevice("Device", 0);
       }
-      if (devicesname == "phun sương" && statusdevice == "bật") {
+      if (devicesname == "misting" && statusdevice == "turn on") {
         setDevice("Device1", 1);
       }
-      if (devicesname == "phun sương" && statusdevice == "tắt") {
+      if (devicesname == "misting" && statusdevice == "turn off") {
         setDevice("Device1", 0);
       }
-      if (devicesname == "rèm" && statusdevice == "mở") {
+      if (devicesname == "curtain" && statusdevice == "open") {
         setDevice("Device3", 1);
         setDevice("Device2", 0);
       }
-      if (devicesname == "rèm" && statusdevice == "đóng") {
+      if (devicesname == "curtain" && statusdevice == "close") {
         setDevice("Device3", 0);
         setDevice("Device2", 1);
       }
-      if (devicesname == "bơm nước" && statusdevice == "bật") {
+      if (devicesname == "pump" && statusdevice == "turn on") {
         setDevice("Device7", 1);
       }
-      if (devicesname == "bơm nước" && statusdevice == "tắt") {
+      if (devicesname == "pump" && statusdevice == "turn off") {
         setDevice("Device7", 0);
       }
-      if (devicesname == "két nước" && statusdevice == "bật") {
+      if (devicesname == "cooling system" && statusdevice == "turn on") {
         setDevice("Device5", 1);
       }
-      if (devicesname == "két nước" && statusdevice == "tắt") {
+      if (devicesname == "cooling system" && statusdevice == "turn off") {
         setDevice("Device5", 0);
       }
     });
   });
 
   appdialogflow.intent("sensor", (conv, { sensor }) => {
-    if (sensor === "nhiệt độ") {
+    if (sensor === "temperature") {
       console.log("done");
       conv.ask(
-        `Nhiệt độ bên trong nhà rau tại thời điểm ${
+        `temperature inside the greenhouse at the time ${
           getDataAll().espData.espSensorData.sensorData.temparetureInDoorData
             .time
         } là ${
@@ -64,23 +64,23 @@ module.exports = function (appdialogflow) {
             .data
         }ºC 
         \n 
-        Nhiệt độ bên ngoài nhà rau là ${
+        temperature outside the greenhouse is ${
           getDataAll().espData.espSensorData.sensorData.temparetureOutDoorData
             .data
         }ºC`
       );
     }
 
-    if (sensor === "độ ẩm") {
+    if (sensor === "humidity") {
       console.log("done");
       conv.ask(
-        `Độ ẩm bên trong nhà rau tại thời điểm ${
+        `humidity inside the greenhouse at the time ${
           getDataAll().espData.espSensorData.sensorData.humidityInDoorData.time
         } là ${
           getDataAll().espData.espSensorData.sensorData.humidityInDoorData.data
         }% 
         \n 
-        Độ ẩm bên ngoài nhà rau là ${
+        humidity outside the greenhouse is ${
           getDataAll().espData.espSensorData.sensorData.humidityOutDoorData.data
         }%`
       );
