@@ -7,25 +7,26 @@
 	<link rel="stylesheet" type="text/css" href="/css/layout.gioithieu.css" />
 	<link rel="shortcut icon" type="image/png" href="/image/content.png" />
 </head>
+
 <body>
 	<div class="navi">
-	  <div>
-	    <img src="/image/cancel.png"></img>
-	    <ul>
-			<li><a href="/home/">Điều khiển</a></li>
-			<li><a href="/home/tracuu">Tra cứu</a></li>
-			<li><a href="/home/charts">Biều đồ</a></li>
-		</ul>
-	  </div>
+		<div>
+			<img src="/image/cancel.png"></img>
+			<ul>
+				<li><a href="/home/">Điều khiển</a></li>
+				<li><a href="/home/tracuu">Tra cứu</a></li>
+				<li><a href="/home/charts">Biều đồ</a></li>
+			</ul>
+		</div>
 	</div>
 	<div class="navi-phone">
-	  <div>
-	    <a id="gohome" href="/home/"></a>
-	    <img id="home" onclick="gohome()" src="/image/home.png"></img>
-	  </div>
-	  <div>
-	    <img id="menu" src="/image/menu.png"></img>
-	  </div>
+		<div>
+			<a id="gohome" href="/home/"></a>
+			<img id="home" onclick="gohome()" src="/image/home.png"></img>
+		</div>
+		<div>
+			<img id="menu" src="/image/menu.png"></img>
+		</div>
 	</div>
 	<div class="header">
 		<div id="logo">
@@ -33,38 +34,39 @@
 		</div>
 		<div id="imformation-student">
 			<div>
-				<span>Giáo viên hưỡng dẫn:&nbsp;</span> </br>
+				<span>Giáo viên hướng dẫn:&nbsp;</span> </br>
 				<span>Sinh viên:&nbsp;</span>
 			</div>
 			<div>
-				<span>Nguyễn Trường Thịnh</span> </br>
+				<span>PGS. TS Nguyễn Trường Thịnh</span> </br>
 				<span>Cù Văn Phương MSSV: 17146313</span> </br>
-				<span>Nguyễn Trọng Toàn  MSSV: 17146342</span> </br>
+				<span>Nguyễn Trọng Toàn MSSV: 17146342</span> </br>
 				<span>Phạm Trần Duy Hiếu MSSV: 17146268</span>
 			</div>
 		</div>
 	</div>
 	<div id="name-project">
-		<h1>ĐỒ ÁN CƠ ĐIỆN TỬ</h1>
-		<h2>Nhà trồng rau thủy canh giám sát và điều khiển từ xa</h2>
+		<h1>ĐỒ ÁN CƠ TỐT NGHIỆP</h1>
+		<h2>NGHIÊN CỨU, THIẾT KẾ, THI CÔNG NHÀ KÍNH TRỒNG RAU THÔNG MINH</h2>
 	</div>
 	<div class="content">
-		<img src="https://image-us.eva.vn/upload/4-2019/images/2019-11-04/nha-chat-ma-van-muon-an-rau-sach-hoc-ngay-cach-trong-rau-thuy-canh-vua-sach-vua-nhan-77777777-1572862434-964-width600height445.jpg" alt="">
+		<img src="https://image-us.eva.vn/upload/4-2019/images/2019-11-04/nha-chat-ma-van-muon-an-rau-sach-hoc-ngay-cach-trong-rau-thuy-canh-vua-sach-vua-nhan-77777777-1572862434-964-width600height445.jpg"
+			alt="">
 	</div>
 	<script>
-	  const menu = document.getElementById("menu")
-	  
-	  menu.addEventListener("click", function(){
-      document.getElementsByClassName("navi")[0].style.display = "block"
-    });
-    
-    const close = document.getElementsByClassName("navi")
-	  close[0].addEventListener("click", function(){
-      document.getElementsByClassName("navi")[0].style.display = "none"
-    });
-    function gohome() {
-      document.getElementById("gohome").click()
-    }
+		const menu = document.getElementById("menu")
+
+		menu.addEventListener("click", function () {
+			document.getElementsByClassName("navi")[0].style.display = "block"
+		});
+
+		const close = document.getElementsByClassName("navi")
+		close[0].addEventListener("click", function () {
+			document.getElementsByClassName("navi")[0].style.display = "none"
+		});
+		function gohome() {
+			document.getElementById("gohome").click()
+		}
 	</script>
 </body>
 
