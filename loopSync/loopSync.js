@@ -1,4 +1,7 @@
-const { pushEspConnectStatusIntoJson, getDataAll } = require("../data/espData/saveDataEsp");
+const {
+  pushEspConnectStatusIntoJson,
+  getDataAll,
+} = require("../data/espData/saveDataEsp");
 const { getAll } = require("../data/clientData/clientData");
 const getDataApiAsync = require("../api/api");
 const time = require("../time/time");
@@ -18,7 +21,7 @@ function pingEspSensor(nameSpaceEspSensor) {
     timeArray[0] = 0;
   }
 
-  if (count[0] === 10) {
+  if (count[0] === 20) {
     pushEspConnectStatusIntoJson("espSensorData", false);
   }
 }
@@ -29,7 +32,7 @@ function pingEspControll(nameSpaceEspControll) {
     timeArray[1] = 0;
   }
 
-  if (count[1] === 10) {
+  if (count[1] === 20) {
     pushEspConnectStatusIntoJson("espControllData", false);
   }
 }
@@ -76,14 +79,14 @@ module.exports = function loopSync(
     socket.on("pong", () => {
       count[1] = 0;
       pushEspConnectStatusIntoJson("espControllData", true);
-    })
+    });
   });
 
   nameSpaceEspSensor.on("connection", (socket) => {
     socket.on("pong", () => {
       count[0] = 0;
       pushEspConnectStatusIntoJson("espSensorData", true);
-    })
+    });
   });
 
   return new Promise((resolve, reject) => {
