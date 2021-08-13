@@ -44,21 +44,21 @@ function vegetableData(id) {
       data.vegetableId = id;
       data.autoData = {
         setLux: {
-          active: data.autoData.setLux.active,
+          active: true,
           deviceOnMax: data.autoData.setLux.deviceOnMax,
           deviceOnMin: data.autoData.setLux.deviceOnMin,
           max: item.maxLight,
           min: item.minLight,
         },
         setTemp: {
-          active: data.autoData.setTemp.active,
+          active: true,
           deviceOnMax: data.autoData.setTemp.deviceOnMax,
           deviceOnMin: data.autoData.setTemp.deviceOnMin,
           max: item.maxTemp,
           min: item.minTemp,
         },
         setTimePump: {
-          active: data.autoData.setTimePump.active,
+          active: true,
           deviceOnMax: data.autoData.setTimePump.deviceOnMax,
           time: item.TimePump,
         },
@@ -68,6 +68,8 @@ function vegetableData(id) {
 
   var array1 = JSON.stringify(data);
   fs.writeFileSync(dataModeAuto, array1);
+
+  nameSpaceWebapp.emit("autoData", data.autoData);
 }
 
 function getAll() {

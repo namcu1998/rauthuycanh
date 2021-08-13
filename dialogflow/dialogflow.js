@@ -1,10 +1,18 @@
 const { setDevice } = require("../data/clientData/clientData");
 const { getDataAll } = require("../data/espData/saveDataEsp");
+const { vegetableData } = require("../data/clientData/clientData");
 
 module.exports = function (appdialogflow) {
   appdialogflow.intent("myIntent", (conv, { devicesname, statusdevice }) => {
     return new Promise((resolve, reject) => {
       console.log(devicesname, statusdevice);
+      if (devicesname == "xà lách") {
+        vegetableData(0);
+      }
+      if (devicesname == "mồng tơi") {
+        vegetableData(1);
+      }
+
       if (devicesname == "light" && statusdevice == "turn on") {
         setDevice("Device6", 1);
       }

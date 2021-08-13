@@ -1,4 +1,4 @@
-const socket = io("https://rauthuycanh.herokuapp.com/webapp"); //
+const socket = io("https://a1ac126b6988.ngrok.io/webapp"); //
 const history = $("#history");
 const search = $("#search");
 const ctx = document.getElementById("myChart").getContext("2d");
@@ -146,6 +146,19 @@ socket.on("sendArraySensorError", (item) => {
   informationContent.innerHTML = string;
 });
 
+socket.on("autoData", (item) => {
+  console.log(item);
+  $("#setTimePump")[0].value = item.setTimePump.time;
+  $("#setLuxMax")[0].value = item.setLux.max;
+  $("#setLuxMin")[0].value = item.setLux.min;
+  $("#setTempMax")[0].value = item.setTemp.max;
+  $("#setTempMin")[0].value = item.setTemp.min;
+  for (let i of document.getElementsByClassName("changeOO")) {
+    console.log(i);
+    i.checked = true;
+  }
+});
+
 function xulyDataLichsu(table, array) {
   var html = array.map(function (x) {
     return (
@@ -247,7 +260,7 @@ var myChart = new Chart(ctx, {
     labels: [],
     datasets: [
       {
-        label: "light",
+        label: "Light",
         data: [],
         backgroundColor: "rgba(196, 245, 0, 0.8)",
         borderColor: ["rgba(196, 245, 0, 2)"],
@@ -306,7 +319,7 @@ var myChart1 = new Chart(ctx1, {
     labels: [],
     datasets: [
       {
-        label: "nhiệt độ bên trong",
+        label: "Nhiệt độ bên trong",
         data: [],
         backgroundColor: "rgba(255,0,0, 0)",
         borderColor: ["red"],
@@ -317,7 +330,7 @@ var myChart1 = new Chart(ctx1, {
         pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
-        label: "nhiệt độ bên ngoài",
+        label: "Nhiệt độ bên ngoài",
         data: [],
         backgroundColor: "rgba(255,0,0, 0)",
         borderColor: ["yellow"],
@@ -387,7 +400,7 @@ var myChart2 = new Chart(ctx2, {
     labels: [],
     datasets: [
       {
-        label: "độ ẩm bên ngoài",
+        label: "Độ ẩm bên ngoài",
         data: [],
         backgroundColor: "rgba(139, 97, 255,0)",
         borderColor: ["blue"],
@@ -398,7 +411,7 @@ var myChart2 = new Chart(ctx2, {
         pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
-        label: "độ ẩm bên trong",
+        label: "Độ ẩm bên trong",
         data: [],
         backgroundColor: "rgba(139, 97, 255, 0)",
         borderColor: ["yellow"],

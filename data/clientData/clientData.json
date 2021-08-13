@@ -1,33 +1,33 @@
 {
     "autoData": {
         "setLux": {
-            "active": false,
+            "active": true,
             "deviceOnMax": [
                 "Device2"
             ],
             "deviceOnMin": [
                 "Device3"
             ],
-            "max": 200,
-            "min": 100
+            "max": 500,
+            "min": 400
         },
         "setTemp": {
-            "active": false,
+            "active": true,
             "deviceOnMax": [
                 "Device4"
             ],
             "deviceOnMin": [
                 "Device5"
             ],
-            "max": 29,
+            "max": 31,
             "min": 28
         },
         "setTimePump": {
-            "active": false,
-            "time": 15
+            "active": true,
+            "time": 10
         }
     },
-    "vegetableId": "0",
+    "vegetableId": "1",
     "vegetable": [
         {
             "id": 0,
@@ -51,8 +51,8 @@
     "statusDevice": {
         "Device": 1,
         "Device1": 1,
-        "Device2": 1,
-        "Device3": 0,
+        "Device2": 0,
+        "Device3": 1,
         "Device4": 1,
         "Device5": 1,
         "Device6": 1,
