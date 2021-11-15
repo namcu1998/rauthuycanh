@@ -15,9 +15,9 @@ function pushTemp(item, item1, item2) {
   }
 
   data1.dataTemp.push({
-    nhietdo: item,
-    thoigian: item1,
-    nhietdoApi: item2,
+    x: item,
+    y: item1,
+    z: item2,
   });
 
   pushDataChartOnDatabase(data1);
@@ -34,9 +34,9 @@ function pushHumi(item, item1, item2) {
   }
 
   data1.dataHumi.push({
-    doam: item,
-    thoigian: item1,
-    doamApi: item2
+    x: item,
+    y: item1,
+    z: item2
   });
 
   pushDataChartOnDatabase(data1);
@@ -53,8 +53,8 @@ function pushLux(item, item1) {
   }
 
   data1.dataLux.push({
-    anhsang: item,
-    thoigian: item1,
+    x: item,
+    y: item1,
   });
 
   pushDataChartOnDatabase(data1);

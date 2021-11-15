@@ -88,6 +88,7 @@ function pushEspInformationDataIntoJson(espName, informationData) {
     cpuSpeed: informationData.clockCPU,
     IPAddress: informationData.ip,
     wifiStrength: informationData.signal,
+    //upTime: informationData.uptime === undefined ? '' : informationData.uptime
   };
 
   pushDataOnDatabase(oldData);
@@ -124,11 +125,11 @@ function pushEspSensorDataIntoJson(dataName, data) {
         time.getTime(),
         oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data
       );
-      webapp.emit("pushTemp", [
-        data,
-        time.getTime(),
-        oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data,
-      ]);
+      webapp.emit("pushTemp", {
+        x: data,
+        y: time.getTime(),
+        z: oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data,
+      });
       break;
     case "humidityInDoorData":
       pushHumi(
@@ -136,15 +137,15 @@ function pushEspSensorDataIntoJson(dataName, data) {
         time.getTime(),
         oldData.espData.espSensorData.sensorData.humidityOutDoorData.data
       );
-      webapp.emit("pushHumi", [
-        data,
-        time.getTime(),
-        oldData.espData.espSensorData.sensorData.humidityOutDoorData.data,
-      ]);
+      webapp.emit("pushHumi", {
+        x: data,
+        y: time.getTime(),
+        z: oldData.espData.espSensorData.sensorData.humidityOutDoorData.data,
+      });
       break;
     case "lightData":
       pushLux(data, time.getTime());
-      webapp.emit("pushLux", [data, time.getTime()]);
+      webapp.emit("pushLux", {x: data, y: time.getTime()});
       break;
   }
 
