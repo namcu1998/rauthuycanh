@@ -86,7 +86,7 @@ module.exports = function deviceIO(
         pushEspSensorDataIntoJson("lightData", data);
       });
       
-      socket.on("mq135Data", (data) => {
+      socket.on("mq135Value", (data) => {
         pushEspSensorDataIntoJson("mq135Data", data);
       });
 

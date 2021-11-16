@@ -88,7 +88,7 @@ function pushEspInformationDataIntoJson(espName, informationData) {
     cpuSpeed: informationData.clockCPU,
     IPAddress: informationData.ip,
     wifiStrength: informationData.signal,
-    //upTime: informationData.uptime === undefined ? '' : informationData.uptime
+    upTime: informationData.uptime
   };
 
   pushDataOnDatabase(oldData);
