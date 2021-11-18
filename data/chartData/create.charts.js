@@ -30,7 +30,7 @@ function writeDataIntoJson(name, value1, label, value2 = null) {
 
   let stringData = JSON.stringify(element);
   fs.writeFileSync(dataChart, stringData);
-  return [item, item1, item2];
+  return [value1, labels, value2];
 }
 
 function getDataChart() {
