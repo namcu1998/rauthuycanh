@@ -18,6 +18,9 @@ function writeDataIntoJson(name, value1, label, value2 = null) {
       item["labels"] = [...item.labels, label];
       item["data1"] = [...item.data1, value1];
       item["data2"] = [...item.data2, value2];
+      item.labels.length = numberOfElement;
+      item.data1.length = numberOfElement;
+      item.data2.length = numberOfElement;
     } 
     
     return item;

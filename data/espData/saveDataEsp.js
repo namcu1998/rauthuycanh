@@ -149,7 +149,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
       writeDataIntoJson("Light", data, time.getTime());
       webapp.emit("pushLux", {x: data, y: time.getTime()});
       break;
-    case "mq135Value":
+    case "mq135Data":
       writeDataIntoJson("Air", data, time.getTime());
       break;
   }
