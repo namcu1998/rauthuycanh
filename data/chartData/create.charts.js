@@ -8,60 +8,26 @@ function pushDataChartOnDatabase(data) {
   chartData.set(data);
 }
 
-function pushTemp(item, item1, item2) {
-  let data1 = JSON.parse(fs.readFileSync(dataChart, "utf8"));
-  if(data1.dataTemp.length > numberOfElement) {
-	  data1.dataTemp.shift();
-  }
+function writeDataIntoJson(name, value1, label, value2 = null) {
+  let jsonData = JSON.parse(fs.readFileSync(dataChart, "utf8"));
+  let jsonDataCopy = [...jsonData]
+  
+  let element = jsonDataCopy.filter(item => {
+    
+    if (item.name === name) {
+      item.labels = [...item.labels, label];
+      item.data1 = [...item.data1, value1];
+      item.data2 = [...item.data2, value2];
+    }
+    
+    return item;
+  })
+  
+  pushDataChartOnDatabase(element);
 
-  data1.dataTemp.push({
-    x: item,
-    y: item1,
-    z: item2,
-  });
-
-  pushDataChartOnDatabase(data1);
-
-  let data2 = JSON.stringify(data1);
-  fs.writeFileSync(dataChart, data2);
+  let stringData = JSON.stringify(element);
+  fs.writeFileSync(dataChart, stringData);
   return [item, item1, item2];
-}
-
-function pushHumi(item, item1, item2) {
-  let data1 = JSON.parse(fs.readFileSync(dataChart, "utf8"));
-  if(data1.dataHumi.length > numberOfElement) {
-	data1.dataHumi.shift();
-  }
-
-  data1.dataHumi.push({
-    x: item,
-    y: item1,
-    z: item2
-  });
-
-  pushDataChartOnDatabase(data1);
-
-  let data2 = JSON.stringify(data1);
-  fs.writeFileSync(dataChart, data2);
-  return [item, item1, item2];
-}
-
-function pushLux(item, item1) {
-  let data1 = JSON.parse(fs.readFileSync(dataChart, "utf8"));
-  if(data1.dataLux.length > numberOfElement) {
-	data1.dataLux.shift();
-  }
-
-  data1.dataLux.push({
-    x: item,
-    y: item1,
-  });
-
-  pushDataChartOnDatabase(data1);
-
-  let data2 = JSON.stringify(data1);
-  fs.writeFileSync(dataChart, data2);
-  return [item, item1];
 }
 
 function getDataChart() {
@@ -75,7 +41,5 @@ function getChartDataFromDatabase(data) {
 module.exports = {
   getChartDataFromDatabase,
   getDataChart,
-	pushTemp,
-	pushHumi,
-	pushLux,
+	writeDataIntoJson
 };

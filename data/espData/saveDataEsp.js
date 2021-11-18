@@ -8,7 +8,7 @@ const {
   editAuto,
 } = require("../../data/clientData/clientData");
 const { fileSave, readFile } = require("../historyData/historyData");
-const { pushTemp, pushHumi, pushLux } = require("../chartData/create.charts");
+const { writeDataIntoJson } = require("../chartData/create.charts");
 const { espData } = require("../../database/firebase");
 const dataEsp = path.resolve(__dirname, "../espData/dataEsp.json");
 let arrayDataLux = [];
@@ -120,7 +120,8 @@ function pushEspSensorDataIntoJson(dataName, data) {
 
   switch (dataName) {
     case "temparetureInDoorData":
-      pushTemp(
+      writeDataIntoJson(
+        "Temperature",
         data,
         time.getTime(),
         oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data
@@ -132,7 +133,8 @@ function pushEspSensorDataIntoJson(dataName, data) {
       });
       break;
     case "humidityInDoorData":
-      pushHumi(
+      writeDataIntoJson(
+        "Humidity",
         data,
         time.getTime(),
         oldData.espData.espSensorData.sensorData.humidityOutDoorData.data
@@ -144,7 +146,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
       });
       break;
     case "lightData":
-      pushLux(data, time.getTime());
+      writeDataIntoJson("Light", data, time.getTime());
       webapp.emit("pushLux", {x: data, y: time.getTime()});
       break;
   }
