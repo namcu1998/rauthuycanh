@@ -19,5 +19,12 @@
     "data1": [],
     "data2": [],
     "unit": "Lux"
+  },
+  {
+    "name": "Air",
+    "labels": [],
+    "data1": [],
+    "data2": [],
+    "unit": "PPM"
   }
 ]
