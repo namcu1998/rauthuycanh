@@ -19,6 +19,12 @@ function writeDataIntoJson(name, value1, label, value2 = 0) {
   element.data1.push(value1);
   element.data2.push(value2);
   
+  if (element.labels.length >= numberOfElement) {
+    element.labels.shift();
+    element.data1.shift();
+    element.data2.shift();
+  }
+  
   jsonDataCopy[index] = element;
   
   pushDataChartOnDatabase(jsonDataCopy);
