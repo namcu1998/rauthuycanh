@@ -10,7 +10,8 @@ function pushDataChartOnDatabase(data) {
 
 function writeDataIntoJson(name, value1, label, value2 = null) {
   let jsonData = JSON.parse(fs.readFileSync(dataChart, "utf8"));
-  let jsonDataCopy = [...jsonData]
+  let jsonDataCopy = [...jsonData];
+  console.log(name, value1, value2, label);
   
   let element = jsonDataCopy.filter(item => {
     
