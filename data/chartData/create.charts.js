@@ -8,7 +8,7 @@ function pushDataChartOnDatabase(data) {
   chartData.set(data);
 }
 
-function writeDataIntoJson(name, value1, label, value2 = null) {
+function writeDataIntoJson(name, value1, label, value2 = 0) {
   let jsonData = JSON.parse(fs.readFileSync(dataChart, "utf8"));
   let jsonDataCopy = [...jsonData];
   
@@ -16,7 +16,7 @@ function writeDataIntoJson(name, value1, label, value2 = null) {
   let element = jsonDataCopy.filter(item => {
     
     if (item.name === name) {
-      console.log(item)
+      console.log(item.value1)
       item.labels = [...item.labels, label];
       item.data1 = [...item.data1, value1];
       item.data2 = [...item.data2, value2];
