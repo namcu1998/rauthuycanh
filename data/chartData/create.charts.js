@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const dataChart = path.resolve(__dirname, "../chartData/dataCharts.json");
 const { chartData } = require("../../database/firebase");
-const numberOfElement = 200;
+const numberOfElement = 10;
 
 function pushDataChartOnDatabase(data) {
   chartData.set(data);
@@ -17,9 +17,9 @@ function writeDataIntoJson(name, value1, label, value2 = null) {
     
     if (item.name === name) {
       console.log(item)
-      item.labels.push(label);
-      item.data1.push(value1);
-      item.data2.push(value2);
+      item.labels = [...item.labels, label];
+      item.data1 = [...item.data1, value1];
+      item.data2 = [...item.data2, value2];
       item.labels.length = numberOfElement;
       item.data1.length = numberOfElement;
       item.data2.length = numberOfElement;
