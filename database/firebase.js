@@ -14,6 +14,37 @@ const chartData = db.ref("chartData");
 const historyData = db.ref("historyData");
 const espData = db.ref("espData");
 
+chartData.set([
+  {
+    "name": "Temperature",
+    "labels": [0],
+    "data1": [0],
+    "data2": [0],
+    "unit": "°C"
+  },
+  {
+    "name": "Humidity",
+    "labels": [0],
+    "data1": [0],
+    "data2": [0],
+    "unit": "%"
+  },
+  {
+    "name": "Light",
+    "labels": [0],
+    "data1": [0],
+    "data2": [0],
+    "unit": "Lux"
+  },
+  {
+    "name": "Air",
+    "labels": [0],
+    "data1": [0],
+    "data2": [0],
+    "unit": "PPM"
+  }
+])
+
 module.exports = {
   historyData,
   clientData,

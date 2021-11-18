@@ -15,10 +15,10 @@ function writeDataIntoJson(name, value1, label, value2 = null) {
   let element = jsonDataCopy.filter(item => {
     
     if (item.name === name) {
-      item.labels = [...item.labels, label];
-      item.data1 = [...item.data1, value1];
-      item.data2 = [...item.data2, value2];
-    }
+      item["labels"] = [...item.labels, label];
+      item["data1"] = [...item.data1, value1];
+      item["data2"] = [...item.data2, value2];
+    } 
     
     return item;
   })
