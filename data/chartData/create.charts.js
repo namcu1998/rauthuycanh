@@ -8,14 +8,14 @@ function pushDataChartOnDatabase(data) {
   chartData.set(data);
 }
 
-function writeDataIntoJson(name, value1, label, value2 = 0) {
+function writeDataIntoJson(name, value1, label, value2 = null) {
   let jsonData = JSON.parse(fs.readFileSync(dataChart, "utf8"));
   let jsonDataCopy = [...jsonData];
   
   let element = jsonDataCopy.find(item => item.name === name);
   let index = jsonDataCopy.findIndex(item => item.name === name);
   
-  element.labels.push(label);
+  element.labels.push(label.split(' ')[3]);
   element.data1.push(value1);
   element.data2.push(value2);
   
