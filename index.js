@@ -39,7 +39,7 @@ const { getHistoryDataFromDatabase } = require("./data/historyData/historyData")
 //   url: "https:nhanong.herokuapp.com",
 // });
 
- /*
+ 
  espData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
  });
@@ -55,7 +55,7 @@ const { getHistoryDataFromDatabase } = require("./data/historyData/historyData")
  chartData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getChartDataFromDatabase(dataSnapshot.val());
  });
- */
+ 
 
 server.listen(process.env.PORT || 3484);
 app.use("/home", Auth.SetCookie, router);

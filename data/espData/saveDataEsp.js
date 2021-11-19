@@ -88,7 +88,8 @@ function pushEspInformationDataIntoJson(espName, informationData) {
     cpuSpeed: informationData.clockCPU,
     IPAddress: informationData.ip,
     wifiStrength: informationData.signal,
-    upTime: informationData.uptime
+    upTime: informationData.uptime,
+    numberOfRestart: informationData.numberOfRestart
   };
 
   pushDataOnDatabase(oldData);
