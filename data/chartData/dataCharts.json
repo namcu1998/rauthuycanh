@@ -1,30 +1,30 @@
 [
   {
     "name": "Temperature",
-    "labels": [],
-    "data1": [],
-    "data2": [],
+    "labels": [null],
+    "data1": [null],
+    "data2": [null],
     "unit": "°C"
   },
   {
     "name": "Humidity",
-    "labels": [],
-    "data1": [],
-    "data2": [],
+    "labels": [null],
+    "data1": [null],
+    "data2": [null],
     "unit": "%"
   },
   {
     "name": "Light",
-    "labels": [],
-    "data1": [],
-    "data2": [],
+    "labels": [null],
+    "data1": [null],
+    "data2": [null],
     "unit": "Lux"
   },
   {
     "name": "Air",
-    "labels": [],
-    "data1": [],
-    "data2": [],
+    "labels": [null],
+    "data1": [null],
+    "data2": [null],
     "unit": "PPM"
   }
 ]

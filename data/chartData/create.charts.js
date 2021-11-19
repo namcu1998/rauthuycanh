@@ -25,7 +25,7 @@ function writeDataIntoJson(name, value1, label, value2 = null) {
     element.data2.shift();
   }
   
-  jsonDataCopy[index] = element;
+  jsonDataCopy[index] = {...element};
   
   pushDataChartOnDatabase(jsonDataCopy);
 
