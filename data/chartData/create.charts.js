@@ -8,7 +8,7 @@ function pushDataChartOnDatabase(data) {
   chartData.set(data);
 }
 
-function writeDataIntoJson(name, value1, label, value2 = null) {
+function writeDataIntoJson(name, value1, label, value2) {
   let jsonData = JSON.parse(fs.readFileSync(dataChart, "utf8"));
   let jsonDataCopy = [...jsonData];
   
