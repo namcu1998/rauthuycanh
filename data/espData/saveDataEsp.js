@@ -117,6 +117,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
   oldData.espData.espSensorData.sensorData[dataName] = {
     data: data,
     time: time.getTime(),
+    isValueUp: data > oldData.espData.espSensorData.sensorData[dataName].data ? true : false
   };
 
   switch (dataName) {
