@@ -90,16 +90,6 @@ module.exports = function deviceIO(
         pushEspSensorDataIntoJson("mq135Data", data);
       });
 
-      socket.on("waterSensorStatusOne", (data) => {
-        console.log("waterSensorStatusOne", data);
-        pushSensorStatusIntoJson("waterSensorStatus", data);
-      });
-
-      socket.on("waterSensorStatusTwo", (data) => {
-        console.log("waterSensorStatusTwo", data);
-        pushSensorStatusIntoJson("waterSensorStatus1", data);
-      });
-
       socket.on("temparetureSensorStatus", (data) => {
         console.log("temparetureSensorStatus", data);
         pushSensorStatusIntoJson("dht11Status", data);
