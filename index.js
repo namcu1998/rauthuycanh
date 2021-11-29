@@ -40,9 +40,9 @@ const { getHistoryDataFromDatabase } = require("./data/historyData/historyData")
 // });
 
  
- /*espData.once("value", function (dataSnapshot) {
+ espData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
- });*/
+ });
 
  clientData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getClientDataFromDatabase(dataSnapshot.val());
