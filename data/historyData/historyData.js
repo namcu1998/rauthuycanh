@@ -47,7 +47,7 @@ function fileSave(sensorData, devicesStatusData) {
       new Object(
         sensorData.find(item => item.id === "temperatureInDoorData").value,
         sensorData.find(item => item.id === "humidityInDoorData").value,
-        sensorData.find(item => item.id === "temparetureOutDoorData").value,
+        sensorData.find(item => item.id === "temperatureOutDoorData").value,
         sensorData.find(item => item.id === "humidityOutDoorData").value,
         sensorData.find(item => item.id === "lightData").value,
         time.getTime(),
@@ -72,7 +72,7 @@ function fileSave(sensorData, devicesStatusData) {
       new Object(
          sensorData.find(item => item.id === "temperatureInDoorData").value,
         sensorData.find(item => item.id === "humidityInDoorData").value,
-        sensorData.find(item => item.id === "temparetureOutDoorData").value,
+        sensorData.find(item => item.id === "temperatureOutDoorData").value,
         sensorData.find(item => item.id === "humidityOutDoorData").value,
         sensorData.find(item => item.id === "lightData").value,
         time.getTime(),
