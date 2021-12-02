@@ -114,9 +114,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
   console.log(dataName, data);
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
   
-  const { sensorData } = oldData.espData.espSensorData;
-  
-  let newData = sensorData.map(item => {
+  let newData = oldData.espData.espSensorData.sensorData.map(item => {
     if (item.id === dataName) {
       return {
         ...item,
@@ -128,7 +126,8 @@ function pushEspSensorDataIntoJson(dataName, data) {
     }
   })
   
-  oldData.espData.espSensorData.sensorData = [...newData];
+  oldData.espData.espSensorData.sensorData = [...newData
+  ];
 
   /*switch (dataName) {
     case "temperatureInDoorData":
