@@ -20,19 +20,35 @@ function editAuto(name, active) {
   clientData.set(data);
 }
 
-function setDevice(nameDevice, statusDevice) {
-  let data = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
-  if (nameDevice === "Device3" && statusDevice === 1) {
-    data.statusDevice.Device2 = 0;
-  }
-  if (nameDevice === "Device2" && statusDevice === 1) {
-    data.statusDevice.Device3 = 0;
-  }
-  data.statusDevice[nameDevice] = statusDevice;
-  var array1 = JSON.stringify(data);
+function setDevice(data) {
+  /*
+    style data is object
+    example: {
+      id: 0,
+      state: true
+    }
+  */
+  //read data from json file
+  let dataFile = JSON.parse(fs.readFileSync(dataModeAuto, "utf8"));
+  const { id, state } = data;
+  const { statusDevice } = dataFile;
+  //change data
+  let newData = statusDevice.map(item => {
+    if (item.id === id) {
+      return {
+        ...item,
+        isActived: state
+      }
+    }
+    return item;
+  })
+  dataFile.statusDevice = [...newData];
+  //convert to string
+  var array1 = JSON.stringify(dataFile);
   fs.writeFileSync(dataModeAuto, array1);
+  //send data to database
   clientData.set(data);
-  nameSpaceWebapp.emit("feedbackDevice", data.statusDevice);
+  //Send data to esp control
   nameSpaceEspControll.emit("LED", getAll().statusDevice);
 }
 

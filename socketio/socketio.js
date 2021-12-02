@@ -107,46 +107,12 @@ module.exports = function deviceIO(
       socket.on("disconnect", function () {});
 
       socket.on("activeDevice", (item) => {
-        setDevice(item[0], item[1]);
-      });
-
-      socket.on("getChartData", () => {
-        nameSpaceWebapp.emit("onCharts", getDataChart());
-      });
-
-      socket.on("getHistoryData", () => {
-        nameSpaceWebapp.emit("sendDataLichsu", readFile());
-      });
-
-      socket.on("clientData", (data) => saveAuto(data));
-
-      socket.on("getDevicesStatus", () => {
-        getErrorDevicesList();
-      });
-
-      socket.on("reloadDataSensor", (item) => {
-        // nameSpaceWebapp.emit("sendDataSensor", {
-        //   dataTime: readFile()[0].thoigian,
-        //   dataTemp: getDataEsp().espSensor.statusDevice.temp,
-        //   dataTemp1: getDataEsp().api.temp,
-        //   dataHumi: getDataEsp().espSensor.statusDevice.humi,
-        //   dataHumi1: getDataEsp().api.humidity,
-        //   dataLight: getDataEsp().espSensor.statusDevice.light,
-        // });
-
-        socket.on("reloadDataDevice", () => {
-          nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice);
-        });
-        console.log("reload");
+        setDevice(item);
       });
 
       socket.on("vegetableId", item => {
         vegetableData(item);
       })
-
-      socket.on("getDevicesData", (data) => {
-        nameSpaceWebapp.emit("feedbackDevice", getAll().statusDevice);
-      });
     });
   }
 
