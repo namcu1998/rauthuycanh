@@ -35,18 +35,18 @@ const { getEspDataFromDatabase } = require("./data/espData/saveDataEsp");
 const { getClientDataFromDatabase } = require("./data/clientData/clientData");
 const { getChartDataFromDatabase } = require("./data/chartData/create.charts");
 const { getHistoryDataFromDatabase } = require("./data/historyData/historyData");
-// AwakeHeroku.add({
-//   url: "https:nhanong.herokuapp.com",
-// });
+ AwakeHeroku.add({
+   url: "https:rauthuycanh.herokuapp.com",
+});
 
  
- /*espData.once("value", function (dataSnapshot) {
+ espData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
  });
 
- clientData.once("value", function (dataSnapshot) {
+ /*clientData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getClientDataFromDatabase(dataSnapshot.val());
- });
+ });*/
 
  historyData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getHistoryDataFromDatabase(dataSnapshot.val());
@@ -54,7 +54,7 @@ const { getHistoryDataFromDatabase } = require("./data/historyData/historyData")
 
  chartData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getChartDataFromDatabase(dataSnapshot.val());
- });*/
+ });
  
 
 server.listen(process.env.PORT || 3484);
