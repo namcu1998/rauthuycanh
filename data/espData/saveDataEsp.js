@@ -114,7 +114,9 @@ function pushEspSensorDataIntoJson(dataName, data) {
   console.log(dataName, data);
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
   
-  let newData = oldData.espData.espSensorData.sensorData.map(item => {
+  const { sensorData } = oldData.espData.espSensorData;
+  
+  let newData = sensorData.map(item => {
     if (item.id === dataName) {
       return {
         ...item,
@@ -124,14 +126,13 @@ function pushEspSensorDataIntoJson(dataName, data) {
         surplusValue: data - item.value,
       }
     }
+    return item;
   })
   
   oldData.espData.espSensorData.sensorData = [...newData
   ];
-  
-  console.log(oldData.espData.espSensorData.sensorData)
 
-  /*switch (dataName) {
+  switch (dataName) {
     case "temperatureInDoorData":
       writeDataIntoJson(
         "Temperature",
@@ -154,17 +155,17 @@ function pushEspSensorDataIntoJson(dataName, data) {
     case "mq135Data":
       writeDataIntoJson("Air", data, time.getTime(), data);
       break;
-  }*/
+  }
 
  /* fileSave(
     oldData.espData.espSensorData.sensorData,
     getAll().statusDevice
-  );
+  );*/
 
   pushDataOnDatabase(oldData);
 
   let json = JSON.stringify(oldData);
-  fs.writeFileSync(dataEsp, json); */
+  fs.writeFileSync(dataEsp, json);
 }
 
 function pushSensorStatusIntoJson(SensorName, status) {
