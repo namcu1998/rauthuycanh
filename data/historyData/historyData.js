@@ -25,10 +25,6 @@ function fileSave(sensorData, deviceData) {
     var data1 = JSON.stringify(data);
     fs.writeFileSync(dataHistory, data1);
   }
-
-    let data1 = JSON.stringify(data);
-    fs.writeFileSync(dataHistory, data1);
-  }
 }
 
 function readFile() {
