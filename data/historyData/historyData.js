@@ -14,11 +14,11 @@ function fileSave(sensorData, deviceData) {
       data.splice(100, 1);
     }
     //Add new data
-    data.unshift(
+    data.unshift({
       sensorData,
       deviceData,
       time: time.getTime()
-    );
+    });
     //Send data to database
     historyData.set(data);
     //Write data in json file
