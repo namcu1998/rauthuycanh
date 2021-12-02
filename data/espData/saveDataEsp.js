@@ -130,7 +130,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
   
   oldData.espData.espSensorData.sensorData = [...newData];
 
-  switch (dataName) {
+  /*switch (dataName) {
     case "temperatureInDoorData":
       writeDataIntoJson(
         "Temperature",
@@ -153,7 +153,7 @@ function pushEspSensorDataIntoJson(dataName, data) {
     case "mq135Data":
       writeDataIntoJson("Air", data, time.getTime(), data);
       break;
-  }
+  }*/
 
  /* fileSave(
     oldData.espData.espSensorData.sensorData,
