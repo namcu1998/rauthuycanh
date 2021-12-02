@@ -2,90 +2,29 @@ const fs = require("fs");
 const path = require("path");
 const time = require("../../time/time");
 const { historyData } = require("../../database/firebase");
-let newId;
 const dataHistory = path.resolve(__dirname, "../historyData/data.json");
-function Object(
-  nhietdo,
-  doam,
-  nhietdo1,
-  doam1,
-  light,
-  time,
-  device,
-  device1,
-  device2,
-  device3,
-  device4,
-  device5,
-  device6,
-  device7
-) {
-  this.nhietdo = nhietdo;
-  this.doam = doam;
-  this.nhietdo1 = nhietdo1;
-  this.doam1 = doam1;
-  this.anhsang = light;
-  this.thoigian = time;
-  this.device1 = device1;
-  this.device = device;
-  this.device2 = device2;
-  this.device3 = device3;
-  this.device4 = device4;
-  this.device5 = device5;
-  this.device6 = device6;
-  this.device7 = device7;
-}
-function fileSave(sensorData, devicesStatusData) {
-  if (fs.readFileSync(dataHistory, "utf8")) {
-    var data = JSON.parse(fs.readFileSync(dataHistory, "utf8"));
 
+function fileSave(sensorData, deviceData) {
+  //Check json file not exist and not null
+  if (fs.readFileSync(dataHistory, "utf8")) {
+    //Read data from json file
+    var data = JSON.parse(fs.readFileSync(dataHistory, "utf8"));
+    //array length limit
     if (data.length > 100) {
       data.splice(100, 1);
     }
-
+    //Add new data
     data.unshift(
-      new Object(
-        sensorData.find(item => item.id === "temperatureInDoorData").value,
-        sensorData.find(item => item.id === "humidityInDoorData").value,
-        sensorData.find(item => item.id === "temperatureOutDoorData").value,
-        sensorData.find(item => item.id === "humidityOutDoorData").value,
-        sensorData.find(item => item.id === "lightData").value,
-        time.getTime(),
-        devicesStatusData.Device,
-        devicesStatusData.Device1,
-        devicesStatusData.Device2,
-        devicesStatusData.Device3,
-        devicesStatusData.Device4,
-        devicesStatusData.Device5,
-        devicesStatusData.Device6,
-        devicesStatusData.Device7
-      )
+      sensorData,
+      deviceData,
+      time: time.getTime()
     );
-
+    //Send data to database
     historyData.set(data);
-
+    //Write data in json file
     var data1 = JSON.stringify(data);
     fs.writeFileSync(dataHistory, data1);
-  } else {
-    let data = [];
-    data.push(
-      new Object(
-         sensorData.find(item => item.id === "temperatureInDoorData").value,
-        sensorData.find(item => item.id === "humidityInDoorData").value,
-        sensorData.find(item => item.id === "temperatureOutDoorData").value,
-        sensorData.find(item => item.id === "humidityOutDoorData").value,
-        sensorData.find(item => item.id === "lightData").value,
-        time.getTime(),
-        devicesStatusData.Device,
-        devicesStatusData.Device1,
-        devicesStatusData.Device2,
-        devicesStatusData.Device3,
-        devicesStatusData.Device4,
-        devicesStatusData.Device5,
-        devicesStatusData.Device6,
-        devicesStatusData.Device7
-      )
-    );
+  }
 
     let data1 = JSON.stringify(data);
     fs.writeFileSync(dataHistory, data1);
