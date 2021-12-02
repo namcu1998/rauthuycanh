@@ -113,45 +113,40 @@ function pushDeviceStatusDataIntoJson(espName, data) {
 function pushEspSensorDataIntoJson(dataName, data) {
   console.log(dataName, data);
   let oldData = JSON.parse(fs.readFileSync(dataEsp, "utf8"));
-
-  oldData.espData.espSensorData.sensorData[dataName] = {
-    data: data,
-    time: time.getTime(),
-    isValueUp: data > oldData.espData.espSensorData.sensorData[dataName].data ? true : false,
-    surplusValue: data - oldData.espData.espSensorData.sensorData[dataName].data
-    
-  };
+  
+  const { sensorData } = oldData.espData.espSensorData;
+  
+  let newData = sensorData.map(item => {
+    if (item.id === dataName) {
+      return {
+        ...item,
+        value: data,
+        time: time.getTime(),
+        isValueUp: data > item.value ? true : false,
+        surplusValue: data - item.value,
+      }
+    }
+  })
 
   switch (dataName) {
-    case "temparetureInDoorData":
+    case "temperatureInDoorData":
       writeDataIntoJson(
         "Temperature",
         data,
         time.getTime(),
-        oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data
+        sensorData.find(item => item.id === "temperatureOutDoorData").value
       );
-      webapp.emit("pushTemp", {
-        x: data,
-        y: time.getTime(),
-        z: oldData.espData.espSensorData.sensorData.temparetureOutDoorData.data,
-      });
       break;
     case "humidityInDoorData":
       writeDataIntoJson(
         "Humidity",
         data,
         time.getTime(),
-        oldData.espData.espSensorData.sensorData.humidityOutDoorData.data
+        sensorData.find(item => item.id === "humidityOutDoorData").value
       );
-      webapp.emit("pushHumi", {
-        x: data,
-        y: time.getTime(),
-        z: oldData.espData.espSensorData.sensorData.humidityOutDoorData.data,
-      });
       break;
     case "lightData":
       writeDataIntoJson("Light", data, time.getTime(), data);
-      webapp.emit("pushLux", {x: data, y: time.getTime()});
       break;
     case "mq135Data":
       writeDataIntoJson("Air", data, time.getTime(), data);
@@ -163,20 +158,10 @@ function pushEspSensorDataIntoJson(dataName, data) {
     getAll().statusDevice
   );
 
-  webapp.emit("sendDataLichsu", readFile());
+  pushDataOnDatabase(newData);
 
-  webapp.emit("sendDataSensor", {
-    dataTemp: oldData.espData.espSensorData.sensorData.temparetureData,
-    dataTemp1: oldData.api.temp,
-    dataHumi: oldData.espData.espSensorData.sensorData.humidityData,
-    dataHumi1: oldData.api.humidity,
-    dataLight: oldData.espData.espSensorData.sensorData.lightData,
-  });
-
-  pushDataOnDatabase(oldData);
-
-  let newData = JSON.stringify(oldData);
-  fs.writeFileSync(dataEsp, newData);
+  let json = JSON.stringify(newData);
+  fs.writeFileSync(dataEsp, json);
 }
 
 function pushSensorStatusIntoJson(SensorName, status) {

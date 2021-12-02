@@ -67,7 +67,7 @@ module.exports = function deviceIO(
       });
 
       socket.on("temparetureInDoorData", (data) => {
-        pushEspSensorDataIntoJson("temparetureInDoorData", data);
+        pushEspSensorDataIntoJson("temperatureInDoorData", data);
       });
 
       socket.on("humidityInDoorData", (data) => {
@@ -75,7 +75,7 @@ module.exports = function deviceIO(
       });
 
       socket.on("temparetureOutDoorData", (data) => {
-        pushEspSensorDataIntoJson("temparetureOutDoorData", data);
+        pushEspSensorDataIntoJson("temperatureOutDoorData", data);
       });
 
       socket.on("humidityOutDoorData", (data) => {

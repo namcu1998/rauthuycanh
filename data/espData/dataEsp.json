@@ -1,1 +1,110 @@
-{"api":{"feels_like":310.14,"grnd_level":1008,"humidity":81,"pressure":1009,"sea_level":1009,"temp":30,"temp_max":303.14,"temp_min":303.14},"espData":{"espControllData":{"devicesStatus":{"Device":0,"Device1":0,"Device2":0,"Device3":0,"Device4":0,"Device5":0,"Device6":0,"Device7":0},"espConnectStatus":false,"espInformation":{"IPAddress":"192.168.1.7","cpuSpeed":240,"ramUsed":206536,"wifiStrength":4294967245}},"espSensorData":{"espConnectStatus":false,"espInformation":{"IPAddress":"192.168.1.6","cpuSpeed":240,"ramUsed":206988,"wifiStrength":-42},"sensorData":{"humidityInDoorData":{"data":50,"time":"thứ tư 04-08-2021 23:03:35"},"humidityOutDoorData":{"data":95,"time":"thứ tư 04-08-2021 23:00:19"}, "mq135Data":{"data": 100, "time": "8h30"},"lightData":{"data":51,"time":"thứ ba 20-07-2021 14:22:43"},"temparetureInDoorData":{"data":41,"time":"thứ tư 04-08-2021 23:06:13"},"temparetureOutDoorData":{"data":31,"time":"thứ tư 04-08-2021 23:00:19"}},"sensorStatus":{"bh1750Status":0,"dht11Status":1,"waterSensorStatus":0,"waterSensorStatus1":0}}}}
+{
+  "api": {
+    "feels_like": 310.14,
+    "grnd_level": 1008,
+    "humidity": 81,
+    "pressure": 1009,
+    "sea_level": 1009,
+    "temp": 30,
+    "temp_max": 303.14,
+    "temp_min": 303.14
+  },
+  "espData": {
+    "espControllData": {
+      "devicesStatus": {
+        "Device": 0,
+        "Device1": 0,
+        "Device2": 0,
+        "Device3": 0,
+        "Device4": 0,
+        "Device5": 0,
+        "Device6": 0,
+        "Device7": 0
+      },
+      "espConnectStatus": false,
+      "espInformation": {
+        "IPAddress": "192.168.1.7",
+        "cpuSpeed": 240,
+        "ramUsed": 206536,
+        "wifiStrength": 4294967245
+      }
+    },
+    "espSensorData": {
+      "espConnectStatus": false,
+      "espInformation": {
+        "IPAddress": "192.168.1.6",
+        "cpuSpeed": 240,
+        "ramUsed": 206988,
+        "wifiStrength": -42
+      },
+      "sensorData": [
+        {
+          "id": "humidityInDoorData",
+          "name": "Humidity",
+          "unit": "%",
+          "isValueUp": true,
+          "surplusValue": 0,
+          "icon": "humidity_icon",
+          "value": 50,
+          "time": "thứ tư 04-08-2021 23:03:35"
+        },
+        {
+          "id": "humidityOutDoorData",
+          "name": "Humidity",
+          "unit": "%",
+          "isValueUp": true,
+          "surplusValue": 0,
+          "icon": "humidity_icon",
+          "value": 95,
+          "time": "thứ tư 04-08-2021 23:00:19"
+        },
+        {
+          "id": "mq135Data",
+          "name": "Air quality",
+          "unit": "PPM",
+          "isValueUp": true,
+          "surplusValue": 0,
+          "icon": "air_icon",
+          "value": 100,
+          "time": "8h30"
+        },
+        {
+          "id": "lightData",
+          "name": "Light",
+          "unit": "L",
+          "isValueUp": true,
+          "surplusValue": 0,
+          "icon": "sunny_icon",
+          "value": 51,
+          "time": "thứ ba 20-07-2021 14:22:43"
+        },
+        {
+          "id": "temperatureInDoorData",
+          "name": "Temperature",
+          "unit": "°C",
+          "isValueUp": true,
+          "surplusValue": 0,
+          "icon": "temperature_icon",
+          "value": 41,
+          "time": "thứ tư 04-08-2021 23:06:13"
+        },
+        {
+          "id": "temperatureOutDoorData",
+          "name": "Temperature",
+          "unit": "°C",
+          "isValueUp": true,
+          "surplusValue": 0,
+          "icon": "temperature_icon",
+          "value": 31,
+          "time": "thứ tư 04-08-2021 23:00:19"
+        }
+      ],
+      "sensorStatus": {
+        "bh1750Status": 0,
+        "dht11Status": 1,
+        "waterSensorStatus": 0,
+        "waterSensorStatus1": 0
+      }
+    }
+  }
+}

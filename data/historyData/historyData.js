@@ -45,11 +45,11 @@ function fileSave(sensorData, devicesStatusData) {
 
     data.unshift(
       new Object(
-        sensorData.temparetureInDoorData.data,
-        sensorData.humidityInDoorData.data,
-        sensorData.temparetureOutDoorData.data,
-        sensorData.humidityOutDoorData.data,
-        sensorData.lightData.data,
+        sensorData.find(item => item.id === "temperatureInDoorData").value,
+        sensorData.find(item => item.id === "humidityInDoorData").value,
+        sensorData.find(item => item.id === "temparetureOutDoorData").value,
+        sensorData.find(item => item.id === "humidityOutDoorData").value,
+        sensorData.find(item => item.id === "lightData").value,
         time.getTime(),
         devicesStatusData.Device,
         devicesStatusData.Device1,
@@ -70,11 +70,11 @@ function fileSave(sensorData, devicesStatusData) {
     let data = [];
     data.push(
       new Object(
-        sensorData.temparetureInDoorData.data,
-        sensorData.humidityInDoorData.data,
-        sensorData.temparetureOutDoorData.data,
-        sensorData.humidityOutDoorData.data,
-        sensorData.lightData.data,
+         sensorData.find(item => item.id === "temperatureInDoorData").value,
+        sensorData.find(item => item.id === "humidityInDoorData").value,
+        sensorData.find(item => item.id === "temparetureOutDoorData").value,
+        sensorData.find(item => item.id === "humidityOutDoorData").value,
+        sensorData.find(item => item.id === "lightData").value,
         time.getTime(),
         devicesStatusData.Device,
         devicesStatusData.Device1,

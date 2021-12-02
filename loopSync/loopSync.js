@@ -96,6 +96,7 @@ module.exports = function loopSync(
       timeArray[2]++;
       count[0]++;
       count[1]++;
+      /*
       controllAutoDeviceByTemp(
         nameSpaceEspControll,
         nameSpaceWebapp,
@@ -113,7 +114,7 @@ module.exports = function loopSync(
         nameSpaceWebapp,
         timeArray[2],
         "Device"
-      );
+      );*/
       pingEspSensor(nameSpaceEspSensor);
       pingEspControll(nameSpaceEspControll);
       timeGetApi();

@@ -40,7 +40,7 @@ const { getHistoryDataFromDatabase } = require("./data/historyData/historyData")
 // });
 
  
- espData.once("value", function (dataSnapshot) {
+ /*espData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
  });
 
@@ -54,7 +54,7 @@ const { getHistoryDataFromDatabase } = require("./data/historyData/historyData")
 
  chartData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getChartDataFromDatabase(dataSnapshot.val());
- });
+ });*/
  
 
 server.listen(process.env.PORT || 3484);
