@@ -127,6 +127,8 @@ function pushEspSensorDataIntoJson(dataName, data) {
       }
     }
   })
+  
+  oldData.espData.espSensorData.sensorData = [...newData];
 
   switch (dataName) {
     case "temperatureInDoorData":
@@ -158,9 +160,9 @@ function pushEspSensorDataIntoJson(dataName, data) {
     getAll().statusDevice
   );
 
-  pushDataOnDatabase(newData);
+  pushDataOnDatabase(oldData);
 
-  let json = JSON.stringify(newData);
+  let json = JSON.stringify(oldData);
   fs.writeFileSync(dataEsp, json);
 }
 
