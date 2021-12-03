@@ -43,11 +43,11 @@ function setDevice(data) {
     return item;
   })
   dataFile.statusDevice = [...newData];
+  //Send data to database
+  clientData.set(dataFile);
   //convert to string
   var array1 = JSON.stringify(dataFile);
   fs.writeFileSync(dataModeAuto, array1);
-  //send data to database
-  clientData.set(data);
   //Send data to esp control
   nameSpaceEspControll.emit("LED", getAll().statusDevice);
 }
