@@ -16,7 +16,7 @@ const {
 
 const appdialogflow = dialogflow();
 
-const esp = io.of("/espControll");
+const esp = io.of("/espControl");
 const esp1 = io.of("/espSensor");
 const webapp = io.of("/webapp");
 const appUse = require("./use/appUse");
@@ -36,16 +36,16 @@ const { getClientDataFromDatabase, setDevice } = require("./data/clientData/clie
 const { getChartDataFromDatabase } = require("./data/chartData/create.charts");
 const { getHistoryDataFromDatabase } = require("./data/historyData/historyData");
  AwakeHeroku.add({
-   url: "https:rauthuycanh.herokuapp.com",
+   url: "https://rauthuycanh.herokuapp.com",
 });
 
  espData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getEspDataFromDatabase(dataSnapshot.val());
  });
 
- /*clientData.once("value", function (dataSnapshot) {
+ clientData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getClientDataFromDatabase(dataSnapshot.val());
- });*/
+ });
 
 historyData.once("value", function (dataSnapshot) {
    if (dataSnapshot.val()) getHistoryDataFromDatabase(dataSnapshot.val());
