@@ -1,4 +1,4 @@
-const socket = io("https://nhanongfix.herokuapp.com/webapp");
+const socket = io("http://localhost:3484/webapp");
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
 const ctx2 = document.getElementById("myChart2").getContext("2d");
@@ -184,9 +184,9 @@ var myChart1 = new Chart(ctx1, {
       ],
     },
     layout: {
-      padding: 20
+      padding: 20,
     },
-    spanGaps: true
+    spanGaps: true,
   },
 });
 var myChart2 = new Chart(ctx2, {
@@ -265,7 +265,7 @@ var myChart2 = new Chart(ctx2, {
       ],
     },
     layout: {
-      padding: 20
+      padding: 20,
     },
   },
 });
